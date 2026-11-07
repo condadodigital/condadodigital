@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+Disallow: /capsula-plantilla.html
+Disallow: /plantilla-articulo.html
+Disallow: /noticia-plantilla.html
+
+# Buscadores y asistentes de IA (permitidos)
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: PerplexityBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Bingbot
+Allow: /
+Disallow: /capsula-plantilla.html
+Disallow: /plantilla-articulo.html
+Disallow: /noticia-plantilla.html
+
+Sitemap: https://www.condadodigital.cl/sitemap.xml

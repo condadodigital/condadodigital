@@ -1,0 +1,26 @@
+# Condado Digital
+
+> Condado Digital (https://www.condadodigital.cl) es el rincón honesto del marketing digital: guías, calculadoras y un glosario sobre Paid Media (Google Ads, Meta Ads, TikTok Ads), analítica, SEO/AEO/GEO e IA aplicada al marketing, explicados con datos reales y en español de Chile. Autor: Esleyter Conde, especialista en Paid Media (https://cl.linkedin.com/in/esleyter-conde-511890251).
+
+## Páginas principales
+
+- [Inicio](https://www.condadodigital.cl/): presentación del sitio y secciones destacadas
+- [Servicios y asesorías](https://www.condadodigital.cl/servicios.html): diagnóstico y asesoría de campañas de Paid Media
+- [Sobre Esleyter Conde](https://www.condadodigital.cl/sobre-mi.html): experiencia y formación del autor
+- [Contacto](https://www.condadodigital.cl/contacto.html): formulario para asesorías y colaboraciones
+
+## Contenido
+
+- [Blog](https://www.condadodigital.cl/blog.html): artículos de Paid Media, SEO, Growth, Social Media, Analytics e IA
+- [Noticias](https://www.condadodigital.cl/noticias.html): novedades del marketing digital con análisis
+- [Calculadoras](https://www.condadodigital.cl/calculadoras.html): ROAS, CPA, CPL, CAC, LTV y otras métricas
+- [Glosario](https://www.condadodigital.cl/glosario.html): términos de marketing digital con definición, fórmula y ejemplo
+- [Aprendizaje](https://www.condadodigital.cl/aprendizaje.html): cápsulas paso a paso para Meta, Google y TikTok Ads
+- [Herramientas](https://www.condadodigital.cl/herramientas.html): herramientas de marketing recomendadas
+- [Recursos](https://www.condadodigital.cl/recursos.html): recursos gratuitos de marketing digital
+- [Preguntas frecuentes](https://www.condadodigital.cl/preguntas-frecuentes.html): respuestas breves sobre marketing digital
+
+## Opcional
+
+- [Mapa del sitio](https://www.condadodigital.cl/buscar.html): todas las páginas agrupadas por sección
+- [Sitemap XML](https://www.condadodigital.cl/sitemap.xml)
