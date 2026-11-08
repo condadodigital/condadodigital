@@ -6,7 +6,7 @@
 
 - [Inicio](https://www.condadodigital.cl/): presentación del sitio y secciones destacadas
 - [Servicios y asesorías](https://www.condadodigital.cl/servicios): diagnóstico y asesoría de campañas de Paid Media
-- [Sobre Esleyter Conde](https://www.condadodigital.cl/sobre-mi): experiencia y formación del autor
+- [Acerca de Condado Digital](https://www.condadodigital.cl/acerca): por qué nació el sitio, cómo trabajamos y quién está detrás
 - [Contacto](https://www.condadodigital.cl/contacto): formulario para asesorías y colaboraciones
 
 ## Contenido
