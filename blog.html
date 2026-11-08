@@ -12,6 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog de Marketing Digital: Paid Media, SEO, Growth y Analytics — Condado Digital</title>
   <meta name="description" content="Guías y análisis de marketing digital basados en campañas reales: Google Ads, Meta Ads, TikTok Ads, analítica, SEO e IA aplicada.">
+  <meta name="robots" content="noindex, follow">
   <meta property="og:title" content="Blog de Marketing Digital: Paid Media, SEO, Growth y Analytics">
   <meta property="og:description" content="Guías y análisis de marketing digital basados en campañas reales: Google Ads, Meta Ads, TikTok Ads, analítica, SEO e IA aplicada.">
   <meta property="og:site_name" content="Condado Digital">
@@ -60,7 +61,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="sobre-titulo">Blog</span>
       <h1>Menos humo,<br>más crecimiento</h1>
       <p class="bajada">Estrategias probadas en campañas reales: lo que funciona, lo que no, y los números que lo demuestran. Cero teoría reciclada. Los artículos se publican de a uno: cuando uno esté listo, se activa su enlace.</p>
-      <div class="pills" id="pills">
+      <!-- OCULTO hasta publicar (filtros del blog):
+<div class="pills" id="pills">
         <button class="pill activa" data-cat="">Todo</button>
         <button class="pill" data-cat="Paid Media">Paid Media</button>
         <button class="pill" data-cat="SEO">SEO</button>
@@ -72,12 +74,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="busca">
         <input type="search" id="busca-blog" placeholder="Buscar guías, análisis o casos..." aria-label="Buscar en el blog">
       </div>
+-->
     </div>
   </section>
 
   <section class="seccion" style="padding-top:44px">
     <div class="wrap">
-      <div class="barra-orden">
+      <div class="callout" style="text-align:center;padding:34px 24px"><p style="margin:0">Estamos preparando contenido. Mientras tanto, revisa el <a href="glosario">glosario</a> y las <a href="calculadoras">calculadoras</a>.</p></div>
+      <!-- OCULTO hasta publicar (artículos del blog):
+<div class="barra-orden">
         <span class="contador" id="contador">12 artículos</span>
         <div class="orden">
           <span>Ordenar:</span>
@@ -195,6 +200,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </article>
       </div>
+-->
       <aside class="cta-asesoria">
       <p class="cta-titulo">¿Tus campañas gastan más de lo que deberían?</p>
       <p>Reviso tu cuenta de Google Ads, Meta Ads o TikTok Ads y te digo qué ajustar primero, con números.</p>
@@ -204,7 +210,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <script>
+  <!-- OCULTO hasta publicar (script de filtros del blog):
+<script>
   (function () {
     const grid = document.getElementById("grid-blog");
     const cards = [...grid.querySelectorAll(".art")];
@@ -257,6 +264,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   })();
   </script>
+-->
 </main>
 
 <footer>
