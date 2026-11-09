@@ -57,7 +57,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="wrap">
       <span class="etiqueta">Contacto</span>
       <h2>Hablemos</h2>
-      <p class="intro">¿Quieres un diagnóstico de tus campañas, una asesoría o colaborar? Escríbeme y te respondo en un plazo de 2 días hábiles. También puedes escribirnos por <a href="https://www.linkedin.com/company/145435900/" target="_blank" rel="noopener" aria-label="Condado Digital en LinkedIn">LinkedIn</a>.</p>
+      <p class="intro">¿Quieres un diagnóstico de tus campañas, una asesoría o colaborar? Escríbeme y te respondo en un plazo de 2 días hábiles. También puedes escribirme por <a href="https://www.linkedin.com/company/145435900/" target="_blank" rel="noopener" aria-label="Condado Digital en LinkedIn">LinkedIn</a>.</p>
       <!-- FORMULARIO: crea una cuenta gratis en formspree.io, crea un formulario
            y reemplaza TU_ID_FORMSPREE por el código que te entregan (ej: xyzabcde). -->
       <form id="form-contacto" action="https://formspree.io/f/TU_ID_FORMSPREE" method="POST">
@@ -78,6 +78,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div><label for="mensaje">Mensaje</label><textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntame qué vendes, en qué plataformas inviertes y cuánto, más o menos, al mes" required></textarea></div>
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <button type="submit" class="btn btn-primario">Enviar mensaje</button>
+        <p style="margin-top:10px;font-size:0.85rem;color:var(--text-2)">Al enviar, aceptas que usemos tus datos solo para responderte. Revisa nuestra <a href="privacidad">política de privacidad</a>.</p>
         <p id="form-estado" role="status" style="margin-top:14px;font-weight:600"></p>
       </form>
       <script>
@@ -87,15 +88,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // Preselecciona el motivo si viene en la URL: contacto?motivo=diagnostico
         const m = new URLSearchParams(location.search).get("motivo");
         if (m && form.motivo.querySelector('option[value="' + m + '"]')) form.motivo.value = m;
+
+        // Medición: formulario_iniciado, una sola vez por carga de página,
+        // al primer focus o escritura en un campo (input, select o textarea)
+        let iniciado = false;
+        function marcarInicio(e) {
+          if (iniciado || !e.target.matches("input, select, textarea")) return;
+          iniciado = true;
+          window.dataLayer = window.dataLayer || [];
+          dataLayer.push({ event: 'formulario_iniciado', formulario: 'contacto', motivo: form.motivo.value });
+        }
+        form.addEventListener("focusin", marcarInicio);
+        form.addEventListener("input", marcarInicio);
+
         form.addEventListener("submit", async e => {
           e.preventDefault();
+          const motivo = form.motivo.value; // se guarda antes de form.reset()
           const btn = form.querySelector("button");
           btn.disabled = true; estado.style.color = ""; estado.textContent = "Enviando...";
           try {
             const r = await fetch(form.action, {method: "POST", body: new FormData(form), headers: {Accept: "application/json"}});
             if (!r.ok) throw new Error();
             window.dataLayer = window.dataLayer || [];
-            dataLayer.push({ event: 'generate_lead', formulario: 'contacto' });
+            dataLayer.push({ event: 'generate_lead', formulario: 'contacto', motivo: motivo });
             form.reset();
             estado.style.color = "var(--primary)";
             estado.textContent = "¡Listo! Recibí tu mensaje y te respondo pronto.";
