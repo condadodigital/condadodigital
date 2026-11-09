@@ -21,5 +21,4 @@ Publicado en https://www.condadodigital.cl
 - Archivos internos: `functions/_middleware.js` y `_routes.json` hacen que `README.md`, `.gitignore` y esos mismos archivos respondan 404 en el sitio. Si agregas otro archivo que no deba publicarse, súmalo en ambos.
 
 ## Pendientes
-- Pegar el código de Formspree en `contacto.html` (reemplazar `TU_ID_FORMSPREE`)
 - Crear `glosario-roas.html`, `glosario-seo.html`, `glosario-sem.html` y `glosario-pixel.html`
