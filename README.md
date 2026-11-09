@@ -13,6 +13,7 @@ Cloudflare Pages publica **solo la carpeta `public/`** (directorio de salida: `p
   - `fonts/`: Fraunces y DM Sans alojadas en el sitio (antes Google Fonts)
   - `_headers`: caché de Cloudflare Pages (1 año para imágenes, fuentes y SVG)
   - Enciclopedia: `enciclopedia.html` (índice) y 6 artículos de referencia con URL plana (`que-es-el-marketing-digital`, `marketing-tradicional-vs-digital`, `embudo-de-marketing`, `publicidad-pagada-vs-organica`, `analitica-digital`, `marketing-con-ia`). Llevan referencias numeradas, schema Article + FAQPage + BreadcrumbList y su historial de actualizaciones: si cambias un dato, agrega una línea al historial y actualiza `dateModified`
+- `DISENO.md`: sistema de diseño (colores, tipografías, componentes y reglas de movimiento). No se publica
 - `contenido/`: borradores e investigación de los artículos (no se publica, está en `.gitignore`)
 - `borradores/`: plantillas y contenido aún no publicado. Está en el repositorio, pero **no se publica** porque está fuera de `public/`
 

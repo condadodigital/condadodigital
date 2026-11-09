@@ -1,37 +1,26 @@
 // CONDADO DIGITAL — Menú móvil, submenús y buscador
 
-// Abre y cierra el menú en pantallas pequeñas
-const botonMenu = document.querySelector(".boton-menu");
-const menu = document.querySelector(".menu");
-
-if (botonMenu && menu) {
-  botonMenu.addEventListener("click", () => {
-    menu.classList.toggle("abierto");
-  });
-}
-
-// En móvil: tocar un ítem con submenú lo despliega
-document.querySelectorAll(".menu > li").forEach((item) => {
-  const enlace = item.querySelector(":scope > a");
-  const submenu = item.querySelector(".submenu");
-
-  if (enlace && submenu) {
-    enlace.addEventListener("click", (evento) => {
-      if (window.innerWidth <= 860) {
-        evento.preventDefault();
-        item.classList.toggle("desplegado");
-      }
+// Menú principal en pantallas pequeñas (el botón solo existe con JavaScript)
+(function () {
+  const boton = document.querySelector(".cabecera-menu-btn");
+  const menu = document.getElementById("menu-principal");
+  if (boton && menu) {
+    boton.addEventListener("click", () => {
+      const abierto = menu.classList.toggle("abierto");
+      boton.setAttribute("aria-expanded", abierto ? "true" : "false");
+      boton.setAttribute("aria-label", abierto ? "Cerrar menú" : "Abrir menú");
+    });
+    menu.addEventListener("click", (e) => {
+      if (e.target.closest("a")) { menu.classList.remove("abierto"); boton.setAttribute("aria-expanded", "false"); boton.setAttribute("aria-label", "Abrir menú"); }
     });
   }
-});
-
-// Marca en el menú la página actual
-const paginaActual = (window.location.pathname.split("/").pop() || "").replace(/\.html$/, "");
-document.querySelectorAll(".menu a").forEach((enlace) => {
-  if (enlace.getAttribute("href") === paginaActual) {
-    enlace.classList.add("activo");
-  }
-});
+  // Marca en el menú la sección actual
+  const actual = (window.location.pathname.split("/").pop() || "").replace(/\.html$/, "");
+  document.querySelectorAll(".menu-principal a").forEach((a) => {
+    const destino = a.getAttribute("href");
+    if (actual && (destino === actual || (actual.startsWith("glosario-") && destino === "glosario"))) a.setAttribute("aria-current", "page");
+  });
+})();
 
 // ============================================
 // Buscador desplegable global (overlay)
@@ -244,4 +233,173 @@ document.querySelectorAll(".menu a").forEach((enlace) => {
   });
 
   if (!leer()) crearBanner();
+})();
+
+// ============================================
+// Formulario emergente de asesorías (todas las páginas)
+// Los enlaces .abrir-contacto apuntan a /contacto: sin JavaScript llevan a esa página.
+// ============================================
+(function () {
+  const ENDPOINT = "https://formspree.io/f/mvkkjakn";
+  let dialogo = null, ultimoFoco = null;
+
+  function crear() {
+    dialogo = document.createElement("dialog");
+    dialogo.className = "dialogo-contacto";
+    dialogo.setAttribute("aria-labelledby", "dialogo-contacto-titulo");
+    dialogo.innerHTML =
+      '<button type="button" class="dialogo-cerrar" aria-label="Cerrar formulario">×</button>' +
+      '<div class="dialogo-paso-form">' +
+      '<p class="ini-etiqueta" style="margin-bottom:6px">Asesorías</p>' +
+      '<h2 id="dialogo-contacto-titulo">Cuéntame qué necesitas</h2>' +
+      '<p class="dialogo-sub">Te respondo en un plazo de 2 días hábiles.</p>' +
+      '<form novalidate>' +
+      '<input type="hidden" name="formulario" value="asesoria">' +
+      '<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      '<label>Nombre y apellido<input type="text" name="nombre" required autocomplete="name" placeholder="Ej: Camila Rojas"></label>' +
+      '<label>Correo electrónico<input type="email" name="email" required autocomplete="email" placeholder="tu@correo.com"></label>' +
+      '<label>Teléfono o WhatsApp (opcional)<input type="tel" name="telefono" autocomplete="tel" placeholder="+56 9 1234 5678"></label>' +
+      '<label>¿Qué servicio te interesa?<select name="servicio" required>' +
+      '<option value="">Elige una opción</option>' +
+      '<option value="paid-media">Paid Media</option>' +
+      '<option value="social-media">Social Media</option>' +
+      '<option value="mentoria">Mentoría</option>' +
+      '<option value="asesoria-1a1">Asesoría 1 a 1 personalizada</option>' +
+      '<option value="otro">Otro</option>' +
+      '</select></label>' +
+      '<label>Cuéntame tu caso<textarea name="mensaje" rows="4" required placeholder="Qué vendes, en qué plataformas inviertes y cuánto, más o menos, al mes"></textarea></label>' +
+      '<button type="submit" class="dialogo-enviar">Enviar solicitud</button>' +
+      '<p class="dialogo-error" role="alert" hidden></p>' +
+      '<p class="dialogo-legal">Al enviar, aceptas que usemos tus datos para responder tu solicitud y hacer su seguimiento. El formulario lo procesa Formspree, fuera de Chile. Más detalles en la <a href="privacidad">política de privacidad</a>.</p>' +
+      '</form></div>' +
+      '<div class="dialogo-ok" hidden>' +
+      '<div class="dialogo-ok-ico ani-pulse"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg></div>' +
+      '<h2 tabindex="-1">¡Listo! Recibí tu solicitud</h2>' +
+      '<p>Te escribo en un plazo de 2 días hábiles.</p>' +
+      '<button type="button" class="dialogo-ok-cerrar">Cerrar</button>' +
+      '</div>';
+    document.body.appendChild(dialogo);
+
+    const form = dialogo.querySelector("form");
+    const error = dialogo.querySelector(".dialogo-error");
+    const enviar = dialogo.querySelector(".dialogo-enviar");
+    let iniciado = false;
+
+    function servicio() { return form.servicio.value || "sin-elegir"; }
+    function marcarInicio(e) {
+      if (iniciado || !e.target.matches("input, select, textarea")) return;
+      iniciado = true;
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({ event: "formulario_iniciado", formulario: "asesoria", motivo: servicio() });
+    }
+    form.addEventListener("focusin", marcarInicio);
+    form.addEventListener("input", marcarInicio);
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      error.hidden = true;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const motivo = servicio();
+      enviar.disabled = true; enviar.textContent = "Enviando...";
+      try {
+        const r = await fetch(ENDPOINT, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+        if (!r.ok) throw new Error();
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({ event: "generate_lead", formulario: "asesoria", motivo: motivo });
+        form.reset();
+        dialogo.querySelector(".dialogo-paso-form").hidden = true;
+        const ok = dialogo.querySelector(".dialogo-ok");
+        ok.hidden = false;
+        ok.querySelector("h2").focus();
+      } catch (err) {
+        error.textContent = "No se pudo enviar. Inténtalo de nuevo o escríbeme a hola@condadodigital.cl.";
+        error.hidden = false;
+      }
+      enviar.disabled = false; enviar.textContent = "Enviar solicitud";
+    });
+
+    dialogo.querySelector(".dialogo-cerrar").addEventListener("click", cerrar);
+    dialogo.querySelector(".dialogo-ok-cerrar").addEventListener("click", cerrar);
+    dialogo.addEventListener("click", (e) => { // clic en el fondo oscuro (fuera del recuadro)
+      if (e.target !== dialogo) return;
+      const r = dialogo.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) cerrar();
+    });
+    dialogo.addEventListener("close", () => {
+      dialogo.querySelector(".dialogo-paso-form").hidden = false;
+      dialogo.querySelector(".dialogo-ok").hidden = true;
+      if (ultimoFoco && document.contains(ultimoFoco)) ultimoFoco.focus();
+    });
+  }
+
+  function abrir(e) {
+    if (typeof HTMLDialogElement !== "function") return; // navegador sin <dialog>: sigue a /contacto
+    e.preventDefault();
+    if (!dialogo) crear();
+    ultimoFoco = document.activeElement;
+    dialogo.showModal();
+    dialogo.querySelector('input[name="nombre"]').focus();
+  }
+  function cerrar() { if (dialogo && dialogo.open) dialogo.close(); }
+
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest(".abrir-contacto");
+    if (a) abrir(e);
+  });
+})();
+
+// ============================================
+// Calculadora del inicio: ¿tu campaña gana o pierde plata?
+// El HTML trae calculado el ejemplo "Servicios" para que funcione sin JavaScript.
+// ============================================
+(function () {
+  const raiz = document.getElementById("calculadora");
+  if (!raiz || !raiz.querySelector("[data-calc]")) return;
+  const EJEMPLOS = {
+    tienda: { inv: 600000, leads: 300, cierre: 3, ticket: 35000, margen: 35 },
+    servicios: { inv: 500000, leads: 50, cierre: 10, ticket: 250000, margen: 40 },
+    b2b: { inv: 1500000, leads: 40, cierre: 8, ticket: 1800000, margen: 30 }
+  };
+  const campos = ["inv", "leads", "cierre", "ticket", "margen"];
+  const entrada = {}; campos.forEach((c) => { entrada[c] = raiz.querySelector('[data-calc="' + c + '"]'); });
+  const salida = (n) => raiz.querySelector('[data-out="' + n + '"]');
+  const money = (n) => { const r = Math.round(n); return (r < 0 ? "-$" : "$") + Math.abs(r).toLocaleString("es-CL"); };
+  const coma = (n) => String(n).replace(".", ",");
+
+  function calcular() {
+    const inv = Number(entrada.inv.value) || 0, leads = Math.max(1, Number(entrada.leads.value) || 1);
+    const cierre = Number(entrada.cierre.value) || 0, ticket = Number(entrada.ticket.value) || 0, margen = Number(entrada.margen.value) || 0;
+    const ventas = leads * cierre / 100, ingresos = ventas * ticket, ganVenta = ticket * margen / 100;
+    const cpa = ventas > 0 ? inv / ventas : 0, resultado = ventas * ganVenta - inv, gana = resultado >= 0;
+    const maxBar = Math.max(cpa, ganVenta, 1);
+    const ancho = (v) => Math.max(2, Math.min(100, v / maxBar * 100)).toFixed(1) + "%";
+    salida("inv").textContent = money(inv);
+    salida("leads").textContent = leads;
+    salida("cierre").textContent = cierre + " de 100";
+    salida("ticket").textContent = money(ticket);
+    salida("margen").textContent = margen + "%";
+    salida("cpl").textContent = money(inv / leads);
+    salida("cpa").textContent = ventas > 0 ? money(cpa) : "—";
+    salida("cpa2").textContent = ventas > 0 ? money(cpa) : "—";
+    salida("roas").textContent = inv > 0 ? coma(Math.round(ingresos / inv * 10) / 10) + "x" : "—";
+    salida("resultado").textContent = money(resultado);
+    salida("veredicto").textContent = gana ? "Tu campaña gana plata" : "Tu campaña pierde plata";
+    salida("veredicto-texto").textContent = gana ? "Resultado mensual después de pagar los anuncios." : "Cada venta cuesta más de lo que te deja. Mejora tu tasa de cierre o tu margen antes de invertir más.";
+    salida("ganancia").textContent = money(ganVenta);
+    salida("ventas").textContent = "Con estos números cierras " + coma(Math.round(ventas * 10) / 10) + " ventas al mes e ingresas " + money(ingresos) + ".";
+    raiz.querySelector(".ini-veredicto").classList.toggle("pierde", !gana);
+    raiz.querySelector(".ini-barras").classList.toggle("pierde-barra", !gana);
+    raiz.querySelector(".ini-barra-cpa").style.width = ancho(cpa);
+    raiz.querySelector(".ini-barra-gan").style.width = ancho(ganVenta);
+  }
+  function marcar(clave) {
+    raiz.querySelectorAll("[data-ejemplo]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.ejemplo === clave ? "true" : "false"));
+  }
+  raiz.querySelectorAll("[data-ejemplo]").forEach((b) => b.addEventListener("click", () => {
+    const v = EJEMPLOS[b.dataset.ejemplo];
+    campos.forEach((c) => { entrada[c].value = v[c]; });
+    marcar(b.dataset.ejemplo); calcular();
+  }));
+  campos.forEach((c) => entrada[c].addEventListener("input", () => { marcar(""); calcular(); }));
+  calcular();
 })();

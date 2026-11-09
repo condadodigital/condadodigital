@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <!-- Consentimiento de cookies (Google Consent Mode v2) -->
   <script>
+  document.documentElement.classList.add('js');
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   (function () {
@@ -27,9 +28,9 @@
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Condado Digital — Marketing digital sin humo: Paid Media, analítica e IA</title>
-  <meta name="description" content="Guías, calculadoras y glosario de marketing digital: Google Ads, Meta Ads, TikTok Ads, analítica, SEO e IA aplicada, explicados con datos reales.">
+  <meta name="description" content="Marketing digital sin humo: enciclopedia, glosario y calculadoras para saber si tus campañas ganan o pierden plata, más asesorías en Paid Media para pymes en Chile.">
   <meta property="og:title" content="Marketing digital sin humo: Paid Media, analítica e IA">
-  <meta property="og:description" content="Guías, calculadoras y glosario de marketing digital: Google Ads, Meta Ads, TikTok Ads, analítica, SEO e IA aplicada, explicados con datos reales.">
+  <meta property="og:description" content="Marketing digital sin humo: enciclopedia, glosario y calculadoras para saber si tus campañas ganan o pierden plata, más asesorías en Paid Media para pymes en Chile.">
   <meta property="og:site_name" content="Condado Digital">
   <meta property="og:image" content="https://www.condadodigital.cl/img/og-condado-digital.jpg">
   <meta property="og:image:width" content="1200">
@@ -39,13 +40,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.condadodigital.cl/">
   <link rel="canonical" href="https://www.condadodigital.cl/">
-  <link rel="preload" as="image" href="img/hero-movil.webp" type="image/webp" media="(max-width: 600px)" fetchpriority="high">
-  <link rel="preload" as="image" href="img/hero.webp" type="image/webp" media="(min-width: 601px)" fetchpriority="high">
   <link rel="preload" href="fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dmsans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261109c">
+  <link rel="stylesheet" href="styles.css?v=20261109d">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -53,163 +52,346 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<header>
-  <nav class="nav">
-    <a href="/" class="logo" aria-label="Condado Digital, inicio"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#1E6B47"/><path d="M22.4 10.2A8.6 8.6 0 1 0 22.4 21.8" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"/><rect x="13.4" y="16.6" width="2.6" height="4.4" rx="1" fill="#C8F169"/><rect x="17.4" y="13" width="2.6" height="8" rx="1" fill="#C8F169"/></svg><span class="logo-texto">condado<em>digital</em></span></a>
-    <button class="boton-menu" aria-label="Abrir menú">☰</button>
-    <ul class="menu">
-      <li><a href="servicios">Servicios</a></li>
-      <li><a href="acerca">Acerca de</a></li>
-      <li><a href="buscar" aria-label="Buscar">🔍</a></li>
-    </ul>
-  </nav>
-  <nav class="barra-cats" aria-label="Secciones">
-    <ul>
-      <li><a href="blog">Blog</a></li>
-      <li><a href="noticias">Noticias</a></li>
-      <li><a href="calculadoras">Calculadoras</a></li>
-      <li><a href="aprendizaje">Aprendizaje</a></li>
-      <li><a href="herramientas">Herramientas</a></li>
-      <li><a href="enciclopedia">Enciclopedia</a></li>
-      <li><a href="glosario">Glosario</a></li>
-      <li><a href="preguntas-frecuentes">Preguntas frecuentes</a></li>
-    </ul>
-  </nav>
+<header class="sitio-cabecera">
+  <div class="progreso-lectura" aria-hidden="true"></div>
+  <div class="cabecera-int">
+    <a href="/" class="marca" aria-label="Condado Digital, inicio"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#1E6B47"/><path d="M28 12.5a10 10 0 1 0 0 15" fill="none" stroke="#F7F5EF" stroke-width="4" stroke-linecap="round"/><rect x="15" y="20" width="3.5" height="6" rx="1.5" fill="#C8F169"/><rect x="20.5" y="15" width="3.5" height="11" rx="1.5" fill="#C8F169"/></svg><span>Condado Digital</span></a>
+    <nav id="menu-principal" class="menu-principal" aria-label="Principal">
+      <a href="enciclopedia">Enciclopedia</a>
+      <a href="glosario">Glosario</a>
+      <a href="calculadoras">Calculadoras</a>
+      <a href="/#videos">Aprendizaje</a>
+      <a href="/#asesorias">Asesorías</a>
+      <a href="buscar" class="menu-buscar">Buscar</a>
+    </nav>
+    <button type="button" class="cabecera-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a href="buscar" class="btn-buscar" aria-label="Buscar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg></a>
+    <a href="contacto" class="btn-contacto abrir-contacto">Contacto</a>
+  </div>
 </header>
 
-<main>
-
-  <!-- Schema Person + Organization (AEO/GEO) -->
+<main class="inicio">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "https://www.condadodigital.cl/#esleyter",
-        "url": "https://www.condadodigital.cl/acerca",
-        "name": "Esleyter Conde",
-        "jobTitle": "Especialista en Marketing Digital, Paid Media y Growth",
-        "description": "Estratega de marketing digital enfocado en Paid Media, SEO, AEO/GEO, Growth, Analytics e IA aplicada al marketing. Basado en Chile.",
-        "sameAs": ["https://cl.linkedin.com/in/esleyter-conde-511890251"],
-        "knowsAbout": ["Paid Media", "Google Ads", "Meta Ads", "TikTok Ads", "SEO", "AEO", "GEO", "Growth Marketing", "Analytics", "GA4", "IA aplicada al marketing", "MarTech"],
-        "alumniOf": "Duoc UC",
-        "nationality": "Chile"
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://www.condadodigital.cl/#organizacion",
-        "name": "Condado Digital",
-        "url": "https://www.condadodigital.cl/",
-        "logo": "https://www.condadodigital.cl/logo.svg",
-        "sameAs": ["https://www.instagram.com/condado.digital/", "https://www.linkedin.com/company/145435900/", "https://www.tiktok.com/@condado.digital", "https://www.youtube.com/@CondadoDigital-q5f", "https://www.facebook.com/profile.php?id=61596204278017", "https://x.com/Condado_Digital", "https://www.threads.com/@condado.digital"],
-        "founder": { "@id": "https://www.condadodigital.cl/#esleyter" }
-      }
-    ]
-  }
+  {"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://www.condadodigital.cl/#sitio", "url": "https://www.condadodigital.cl/", "name": "Condado Digital", "inLanguage": "es-CL", "description": "Marketing digital sin humo: enciclopedia, glosario, calculadoras y asesorías para pymes de Chile y Latinoamérica.", "publisher": {"@id": "https://www.condadodigital.cl/#organizacion"}}, {"@type": "Person", "@id": "https://www.condadodigital.cl/#esleyter", "url": "https://www.condadodigital.cl/acerca", "name": "Esleyter Conde", "jobTitle": "Especialista en Marketing Digital, Paid Media y Growth", "image": "https://www.condadodigital.cl/img/retrato.jpg", "description": "Estratega de marketing digital enfocado en Paid Media, SEO, AEO/GEO, Growth, Analytics e IA aplicada al marketing. Basado en Chile.", "sameAs": ["https://cl.linkedin.com/in/esleyter-conde-511890251"], "knowsAbout": ["Paid Media", "Google Ads", "Meta Ads", "TikTok Ads", "SEO", "AEO", "GEO", "Growth Marketing", "Analytics", "GA4", "IA aplicada al marketing", "MarTech"], "alumniOf": "Duoc UC", "nationality": "Chile"}, {"@type": "Organization", "@id": "https://www.condadodigital.cl/#organizacion", "name": "Condado Digital", "url": "https://www.condadodigital.cl/", "logo": "https://www.condadodigital.cl/logo.svg", "sameAs": ["https://www.instagram.com/condado.digital/", "https://www.linkedin.com/company/145435900/", "https://www.tiktok.com/@condado.digital", "https://www.youtube.com/@CondadoDigital-q5f", "https://www.facebook.com/profile.php?id=61596204278017", "https://x.com/Condado_Digital", "https://www.threads.com/@condado.digital"], "founder": {"@id": "https://www.condadodigital.cl/#esleyter"}}]}
   </script>
-  <section class="masthead">
-    <h1>Todo lo que necesitas entender sobre <em>marketing digital</em>.</h1>
-    <p>Convierte los datos, las ideas y la tecnología en decisiones que hagan crecer lo que estás construyendo.</p>
-    <div class="hero-acciones">
-      <a href="calculadoras" class="btn btn-primario">Usar las calculadoras</a>
-      <a href="glosario" class="btn btn-secundario" style="background:transparent;color:white;border-color:rgba(255,255,255,0.5)">Ver el glosario</a>
+
+  <!-- Hero -->
+  <section id="inicio" class="ini-hero">
+    <svg class="ini-hero-fondo" aria-hidden="true" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice">
+      <circle cx="663" cy="154" r="1.8" fill="#9FB7D8" opacity="0.6"/><circle cx="98" cy="74" r="1" fill="#9FB7D8" opacity="0.4"/><circle cx="1193" cy="59" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="176" cy="444" r="1.8" fill="#9FB7D8" opacity="0.25"/><circle cx="492" cy="92" r="1.8" fill="#9FB7D8" opacity="0.25"/><circle cx="1158" cy="126" r="1" fill="#9FB7D8" opacity="0.6"/><circle cx="1284" cy="596" r="1" fill="#9FB7D8" opacity="0.6"/><circle cx="1199" cy="406" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="95" cy="570" r="1" fill="#9FB7D8" opacity="0.4"/><circle cx="858" cy="147" r="1" fill="#9FB7D8" opacity="0.6"/><circle cx="631" cy="573" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="1191" cy="584" r="1" fill="#9FB7D8" opacity="0.4"/><circle cx="199" cy="560" r="1" fill="#9FB7D8" opacity="0.6"/><circle cx="122" cy="633" r="1" fill="#9FB7D8" opacity="0.4"/><circle cx="1393" cy="544" r="1.8" fill="#9FB7D8" opacity="0.4"/><circle cx="953" cy="599" r="1.8" fill="#9FB7D8" opacity="0.4"/><circle cx="613" cy="254" r="1" fill="#9FB7D8" opacity="0.6"/><circle cx="499" cy="83" r="1.3" fill="#9FB7D8" opacity="0.6"/><circle cx="1013" cy="351" r="1.8" fill="#9FB7D8" opacity="0.4"/><circle cx="1247" cy="74" r="1" fill="#9FB7D8" opacity="0.6"/><circle cx="856" cy="168" r="1.3" fill="#9FB7D8" opacity="0.25"/><circle cx="1001" cy="431" r="1" fill="#9FB7D8" opacity="0.6"/><circle cx="158" cy="782" r="1.3" fill="#9FB7D8" opacity="0.4"/><circle cx="1423" cy="358" r="1.8" fill="#9FB7D8" opacity="0.6"/><circle cx="934" cy="70" r="1" fill="#9FB7D8" opacity="0.4"/><circle cx="970" cy="713" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="1436" cy="317" r="1.8" fill="#9FB7D8" opacity="0.4"/><circle cx="790" cy="684" r="1.3" fill="#9FB7D8" opacity="0.25"/><circle cx="945" cy="363" r="1" fill="#9FB7D8" opacity="0.6"/><circle cx="239" cy="505" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="588" cy="132" r="1" fill="#9FB7D8" opacity="0.4"/><circle cx="800" cy="508" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="919" cy="411" r="1.3" fill="#9FB7D8" opacity="0.25"/><circle cx="881" cy="563" r="1.3" fill="#9FB7D8" opacity="0.6"/><circle cx="850" cy="367" r="1.8" fill="#9FB7D8" opacity="0.25"/><circle cx="309" cy="84" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="475" cy="674" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="993" cy="851" r="1" fill="#9FB7D8" opacity="0.4"/><circle cx="577" cy="4" r="1" fill="#9FB7D8" opacity="0.4"/><circle cx="1094" cy="378" r="1.3" fill="#9FB7D8" opacity="0.25"/><circle cx="1414" cy="527" r="1" fill="#9FB7D8" opacity="0.4"/><circle cx="1393" cy="817" r="1.8" fill="#9FB7D8" opacity="0.4"/><circle cx="817" cy="403" r="1" fill="#9FB7D8" opacity="0.4"/><circle cx="1299" cy="410" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="137" cy="213" r="1.8" fill="#9FB7D8" opacity="0.25"/><circle cx="225" cy="348" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="0" cy="580" r="1" fill="#9FB7D8" opacity="0.6"/><circle cx="207" cy="372" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="425" cy="628" r="1.8" fill="#9FB7D8" opacity="0.25"/><circle cx="1299" cy="258" r="1.3" fill="#9FB7D8" opacity="0.6"/><circle cx="745" cy="485" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="999" cy="477" r="1.8" fill="#9FB7D8" opacity="0.4"/><circle cx="638" cy="87" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="701" cy="758" r="1.3" fill="#9FB7D8" opacity="0.4"/><circle cx="1417" cy="165" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="1081" cy="370" r="1" fill="#9FB7D8" opacity="0.6"/><circle cx="1112" cy="27" r="1.3" fill="#9FB7D8" opacity="0.6"/><circle cx="186" cy="712" r="1.3" fill="#9FB7D8" opacity="0.6"/><circle cx="751" cy="171" r="1.3" fill="#9FB7D8" opacity="0.25"/><circle cx="1090" cy="554" r="1.3" fill="#9FB7D8" opacity="0.6"/><circle cx="456" cy="627" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="820" cy="757" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="1060" cy="504" r="1.3" fill="#9FB7D8" opacity="0.6"/><circle cx="59" cy="28" r="1.3" fill="#9FB7D8" opacity="0.4"/><circle cx="530" cy="198" r="1.3" fill="#9FB7D8" opacity="0.4"/><circle cx="715" cy="373" r="1" fill="#9FB7D8" opacity="0.25"/><circle cx="209" cy="232" r="1.8" fill="#9FB7D8" opacity="0.25"/><circle cx="691" cy="209" r="1.8" fill="#9FB7D8" opacity="0.6"/><circle cx="1249" cy="860" r="1" fill="#9FB7D8" opacity="0.4"/><circle cx="1337" cy="352" r="1" fill="#9FB7D8" opacity="0.6"/>
+      <path class="ani-draw" d="M-20 700 C 300 600, 600 760, 900 690 S 1300 560, 1460 600" fill="none" stroke="#2DD4BF" stroke-width="1.5" opacity=".35"/>
+      <path class="ani-draw" d="M-20 760 C 360 690, 700 820, 1000 750 S 1320 660, 1460 700" fill="none" stroke="#3B82F6" stroke-width="1.5" opacity=".3"/>
+      <path d="M210 140 L 330 110 M 170 470 L 250 420 M 1240 280 L 1330 250 M 1250 600 L 1340 560" stroke="#3B82F6" stroke-width="1" stroke-dasharray="2 6" opacity=".5"/>
+    </svg>
+    <div class="ini-hero-iconos rv-par">
+      <div class="ini-tile ani-float" aria-hidden="true" style="left:2%;top:4%;width:104px;height:104px;animation-delay:0s"><svg viewBox="0 0 24 24"><rect x="5" y="13" width="3.5" height="7" rx="1" fill="#3B82F6"/><rect x="10.25" y="9" width="3.5" height="11" rx="1" fill="#3B82F6"/><rect x="15.5" y="5" width="3.5" height="15" rx="1" fill="#2DD4BF"/></svg></div>
+      <div class="ini-tile ani-float2" aria-hidden="true" style="left:6%;top:17%;width:124px;height:124px;animation-delay:0.8s"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#3B82F6" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="#3B82F6" stroke-width="2"/><circle cx="12" cy="12" r="1.6" fill="#3B82F6"/></svg></div>
+      <div class="ini-tile ani-float ini-ocultar-sm" aria-hidden="true" style="left:15%;top:10%;width:104px;height:104px;animation-delay:1.6s"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="#3B82F6" stroke-width="2.2"/><path d="M15 15l5 5" stroke="#3B82F6" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+      <div class="ini-tile ani-float2" aria-hidden="true" style="left:1%;top:42%;width:124px;height:124px;animation-delay:0.4s"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 7.5V19l-4-2v-4.5z" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linejoin="round"/></svg></div>
+      <div class="ini-tile ani-float ini-ocultar-sm" aria-hidden="true" style="left:12%;top:37%;width:104px;height:104px;animation-delay:1.2s"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="#1F3550" stroke-width="3.5"/><path d="M12 4a8 8 0 0 1 7.6 10.5" fill="none" stroke="#3B82F6" stroke-width="3.5" stroke-linecap="round"/></svg></div>
+      <div class="ini-tile ani-float" aria-hidden="true" style="left:5%;top:66%;width:112px;height:112px;animation-delay:2s"><svg viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="12" rx="3" fill="none" stroke="#2DD4BF" stroke-width="2"/><path d="M10.5 9.5v5l4-2.5z" fill="#2DD4BF"/></svg></div>
+      <div class="ini-tile ani-float2 ini-ocultar-sm" aria-hidden="true" style="left:16%;top:62%;width:100px;height:100px;animation-delay:0.6s"><svg viewBox="0 0 24 24"><path d="M9 4L7.5 20M16.5 4L15 20M4.5 9h16M3.5 15h16" stroke="#3B82F6" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+      <div class="ini-tile ani-float" aria-hidden="true" style="left:1%;top:88%;width:100px;height:100px;animation-delay:1.4s"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5" fill="none" stroke="#3B82F6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="ini-tile ani-float2 ini-ocultar-sm" aria-hidden="true" style="left:12%;top:86%;width:116px;height:116px;animation-delay:0.2s"><svg viewBox="0 0 24 24"><path d="M12 3c3 2.5 4 6 4 9.5L14 16h-4l-2-3.5C8 9 9 5.5 12 3z" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="1.6" fill="#2DD4BF"/><path d="M10 16l-1 4M14 16l1 4M12 16v4" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div class="ini-tile ani-float ini-ocultar-sm" aria-hidden="true" style="left:86%;top:3%;width:96px;height:96px;animation-delay:1s"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6" stroke="#C8F169" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <div class="ini-tile ani-float2" aria-hidden="true" style="left:84%;top:18%;width:120px;height:120px;animation-delay:0.3s"><svg viewBox="0 0 24 24"><rect x="5" y="13" width="3.5" height="7" rx="1" fill="#3B82F6"/><rect x="10.25" y="9" width="3.5" height="11" rx="1" fill="#3B82F6"/><rect x="15.5" y="5" width="3.5" height="15" rx="1" fill="#2DD4BF"/></svg></div>
+      <div class="ini-tile ani-float" aria-hidden="true" style="left:94%;top:15%;width:116px;height:116px;animation-delay:1.8s"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="#1F3550" stroke-width="2.5"/><path d="M12 3.5a8.5 8.5 0 1 1-7.6 12.3" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round"/><text x="12" y="13.8" text-anchor="middle" font-size="5.2" font-weight="700" fill="#C9D4CE" font-family="DM Sans,sans-serif">65%</text></svg></div>
+      <div class="ini-tile ani-float ini-ocultar-sm" aria-hidden="true" style="left:82%;top:45%;width:104px;height:104px;animation-delay:0.9s"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linejoin="round"/><path d="M10 20a2 2 0 0 0 4 0" fill="none" stroke="#3B82F6" stroke-width="2"/></svg></div>
+      <div class="ini-tile ani-float2" aria-hidden="true" style="left:91%;top:42%;width:120px;height:120px;animation-delay:0.5s"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3" fill="#3B82F6"/><circle cx="16.5" cy="8.5" r="2.4" fill="#2DD4BF"/><path d="M3.5 18.5c.6-3 2.8-4.5 5.5-4.5s4.9 1.5 5.5 4.5z" fill="#3B82F6"/><path d="M14.5 13.6c2.7-.4 4.9 1 5.6 4H15.6" fill="#2DD4BF"/></svg></div>
+      <div class="ini-tile ani-float2 ini-ocultar-sm" aria-hidden="true" style="left:89%;top:68%;width:100px;height:100px;animation-delay:1.5s"><svg viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="12" rx="2.5" fill="none" stroke="#2DD4BF" stroke-width="2"/><path d="M4 7l8 6 8-6" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linejoin="round"/></svg></div>
+      <div class="ini-tile ani-float" aria-hidden="true" style="left:83%;top:74%;width:112px;height:112px;animation-delay:1.1s"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#3B82F6" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="#3B82F6" stroke-width="2"/><circle cx="12" cy="12" r="1.6" fill="#3B82F6"/></svg></div>
+      <div class="ini-tile ani-float2" aria-hidden="true" style="left:93%;top:86%;width:120px;height:120px;animation-delay:0.7s"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 7-8" fill="none" stroke="#2DD4BF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="7" r="1.8" fill="#2DD4BF"/></svg></div>
     </div>
-    <a href="#reciente" class="flecha" aria-label="Bajar">↓</a>
+    <div class="ini-hero-contenido rv-out">
+      <h1 class="ani-fade">Todo lo que necesitas entender sobre <em>marketing digital</em>.</h1>
+      <p class="ani-fade" style="animation-delay:.2s">Convierte los datos, las ideas y la tecnología en decisiones que hagan crecer lo que estás construyendo.</p>
+      <div class="ini-hero-acciones ani-fade" style="animation-delay:.35s">
+        <a href="calculadoras" class="ini-btn ini-btn-verde">Usar las calculadoras</a>
+        <a href="glosario" class="ini-btn ini-btn-borde">Ver el glosario</a>
+      </div>
+      <a href="#necesitas" class="ini-bajar ani-bounce" aria-label="Bajar a las secciones"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></a>
+    </div>
   </section>
 
-  <!-- Empieza por aquí: contenido ya publicado -->
-  <section class="seccion" id="reciente" style="padding-bottom:20px">
-    <div class="wrap">
-      <span class="etiqueta">Empieza por aquí</span>
-      <h2>Lo que ya puedes usar</h2>
-      <div class="grid" style="margin-top:24px">
-        <article class="card"><span class="cat">Gratis</span><h3><a href="calculadoras">17 calculadoras de marketing</a></h3><p>ROAS, CPA, CPL, CAC, LTV, CTR y más: ingresas tus números y obtienes el resultado con su fórmula.</p><a href="calculadoras" class="enlace">Calcular →</a></article>
-        <article class="card"><span class="cat">Glosario</span><h3><a href="glosario">Las métricas, explicadas en simple</a></h3><p>Definición, fórmula, ejemplo en pesos chilenos y errores comunes de cada concepto.</p><a href="glosario" class="enlace">Ver el glosario →</a></article>
-        <article class="card"><span class="cat">Asesoría</span><h3><a href="servicios">Diagnóstico de campañas</a></h3><p>Reviso tus cuentas de Google, Meta o TikTok y te digo qué ajustar primero.</p><a href="servicios" class="enlace">Ver servicios →</a></article>
+  <!-- ¿Qué necesitas hoy? -->
+  <section id="necesitas" class="ini-seccion">
+    <p class="ini-etiqueta">Para ti</p>
+    <h2 class="ini-h2 rv-titulo" style="max-width:760px">¿Qué necesitas hoy?</h2>
+    <p class="ini-bajada">Aquí aprendes marketing para gestionar tu marca con criterio, no a ciegas. Elige la frase que más se parece a lo que te pasa.</p>
+    <div class="ini-necesitas-grid">
+        <div class="rv-l">
+          <a href="que-es-el-marketing-digital" class="ini-tarjeta">
+            <span class="ini-ico" style="background:#13294A;color:#93C5FD"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <span class="ini-tarjeta-titulo">“Estoy partiendo y no sé por dónde empezar”</span>
+            <span class="ini-tarjeta-texto">Te explicamos qué es el marketing digital y qué hacer primero, sin tecnicismos.</span>
+            <span class="ini-tarjeta-accion">Empieza por lo básico <span class="ini-flecha" aria-hidden="true">→</span></span>
+          </a>
+        </div>
+        <div class="rv-up">
+          <a href="#videos" class="ini-tarjeta">
+            <span class="ini-ico" style="background:#1D4ED8;color:#DBEAFE"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg></span>
+            <span class="ini-tarjeta-titulo">“Quiero lanzar mi primera campaña”</span>
+            <span class="ini-tarjeta-texto">Paso a paso para crear tu cuenta y tu primera campaña en Meta, Google o TikTok.</span>
+            <span class="ini-tarjeta-accion">Ver tutoriales <span class="ini-flecha" aria-hidden="true">→</span></span>
+          </a>
+        </div>
+        <div class="rv-r">
+          <a href="analitica-digital" class="ini-tarjeta">
+            <span class="ini-ico" style="background:#0F766E;color:#CCFBF1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span>
+            <span class="ini-tarjeta-titulo">“Invierto en anuncios y no sé si funcionan”</span>
+            <span class="ini-tarjeta-texto">Aprende a medir con GA4 y a calcular cuánto te cuesta de verdad cada cliente.</span>
+            <span class="ini-tarjeta-accion">Medir mis resultados <span class="ini-flecha" aria-hidden="true">→</span></span>
+          </a>
+        </div>
+        <div class="rv-l">
+          <a href="embudo-de-marketing" class="ini-tarjeta">
+            <span class="ini-ico" style="background:#1E6B47;color:#C8F169"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span>
+            <span class="ini-tarjeta-titulo">“Quiero gestionar mi marca con criterio”</span>
+            <span class="ini-tarjeta-texto">Entiende el embudo, qué mirar en cada etapa y cómo tomar decisiones con datos.</span>
+            <span class="ini-tarjeta-accion">Aprender estrategia <span class="ini-flecha" aria-hidden="true">→</span></span>
+          </a>
+        </div>
+        <div class="rv-up">
+          <a href="glosario" class="ini-tarjeta">
+            <span class="ini-ico" style="background:#4D7C0F;color:#ECFCCB"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg></span>
+            <span class="ini-tarjeta-titulo">“No entiendo los términos que me dicen”</span>
+            <span class="ini-tarjeta-texto">CPL, ROAS, CAC, píxel: cada palabra explicada en dos líneas y con ejemplo.</span>
+            <span class="ini-tarjeta-accion">Ir al glosario <span class="ini-flecha" aria-hidden="true">→</span></span>
+          </a>
+        </div>
+        <div class="rv-r">
+          <a href="#asesorias" class="ini-tarjeta">
+            <span class="ini-ico" style="background:#10231B;color:#C8F169"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+            <span class="ini-tarjeta-titulo">“Quiero que alguien revise mis campañas”</span>
+            <span class="ini-tarjeta-texto">Si prefieres una mirada experta sobre tu caso, también hago asesorías.</span>
+            <span class="ini-tarjeta-accion">Ver asesorías <span class="ini-flecha" aria-hidden="true">→</span></span>
+          </a>
+        </div>
+    </div>
+  </section>
+
+  <!-- Franja motivacional -->
+  <section class="ini-franja" aria-label="Frase de Condado Digital">
+    <svg class="ini-franja-puntos" aria-hidden="true"><defs><pattern id="cdPuntos" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#10231B"/></pattern></defs><rect width="100%" height="100%" fill="url(#cdPuntos)"/></svg>
+    <svg class="ini-franja-aro ani-spin" aria-hidden="true" width="520" height="520" viewBox="0 0 520 520" style="left:-160px;bottom:-220px"><circle cx="260" cy="260" r="240" fill="none" stroke="#10231B" stroke-width="2" stroke-dasharray="3 14"/></svg>
+    <svg class="ini-franja-aro ani-spin" aria-hidden="true" width="420" height="420" viewBox="0 0 420 420" style="right:-120px;top:-180px"><circle cx="210" cy="210" r="190" fill="none" stroke="#10231B" stroke-width="2" stroke-dasharray="20 12"/></svg>
+    <div class="ini-franja-int">
+      <svg class="ani-float" aria-hidden="true" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#10231B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:22px"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg>
+      <p class="ini-frase"><span class="ini-palabra" style="animation-range:entry 4% cover 38%">El</span> <span class="ini-palabra" style="animation-range:entry 9% cover 43%">marketing</span> <span class="ini-palabra" style="animation-range:entry 14% cover 48%">no</span> <span class="ini-palabra" style="animation-range:entry 19% cover 53%">es</span> <span class="ini-palabra" style="animation-range:entry 24% cover 58%">magia:</span> <span class="ini-palabra" style="animation-range:entry 29% cover 63%">es</span> <span class="ini-palabra ini-resalte" style="animation-range:entry 34% cover 68%">criterio,</span> <span class="ini-palabra ini-resalte" style="animation-range:entry 39% cover 73%">datos</span> <span class="ini-palabra" style="animation-range:entry 44% cover 78%">y</span> <span class="ini-palabra ini-resalte" style="animation-range:entry 49% cover 83%">constancia.</span></p>
+      <p class="ini-lema rv-up">Marketing digital sin humo</p>
+    </div>
+  </section>
+
+  <!-- Calculadora -->
+  <section id="calculadora" class="ini-calc" aria-labelledby="calc-titulo">
+    <div class="ini-calc-luz" aria-hidden="true"></div>
+    <div class="ini-calc-cabeza rv-up">
+      <h2 id="calc-titulo">¿Tu campaña gana o pierde plata?</h2>
+      <p class="ini-calc-sub ini-grad">Mueve los controles y descúbrelo en segundos</p>
+      <div class="ini-ejemplos" role="group" aria-label="Elige un ejemplo">
+        <span>Parte con un ejemplo:</span>
+        <button type="button" class="ini-chip" data-ejemplo="tienda" aria-pressed="false">Tienda online</button>
+        <button type="button" class="ini-chip" data-ejemplo="servicios" aria-pressed="true">Servicios</button>
+        <button type="button" class="ini-chip" data-ejemplo="b2b" aria-pressed="false">Empresa B2B</button>
+      </div>
+    </div>
+    <div class="ini-calc-panel rv-zoom">
+      <div class="ini-controles">
+          <div class="ini-control">
+            <div class="ini-control-fila"><label for="calc-inv">Inversión mensual en anuncios</label><output for="calc-inv" data-out="inv">$500.000</output></div>
+            <input type="range" id="calc-inv" data-calc="inv" min="50000" max="5000000" step="50000" value="500000">
+          </div>
+          <div class="ini-control">
+            <div class="ini-control-fila"><label for="calc-leads">Leads (contactos) que consigues</label><output for="calc-leads" data-out="leads">50</output></div>
+            <input type="range" id="calc-leads" data-calc="leads" min="5" max="500" step="5" value="50">
+          </div>
+          <div class="ini-control">
+            <div class="ini-control-fila"><label for="calc-cierre">De cada 100 leads, cuántos compran</label><output for="calc-cierre" data-out="cierre">10 de 100</output></div>
+            <input type="range" id="calc-cierre" data-calc="cierre" min="1" max="50" step="1" value="10">
+          </div>
+          <div class="ini-control">
+            <div class="ini-control-fila"><label for="calc-ticket">Ticket promedio por venta</label><output for="calc-ticket" data-out="ticket">$250.000</output></div>
+            <input type="range" id="calc-ticket" data-calc="ticket" min="10000" max="2000000" step="5000" value="250000">
+          </div>
+          <div class="ini-control">
+            <div class="ini-control-fila"><label for="calc-margen">Tu margen de ganancia</label><output for="calc-margen" data-out="margen">40%</output></div>
+            <input type="range" id="calc-margen" data-calc="margen" min="5" max="80" step="1" value="40">
+          </div>
+        <p class="ini-nota">Ejemplo ilustrativo. CPL = inversión ÷ leads · CPA = inversión ÷ ventas · ROAS = ingresos ÷ inversión.</p>
+      </div>
+      <div class="ini-resultados" aria-live="polite">
+        <div class="ini-veredicto">
+          <p class="ini-veredicto-etiqueta" data-out="veredicto">Tu campaña gana plata</p>
+          <p class="ini-veredicto-monto" data-out="resultado">$0</p>
+          <p class="ini-veredicto-texto" data-out="veredicto-texto">Resultado mensual después de pagar los anuncios.</p>
+        </div>
+        <div class="ini-metricas">
+          <div class="ini-caja"><p class="ini-caja-etq">CPL</p><p class="ini-caja-val" data-out="cpl">$10.000</p></div>
+          <div class="ini-caja"><p class="ini-caja-etq">CPA</p><p class="ini-caja-val" data-out="cpa">$100.000</p></div>
+          <div class="ini-caja"><p class="ini-caja-etq">ROAS</p><p class="ini-caja-val" data-out="roas">2,5x</p></div>
+        </div>
+        <div class="ini-barras">
+          <p>Lo que cuesta cada venta vs. lo que te deja</p>
+          <div class="ini-barra"><span class="ini-barra-fila"><span>Costo por venta</span><b data-out="cpa2">$100.000</b></span><div class="ini-barra-pista"><i class="ini-barra-cpa" style="width:100%"></i></div></div>
+          <div class="ini-barra"><span class="ini-barra-fila"><span>Ganancia por venta (antes de anuncios)</span><b data-out="ganancia">$100.000</b></span><div class="ini-barra-pista"><i class="ini-barra-gan" style="width:100%"></i></div></div>
+          <p data-out="ventas">Con estos números cierras 5 ventas al mes e ingresas $1.250.000.</p>
+        </div>
+      </div>
+    </div>
+    <p class="ini-calc-mas"><a href="calculadoras">Ver las 17 calculadoras →</a></p>
+  </section>
+
+  <!-- Videos -->
+  <section id="videos" class="ini-videos" aria-labelledby="videos-titulo">
+    <div class="ini-videos-fijo">
+      <div class="ini-videos-cabeza">
+        <div style="max-width:700px">
+          <p class="ini-etiqueta">Aprende viendo</p>
+          <h2 id="videos-titulo" class="ini-h2" style="margin-bottom:14px">Videos paso a paso</h2>
+          <p class="ini-bajada">Tutoriales cortos para que lo implementes tú: tu primera campaña, tu píxel, GA4 y más. Se van sumando de a poco.</p>
+          <a href="https://www.youtube.com/@CondadoDigital-q5f" target="_blank" rel="noopener" class="ini-btn ini-btn-yt">Suscríbete en YouTube para verlos primero</a>
+        </div>
+        <p class="ini-pista-aviso" aria-hidden="true">Sigue bajando: los videos avanzan →</p>
+      </div>
+      <div class="ini-videos-pista" tabindex="0" role="region" aria-label="Videos que vienen pronto">
+          <article class="ini-video">
+            <span class="ini-miniatura" style="background:radial-gradient(ellipse at 30% 20%,#1D4ED8 0%,#0B1512 85%)">
+              <svg class="ini-reja" aria-hidden="true"><defs><pattern id="reja01" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#FFFFFF" stroke-width=".6"/></pattern></defs><rect width="100%" height="100%" fill="url(#reja01)"/></svg>
+              <span class="ini-ep" aria-hidden="true">Ep. 01</span>
+              <span class="ini-pronto">Próximamente</span>
+              <span class="ini-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span>
+            </span>
+            <span class="ini-video-cat">Meta Ads</span>
+            <h3 class="ini-video-titulo">Crea tu cuenta publicitaria de Meta paso a paso</h3>
+          </article>
+          <article class="ini-video">
+            <span class="ini-miniatura" style="background:radial-gradient(ellipse at 30% 20%,#13294A 0%,#0B1512 85%)">
+              <svg class="ini-reja" aria-hidden="true"><defs><pattern id="reja02" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#FFFFFF" stroke-width=".6"/></pattern></defs><rect width="100%" height="100%" fill="url(#reja02)"/></svg>
+              <span class="ini-ep" aria-hidden="true">Ep. 02</span>
+              <span class="ini-pronto">Próximamente</span>
+              <span class="ini-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span>
+            </span>
+            <span class="ini-video-cat">Meta Ads</span>
+            <h3 class="ini-video-titulo">Tu primera campaña en Meta Ads</h3>
+          </article>
+          <article class="ini-video">
+            <span class="ini-miniatura" style="background:radial-gradient(ellipse at 30% 20%,#0F766E 0%,#0B1512 85%)">
+              <svg class="ini-reja" aria-hidden="true"><defs><pattern id="reja03" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#FFFFFF" stroke-width=".6"/></pattern></defs><rect width="100%" height="100%" fill="url(#reja03)"/></svg>
+              <span class="ini-ep" aria-hidden="true">Ep. 03</span>
+              <span class="ini-pronto">Próximamente</span>
+              <span class="ini-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span>
+            </span>
+            <span class="ini-video-cat">Medición</span>
+            <h3 class="ini-video-titulo">Instala el píxel de Meta con Google Tag Manager</h3>
+          </article>
+          <article class="ini-video">
+            <span class="ini-miniatura" style="background:radial-gradient(ellipse at 30% 20%,#1E6B47 0%,#0B1512 85%)">
+              <svg class="ini-reja" aria-hidden="true"><defs><pattern id="reja04" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#FFFFFF" stroke-width=".6"/></pattern></defs><rect width="100%" height="100%" fill="url(#reja04)"/></svg>
+              <span class="ini-ep" aria-hidden="true">Ep. 04</span>
+              <span class="ini-pronto">Próximamente</span>
+              <span class="ini-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span>
+            </span>
+            <span class="ini-video-cat">Google Ads</span>
+            <h3 class="ini-video-titulo">Tu primera campaña de búsqueda en Google Ads</h3>
+          </article>
+          <article class="ini-video">
+            <span class="ini-miniatura" style="background:radial-gradient(ellipse at 30% 20%,#1D4ED8 0%,#0B1512 85%)">
+              <svg class="ini-reja" aria-hidden="true"><defs><pattern id="reja05" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#FFFFFF" stroke-width=".6"/></pattern></defs><rect width="100%" height="100%" fill="url(#reja05)"/></svg>
+              <span class="ini-ep" aria-hidden="true">Ep. 05</span>
+              <span class="ini-pronto">Próximamente</span>
+              <span class="ini-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span>
+            </span>
+            <span class="ini-video-cat">Analítica</span>
+            <h3 class="ini-video-titulo">Configura GA4 desde cero</h3>
+          </article>
+          <article class="ini-video">
+            <span class="ini-miniatura" style="background:radial-gradient(ellipse at 30% 20%,#13294A 0%,#0B1512 85%)">
+              <svg class="ini-reja" aria-hidden="true"><defs><pattern id="reja06" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#FFFFFF" stroke-width=".6"/></pattern></defs><rect width="100%" height="100%" fill="url(#reja06)"/></svg>
+              <span class="ini-ep" aria-hidden="true">Ep. 06</span>
+              <span class="ini-pronto">Próximamente</span>
+              <span class="ini-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span>
+            </span>
+            <span class="ini-video-cat">TikTok Ads</span>
+            <h3 class="ini-video-titulo">Tu primera campaña en TikTok Ads</h3>
+          </article>
       </div>
     </div>
   </section>
 
-  <!-- Enciclopedia: artículos de referencia -->
-  <section class="seccion" style="padding-top:30px;padding-bottom:20px">
-    <div class="wrap">
-      <div class="cabecera-seccion">
-        <div><span class="etiqueta">Enciclopedia</span><h2>Los grandes conceptos, explicados a fondo</h2></div>
-        <a href="enciclopedia" class="ver-todo">Ver la enciclopedia →</a>
+  <!-- Quién está detrás -->
+  <section id="autor" class="ini-autor">
+    <div class="ini-autor-int">
+      <div class="ini-foto rv-l">
+        <div class="ini-foto-aro ani-spin" aria-hidden="true"></div>
+        <img src="img/retrato.jpg" width="900" height="1200" alt="Esleyter Conde, creador de Condado Digital" loading="lazy" decoding="async" style="object-position:50% 22%">
+        <span class="ini-foto-sello ani-float">Paid media</span>
       </div>
-      <p class="intro">Artículos de referencia para pymes de Chile y Latinoamérica: qué es cada concepto, sus críticas, datos verificados con su fuente y cómo aplicarlo.</p>
-      <div class="grid">
-        <article class="card"><span class="cat">Enciclopedia</span><h3><a href="que-es-el-marketing-digital">Marketing digital</a></h3><p>Qué es, sus canales y por dónde partir en una pyme.</p><a href="que-es-el-marketing-digital" class="enlace">Leer →</a></article>
-        <article class="card"><span class="cat">Enciclopedia</span><h3><a href="embudo-de-marketing">Embudo de marketing</a></h3><p>Las etapas, la métrica de cada una y por qué el modelo es una simplificación.</p><a href="embudo-de-marketing" class="enlace">Leer →</a></article>
-        <article class="card"><span class="cat">Enciclopedia</span><h3><a href="analitica-digital">Analítica digital</a></h3><p>GA4, GTM, píxeles y UTM: qué medir y cómo hacerlo bien.</p><a href="analitica-digital" class="enlace">Leer →</a></article>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Explora por categoría -->
-  <section class="seccion seccion-blanca">
-    <div class="wrap">
-      <span class="etiqueta">Explora por categoría</span>
-      <h2>Un ecosistema completo de marketing</h2>
-      <p class="intro">Contenido organizado en pilares temáticos: elige el tuyo y profundiza.</p>
-      <div class="grid">
-        <article class="card">
-          <span class="cat">Pilar</span>
-          <h3><a href="blog#paid-media">Paid Media</a></h3>
-          <p>Meta, Google, TikTok, LinkedIn y YouTube Ads: estructuras, pujas, tracking y attribution.</p>
-          <a href="blog#paid-media" class="enlace">Explorar →</a>
-        </article>
-        <article class="card">
-          <span class="cat">Pilar</span>
-          <h3><a href="blog#seo">SEO · AEO · GEO</a></h3>
-          <p>SEO técnico, contenido y las nuevas vertientes para buscadores con IA.</p>
-          <a href="blog#seo" class="enlace">Explorar →</a>
-        </article>
-        <article class="card">
-          <span class="cat">Pilar</span>
-          <h3><a href="blog#growth">Growth Marketing</a></h3>
-          <p>Funnels, CRO, experimentación, CAC, LTV y unit economics.</p>
-          <a href="blog#growth" class="enlace">Explorar →</a>
-        </article>
-        <article class="card">
-          <span class="cat">Pilar</span>
-          <h3><a href="blog#social">Social Media</a></h3>
-          <p>Estrategia de contenido, comunidad e influencer marketing.</p>
-          <a href="blog#social" class="enlace">Explorar →</a>
-        </article>
-        <article class="card">
-          <span class="cat">Pilar</span>
-          <h3><a href="blog#analytics">Analytics</a></h3>
-          <p>GA4, GTM, Looker Studio, BigQuery y marketing basado en datos.</p>
-          <a href="blog#analytics" class="enlace">Explorar →</a>
-        </article>
-        <article class="card">
-          <span class="cat cat-cyan">Pilar</span>
-          <h3><a href="blog#ia">IA &amp; MarTech</a></h3>
-          <p>IA aplicada al marketing, automatización, agentes y stack tecnológico.</p>
-          <a href="blog#ia" class="enlace">Explorar →</a>
-        </article>
+      <div class="ini-autor-texto rv-r">
+        <p class="ini-etiqueta">Quién está detrás</p>
+        <h2 class="ini-h2" style="margin-bottom:18px">Hola, soy Esleyter Conde</h2>
+        <p class="ini-p1">Creé Condado Digital para explicar el marketing como me hubiera gustado que me lo explicaran: claro, con datos y sin humo.</p>
+        <p class="ini-p2">Soy especialista en paid media. Gestiono campañas en Google, Meta, TikTok, LinkedIn, X y Pinterest para marcas B2C y B2B en Chile, Perú y Colombia.</p>
+        <a href="acerca" class="ini-enlace">Conoce la historia de Condado Digital →</a>
       </div>
     </div>
   </section>
 
-  <div class="wrap"></div>
+  <!-- Asesorías -->
+  <section id="asesorias" class="ini-asesorias">
+    <div class="ini-asesorias-cabeza rv-up">
+      <p class="ini-etiqueta">Asesorías</p>
+      <h2 class="ini-h2">¿Prefieres que lo veamos juntos?</h2>
+      <p class="ini-bajada">Además de lo que publico, acompaño a marcas y emprendedores en Chile y Latinoamérica. Sin promesas mágicas: diagnóstico con datos y prioridades claras.</p>
+    </div>
+    <div class="ini-serv-grid">
+        <div class="rv-slide" style="animation-range:entry 0% cover 30%">
+          <div class="ini-tarjeta" style="border-top:5px solid #1D4ED8">
+            <span class="ini-ico" style="background:#1D4ED8;color:#FFFFFF"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span>
+            <h3 class="ini-tarjeta-titulo" style="margin:0">Paid Media</h3>
+            <p class="ini-tarjeta-texto" style="margin:0">Estrategia y optimización de campañas en Google, Meta, TikTok y LinkedIn Ads.</p>
+          </div>
+        </div>
+        <div class="rv-slide" style="animation-range:entry 6% cover 38%">
+          <div class="ini-tarjeta" style="border-top:5px solid #0F766E">
+            <span class="ini-ico" style="background:#0F766E;color:#FFFFFF"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></span>
+            <h3 class="ini-tarjeta-titulo" style="margin:0">Social Media</h3>
+            <p class="ini-tarjeta-texto" style="margin:0">Plan de contenidos y criterio para que tus redes trabajen para tu negocio.</p>
+          </div>
+        </div>
+        <div class="rv-slide" style="animation-range:entry 12% cover 46%">
+          <div class="ini-tarjeta" style="border-top:5px solid #1E6B47">
+            <span class="ini-ico" style="background:#1E6B47;color:#FFFFFF"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></span>
+            <h3 class="ini-tarjeta-titulo" style="margin:0">Mentorías</h3>
+            <p class="ini-tarjeta-texto" style="margin:0">Aprende a gestionar tus propias campañas, sobre tus cuentas reales.</p>
+          </div>
+        </div>
+        <div class="rv-slide" style="animation-range:entry 18% cover 54%">
+          <div class="ini-tarjeta" style="border-top:5px solid #4D7C0F">
+            <span class="ini-ico" style="background:#4D7C0F;color:#FFFFFF"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+            <h3 class="ini-tarjeta-titulo" style="margin:0">Asesoría 1 a 1</h3>
+            <p class="ini-tarjeta-texto" style="margin:0">Diagnóstico personalizado de tus campañas y tu medición, con prioridades claras.</p>
+          </div>
+        </div>
+    </div>
+  </section>
 
-  <div class="wrap"><aside class="cta-asesoria">
-      <p class="cta-titulo">¿Tus campañas gastan más de lo que deberían?</p>
-      <p>Reviso tu cuenta de Google Ads, Meta Ads o TikTok Ads y te digo qué ajustar primero, con números.</p>
-      <a href="servicios" class="btn btn-primario">Ver el diagnóstico de campañas</a>
-    </aside></div>
-
-
+  <!-- Franja final -->
+  <section class="ini-final" aria-labelledby="final-titulo">
+    <div class="ini-final-luz" aria-hidden="true"></div>
+    <svg class="ini-final-aros ani-spin" aria-hidden="true" viewBox="0 0 760 760"><circle cx="380" cy="380" r="360" fill="none" stroke="#C8F169" stroke-width="1.5" stroke-dasharray="4 16"/><circle cx="380" cy="380" r="280" fill="none" stroke="#60A5FA" stroke-width="1.5" stroke-dasharray="2 12"/></svg>
+    <div class="ini-final-int rv-zoom">
+      <p class="ini-final-etq">Pregunta incómoda</p>
+      <h2 id="final-titulo">¿Tus anuncios <span class="ini-grad">venden</span> o solo <span class="ini-tachado">gastan</span>?</h2>
+      <p class="ini-final-texto">Cuéntame tu caso y te respondo con una primera recomendación.</p>
+      <a href="contacto" class="ini-btn ini-btn-lima ini-btn-grande ani-glow abrir-contacto">Quiero saberlo <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
     <div>
-      <h4>Condado Digital</h4>
+      <h2 class="pie-titulo">Condado Digital</h2>
       <p style="font-size:0.88rem">El rincón honesto del marketing digital.<br>Información y herramientas gratuitas para emprendedores.</p>
       <div class="redes">
         <a href="https://www.instagram.com/condado.digital/" target="_blank" rel="noopener" aria-label="Condado Digital en Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zM7.6 3.9a3.7 3.7 0 0 0-3.7 3.7v8.8a3.7 3.7 0 0 0 3.7 3.7h8.8a3.7 3.7 0 0 0 3.7-3.7V7.6a3.7 3.7 0 0 0-3.7-3.7zM12 7.2a4.8 4.8 0 1 1 0 9.6a4.8 4.8 0 0 1 0-9.6zM12 9a3 3 0 1 0 0 6a3 3 0 0 0 0-6zM17.2 5.6a1.2 1.2 0 1 1 0 2.4a1.2 1.2 0 0 1 0-2.4z"/></svg></a>
@@ -222,7 +404,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div>
-      <h4>Explorar</h4>
+      <h2 class="pie-titulo">Explorar</h2>
       <ul>
         <li><a href="blog">Blog</a></li>
         <li><a href="calculadoras">Calculadoras</a></li>
@@ -233,18 +415,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </div>
     <div>
-      <h4>Categorías</h4>
+      <h2 class="pie-titulo">Categorías</h2>
       <ul>
-        <li><a href="blog#paid-media">Paid Media</a></li>
-        <li><a href="blog#seo">SEO</a></li>
-        <li><a href="blog#growth">Growth</a></li>
-        <li><a href="blog#social">Social Media</a></li>
-        <li><a href="blog#analytics">Analytics</a></li>
-        <li><a href="blog#ia">IA &amp; MarTech</a></li>
+        <li><a href="publicidad-pagada-vs-organica">Paid Media</a></li>
+        <li><a href="glosario-aeo">SEO</a></li>
+        <li><a href="embudo-de-marketing">Growth</a></li>
+        <li><a href="que-es-el-marketing-digital">Social Media</a></li>
+        <li><a href="analitica-digital">Analytics</a></li>
+        <li><a href="marketing-con-ia">IA &amp; MarTech</a></li>
       </ul>
     </div>
     <div>
-      <h4>Sobre</h4>
+      <h2 class="pie-titulo">Sobre</h2>
       <ul>
         <li><a href="acerca">Acerca de</a></li>
         <li><a href="contacto">Contacto</a></li>
@@ -256,6 +438,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<script src="script.js?v=20261109c" defer></script>
+<script src="script.js?v=20261109d" defer></script>
 </body>
 </html>

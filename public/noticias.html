@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <!-- Consentimiento de cookies (Google Consent Mode v2) -->
   <script>
+  document.documentElement.classList.add('js');
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   (function () {
@@ -44,7 +45,7 @@
   <link rel="preload" href="fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dmsans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261109c">
+  <link rel="stylesheet" href="styles.css?v=20261109d">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -52,28 +53,22 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<header>
-  <nav class="nav">
-    <a href="/" class="logo" aria-label="Condado Digital, inicio"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#1E6B47"/><path d="M22.4 10.2A8.6 8.6 0 1 0 22.4 21.8" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"/><rect x="13.4" y="16.6" width="2.6" height="4.4" rx="1" fill="#C8F169"/><rect x="17.4" y="13" width="2.6" height="8" rx="1" fill="#C8F169"/></svg><span class="logo-texto">condado<em>digital</em></span></a>
-    <button class="boton-menu" aria-label="Abrir menú">☰</button>
-    <ul class="menu">
-      <li><a href="servicios">Servicios</a></li>
-      <li><a href="acerca">Acerca de</a></li>
-      <li><a href="buscar" aria-label="Buscar">🔍</a></li>
-    </ul>
-  </nav>
-  <nav class="barra-cats" aria-label="Secciones">
-    <ul>
-      <li><a href="blog">Blog</a></li>
-      <li><a href="noticias">Noticias</a></li>
-      <li><a href="calculadoras">Calculadoras</a></li>
-      <li><a href="aprendizaje">Aprendizaje</a></li>
-      <li><a href="herramientas">Herramientas</a></li>
-      <li><a href="enciclopedia">Enciclopedia</a></li>
-      <li><a href="glosario">Glosario</a></li>
-      <li><a href="preguntas-frecuentes">Preguntas frecuentes</a></li>
-    </ul>
-  </nav>
+<header class="sitio-cabecera">
+  <div class="progreso-lectura" aria-hidden="true"></div>
+  <div class="cabecera-int">
+    <a href="/" class="marca" aria-label="Condado Digital, inicio"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#1E6B47"/><path d="M28 12.5a10 10 0 1 0 0 15" fill="none" stroke="#F7F5EF" stroke-width="4" stroke-linecap="round"/><rect x="15" y="20" width="3.5" height="6" rx="1.5" fill="#C8F169"/><rect x="20.5" y="15" width="3.5" height="11" rx="1.5" fill="#C8F169"/></svg><span>Condado Digital</span></a>
+    <nav id="menu-principal" class="menu-principal" aria-label="Principal">
+      <a href="enciclopedia">Enciclopedia</a>
+      <a href="glosario">Glosario</a>
+      <a href="calculadoras">Calculadoras</a>
+      <a href="/#videos">Aprendizaje</a>
+      <a href="/#asesorias">Asesorías</a>
+      <a href="buscar" class="menu-buscar">Buscar</a>
+    </nav>
+    <button type="button" class="cabecera-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a href="buscar" class="btn-buscar" aria-label="Buscar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg></a>
+    <a href="contacto" class="btn-contacto abrir-contacto">Contacto</a>
+  </div>
 </header>
 
 <main>
@@ -104,7 +99,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer>
   <div class="wrap">
     <div>
-      <h4>Condado Digital</h4>
+      <h2 class="pie-titulo">Condado Digital</h2>
       <p style="font-size:0.88rem">El rincón honesto del marketing digital.<br>Información y herramientas gratuitas para emprendedores.</p>
       <div class="redes">
         <a href="https://www.instagram.com/condado.digital/" target="_blank" rel="noopener" aria-label="Condado Digital en Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zM7.6 3.9a3.7 3.7 0 0 0-3.7 3.7v8.8a3.7 3.7 0 0 0 3.7 3.7h8.8a3.7 3.7 0 0 0 3.7-3.7V7.6a3.7 3.7 0 0 0-3.7-3.7zM12 7.2a4.8 4.8 0 1 1 0 9.6a4.8 4.8 0 0 1 0-9.6zM12 9a3 3 0 1 0 0 6a3 3 0 0 0 0-6zM17.2 5.6a1.2 1.2 0 1 1 0 2.4a1.2 1.2 0 0 1 0-2.4z"/></svg></a>
@@ -117,7 +112,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div>
-      <h4>Explorar</h4>
+      <h2 class="pie-titulo">Explorar</h2>
       <ul>
         <li><a href="blog">Blog</a></li>
         <li><a href="calculadoras">Calculadoras</a></li>
@@ -128,18 +123,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </div>
     <div>
-      <h4>Categorías</h4>
+      <h2 class="pie-titulo">Categorías</h2>
       <ul>
-        <li><a href="blog#paid-media">Paid Media</a></li>
-        <li><a href="blog#seo">SEO</a></li>
-        <li><a href="blog#growth">Growth</a></li>
-        <li><a href="blog#social">Social Media</a></li>
-        <li><a href="blog#analytics">Analytics</a></li>
-        <li><a href="blog#ia">IA &amp; MarTech</a></li>
+        <li><a href="publicidad-pagada-vs-organica">Paid Media</a></li>
+        <li><a href="glosario-aeo">SEO</a></li>
+        <li><a href="embudo-de-marketing">Growth</a></li>
+        <li><a href="que-es-el-marketing-digital">Social Media</a></li>
+        <li><a href="analitica-digital">Analytics</a></li>
+        <li><a href="marketing-con-ia">IA &amp; MarTech</a></li>
       </ul>
     </div>
     <div>
-      <h4>Sobre</h4>
+      <h2 class="pie-titulo">Sobre</h2>
       <ul>
         <li><a href="acerca">Acerca de</a></li>
         <li><a href="contacto">Contacto</a></li>
@@ -151,6 +146,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<script src="script.js?v=20261109c" defer></script>
+<script src="script.js?v=20261109d" defer></script>
 </body>
 </html>
