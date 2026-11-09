@@ -10,12 +10,13 @@
   })(window,document,'script','dataLayer','GTM-NL52B7QZ');</script>
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- PLANTILLA: al duplicar, borra la línea robots y completa title, description y og:* -->
+  <!-- PLANTILLA: borra la línea robots de abajo al duplicar este archivo y
+       reemplaza title, description y og:* con los datos de la cápsula. -->
   <meta name="robots" content="noindex">
-  <title>[Titular de la noticia] — Noticias de Marketing | Condado Digital</title>
-  <meta name="description" content="[Resumen en 140-155 caracteres]">
-  <meta property="og:title" content="[Título]">
-  <meta property="og:description" content="[Resumen]">
+  <title>[Título de la cápsula] — Condado Digital</title>
+  <meta name="description" content="[Qué aprenderá el lector, en 140-155 caracteres]">
+  <meta property="og:title" content="[Título de la cápsula]">
+  <meta property="og:description" content="[Qué aprenderá el lector]">
   <meta property="og:site_name" content="Condado Digital">
   <meta property="og:image" content="https://www.condadodigital.cl/img/og-condado-digital.jpg">
   <meta property="og:image:width" content="1200">
@@ -60,55 +61,78 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <main>
-  <!-- PLANTILLA DE NOTICIA: duplica este archivo, renómbralo con la noticia
-       (ej: meta-advantage-nuevas-funciones.html) y reemplaza los [corchetes]. -->
+  <!-- PLANTILLA DE CÁPSULA DE APRENDIZAJE: duplica este archivo, renómbralo
+       (ej: primera-campana-meta-ads.html) y reemplaza los [corchetes]. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    "headline": "[TITULAR DE LA NOTICIA]",
-    "description": "[RESUMEN EN 1-2 FRASES]",
+    "@type": "HowTo",
+    "name": "[TÍTULO DE LA CÁPSULA]",
     "author": {"@type": "Person", "@id": "https://www.condadodigital.cl/#esleyter", "name": "Esleyter Conde", "url": "https://www.condadodigital.cl/acerca", "sameAs": ["https://cl.linkedin.com/in/esleyter-conde-511890251"]},
     "publisher": {"@type": "Organization", "@id": "https://www.condadodigital.cl/#organizacion", "name": "Condado Digital", "url": "https://www.condadodigital.cl/", "logo": "https://www.condadodigital.cl/logo.svg", "sameAs": ["https://www.instagram.com/condado.digital/", "https://www.linkedin.com/company/145435900/", "https://www.tiktok.com/@condado.digital", "https://www.youtube.com/@CondadoDigital-q5f", "https://www.facebook.com/profile.php?id=61596204278017", "https://x.com/Condado_Digital", "https://www.threads.com/@condado.digital"]},
-    "datePublished": "[AAAA-MM-DD]",
-    "dateModified": "[AAAA-MM-DD]",
-    "inLanguage": "es-CL"
+    "description": "[QUÉ APRENDERÁ EN 1-2 FRASES]",
+    "totalTime": "PT[X]M",
+    "step": [
+      {"@type": "HowToStep", "name": "[Paso 1]", "text": "[Descripción del paso 1]"},
+      {"@type": "HowToStep", "name": "[Paso 2]", "text": "[Descripción del paso 2]"},
+      {"@type": "HowToStep", "name": "[Paso 3]", "text": "[Descripción del paso 3]"}
+    ]
   }
   </script>
 
   <article class="articulo">
-    <nav class="migas"><a href="/">Inicio</a> › <a href="noticias">Noticias</a> › [Categoría]</nav>
-
-    <span class="cat" style="color:var(--accent-ink);font-weight:700;font-size:0.74rem;letter-spacing:0.14em;text-transform:uppercase">[PAID MEDIA / IA / SEO / PLATAFORMAS]</span>
-    <h1>[Titular de la noticia]</h1>
-    <p class="subtitulo">[Bajada: el dato clave de la noticia en una frase.]</p>
-
+    <nav class="migas"><a href="/">Inicio</a> › <a href="aprendizaje">Aprendizaje</a> › [Plataforma]</nav>
+    <span class="cat" style="color:var(--primary);font-weight:700;font-size:0.74rem;letter-spacing:0.14em;text-transform:uppercase">[META ADS / GOOGLE ADS / TIKTOK ADS / ANALYTICS]</span>
+    <h1>[Título de la cápsula: Cómo hacer X paso a paso]</h1>
+    <p class="subtitulo">[Qué logrará el lector al terminar esta cápsula.]</p>
     <div class="meta-articulo">
       <span>Por <a href="https://cl.linkedin.com/in/esleyter-conde-511890251" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--primary)"><strong>Esleyter Conde</strong></a></span><span>·</span>
-      <span>📅 [Fecha de publicación]</span><span>·</span>
-      <span>Actualizado: [Fecha]</span><span>·</span>
-      <span>Fuente: <a href="[URL de la fuente]" target="_blank" rel="noopener">[Medio original]</a></span>
+      <span>Actualizado: [fecha]</span><span>·</span>
+      <span>⏱️ [X] minutos</span><span>·</span>
+      <span class="badge">[Nivel]</span>
     </div>
 
-    <h2>Qué pasó</h2>
-    <p>[Resumen objetivo de la noticia en 3-5 frases: qué se anunció, quién, cuándo y dónde. Sin opinión todavía — los hechos primero, siempre con enlace a la fuente original.]</p>
+    <p><strong>[Respuesta directa: qué se va a implementar y qué resultado tendrá al final, en 2-3 frases.]</strong></p>
 
-    <div class="analisis" style="margin:28px 0">
-      <strong>¿Qué significa esto para los marketers?</strong>
-      <p style="margin:10px 0 0">[Aquí va tu análisis — el valor diferencial de esta sección. Por qué importa, a quién afecta (anunciantes chicos, e-commerce, agencias...) y qué deberían hacer al respecto: revisar campañas, probar la función, esperar.]</p>
-    </div>
-
-    <!-- Anuncio dentro de la noticia (AdSense) -->
-
-    <h2>Contexto</h2>
-    <p>[Antecedentes que ayudan a dimensionar la noticia: qué venía pasando antes, movimientos similares de la competencia, tendencias del sector.]</p>
-
-    <h2>Qué hacer ahora</h2>
+    <h2>Antes de empezar necesitas</h2>
     <ul>
-      <li>[Acción concreta 1 que un marketer puede tomar hoy.]</li>
-      <li>[Acción concreta 2.]</li>
-      <li>[Acción concreta 3.]</li>
+      <li>[Requisito 1 — ej: una cuenta de Meta Business]</li>
+      <li>[Requisito 2 — ej: acceso administrador a la página]</li>
+      <li>[Requisito 3]</li>
     </ul>
+
+    <h2>Paso 1 — [Nombre del paso]</h2>
+    <p>[Instrucción concreta: dónde hacer clic, qué escribir, qué elegir. Si tienes captura de pantalla, indícala aquí como [CAPTURA 1] y adjúntala.]</p>
+
+    <h2>Paso 2 — [Nombre del paso]</h2>
+    <p>[Instrucción.]</p>
+
+
+    <h2>Paso 3 — [Nombre del paso]</h2>
+    <p>[Instrucción.]</p>
+
+    <h2>Paso 4 — [Nombre del paso]</h2>
+    <p>[Instrucción. Agrega los pasos que necesites.]</p>
+
+    <div class="callout">💡 <strong>[Tip de experto]</strong> [El consejo que solo da alguien que lo ha hecho muchas veces.]</div>
+
+    <h2>Cómo verificar que quedó bien</h2>
+    <ul>
+      <li>[Verificación 1 — ej: el píxel aparece activo en el Events Manager]</li>
+      <li>[Verificación 2]</li>
+    </ul>
+
+    <h2>Errores comunes al hacerlo</h2>
+    <ul>
+      <li>[Error típico 1 y cómo evitarlo]</li>
+      <li>[Error típico 2]</li>
+    </ul>
+
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq" style="max-width:100%">
+      <details><summary>[¿Pregunta frecuente 1 sobre esta implementación?]</summary><p>[Respuesta directa.]</p></details>
+      <details><summary>[¿Pregunta frecuente 2?]</summary><p>[Respuesta.]</p></details>
+    </div>
 
     <aside class="cta-asesoria">
       <p class="cta-titulo">¿Tus campañas gastan más de lo que deberían?</p>
@@ -120,49 +144,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="avatar"><img src="img/avatar.jpg" alt="Esleyter Conde, especialista en marketing digital" width="400" height="400" loading="lazy"></div>
       <div><strong>Esleyter Conde</strong><p>Creador de Condado Digital, especialista en paid media.</p></div>
     </div>
-
-    <h2>Preguntas frecuentes</h2>
-    <!-- FAQ sobre el tema de ESTA noticia: qué preguntará la gente sobre este cambio/anuncio. -->
-    <div class="faq" style="max-width:100%">
-      <details>
-        <summary>[¿Pregunta frecuente 1 sobre esta noticia? Ej: ¿Desde cuándo aplica el cambio?]</summary>
-        <p>[Respuesta directa.]</p>
-      </details>
-      <details>
-        <summary>[¿Pregunta frecuente 2? Ej: ¿Afecta a las campañas activas?]</summary>
-        <p>[Respuesta.]</p>
-      </details>
-      <details>
-        <summary>[¿Pregunta frecuente 3?]</summary>
-        <p>[Respuesta.]</p>
-      </details>
-    </div>
   </article>
 
-  <!-- Seguir leyendo: SOLO noticias -->
+  <!-- Seguir aprendiendo: SOLO cápsulas -->
   <section class="seguir-leyendo">
-    <h2>Seguir leyendo</h2>
+    <h2>Seguir aprendiendo</h2>
     <div class="grid">
-      <article class="card">
-        <div class="thumb"></div>
-        <span class="cat">[Plataforma]</span>
-        <h3><a href="noticia-plantilla">[Noticia recomendada 1]</a></h3>
-        <span class="meta"><span>📅 [Fecha]</span></span>
-      </article>
-      <article class="card">
-        <div class="thumb" style="background:linear-gradient(135deg,#10231B,#2F6F73)"></div>
-        <span class="cat">[Plataforma]</span>
-        <h3><a href="noticia-plantilla">[Noticia recomendada 2]</a></h3>
-        <span class="meta"><span>📅 [Fecha]</span></span>
-      </article>
-      <article class="card">
-        <div class="thumb" style="background:linear-gradient(135deg,#10231B,#8A5A44)"></div>
-        <span class="cat">[Plataforma]</span>
-        <h3><a href="noticia-plantilla">[Noticia recomendada 3]</a></h3>
-        <span class="meta"><span>📅 [Fecha]</span></span>
-      </article>
+      <article class="card"><div class="thumb"></div><span class="cat">[Plataforma]</span><h3><a href="[url-de-la-capsula-recomendada]">[Cápsula recomendada 1]</a></h3><span class="meta"><span>Cápsula</span> · <span>[X] min</span></span></article>
+      <article class="card"><div class="thumb" style="background:linear-gradient(135deg,#10231B,#2F6F73)"></div><span class="cat">[Plataforma]</span><h3><a href="[url-de-la-capsula-recomendada]">[Cápsula recomendada 2]</a></h3><span class="meta"><span>Cápsula</span> · <span>[X] min</span></span></article>
+      <article class="card"><div class="thumb" style="background:linear-gradient(135deg,#10231B,#B7791F)"></div><span class="cat">[Plataforma]</span><h3><a href="[url-de-la-capsula-recomendada]">[Cápsula recomendada 3]</a></h3><span class="meta"><span>Cápsula</span> · <span>[X] min</span></span></article>
     </div>
-    <p style="margin-top:20px"><a href="noticias" style="color:var(--primary);font-weight:600;text-decoration:none">← Volver a Marketing al día</a></p>
+    <p style="margin-top:20px"><a href="aprendizaje" style="color:var(--primary);font-weight:600;text-decoration:none">← Volver a Aprendizaje</a></p>
   </section>
 </main>
 

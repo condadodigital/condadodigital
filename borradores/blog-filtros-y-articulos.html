@@ -1,0 +1,202 @@
+<!--
+  BORRADOR (no se publica: borradores/ responde 404 en el sitio)
+  Origen: blog.html (URL /blog)
+  Contenido oculto hasta tener artículos publicados. Se sacó del código público el 9 de noviembre de 2026.
+  Para reactivarlo: copia cada bloque a la posición indicada en blog.html, quita los marcadores [nota: …]
+  (eran comentarios internos) y, si corresponde, quita el noindex de la página y súmala a sitemap.xml.
+-->
+
+<!-- ===== Bloque 1 de 3: filtros del blog =====
+  Va en blog.html dentro de la portada oscura, justo después del párrafo <p class="bajada">, antes del cierre </div></section>.
+-->
+<div class="pills" id="pills">
+        <button class="pill activa" data-cat="">Todo</button>
+        <button class="pill" data-cat="Paid Media">Paid Media</button>
+        <button class="pill" data-cat="SEO">SEO</button>
+        <button class="pill" data-cat="Growth">Growth</button>
+        <button class="pill" data-cat="Social Media">Social Media</button>
+        <button class="pill" data-cat="Analytics">Analytics</button>
+        <button class="pill" data-cat="IA & MarTech">IA &amp; MarTech</button>
+      </div>
+      <div class="busca">
+        <input type="search" id="busca-blog" placeholder="Buscar guías, análisis o casos..." aria-label="Buscar en el blog">
+      </div>
+
+<!-- ===== Bloque 2 de 3: artículos del blog =====
+  Va en blog.html dentro del <div class="wrap"> de la sección de artículos, reemplazando el aviso <div class="callout"> «Estamos preparando…» y antes del bloque <aside class="cta-asesoria">.
+-->
+<div class="barra-orden">
+        <span class="contador" id="contador">12 artículos</span>
+        <div class="orden">
+          <span>Ordenar:</span>
+          <button class="btn-orden activa" data-orden="desc">Más reciente</button>
+          <button class="btn-orden" data-orden="asc">Más antiguo</button>
+        </div>
+      </div>
+      <div class="lista-portal" id="grid-blog">
+        <article class="fila art proximamente" title="Próximamente" data-cat="Paid Media" data-fecha="2026-08-03">
+          <div class="thumb-f"></div>
+          <div>
+            <span class="cat">Paid Media</span>
+            <h3>Cómo estructurar tu primera campaña de Google Ads sin quemar presupuesto</h3>
+            <p class="extracto">La estructura que uso en cuentas reales, paso a paso.</p>
+            <span class="fecha">Próximamente · Guía · 12 min de lectura</span>
+          </div>
+        </article>
+        <article class="fila art proximamente" title="Próximamente" data-cat="Paid Media" data-fecha="2026-08-02">
+          <div class="thumb-f"></div>
+          <div>
+            <span class="cat">Paid Media</span>
+            <h3>Meta Ads: cuándo usar CBO y cuándo controlar el presupuesto por conjunto</h3>
+            <p class="extracto">El debate eterno del presupuesto, resuelto con criterio.</p>
+            <span class="fecha">Próximamente · Análisis · 8 min de lectura</span>
+          </div>
+        </article>
+        <article class="fila art proximamente" title="Próximamente" data-cat="SEO" data-fecha="2026-08-01">
+          <div class="thumb-f" style="background:linear-gradient(135deg,#10231B,#2F6F73)"></div>
+          <div>
+            <span class="cat">SEO</span>
+            <h3>AEO y GEO explicados sin humo: qué son y por dónde empezar</h3>
+            <p class="extracto">La nueva frontera del posicionamiento en la era de la IA.</p>
+            <span class="fecha">Próximamente · Guía · 15 min de lectura</span>
+          </div>
+        </article>
+        <article class="fila art proximamente" title="Próximamente" data-cat="Analytics" data-fecha="2026-07-31">
+          <div class="thumb-f" style="background:linear-gradient(135deg,#10231B,#B7791F)"></div>
+          <div>
+            <span class="cat">Analytics</span>
+            <h3>Auditoría exprés de tracking: 10 cosas que reviso antes de tocar una campaña</h3>
+            <p class="extracto">Medir bien antes de optimizar.</p>
+            <span class="fecha">Próximamente · Guía · 11 min de lectura</span>
+          </div>
+        </article>
+        <article class="fila art proximamente" title="Próximamente" data-cat="Growth" data-fecha="2026-07-30">
+          <div class="thumb-f" style="background:linear-gradient(135deg,#10231B,#5E7F2A)"></div>
+          <div>
+            <span class="cat">Growth</span>
+            <h3>CAC, LTV y unit economics: los números que todo marketer debe dominar</h3>
+            <p class="extracto">Los cálculos que separan a quienes escalan de quienes queman plata.</p>
+            <span class="fecha">Próximamente · Guía · 13 min de lectura</span>
+          </div>
+        </article>
+        <article class="fila art proximamente" title="Próximamente" data-cat="IA & MarTech" data-fecha="2026-07-29">
+          <div class="thumb-f" style="background:linear-gradient(135deg,#10231B,#2F6F73)"></div>
+          <div>
+            <span class="cat">IA & MarTech</span>
+            <h3>Cómo la IA de las plataformas decide quién ve tu anuncio</h3>
+            <p class="extracto">Entiende al algoritmo para dirigirlo, no sufrirlo.</p>
+            <span class="fecha">Próximamente · Análisis · 10 min de lectura</span>
+          </div>
+        </article>
+        <article class="fila art proximamente" title="Próximamente" data-cat="Paid Media" data-fecha="2026-07-28">
+          <div class="thumb-f"></div>
+          <div>
+            <span class="cat">Paid Media</span>
+            <h3>Meta Ads vs Google Ads: cuál conviene según tu negocio</h3>
+            <p class="extracto">La comparativa honesta, según objetivo y presupuesto.</p>
+            <span class="fecha">Próximamente · Comparativa · 10 min de lectura</span>
+          </div>
+        </article>
+        <article class="fila art proximamente" title="Próximamente" data-cat="Social Media" data-fecha="2026-07-27">
+          <div class="thumb-f" style="background:linear-gradient(135deg,#10231B,#8A5A44)"></div>
+          <div>
+            <span class="cat">Social Media</span>
+            <h3>Estrategia de contenido para marcas que recién empiezan</h3>
+            <p class="extracto">Qué publicar cuando nadie te conoce todavía.</p>
+            <span class="fecha">Próximamente · Guía · 10 min de lectura</span>
+          </div>
+        </article>
+        <article class="fila art proximamente" title="Próximamente" data-cat="SEO" data-fecha="2026-07-25">
+          <div class="thumb-f" style="background:linear-gradient(135deg,#10231B,#2F6F73)"></div>
+          <div>
+            <span class="cat">SEO</span>
+            <h3>SEO on-page: la checklist que sigo en cada página</h3>
+            <p class="extracto">Todos los elementos que reviso antes de publicar.</p>
+            <span class="fecha">Próximamente · Tutorial · 12 min de lectura</span>
+          </div>
+        </article>
+        <article class="fila art proximamente" title="Próximamente" data-cat="IA & MarTech" data-fecha="2026-07-24">
+          <div class="thumb-f" style="background:linear-gradient(135deg,#10231B,#2F6F73)"></div>
+          <div>
+            <span class="cat">IA & MarTech</span>
+            <h3>Mi flujo con IA para crear creatividades que convierten</h3>
+            <p class="extracto">Herramientas, prompts y proceso real.</p>
+            <span class="fecha">Próximamente · Tutorial · 9 min de lectura</span>
+          </div>
+        </article>
+        <article class="fila art proximamente" title="Próximamente" data-cat="Analytics" data-fecha="2026-07-22">
+          <div class="thumb-f" style="background:linear-gradient(135deg,#10231B,#B7791F)"></div>
+          <div>
+            <span class="cat">Analytics</span>
+            <h3>GA4 desde cero: configura bien tus conversiones</h3>
+            <p class="extracto">La base de toda medición confiable.</p>
+            <span class="fecha">Próximamente · Tutorial · 12 min de lectura</span>
+          </div>
+        </article>
+        <article class="fila art proximamente" title="Próximamente" data-cat="Growth" data-fecha="2026-07-20">
+          <div class="thumb-f" style="background:linear-gradient(135deg,#10231B,#5E7F2A)"></div>
+          <div>
+            <span class="cat">Growth</span>
+            <h3>Cómo montar tu primer programa de experimentación (CRO)</h3>
+            <p class="extracto">Del test suelto al sistema de experimentos.</p>
+            <span class="fecha">Próximamente · Tutorial · 14 min de lectura</span>
+          </div>
+        </article>
+      </div>
+
+<!-- ===== Bloque 3 de 3: script de filtros del blog =====
+  Va en blog.html al final, justo antes de </main>. Actívalo junto con los filtros y los artículos.
+-->
+<script>
+  (function () {
+    const grid = document.getElementById("grid-blog");
+    const cards = [...grid.querySelectorAll(".art")];
+    const contador = document.getElementById("contador");
+    const sinRes = document.getElementById("sin-resultados");
+    let cat = "", texto = "";
+
+    function aplicar() {
+      let visibles = 0;
+      cards.forEach(c => {
+        const okCat = !cat || c.dataset.cat === cat;
+        const okTxt = !texto || c.textContent.toLowerCase().includes(texto);
+        c.style.display = (okCat && okTxt) ? "" : "none";
+        if (okCat && okTxt) visibles++;
+      });
+      contador.textContent = visibles + (visibles === 1 ? " artículo" : " artículos");
+      sinRes.style.display = visibles ? "none" : "block";
+    }
+
+    // Píldoras de categoría
+    document.getElementById("pills").addEventListener("click", e => {
+      if (!e.target.classList.contains("pill")) return;
+      document.querySelectorAll(".pill").forEach(p => p.classList.remove("activa"));
+      e.target.classList.add("activa");
+      cat = e.target.dataset.cat;
+      aplicar();
+    });
+
+    // Búsqueda en vivo
+    document.getElementById("busca-blog").addEventListener("input", e => {
+      texto = e.target.value.toLowerCase().trim();
+      aplicar();
+    });
+
+    // Ordenamiento por fecha
+    document.querySelectorAll(".btn-orden").forEach(b => b.addEventListener("click", () => {
+      document.querySelectorAll(".btn-orden").forEach(x => x.classList.remove("activa"));
+      b.classList.add("activa");
+      const dir = b.dataset.orden === "asc" ? 1 : -1;
+      [...grid.children].sort((x, y) => (x.dataset.fecha > y.dataset.fecha ? dir : -dir))
+        .forEach(el => grid.appendChild(el));
+    }));
+
+    // Soporte para enlaces con ancla (#seo, #paid-media, etc.)
+    const mapa = {"paid-media": "Paid Media", "seo": "SEO", "growth": "Growth", "social": "Social Media", "analytics": "Analytics", "ia": "IA & MarTech"};
+    const hash = location.hash.replace("#", "");
+    if (mapa[hash]) {
+      const pill = [...document.querySelectorAll(".pill")].find(p => p.dataset.cat === mapa[hash]);
+      if (pill) pill.click();
+    }
+  })();
+  </script>
