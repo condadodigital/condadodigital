@@ -13,8 +13,8 @@ Publicado en https://www.condadodigital.cl
 ## Cómo publicar
 - Cada push a `main` se publica solo en Cloudflare Pages (sin comando de build). En uno o dos minutos el cambio está en https://www.condadodigital.cl.
 - Cloudflare quita la extensión `.html`: los enlaces internos, canonical, schema y `sitemap.xml` usan URL sin extensión (por ejemplo, `/glosario`).
-- Cuando `/blog` y `/aprendizaje` tengan contenido: quita su `<meta name="robots" content="noindex, follow">`, reactiva el contenido marcado con `OCULTO hasta publicar` y vuelve a agregarlas a `sitemap.xml`.
-- Cuando `/noticias` tenga contenido: vuelve a agregarla a `sitemap.xml` (no tiene `noindex`).
+- Cuando `/blog`, `/aprendizaje` y `/noticias` tengan contenido: quita su `<meta name="robots" content="noindex, follow">` y vuelve a agregarlas a `sitemap.xml`. En `/blog` y `/aprendizaje`, reactiva también el contenido marcado con `OCULTO hasta publicar`.
+- Archivos internos: `functions/_middleware.js` y `_routes.json` hacen que `README.md`, `.gitignore` y esos mismos archivos respondan 404 en el sitio. Si agregas otro archivo que no deba publicarse, súmalo en ambos.
 
 ## Pendientes
 - Pegar el código de Formspree en `contacto.html` (reemplazar `TU_ID_FORMSPREE`)
