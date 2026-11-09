@@ -10,7 +10,12 @@ Publicado en https://www.condadodigital.cl
 - `img/`: avatar.jpg, retrato.jpg, hero.jpg
 - `plantilla-articulo.html`, `noticia-plantilla.html`, `capsula-plantilla.html`: plantillas (noindex)
 
+## Cómo publicar
+- Cada push a `main` se publica solo en Cloudflare Pages (sin comando de build). En uno o dos minutos el cambio está en https://www.condadodigital.cl.
+- Cloudflare quita la extensión `.html`: los enlaces internos, canonical, schema y `sitemap.xml` usan URL sin extensión (por ejemplo, `/glosario`).
+- Cuando `/blog` y `/aprendizaje` tengan contenido: quita su `<meta name="robots" content="noindex, follow">`, reactiva el contenido marcado con `OCULTO hasta publicar` y vuelve a agregarlas a `sitemap.xml`.
+- Cuando `/noticias` tenga contenido: vuelve a agregarla a `sitemap.xml` (no tiene `noindex`).
+
 ## Pendientes
 - Pegar el código de Formspree en `contacto.html` (reemplazar `TU_ID_FORMSPREE`)
 - Crear `glosario-roas.html`, `glosario-seo.html`, `glosario-sem.html` y `glosario-pixel.html`
-- Subir `sitemap.xml` a Google Search Console
