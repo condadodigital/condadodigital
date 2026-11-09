@@ -131,3 +131,117 @@ document.querySelectorAll(".menu a").forEach((enlace) => {
     });
   });
 })();
+
+// ============================================
+// Consentimiento de cookies (Ley 21.719 + Google Consent Mode v2)
+// El estado por defecto ("denied") se define en el <head> de cada página, antes de GTM.
+// Aquí: banner de primera visita, panel de configuración y actualización del consentimiento.
+// ============================================
+(function () {
+  const CLAVE = "cd_consentimiento";
+  const VERSION = 1;
+  const DURACION = 182 * 24 * 60 * 60 * 1000; // 6 meses
+
+  function leer() {
+    try {
+      const c = JSON.parse(localStorage.getItem(CLAVE));
+      if (c && c.v === VERSION && c.exp > Date.now()) return c;
+    } catch (e) {}
+    return null;
+  }
+
+  function guardar(analitica, publicidad) {
+    const c = { v: VERSION, analitica: !!analitica, publicidad: !!publicidad, fecha: Date.now(), exp: Date.now() + DURACION };
+    try { localStorage.setItem(CLAVE, JSON.stringify(c)); } catch (e) {}
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    const ads = c.publicidad ? "granted" : "denied";
+    gtag("consent", "update", {
+      analytics_storage: c.analitica ? "granted" : "denied",
+      ad_storage: ads, ad_user_data: ads, ad_personalization: ads
+    });
+    dataLayer.push({ event: "consent_update", analytics: c.analitica, ads: c.publicidad });
+    return c;
+  }
+
+  let banner = null, panel = null, ultimoFoco = null;
+
+  function cerrarBanner() {
+    if (banner) { banner.remove(); banner = null; }
+  }
+
+  function crearBanner() {
+    banner = document.createElement("section");
+    banner.className = "cookies-banner";
+    banner.setAttribute("aria-label", "Aviso de cookies");
+    banner.innerHTML =
+      '<p>Usamos cookies propias y de terceros para medir visitas y, si lo aceptas, para publicidad. ' +
+      'Más detalles en la <a href="privacidad#cookies">política de privacidad</a>.</p>' +
+      '<div class="cookies-acciones">' +
+      '<button type="button" class="btn btn-primario" data-cookies="aceptar">Aceptar todas</button>' +
+      '<button type="button" class="btn btn-secundario" data-cookies="rechazar">Rechazar</button>' +
+      '<button type="button" class="btn btn-secundario" data-cookies="configurar" aria-haspopup="dialog">Configurar</button>' +
+      "</div>";
+    document.body.appendChild(banner);
+  }
+
+  function crearPanel() {
+    panel = document.createElement("dialog");
+    panel.className = "cookies-panel";
+    panel.setAttribute("aria-labelledby", "cookies-titulo");
+    panel.innerHTML =
+      '<h2 id="cookies-titulo">Configurar cookies</h2>' +
+      '<p>Elige qué cookies aceptas. Puedes cambiarlo cuando quieras desde «Configurar cookies», al pie de cada página.</p>' +
+      '<div class="cookies-opcion"><div><strong id="ck-nec">Necesarias</strong>' +
+      '<p id="ck-nec-d">Guardan tu elección de cookies y protegen el sitio. Siempre activas.</p></div>' +
+      '<input type="checkbox" role="switch" checked disabled aria-labelledby="ck-nec" aria-describedby="ck-nec-d"></div>' +
+      '<div class="cookies-opcion"><div><label for="ck-analitica"><strong>Analítica</strong></label>' +
+      '<p id="ck-ana-d">Google Analytics 4: nos dice qué páginas se visitan, de forma agregada.</p></div>' +
+      '<input type="checkbox" role="switch" id="ck-analitica" aria-describedby="ck-ana-d"></div>' +
+      '<div class="cookies-opcion"><div><label for="ck-publicidad"><strong>Publicidad</strong></label>' +
+      '<p id="ck-pub-d">Google Ads, Meta, TikTok y LinkedIn: miden campañas y muestran anuncios a quien ya visitó el sitio.</p></div>' +
+      '<input type="checkbox" role="switch" id="ck-publicidad" aria-describedby="ck-pub-d"></div>' +
+      '<div class="cookies-acciones">' +
+      '<button type="button" class="btn btn-primario" data-cookies="guardar">Guardar selección</button>' +
+      '<button type="button" class="btn btn-secundario" data-cookies="aceptar">Aceptar todas</button>' +
+      '<button type="button" class="btn btn-secundario" data-cookies="rechazar">Rechazar</button>' +
+      "</div>" +
+      '<button type="button" class="cookies-cerrar" data-cookies="cerrar" aria-label="Cerrar configuración de cookies">✕</button>';
+    document.body.appendChild(panel);
+    panel.addEventListener("close", () => {
+      if (ultimoFoco && document.contains(ultimoFoco)) ultimoFoco.focus();
+    });
+  }
+
+  function abrirPanel() {
+    if (!panel) crearPanel();
+    const c = leer();
+    panel.querySelector("#ck-analitica").checked = c ? c.analitica : false;
+    panel.querySelector("#ck-publicidad").checked = c ? c.publicidad : false;
+    ultimoFoco = document.activeElement;
+    if (typeof panel.showModal === "function") panel.showModal(); else panel.setAttribute("open", "");
+    panel.querySelector("#ck-analitica").focus();
+  }
+
+  function cerrarPanel() {
+    if (!panel) return;
+    if (typeof panel.close === "function" && panel.open) panel.close(); else panel.removeAttribute("open");
+  }
+
+  document.addEventListener("click", (e) => {
+    const abrir = e.target.closest(".abrir-cookies");
+    if (abrir) { e.preventDefault(); abrirPanel(); return; }
+    const b = e.target.closest("[data-cookies]");
+    if (!b) return;
+    const accion = b.getAttribute("data-cookies");
+    if (accion === "aceptar") guardar(true, true);
+    else if (accion === "rechazar") guardar(false, false);
+    else if (accion === "guardar") guardar(panel.querySelector("#ck-analitica").checked, panel.querySelector("#ck-publicidad").checked);
+    else if (accion === "configurar") { abrirPanel(); return; }
+    else if (accion === "cerrar") { cerrarPanel(); return; }
+    cerrarBanner();
+    cerrarPanel();
+  });
+
+  if (!leer()) crearBanner();
+})();

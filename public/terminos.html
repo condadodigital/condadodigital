@@ -2,6 +2,22 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <!-- Consentimiento de cookies (Google Consent Mode v2) -->
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  (function () {
+    var d = {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted'};
+    try {
+      var c = JSON.parse(localStorage.getItem('cd_consentimiento'));
+      if (c && c.v === 1 && c.exp > Date.now()) {
+        if (c.analitica) d.analytics_storage = 'granted';
+        if (c.publicidad) d.ad_storage = d.ad_user_data = d.ad_personalization = 'granted';
+      }
+    } catch (e) {}
+    gtag('consent', 'default', d);
+  })();
+  </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -11,9 +27,9 @@
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Términos y condiciones — Condado Digital</title>
-  <meta name="description" content="Condiciones de uso del contenido y los recursos gratuitos de este sitio.">
+  <meta name="description" content="Condiciones de uso del contenido, los recursos gratuitos y los servicios de terceros de Condado Digital, y cómo se tratan tus datos.">
   <meta property="og:title" content="Términos y condiciones">
-  <meta property="og:description" content="Condiciones de uso del contenido y los recursos gratuitos de este sitio.">
+  <meta property="og:description" content="Condiciones de uso del contenido, los recursos gratuitos y los servicios de terceros de Condado Digital, y cómo se tratan tus datos.">
   <meta property="og:site_name" content="Condado Digital">
   <meta property="og:image" content="https://www.condadodigital.cl/img/og-condado-digital.jpg">
   <meta property="og:image:width" content="1200">
@@ -27,7 +43,7 @@
   <link rel="preload" href="fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dmsans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261109b">
+  <link rel="stylesheet" href="styles.css?v=20261109c">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -61,11 +77,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main>
   <section class="seccion">
-    <div class="wrap" style="max-width:800px">
+    <div class="wrap legal" style="max-width:800px">
       <span class="etiqueta">Legal</span>
       <h1 class="titulo-h2">Términos y condiciones</h1>
-      <p class="intro">Última actualización: noviembre 2026</p>
-      <p class="intro">El contenido de este sitio es informativo y educativo: no constituye asesoría personalizada. Todo el contenido (textos, recursos, plantillas y marca) es propiedad de Esleyter Conde y no puede reproducirse sin autorización. Los recursos gratuitos son para uso personal y profesional, no para reventa.</p>
+      <p class="version">Versión 2.0 · Última actualización: 9 de noviembre de 2026</p>
+
+      <h2 id="contenido">1. Contenido del sitio</h2>
+      <p>El contenido de este sitio es informativo y educativo: no constituye asesoría personalizada. Los ejemplos con cifras son ilustrativos y los resultados de cualquier estrategia de marketing dependen de cada negocio, así que no garantizamos resultados.</p>
+
+      <h2 id="propiedad">2. Propiedad intelectual y recursos gratuitos</h2>
+      <p>Todo el contenido (textos, recursos, plantillas y marca) es propiedad de Esleyter Conde y no puede reproducirse sin autorización. Los recursos gratuitos son para uso personal y profesional, no para reventa.</p>
+
+      <h2 id="terceros">3. Enlaces y servicios de terceros</h2>
+      <p>El sitio enlaza a fuentes y herramientas de terceros (por ejemplo, redes sociales y estudios citados). No controlamos esos sitios ni respondemos por su contenido o sus políticas de privacidad.</p>
+
+      <h2 id="datos">4. Datos personales y cookies</h2>
+      <p>El tratamiento de tus datos personales, incluido el formulario de contacto y el uso de cookies, se rige por nuestra <a href="privacidad">política de privacidad</a>. Puedes cambiar tu elección de cookies en cualquier momento desde <button type="button" class="abrir-cookies">Configurar cookies</button>.</p>
+
+      <h2 id="contacto">5. Contacto y cambios</h2>
+      <p>Para cualquier consulta sobre estos términos, escríbenos a <a href="mailto:hola@condadodigital.cl">hola@condadodigital.cl</a>. Si los modificamos, publicaremos aquí la nueva versión con su fecha.</p>
     </div>
   </section>
 </main>
@@ -116,10 +146,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="preguntas-frecuentes">FAQ</a></li>
       </ul>
     </div>
-    <p class="creditos">© 2026 Condado Digital · <a href="privacidad">Privacidad</a> · <a href="terminos">Términos</a></p>
+    <p class="creditos">© 2026 Condado Digital · <a href="privacidad">Privacidad</a> · <a href="terminos">Términos</a> · <button type="button" class="abrir-cookies">Configurar cookies</button></p>
   </div>
 </footer>
 
-<script src="script.js?v=20261109b" defer></script>
+<script src="script.js?v=20261109c" defer></script>
 </body>
 </html>

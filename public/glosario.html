@@ -2,6 +2,22 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <!-- Consentimiento de cookies (Google Consent Mode v2) -->
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  (function () {
+    var d = {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted'};
+    try {
+      var c = JSON.parse(localStorage.getItem('cd_consentimiento'));
+      if (c && c.v === 1 && c.exp > Date.now()) {
+        if (c.analitica) d.analytics_storage = 'granted';
+        if (c.publicidad) d.ad_storage = d.ad_user_data = d.ad_personalization = 'granted';
+      }
+    } catch (e) {}
+    gtag('consent', 'default', d);
+  })();
+  </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -27,7 +43,7 @@
   <link rel="preload" href="fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dmsans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261109b">
+  <link rel="stylesheet" href="styles.css?v=20261109c">
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@graph": [{"@type": "DefinedTermSet", "@id": "https://www.condadodigital.cl/glosario#terminos", "name": "Glosario de Marketing Digital", "url": "https://www.condadodigital.cl/glosario", "inLanguage": "es-CL", "publisher": {"@id": "https://www.condadodigital.cl/#organizacion"}, "hasDefinedTerm": [{"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-aeo#termino", "name": "AEO", "description": "AEO: optimización para aparecer como respuesta directa en motores de respuesta, fragmentos destacados y asistentes.", "url": "https://www.condadodigital.cl/glosario-aeo"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-cac#termino", "name": "CAC", "description": "Costo de Adquisición de Cliente: cuánto cuesta en total conseguir un cliente nuevo, incluyendo marketing y ventas.", "url": "https://www.condadodigital.cl/glosario-cac"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-capi#termino", "name": "CAPI", "description": "Conversions API: envío de eventos de conversión desde el servidor a las plataformas publicitarias, complementando el píxel.", "url": "https://www.condadodigital.cl/glosario-capi"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-cpa#termino", "name": "CPA", "description": "Costo Por Adquisición: cuánto cuesta en promedio conseguir una conversión. Se calcula dividiendo la inversión publicitaria por el número de conversiones.", "url": "https://www.condadodigital.cl/glosario-cpa"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-cpc#termino", "name": "CPC", "description": "Costo Por Clic: cuánto pagas en promedio por cada clic en tus anuncios.", "url": "https://www.condadodigital.cl/glosario-cpc"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-cpl#termino", "name": "CPL", "description": "Costo Por Lead: cuánto cuesta conseguir un contacto o prospecto interesado.", "url": "https://www.condadodigital.cl/glosario-cpl"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-cpm#termino", "name": "CPM", "description": "Costo Por Mil: cuánto cuesta que tu anuncio se muestre mil veces.", "url": "https://www.condadodigital.cl/glosario-cpm"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-crm#termino", "name": "CRM", "description": "CRM: sistema para gestionar la relación con clientes y prospectos: contactos, seguimiento y ventas.", "url": "https://www.condadodigital.cl/glosario-crm"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-cro#termino", "name": "CRO", "description": "CRO: disciplina de optimizar sistemáticamente la tasa de conversión de un sitio mediante experimentos.", "url": "https://www.condadodigital.cl/glosario-cro"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-ctr#termino", "name": "CTR", "description": "Click-Through Rate: porcentaje de impresiones que terminan en clic. Mide qué tan atractivo es tu anuncio.", "url": "https://www.condadodigital.cl/glosario-ctr"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-cvr#termino", "name": "CVR", "description": "Tasa de conversión: porcentaje de visitas o clics que terminan en una conversión.", "url": "https://www.condadodigital.cl/glosario-cvr"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-ga4#termino", "name": "GA4", "description": "Google Analytics 4: la plataforma de analítica web de Google basada en eventos.", "url": "https://www.condadodigital.cl/glosario-ga4"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-geo#termino", "name": "GEO", "description": "GEO: optimización para ser citado en las respuestas de motores generativos de IA como ChatGPT, Gemini o Perplexity.", "url": "https://www.condadodigital.cl/glosario-geo"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-gtm#termino", "name": "GTM", "description": "Google Tag Manager: gestor de etiquetas para instalar y administrar píxeles y scripts de medición sin tocar el código en cada cambio.", "url": "https://www.condadodigital.cl/glosario-gtm"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-ltv#termino", "name": "LTV", "description": "Lifetime Value: el valor total que un cliente genera para el negocio durante toda su relación con la marca.", "url": "https://www.condadodigital.cl/glosario-ltv"}, {"@type": "DefinedTerm", "@id": "https://www.condadodigital.cl/glosario-utm#termino", "name": "UTM", "description": "UTM: parámetros que se agregan a las URLs para identificar el origen exacto del tráfico en la analítica.", "url": "https://www.condadodigital.cl/glosario-utm"}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.condadodigital.cl/"}, {"@type": "ListItem", "position": 2, "name": "Glosario", "item": "https://www.condadodigital.cl/glosario"}]}]}
   </script>
@@ -147,10 +163,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="preguntas-frecuentes">FAQ</a></li>
       </ul>
     </div>
-    <p class="creditos">© 2026 Condado Digital · <a href="privacidad">Privacidad</a> · <a href="terminos">Términos</a></p>
+    <p class="creditos">© 2026 Condado Digital · <a href="privacidad">Privacidad</a> · <a href="terminos">Términos</a> · <button type="button" class="abrir-cookies">Configurar cookies</button></p>
   </div>
 </footer>
 
-<script src="script.js?v=20261109b" defer></script>
+<script src="script.js?v=20261109c" defer></script>
 </body>
 </html>

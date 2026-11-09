@@ -1627,3 +1627,97 @@ h2, h1.titulo-h2, .articulo h1, .masthead h1 { letter-spacing: -0.015em; }
   .articulo .relacionados ul { display: flex; flex-wrap: wrap; gap: 2px 16px; }
   .enciclo .toc { margin-top: 0; }
 }
+
+/* ============================================
+   Aviso y panel de cookies
+   Posición fija: no desplaza el contenido (sin CLS)
+   ============================================ */
+.cookies-banner {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 60;
+  max-width: 460px;
+  padding: 18px 20px;
+  background: var(--ink);
+  color: #D3DCD5;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 36px rgba(16, 35, 27, 0.28);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.cookies-banner p { margin: 0 0 14px; }
+.cookies-banner a { color: var(--accent); }
+.cookies-acciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.cookies-acciones .btn { padding: 9px 14px; font-size: 0.85rem; }
+.cookies-banner .btn-secundario { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.4); }
+.cookies-banner .btn-secundario:hover { border-color: var(--accent); color: var(--accent); }
+.cookies-banner .btn:focus-visible, .cookies-panel .btn:focus-visible, .abrir-cookies:focus-visible, .cookies-cerrar:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.cookies-panel {
+  width: min(520px, calc(100% - 32px));
+  max-height: calc(100% - 32px);
+  margin: auto;
+  padding: 26px 26px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--text);
+  font-size: 0.92rem;
+}
+.cookies-panel::backdrop { background: rgba(16, 35, 27, 0.55); }
+.cookies-panel h2 { font-size: 1.3rem; margin: 0 0 8px; padding-right: 30px; }
+.cookies-panel > p { color: var(--text-2); margin-bottom: 16px; }
+.cookies-opcion { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border); }
+.cookies-opcion p { margin: 2px 0 0; color: var(--text-2); font-size: 0.86rem; }
+.cookies-opcion label { cursor: pointer; }
+.cookies-opcion input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none;
+  flex-shrink: 0; position: relative; width: 44px; height: 24px; margin-top: 2px;
+  border-radius: 999px; background: #C9CFC9; cursor: pointer; transition: background 0.2s;
+}
+.cookies-opcion input[type="checkbox"]::after {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px;
+  border-radius: 50%; background: var(--white); transition: transform 0.2s;
+}
+.cookies-opcion input[type="checkbox"]:checked { background: var(--primary); }
+.cookies-opcion input[type="checkbox"]:checked::after { transform: translateX(20px); }
+.cookies-opcion input[type="checkbox"]:disabled { opacity: 0.6; cursor: not-allowed; }
+.cookies-opcion input[type="checkbox"]:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.cookies-panel .cookies-acciones { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+.cookies-cerrar {
+  position: absolute; top: 14px; right: 14px; width: 34px; height: 34px;
+  border: 1px solid var(--border); border-radius: 50%; background: var(--white);
+  color: var(--text-2); font-size: 0.9rem; cursor: pointer;
+}
+.cookies-cerrar:hover { color: var(--ink); border-color: var(--ink); }
+
+/* Enlace "Configurar cookies" del pie (botón con aspecto de enlace) */
+.abrir-cookies { background: none; border: none; padding: 0; font: inherit; color: #B9C4BC; cursor: pointer; }
+.abrir-cookies:hover { color: var(--accent); }
+.legal .abrir-cookies { color: var(--primary); text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .cookies-banner { left: 10px; right: 10px; bottom: 10px; max-width: none; padding: 14px 16px; }
+  .cookies-acciones .btn { flex: 1 1 auto; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cookies-opcion input[type="checkbox"], .cookies-opcion input[type="checkbox"]::after { transition: none; }
+}
+
+/* ============================================
+   Páginas legales (privacidad, términos)
+   ============================================ */
+.legal h2 { font-size: 1.3rem; margin: 36px 0 10px; scroll-margin-top: 130px; }
+.legal h3 { font-family: var(--font-head); font-weight: 600; font-size: 1.08rem; margin: 22px 0 8px; color: var(--ink); }
+.legal p, .legal li { color: #2E3832; }
+.legal p { margin-bottom: 14px; }
+.legal ul, .legal ol { margin: 0 0 16px 22px; }
+.legal li { margin-bottom: 6px; }
+.legal a { color: var(--primary); }
+.legal .tabla-wrap table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.legal .tabla-wrap th, .legal .tabla-wrap td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+.legal .tabla-wrap th { background: #EEF5EF; color: var(--ink); font-weight: 700; }
+.legal .tabla-wrap tr:last-child td { border-bottom: none; }
+.legal .version { font-size: 0.9rem; color: var(--text-2); }

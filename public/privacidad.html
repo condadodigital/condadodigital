@@ -2,6 +2,22 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <!-- Consentimiento de cookies (Google Consent Mode v2) -->
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  (function () {
+    var d = {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted'};
+    try {
+      var c = JSON.parse(localStorage.getItem('cd_consentimiento'));
+      if (c && c.v === 1 && c.exp > Date.now()) {
+        if (c.analitica) d.analytics_storage = 'granted';
+        if (c.publicidad) d.ad_storage = d.ad_user_data = d.ad_personalization = 'granted';
+      }
+    } catch (e) {}
+    gtag('consent', 'default', d);
+  })();
+  </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -11,9 +27,9 @@
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Política de privacidad — Condado Digital</title>
-  <meta name="description" content="Qué datos recoge este sitio, para qué se usan y cómo pedir que se eliminen.">
+  <meta name="description" content="Qué datos personales trata Condado Digital, para qué, con quién se comparten, qué cookies usamos y cómo ejercer tus derechos (Ley 19.628 modificada por la Ley 21.719).">
   <meta property="og:title" content="Política de privacidad">
-  <meta property="og:description" content="Qué datos recoge este sitio, para qué se usan y cómo pedir que se eliminen.">
+  <meta property="og:description" content="Qué datos personales trata Condado Digital, para qué, con quién se comparten, qué cookies usamos y cómo ejercer tus derechos (Ley 19.628 modificada por la Ley 21.719).">
   <meta property="og:site_name" content="Condado Digital">
   <meta property="og:image" content="https://www.condadodigital.cl/img/og-condado-digital.jpg">
   <meta property="og:image:width" content="1200">
@@ -27,7 +43,7 @@
   <link rel="preload" href="fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dmsans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261109b">
+  <link rel="stylesheet" href="styles.css?v=20261109c">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -61,18 +77,117 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main>
   <section class="seccion">
-    <div class="wrap" style="max-width:800px">
+    <div class="wrap legal" style="max-width:800px">
       <span class="etiqueta">Legal</span>
       <h1 class="titulo-h2">Política de privacidad</h1>
-      <p class="intro">Última actualización: noviembre 2026</p>
-      <h2 style="font-size:1.3rem">Datos que se recogen</h2>
-      <p class="intro">Cuando escribes por el formulario de contacto entregas tu nombre, tu correo y, si quieres, el nombre de tu empresa. El formulario se procesa a través de Formspree, que reenvía el mensaje a mi correo.</p>
-      <h2 style="font-size:1.3rem">Para qué se usan</h2>
-      <p class="intro">Solo para responderte. No se venden ni se comparten con terceros con fines comerciales.</p>
-      <h2 style="font-size:1.3rem">Analítica</h2>
-      <p class="intro">Este sitio puede usar Google Analytics 4 para saber qué contenidos son más útiles, con datos agregados.</p>
-      <h2 style="font-size:1.3rem">Tus derechos</h2>
-      <p class="intro">Puedes pedir en cualquier momento que se corrijan o eliminen tus datos escribiendo por la página de <a href="contacto">contacto</a>.</p>
+      <p class="version">Versión 2.0 · Última actualización: 9 de noviembre de 2026</p>
+      <p>En esta página te explicamos, en simple, qué datos personales tratamos en www.condadodigital.cl, para qué, con quién los compartimos y cómo puedes ejercer tus derechos. Está escrita conforme a la Ley N° 19.628 sobre protección de los datos personales, modificada por la Ley N° 21.719, que rige desde el 1 de diciembre de 2026 (salvo que antes se publique la postergación que se tramita en el Congreso). Aplicamos estos estándares desde ya.</p>
+
+      <h2 id="responsable">1. Quién es el responsable</h2>
+      <p>El responsable de los datos es <strong>Esleyter Conde</strong>, a cargo del sitio Condado Digital (www.condadodigital.cl). Para cualquier consulta sobre tus datos o para ejercer tus derechos, escríbenos a <a href="mailto:hola@condadodigital.cl">hola@condadodigital.cl</a>.</p>
+
+      <h2 id="datos">2. Qué datos recogemos</h2>
+      <ul>
+        <li><strong>Datos que tú nos entregas en el formulario de contacto:</strong> nombre, correo electrónico, empresa o sitio web (opcional), motivo de contacto y el mensaje que escribas. Te pedimos que no incluyas datos sensibles (por ejemplo, de salud) en el mensaje.</li>
+        <li><strong>Datos de navegación:</strong> mediante cookies y tecnologías similares, información como las páginas que visitas, el tipo de dispositivo y navegador, la fuente desde la que llegaste y tu ubicación aproximada. Las cookies de analítica y de publicidad solo se activan si las aceptas.</li>
+      </ul>
+      <p>Los datos provienen directamente de ti o de tu navegador; no los obtenemos de fuentes de acceso público. Tratamos datos de quienes visitan el sitio y de quienes nos escriben.</p>
+
+      <h2 id="finalidades">3. Para qué los usamos y con qué base</h2>
+      <div class="tabla-wrap"><table>
+        <thead><tr><th>Finalidad</th><th>Datos</th><th>Base de licitud</th></tr></thead>
+        <tbody>
+          <tr><td>Responder tu consulta y hacer seguimiento (por ejemplo, enviarte una propuesta que pediste)</td><td>Datos del formulario</td><td>Tu consentimiento, que das al enviar el formulario, y, si nos pides un servicio, las gestiones previas a un contrato que tú solicitas</td></tr>
+          <tr><td>Medición y estadísticas del sitio</td><td>Datos de navegación (Google Analytics 4)</td><td>Tu consentimiento (cookies de analítica)</td></tr>
+          <tr><td>Publicidad y remarketing: medir campañas y mostrar anuncios a quienes ya visitaron el sitio</td><td>Datos de navegación (Google Ads, Meta, TikTok, LinkedIn)</td><td>Tu consentimiento (cookies de publicidad)</td></tr>
+          <tr><td>Seguridad del sitio y prevención de abusos</td><td>Dirección IP y datos técnicos de la conexión (Cloudflare)</td><td>Interés legítimo en mantener el sitio seguro y disponible, sin afectar tus derechos y libertades</td></tr>
+        </tbody>
+      </table></div>
+      <p>No vendemos tus datos. No tomamos decisiones automatizadas que produzcan efectos jurídicos sobre ti ni que te afecten significativamente. Si aceptas las cookies de publicidad, las plataformas publicitarias pueden elaborar perfiles con fines publicitarios para decidir qué anuncios mostrarte.</p>
+
+      <h2 id="destinatarios">4. Con quién se comparten</h2>
+      <p>Usamos proveedores que tratan datos por encargo nuestro (encargados) y plataformas que, además, pueden usarlos según sus propias políticas (terceros):</p>
+      <div class="tabla-wrap"><table>
+        <thead><tr><th>Proveedor</th><th>Para qué</th><th>Datos</th></tr></thead>
+        <tbody>
+          <tr><td>Formspree</td><td>Recibir y reenviarnos el formulario de contacto</td><td>Datos del formulario</td></tr>
+          <tr><td>Cloudflare</td><td>Alojamiento del sitio, seguridad y reenvío del correo hola@condadodigital.cl</td><td>Datos técnicos de la conexión; correos que nos envías</td></tr>
+          <tr><td>Google (Gmail)</td><td>Recibir y guardar los correos que nos envías</td><td>Correos y datos del formulario que nos llegan</td></tr>
+          <tr><td>Google (Tag Manager, Analytics 4, Google Ads)</td><td>Cargar las etiquetas según tu elección; estadísticas; medición de campañas y remarketing</td><td>Datos de navegación (solo con tu consentimiento)</td></tr>
+          <tr><td>Meta (Facebook e Instagram)</td><td>Medición de campañas y remarketing</td><td>Datos de navegación (solo con tu consentimiento)</td></tr>
+          <tr><td>TikTok</td><td>Medición de campañas y remarketing</td><td>Datos de navegación (solo con tu consentimiento)</td></tr>
+          <tr><td>LinkedIn</td><td>Medición de campañas y remarketing</td><td>Datos de navegación (solo con tu consentimiento)</td></tr>
+        </tbody>
+      </table></div>
+      <p>Los correos que llegan a hola@condadodigital.cl, incluidos los del formulario, se reenvían mediante Cloudflare Email Routing a una casilla de Gmail, de Google.</p>
+      <h3>Transferencia internacional</h3>
+      <p>Estos proveedores tratan datos principalmente en Estados Unidos y en otros países donde operan. Como a la fecha la Agencia de Protección de Datos Personales no ha publicado la lista de países con nivel adecuado de protección, la transferencia se respalda en los términos de tratamiento de datos, las cláusulas contractuales y las políticas que cada proveedor publica, enlazados a continuación:</p>
+      <ul>
+        <li><strong>Formspree:</strong> <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Política de privacidad</a> (incluye cómo transfiere datos fuera del país de origen) y <a href="https://formspree.io/legal/subprocessors/" target="_blank" rel="noopener">lista de subencargados</a>. Presta su servicio desde Estados Unidos.</li>
+        <li><strong>Cloudflare:</strong> <a href="https://www.cloudflare.com/cloudflare-customer-dpa/" target="_blank" rel="noopener">Cloudflare Data Processing Addendum</a>.</li>
+        <li><strong>Google (Tag Manager, Analytics 4 y Google Ads):</strong> <a href="https://business.safety.google/adsprocessorterms/" target="_blank" rel="noopener">Términos del Tratamiento de Datos de Google Ads</a> y <a href="https://business.safety.google/adscontrollerterms/" target="_blank" rel="noopener">Términos de Protección de Datos entre Responsables del Tratamiento de Datos de Google Ads</a>.</li>
+        <li><strong>Google (Gmail):</strong> <a href="https://policies.google.com/privacy/frameworks?hl=es" target="_blank" rel="noopener">Marcos para la transferencia de datos</a>.</li>
+        <li><strong>Meta:</strong> <a href="https://www.facebook.com/legal/terms/dataprocessing" target="_blank" rel="noopener">Condiciones del tratamiento de los datos</a> y <a href="https://www.facebook.com/legal/technology_terms" target="_blank" rel="noopener">Condiciones de las herramientas empresariales de Meta</a>, que incluyen un apéndice de transferencia internacional de datos.</li>
+        <li><strong>TikTok:</strong> <a href="https://www.tiktok.com/legal/page/row/privacy-policy/es" target="_blank" rel="noopener">Política de privacidad</a> (sección «Dónde almacenamos su información»: indica que los datos pueden tratarse, por ejemplo, en Singapur, Malasia, Irlanda y Estados Unidos).</li>
+        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/legal/l/dpa" target="_blank" rel="noopener">LinkedIn Data Processing Agreement</a>.</li>
+      </ul>
+
+      <h2 id="cookies">5. Cookies y tecnologías similares</h2>
+      <p>Las cookies son pequeños archivos que el sitio o un tercero guarda en tu navegador. Usamos tres categorías:</p>
+      <div class="tabla-wrap"><table>
+        <thead><tr><th>Categoría</th><th>Herramienta</th><th>Finalidad</th><th>Duración aproximada</th></tr></thead>
+        <tbody>
+          <tr><td>Necesarias</td><td>Condado Digital (<code>cd_consentimiento</code>, almacenamiento local)</td><td>Recordar tu elección de cookies</td><td>6 meses</td></tr>
+          <tr><td>Necesarias</td><td>Cloudflare (<code>__cf_bm</code> y otras de seguridad, solo si se activan sus protecciones)</td><td>Distinguir personas de bots y proteger el sitio</td><td>30 minutos de inactividad (<code>__cf_bm</code>)</td></tr>
+          <tr><td>Necesarias</td><td>Google Tag Manager</td><td>Cargar las demás herramientas solo según tu elección (no guarda cookies propias)</td><td>—</td></tr>
+          <tr><td>Analítica</td><td>Google Analytics 4 (<code>_ga</code>, <code>_ga_&lt;id&gt;</code>)</td><td>Contar visitas y saber qué contenidos se usan</td><td>2 años</td></tr>
+          <tr><td>Publicidad</td><td>Google Ads (<code>_gcl_au</code> y cookies en dominios de Google)</td><td>Medir conversiones y remarketing</td><td>90 días (<code>_gcl_au</code>)</td></tr>
+          <tr><td>Publicidad</td><td>Meta (<code>_fbp</code>)</td><td>Medir campañas y remarketing en Facebook e Instagram</td><td>Hasta 90 días (más información en la <a href="https://www.facebook.com/privacy/policies/cookies/" target="_blank" rel="noopener">Política de cookies de Meta</a>)</td></tr>
+          <tr><td>Publicidad</td><td>TikTok (<code>_ttp</code>, <code>ttclid</code>)</td><td>Medir campañas y remarketing en TikTok</td><td>13 meses desde el último uso</td></tr>
+          <tr><td>Publicidad</td><td>LinkedIn (<code>li_fat_id</code> y cookies en dominios de LinkedIn)</td><td>Medir campañas y remarketing en LinkedIn</td><td>30 días (<code>li_fat_id</code>)</td></tr>
+        </tbody>
+      </table></div>
+      <p>Mientras no aceptes, no se guardan cookies de analítica ni de publicidad. Las herramientas de Google funcionan en modo de consentimiento denegado: pueden enviar señales básicas sin cookies (por ejemplo, que hubo una visita).</p>
+
+      <h2 id="conservacion">6. Cuánto tiempo conservamos los datos</h2>
+      <ul>
+        <li><strong>Formulario de contacto:</strong> los conservamos durante 24 meses desde el último contacto, para responderte y hacer seguimiento de tu consulta. Después, los eliminamos de nuestro correo y de Formspree.</li>
+        <li><strong>Analítica:</strong> Google Analytics 4 conserva los datos a nivel de usuario y de evento durante 14 meses; luego se eliminan automáticamente. Los informes agregados pueden mantenerse.</li>
+        <li><strong>Cookies:</strong> según la duración indicada en la tabla anterior, o hasta que las borres de tu navegador.</li>
+      </ul>
+
+      <h2 id="derechos">7. Tus derechos y cómo ejercerlos</h2>
+      <p>La ley te reconoce los siguientes derechos sobre tus datos personales:</p>
+      <ul>
+        <li><strong>Acceso:</strong> saber si tratamos tus datos y obtener una copia junto con la información sobre ese tratamiento.</li>
+        <li><strong>Rectificación:</strong> corregir datos inexactos, desactualizados o incompletos.</li>
+        <li><strong>Supresión:</strong> pedir que eliminemos tus datos en los casos que establece la ley.</li>
+        <li><strong>Oposición:</strong> oponerte a un tratamiento determinado, por ejemplo, el que se hace con fines de marketing directo o el basado en nuestro interés legítimo.</li>
+        <li><strong>Portabilidad:</strong> recibir los datos que nos entregaste en un formato electrónico estructurado y de uso común, o pedir que los traspasemos a otro responsable.</li>
+        <li><strong>Bloqueo:</strong> pedir la suspensión temporal del tratamiento mientras resolvemos una solicitud de rectificación, supresión u oposición.</li>
+        <li><strong>No ser objeto de decisiones automatizadas</strong> que te produzcan efectos jurídicos o te afecten significativamente.</li>
+        <li><strong>Retirar tu consentimiento</strong> en cualquier momento, sin expresar causa. El retiro no afecta lo realizado antes.</li>
+      </ul>
+      <p><strong>Cómo ejercerlos:</strong> escribe a <a href="mailto:hola@condadodigital.cl">hola@condadodigital.cl</a> indicando:</p>
+      <ol>
+        <li>Tu nombre (y el de tu representante, si actúas por medio de otra persona).</li>
+        <li>Un correo o dirección donde quieras recibir la respuesta.</li>
+        <li>Qué datos o qué tratamiento te interesa y qué derecho quieres ejercer.</li>
+        <li>Si pides una rectificación, los cambios exactos. Si pides una supresión u oposición, el motivo.</li>
+      </ol>
+      <p>Te confirmaremos la recepción y responderemos por escrito dentro de un plazo máximo de <strong>30 días corridos</strong>, prorrogable una sola vez por otros 30 días corridos. Si pides el bloqueo temporal de tus datos, responderemos esa solicitud dentro de 2 días hábiles. Ejercer los derechos de rectificación, supresión y oposición es siempre gratuito, y el de acceso también lo es al menos una vez cada tres meses. Podemos pedirte antecedentes razonables para confirmar tu identidad.</p>
+      <p>Si rechazamos tu solicitud o no respondemos a tiempo, puedes reclamar ante la <strong>Agencia de Protección de Datos Personales</strong> dentro de 30 días hábiles.</p>
+
+      <h2 id="configurar">8. Cómo cambiar o retirar tu consentimiento de cookies</h2>
+      <p>Puedes cambiar tu elección cuando quieras, tan fácil como la diste: usa <button type="button" class="abrir-cookies">Configurar cookies</button> (también está al pie de cada página), activa o desactiva cada categoría y guarda. Tu elección se guarda por 6 meses; después te la volveremos a preguntar. También puedes borrar las cookies desde la configuración de tu navegador.</p>
+
+      <h2 id="seguridad">9. Seguridad, cambios y actualización</h2>
+      <ul>
+        <li><strong>Seguridad:</strong> el sitio funciona solo con conexión cifrada (HTTPS), pedimos únicamente los datos necesarios para responderte, el acceso a los mensajes está restringido al responsable y trabajamos con proveedores que aplican medidas de seguridad propias. Si ocurriera una vulneración de seguridad que afecte tus datos, actuaremos conforme a la ley.</li>
+        <li><strong>Menores de edad:</strong> el sitio no está dirigido a niños, niñas ni adolescentes.</li>
+        <li><strong>Cambios:</strong> si modificamos esta política, publicaremos aquí la nueva versión con su fecha. Si el cambio es importante, lo destacaremos en el sitio.</li>
+      </ul>
+      <p class="version">Versión 2.0 · Última actualización: 9 de noviembre de 2026.</p>
     </div>
   </section>
 </main>
@@ -123,10 +238,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="preguntas-frecuentes">FAQ</a></li>
       </ul>
     </div>
-    <p class="creditos">© 2026 Condado Digital · <a href="privacidad">Privacidad</a> · <a href="terminos">Términos</a></p>
+    <p class="creditos">© 2026 Condado Digital · <a href="privacidad">Privacidad</a> · <a href="terminos">Términos</a> · <button type="button" class="abrir-cookies">Configurar cookies</button></p>
   </div>
 </footer>
 
-<script src="script.js?v=20261109b" defer></script>
+<script src="script.js?v=20261109c" defer></script>
 </body>
 </html>
