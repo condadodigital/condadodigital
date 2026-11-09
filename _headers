@@ -1,0 +1,22 @@
+# Caché en Cloudflare Pages.
+# Imágenes, fuentes y SVG: 1 año e immutable. Si reemplazas uno, súbelo con un nombre nuevo
+# (por ejemplo hero-2027.webp) y actualiza las referencias; si no, los visitantes verán el anterior.
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/logo.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS y JS: se revalidan en cada visita (respuesta 304 si no cambiaron), así un cambio se ve al instante.
+# El HTML usa el comportamiento por defecto de Cloudflare Pages, que es el mismo.
+/styles.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+/script.js
+  Cache-Control: public, max-age=0, must-revalidate
