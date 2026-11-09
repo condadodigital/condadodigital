@@ -16,7 +16,8 @@ Publicado en https://www.condadodigital.cl
 - Cada push a `main` se publica solo en Cloudflare Pages (sin comando de build). En uno o dos minutos el cambio está en https://www.condadodigital.cl.
 - Cloudflare quita la extensión `.html`: los enlaces internos, canonical, schema y `sitemap.xml` usan URL sin extensión (por ejemplo, `/glosario`).
 - Cuando `/blog`, `/aprendizaje` y `/noticias` tengan contenido: quita su `<meta name="robots" content="noindex, follow">` y vuelve a agregarlas a `sitemap.xml`. En `/blog` y `/aprendizaje`, reactiva también el contenido marcado con `OCULTO hasta publicar`.
-- Imágenes, fuentes y SVG tienen caché de 1 año: si reemplazas uno, usa un nombre de archivo nuevo y actualiza las referencias. `styles.css` y `script.js` se revalidan en cada visita.
+- Imágenes, fuentes y SVG tienen caché de 1 año: si reemplazas uno, usa un nombre de archivo nuevo y actualiza las referencias. `styles.css` y `script.js` llevan una versión en su URL (`styles.css?v=20261109`): Cloudflare guarda CSS y JS 4 horas en el navegador, así que **cada vez que cambies uno de ellos, sube la versión en todas las páginas**, por ejemplo:
+  `sed -i '' 's/?v=20261109/?v=20261201/g' *.html`
 - Archivos internos: `functions/_middleware.js` y `_routes.json` hacen que `README.md`, `.gitignore` y esos mismos archivos respondan 404 en el sitio. Si agregas otro archivo que no deba publicarse, súmalo en ambos.
 
 ## Pendientes
