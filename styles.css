@@ -1537,3 +1537,93 @@ footer ul { list-style: none; display: grid; gap: 7px; }
 /* Titulares serif: un poco más de aire */
 h2, h1.titulo-h2, .articulo h1, .masthead h1 { letter-spacing: -0.015em; }
 .masthead h1 em { font-style: italic; }
+
+/* ============================================
+   Enciclopedia: artículos de referencia
+   ============================================ */
+.articulo.enciclo { max-width: 1100px; }
+.enciclo-grid { display: grid; grid-template-columns: minmax(0, 1fr) 270px; column-gap: 48px; }
+.enciclo-cabecera, .enciclo-cuerpo { grid-column: 1; min-width: 0; }
+.enciclo-cabecera { grid-row: 1; }
+.enciclo-cuerpo { grid-row: 2; }
+.relacionados { grid-column: 2; grid-row: 1 / span 2; align-self: start; position: sticky; top: 130px; }
+
+.articulo .definicion { font-size: 1.12rem; color: var(--ink); margin-bottom: 20px; }
+.articulo .resumen p:last-child { margin-bottom: 0; }
+
+.relacionados {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  font-size: 0.92rem;
+}
+.relacionados strong {
+  font-family: var(--font-head);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+.relacionados .grupo { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-2); margin: 14px 0 6px; }
+.relacionados .grupo:first-of-type { margin-top: 0; }
+.articulo .relacionados ul { list-style: none; margin: 0; }
+.relacionados li { padding: 3px 0; }
+.relacionados a { text-decoration: none; }
+.relacionados a:hover { text-decoration: underline; }
+
+.articulo .principal { font-size: 0.9rem; font-style: italic; color: var(--text-2); margin: -4px 0 14px; }
+
+.tabla-wrap { overflow-x: auto; margin: 20px 0 24px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--white); }
+.articulo table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.articulo th, .articulo td { padding: 11px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+.articulo th { background: #EEF5EF; color: var(--ink); font-weight: 700; }
+.articulo tr:last-child td { border-bottom: none; }
+.articulo caption { caption-side: bottom; text-align: left; padding: 10px 14px; font-size: 0.82rem; color: var(--text-2); border-top: 1px solid var(--border); }
+
+.rotulo {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  background: #F4FAE3;
+  border: 1px solid #DCEBB4;
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin-bottom: 8px;
+}
+
+.articulo sup.cita { font-size: 0.72em; line-height: 0; }
+.articulo sup.cita a { text-decoration: none; }
+.articulo .referencias { font-size: 0.9rem; }
+.articulo .referencias li { margin-bottom: 8px; overflow-wrap: anywhere; }
+.articulo .referencias li:target { background: #F4FAE3; }
+.articulo .bibliografia li, .articulo .historial li { font-size: 0.92rem; margin-bottom: 6px; }
+
+@media (max-width: 960px) {
+  .enciclo-grid { grid-template-columns: 1fr; }
+  .enciclo-cabecera, .enciclo-cuerpo, .relacionados { grid-column: 1; grid-row: auto; }
+  .relacionados { position: static; margin-bottom: 28px; }
+}
+
+/* Índice de la Enciclopedia y bloques que llevan a ella */
+.grid-enciclo { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.bloque-enciclo {
+  margin-top: 40px;
+  padding: 26px 28px;
+  border-radius: var(--radius);
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+.bloque-enciclo .cta-titulo { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; color: var(--ink); margin-bottom: 6px; }
+.bloque-enciclo p { color: var(--text-2); margin-bottom: 16px; }
+.enciclo .toc { margin-top: 28px; }
+.enciclo h2[id], .referencias li { scroll-margin-top: 130px; }
+@media (max-width: 960px) {
+  .articulo .relacionados ul { display: flex; flex-wrap: wrap; gap: 2px 16px; }
+  .enciclo .toc { margin-top: 0; }
+}

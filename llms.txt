@@ -14,11 +14,21 @@
 - [Blog](https://www.condadodigital.cl/blog): artículos de Paid Media, SEO, Growth, Social Media, Analytics e IA
 - [Noticias](https://www.condadodigital.cl/noticias): novedades del marketing digital con análisis
 - [Calculadoras](https://www.condadodigital.cl/calculadoras): ROAS, CPA, CPL, CAC, LTV y otras métricas
+- [Enciclopedia](https://www.condadodigital.cl/enciclopedia): artículos de referencia sobre marketing digital para pymes de Chile y Latinoamérica, con datos verificados y fuentes
 - [Glosario](https://www.condadodigital.cl/glosario): términos de marketing digital con definición, fórmula y ejemplo
 - [Aprendizaje](https://www.condadodigital.cl/aprendizaje): cápsulas paso a paso para Meta, Google y TikTok Ads
 - [Herramientas](https://www.condadodigital.cl/herramientas): herramientas de marketing recomendadas
 - [Recursos](https://www.condadodigital.cl/recursos): recursos gratuitos de marketing digital
 - [Preguntas frecuentes](https://www.condadodigital.cl/preguntas-frecuentes): respuestas breves sobre marketing digital
+
+## Enciclopedia
+
+- [Marketing digital](https://www.condadodigital.cl/que-es-el-marketing-digital)
+- [Marketing tradicional vs. marketing digital](https://www.condadodigital.cl/marketing-tradicional-vs-digital)
+- [Embudo de marketing](https://www.condadodigital.cl/embudo-de-marketing)
+- [Publicidad pagada vs. orgánica](https://www.condadodigital.cl/publicidad-pagada-vs-organica)
+- [Analítica digital](https://www.condadodigital.cl/analitica-digital)
+- [Marketing con inteligencia artificial](https://www.condadodigital.cl/marketing-con-ia)
 
 ## Opcional
 

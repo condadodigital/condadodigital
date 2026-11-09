@@ -10,6 +10,8 @@ Publicado en https://www.condadodigital.cl
 - `img/`: avatar.jpg, retrato.jpg, hero.jpg (y hero.webp / hero-movil.webp, que son las que se cargan), og-condado-digital.jpg (imagen para compartir en redes, 1200x630)
 - `fonts/`: Fraunces y DM Sans alojadas en el sitio (antes Google Fonts)
 - `_headers`: caché de Cloudflare Pages (1 año para imágenes, fuentes y SVG)
+- Enciclopedia: `enciclopedia.html` (índice) y 6 artículos de referencia con URL plana (`que-es-el-marketing-digital`, `marketing-tradicional-vs-digital`, `embudo-de-marketing`, `publicidad-pagada-vs-organica`, `analitica-digital`, `marketing-con-ia`). Llevan referencias numeradas, schema Article + FAQPage + BreadcrumbList y su historial de actualizaciones: si cambias un dato, agrega una línea al historial y actualiza `dateModified`
+- `contenido/`: borradores e investigación de los artículos (no se publica, está en `.gitignore`)
 - `plantilla-articulo.html`, `noticia-plantilla.html`, `capsula-plantilla.html`: plantillas (noindex)
 
 ## Cómo publicar
@@ -21,4 +23,9 @@ Publicado en https://www.condadodigital.cl
 - Archivos internos: `functions/_middleware.js` y `_routes.json` hacen que `README.md`, `.gitignore` y esos mismos archivos respondan 404 en el sitio. Si agregas otro archivo que no deba publicarse, súmalo en ambos.
 
 ## Pendientes
-- Crear `glosario-roas.html`, `glosario-seo.html`, `glosario-sem.html` y `glosario-pixel.html`
+- Crear `glosario-roas.html`, `glosario-seo.html`, `glosario-sem.html` y `glosario-pixel.html`. Al publicar cada uno, enlázalo donde hoy aparece como texto sin enlace y súmalo al glosario y al buscador:
+  - ROAS: `glosario.html` (cuadrícula), `script.js` (`INDICE`), `glosario-cpa.html` y `glosario-ltv.html` (Métricas/Términos relacionados), `preguntas-frecuentes.html` (respuesta «¿Qué es ROAS?»)
+  - SEO: `glosario.html`, `script.js`, `glosario-aeo.html` y `glosario-geo.html` (texto y Términos relacionados)
+  - SEM: `glosario.html`, `script.js`, `glosario-aeo.html` (Términos relacionados)
+  - Pixel: `glosario.html`, `script.js`, `glosario-capi.html` y `glosario-gtm.html` (Términos relacionados)
+- Enciclopedia: los datos que no se publicaron por falta de fuente están en `contenido/pendientes-enciclopedia.md` (solo local)
