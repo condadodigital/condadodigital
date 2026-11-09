@@ -1,7 +1,11 @@
 // Condado Digital: oculta archivos internos del repositorio que no son parte del sitio.
-// Solo se ejecuta en las rutas listadas en /_routes.json; el resto del sitio es estático.
-// Si agregas otro archivo o carpeta interna al repositorio, súmalo aquí y en _routes.json.
-const OCULTOS = new Set(["/readme.md", "/.gitignore", "/_routes.json"]);
+// Se ejecuta en todas las rutas salvo los recursos estáticos excluidos en /_routes.json
+// (así también bloquea rutas codificadas como /%62orradores/...).
+// Si agregas otro archivo o carpeta interna al repositorio, súmalo aquí (o guárdalo en borradores/).
+const OCULTOS = new Set(["/readme.md", "/.gitignore", "/_routes.json",
+  // URL antiguas de las plantillas (hoy en borradores/)
+  "/plantilla-articulo", "/plantilla-articulo.html", "/noticia-plantilla", "/noticia-plantilla.html",
+  "/capsula-plantilla", "/capsula-plantilla.html"]);
 const CARPETAS = ["/functions", "/borradores"];
 
 function ruta(url) {
