@@ -13,9 +13,9 @@
 
 - [Blog](https://www.condadodigital.cl/blog): artículos de Paid Media, SEO, Growth, Social Media, Analytics e IA
 - [Noticias](https://www.condadodigital.cl/noticias): novedades del marketing digital con análisis
-- [Calculadoras](https://www.condadodigital.cl/calculadoras): ROAS, CPA, CPL, CAC, LTV y otras métricas
+- [Calculadoras](https://www.condadodigital.cl/calculadoras): 20 calculadoras (ROAS, CPA, CPL, CAC, LTV, hook rate, hold rate, LTV/CAC y otras métricas) y un simulador de embudo
 - [Enciclopedia](https://www.condadodigital.cl/enciclopedia): artículos de referencia sobre marketing digital para pymes de Chile y Latinoamérica, con datos verificados y fuentes
-- [Glosario](https://www.condadodigital.cl/glosario): términos de marketing digital con definición, fórmula y ejemplo
+- [Glosario](https://www.condadodigital.cl/glosario): 168 términos de marketing digital con definición, fórmula y ejemplo
 - [Aprendizaje](https://www.condadodigital.cl/aprendizaje): cápsulas paso a paso para Meta, Google y TikTok Ads
 - [Herramientas](https://www.condadodigital.cl/herramientas): herramientas de marketing recomendadas
 - [Recursos](https://www.condadodigital.cl/recursos): recursos gratuitos de marketing digital

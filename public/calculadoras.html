@@ -28,9 +28,9 @@
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadoras de marketing gratis: ROAS, CPA, CPL, CAC, LTV y más — Condado Digital</title>
-  <meta name="description" content="17 calculadoras gratuitas de marketing digital: ROAS, CPA, CPC, CPM, CPL, CTR, CAC, LTV, engagement rate y más, con su fórmula.">
+  <meta name="description" content="20 calculadoras gratuitas de marketing digital: ROAS, CPA, CPC, CPM, CPL, CTR, CAC, LTV, hook rate, hold rate y más, con su fórmula y un simulador de embudo.">
   <meta property="og:title" content="Calculadoras de marketing gratis: ROAS, CPA, CPL, CAC, LTV y más">
-  <meta property="og:description" content="17 calculadoras gratuitas de marketing digital: ROAS, CPA, CPC, CPM, CPL, CTR, CAC, LTV, engagement rate y más, con su fórmula.">
+  <meta property="og:description" content="20 calculadoras gratuitas de marketing digital: ROAS, CPA, CPC, CPM, CPL, CTR, CAC, LTV, hook rate, hold rate y más, con su fórmula y un simulador de embudo.">
   <meta property="og:site_name" content="Condado Digital">
   <meta property="og:image" content="https://www.condadodigital.cl/img/og-condado-digital.jpg">
   <meta property="og:image:width" content="1200">
@@ -44,7 +44,7 @@
   <link rel="preload" href="fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dmsans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261109d">
+  <link rel="stylesheet" href="styles.css?v=20261110a">
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://www.condadodigital.cl/calculadoras#pagina", "url": "https://www.condadodigital.cl/calculadoras", "name": "Calculadoras de marketing", "inLanguage": "es-CL", "isPartOf": {"@type": "WebSite", "name": "Condado Digital", "url": "https://www.condadodigital.cl/"}, "publisher": {"@id": "https://www.condadodigital.cl/#organizacion"}, "breadcrumb": {"@id": "https://www.condadodigital.cl/calculadoras#migas"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.condadodigital.cl/"}, {"@type": "ListItem", "position": 2, "name": "Calculadoras", "item": "https://www.condadodigital.cl/calculadoras"}], "@id": "https://www.condadodigital.cl/calculadoras#migas"}]}
   </script>
@@ -73,148 +73,294 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </header>
 
-<main>
-  <section class="seccion">
-    <div class="wrap">
-      <span class="etiqueta">Calculadoras de marketing</span>
-      <h1 class="titulo-h2">Todas las métricas, calculadas en segundos</h1>
-      <p class="intro">Las 17 métricas esenciales de Paid Media, Social Media, Growth y analítica digital. Filtra por disciplina. Ingresa tus números y obtén el resultado con su interpretación.</p>
-      <div class="pills pills-claro" id="pills-calc">
-        <button class="pill activa" data-cat="">Todas</button>
-        <button class="pill" data-cat="Paid Media">Paid Media</button>
-        <button class="pill" data-cat="Social Media">Social Media</button>
-        <button class="pill" data-cat="Growth & Negocio">Growth &amp; Negocio</button>
-      </div>
-
-      <!-- Sección Paid Media: H2 optimizado para búsqueda -->
-      <section class="sec-calc" data-cat="Paid Media" style="margin-bottom:50px">
-        <h2 style="font-size:1.45rem">Calculadoras de Paid Media: ROAS, CPA, CPC, CPM y CTR online</h2>
-        <p class="intro" style="margin-bottom:24px">Calcula gratis las métricas de tus campañas de publicidad digital en Google Ads, Meta Ads y TikTok Ads: retorno de inversión publicitaria (ROAS), costo por adquisición (CPA), costo por clic (CPC), costo por mil (CPM), costo por lead (CPL), tasa de clics (CTR), tasa de conversión y frecuencia.</p>
-        <div class="grid" id="grid-paid"></div>
-      </section>
-
-      <!-- Sección Social Media -->
-      <section class="sec-calc" data-cat="Social Media" style="margin-bottom:50px">
-        <h2 style="font-size:1.45rem">Calculadoras de Social Media: Engagement Rate, crecimiento de seguidores y guardados</h2>
-        <p class="intro" style="margin-bottom:24px">Mide el rendimiento de tus redes sociales: calcula el engagement rate de Instagram y TikTok (por alcance o por seguidores), la tasa de crecimiento de tu comunidad y la tasa de guardados de tus publicaciones.</p>
-        <div class="grid" id="grid-social"></div>
-      </section>
-
-      <!-- Sección Growth & Negocio -->
-      <section class="sec-calc" data-cat="Growth & Negocio" style="margin-bottom:50px">
-        <h2 style="font-size:1.45rem">Calculadoras de Growth: CAC, LTV y ticket promedio</h2>
-        <p class="intro" style="margin-bottom:24px">Los números que definen si tu negocio escala de forma rentable: costo de adquisición de cliente (CAC), valor de vida del cliente (LTV o lifetime value) y ticket promedio de compra.</p>
-        <div class="grid" id="grid-growth"></div>
-      </section>
-      <aside class="cta-asesoria">
-      <p class="cta-titulo">¿Tus campañas gastan más de lo que deberían?</p>
-      <p>Reviso tu cuenta de Google Ads, Meta Ads o TikTok Ads y te digo qué ajustar primero, con números.</p>
-      <a href="servicios" class="btn btn-primario">Ver el diagnóstico de campañas</a>
-    </aside>
+<main class="pg pg-calc">
+  <section class="pg-hero">
+    <div class="pg-tiles" aria-hidden="true"><span class="pg-tile ani-float" style="left:5%;top:50px;color:#C8F169">ROAS</span><span class="pg-tile ani-float2" style="left:8%;top:190px;color:#60A5FA">CPL</span><span class="pg-tile ani-float2" style="left:3%;top:300px;font-size:14px;color:#93C5FD">CAC</span><span class="pg-tile ani-float" style="right:5%;top:56px;color:#2DD4BF">CTR</span><span class="pg-tile ani-float2" style="right:8%;top:196px;color:#C8F169">LTV</span><span class="pg-tile ani-float" style="right:3%;top:306px;font-size:14px;color:#5EEAD4">Hook rate</span></div>
+    <div class="pg-hero-int ani-fade">
+      <p class="pg-hero-etq">Calculadoras de marketing</p>
+      <h1>Decide con <span class="ini-grad">números</span>, no con intuición.</h1>
+      <p class="pg-hero-txt">20 calculadoras gratuitas. Mueve los controles, mira la fórmula con tus propios números y sabe si tu resultado es bueno.</p>
+      <div class="pg-hero-acciones"><a href="#taller" class="ini-btn ini-btn-lima">Elegir una calculadora</a><a href="#cadena" class="ini-btn ini-btn-borde pg-pildora">Simular mi embudo completo</a></div>
+      <p class="pg-hero-nota">Gratis · Sin registro · Tus números no salen de tu navegador</p>
     </div>
   </section>
 
-  <script>
-  // ====== Definición de las calculadoras ======
-  const CALCS = [
-    {id:"roas", cat:"Paid Media", t:"ROAS", d:"Retorno de la inversión publicitaria.", f:"Ingresos ÷ Inversión",
-     ins:[["Ingresos generados ($)","2000000"],["Inversión publicitaria ($)","500000"]],
-     fn:(a,b)=> a/b, out:v=>"ROAS: "+fmt(v)+"x"},
-    {id:"roi", cat:"Paid Media", t:"ROI", d:"Retorno sobre la inversión total.", f:"(Ingresos − Costo) ÷ Costo × 100",
-     ins:[["Ingresos ($)","2000000"],["Costo total ($)","800000"]],
-     fn:(a,b)=> (a-b)/b*100, out:v=>"ROI: "+fmt(v)+"%"},
-    {id:"cpa", cat:"Paid Media", t:"CPA", d:"Costo por adquisición o conversión.", f:"Inversión ÷ Conversiones",
-     ins:[["Inversión publicitaria ($)","500000"],["Conversiones","50"]],
-     fn:(a,b)=> a/b, out:v=>"CPA: $"+fmt(v)},
-    {id:"cpl", cat:"Paid Media", t:"CPL", d:"Costo por lead captado.", f:"Inversión ÷ Leads",
-     ins:[["Inversión publicitaria ($)","400000"],["Leads obtenidos","80"]],
-     fn:(a,b)=> a/b, out:v=>"CPL: $"+fmt(v)},
-    {id:"cac", cat:"Growth & Negocio", t:"CAC", d:"Costo de adquisición de cliente (incluye todo el costo comercial).", f:"(Inversión mkt + ventas) ÷ Clientes nuevos",
-     ins:[["Costo total marketing y ventas ($)","1500000"],["Clientes nuevos","30"]],
-     fn:(a,b)=> a/b, out:v=>"CAC: $"+fmt(v)},
-    {id:"cpc", cat:"Paid Media", t:"CPC", d:"Costo por clic.", f:"Inversión ÷ Clics",
-     ins:[["Inversión publicitaria ($)","300000"],["Clics","1500"]],
-     fn:(a,b)=> a/b, out:v=>"CPC: $"+fmt(v)},
-    {id:"cpm", cat:"Paid Media", t:"CPM", d:"Costo por mil impresiones.", f:"Inversión ÷ Impresiones × 1.000",
-     ins:[["Inversión publicitaria ($)","300000"],["Impresiones","120000"]],
-     fn:(a,b)=> a/b*1000, out:v=>"CPM: $"+fmt(v)},
-    {id:"cpv", cat:"Paid Media", t:"CPV", d:"Costo por reproducción de video.", f:"Inversión ÷ Reproducciones",
-     ins:[["Inversión publicitaria ($)","200000"],["Reproducciones de video","50000"]],
-     fn:(a,b)=> a/b, out:v=>"CPV: $"+fmt(v)},
-    {id:"ctr", cat:"Paid Media", t:"CTR", d:"Tasa de clics sobre impresiones.", f:"Clics ÷ Impresiones × 100",
-     ins:[["Clics","1200"],["Impresiones","45000"]],
-     fn:(a,b)=> a/b*100, out:v=>"CTR: "+fmt(v)+"%"},
-    {id:"cvr", cat:"Paid Media", t:"CVR — Tasa de conversión", d:"Qué porcentaje de los clics termina convirtiendo.", f:"Conversiones ÷ Clics × 100",
-     ins:[["Conversiones","60"],["Clics","1500"]],
-     fn:(a,b)=> a/b*100, out:v=>"CVR: "+fmt(v)+"%"},
-    {id:"frecuencia", cat:"Paid Media", t:"Frecuencia", d:"Cuántas veces vio tu anuncio cada persona en promedio.", f:"Impresiones ÷ Alcance",
-     ins:[["Impresiones","120000"],["Alcance (personas únicas)","40000"]],
-     fn:(a,b)=> a/b, out:v=>"Frecuencia: "+fmt(v)},
-    {id:"engagement", cat:"Social Media", t:"Engagement Rate (por alcance)", d:"Interacción de tu contenido en social media.", f:"Interacciones ÷ Alcance × 100",
-     ins:[["Interacciones (likes, comentarios, compartidos, guardados)","850"],["Alcance de la publicación","15000"]],
-     fn:(a,b)=> a/b*100, out:v=>"Engagement: "+fmt(v)+"%"},
-    {id:"ticket", cat:"Growth & Negocio", t:"Ticket promedio", d:"Valor promedio de cada pedido o compra.", f:"Ingresos ÷ N° de pedidos",
-     ins:[["Ingresos totales ($)","3000000"],["Número de pedidos","120"]],
-     fn:(a,b)=> a/b, out:v=>"Ticket promedio: $"+fmt(v)},
-    {id:"er-seg", cat:"Social Media", t:"Engagement Rate (por seguidores)", d:"Interacción medida contra tu comunidad total.", f:"Interacciones ÷ Seguidores × 100",
-     ins:[["Interacciones de la publicación","620"],["Seguidores de la cuenta","18000"]],
-     fn:(a,b)=> a/b*100, out:v=>"ER: "+fmt(v)+"%"},
-    {id:"crec-seg", cat:"Social Media", t:"Crecimiento de seguidores", d:"Cuánto creció tu comunidad en un período.", f:"(Nuevos − Perdidos) ÷ Seguidores iniciales × 100",
-     ins:[["Seguidores ganados","450"],["Seguidores perdidos","80"],["Seguidores al inicio del período","15000"]],
-     fn:(a,b,c)=> (a-b)/c*100, out:v=>"Crecimiento: "+fmt(v)+"%"},
-    {id:"tasa-guardado", cat:"Social Media", t:"Tasa de guardados", d:"Señal fuerte de contenido valioso en Instagram/TikTok.", f:"Guardados ÷ Alcance × 100",
-     ins:[["Guardados","140"],["Alcance de la publicación","12000"]],
-     fn:(a,b)=> a/b*100, out:v=>"Tasa de guardados: "+fmt(v)+"%"},
-    {id:"ltv", cat:"Growth & Negocio", t:"LTV", d:"Valor del cliente durante toda su relación con la marca.", f:"Ticket × Compras al año × Años de relación",
-     ins:[["Ticket promedio ($)","25000"],["Compras por año","4"],["Años de relación (promedio)","3"]],
-     fn:(a,b,c)=> a*b*c, out:v=>"LTV: $"+fmt(v)}
-  ];
+  <section id="taller" class="pg-sec">
+    <div class="pg-int">
+      <div class="pg-cabeza">
+        <div>
+          <p class="pg-etq">El taller</p>
+          <h2 class="pg-h2">¿Qué quieres saber hoy?</h2>
+        </div>
+        <div class="pg-buscador solo-js"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><label for="calc-q" class="sr-only">Buscar calculadora</label><input type="search" id="calc-q" placeholder="Busca: ROAS, hook rate, seguidores…" autocomplete="off"></div>
+      </div>
+      <div class="pg-chips solo-js" role="group" aria-label="Filtrar por pregunta"><button type="button" class="pg-chip" data-cat="todas" aria-pressed="true">Todas</button><button type="button" class="pg-chip" data-cat="gano" aria-pressed="false">¿Gano plata?</button><button type="button" class="pg-chip" data-cat="cuesta" aria-pressed="false">¿Cuánto me cuesta?</button><button type="button" class="pg-chip" data-cat="anuncio" aria-pressed="false">¿Funciona mi anuncio?</button><button type="button" class="pg-chip" data-cat="contenido" aria-pressed="false">¿Engancha mi contenido?</button><button type="button" class="pg-chip" data-cat="cliente" aria-pressed="false">¿Cuánto vale un cliente?</button></div>
+      <div class="pg-intro" hidden><span class="pg-intro-punto" aria-hidden="true"></span><p></p></div>
+      <p class="pg-cuenta" aria-live="polite">20 calculadoras</p>
+      <div class="calc-grid"><a href="#roas" class="calc-tarjeta" data-id="roas" data-cat="gano" data-buscar="roas retorno de la inversion publicitaria ¿cuanto vuelve por cada peso en anuncios?"><span class="calc-badge" style="background:#C8F169">ROAS</span><span class="calc-tx"><span class="calc-nom">Retorno de la inversión publicitaria</span><span class="calc-preg">¿Cuánto vuelve por cada peso en anuncios?</span></span></a><a href="#roi" class="calc-tarjeta" data-id="roi" data-cat="gano" data-buscar="roi retorno de la inversion ¿cuanto gano de verdad, descontando todos los costos?"><span class="calc-badge" style="background:#C8F169">ROI</span><span class="calc-tx"><span class="calc-nom">Retorno de la inversión</span><span class="calc-preg">¿Cuánto gano de verdad, descontando todos los costos?</span></span></a><a href="#cpc" class="calc-tarjeta" data-id="cpc" data-cat="cuesta" data-buscar="cpc costo por clic ¿cuanto pago cada vez que alguien hace clic?"><span class="calc-badge" style="background:#BFDBFE">CPC</span><span class="calc-tx"><span class="calc-nom">Costo por clic</span><span class="calc-preg">¿Cuánto pago cada vez que alguien hace clic?</span></span></a><a href="#cpm" class="calc-tarjeta" data-id="cpm" data-cat="cuesta" data-buscar="cpm costo por mil impresiones ¿cuanto cuesta que me vean mil veces?"><span class="calc-badge" style="background:#BFDBFE">CPM</span><span class="calc-tx"><span class="calc-nom">Costo por mil impresiones</span><span class="calc-preg">¿Cuánto cuesta que me vean mil veces?</span></span></a><a href="#cpv" class="calc-tarjeta" data-id="cpv" data-cat="cuesta" data-buscar="cpv costo por visualizacion ¿cuanto pago por cada vez que ven mi video?"><span class="calc-badge" style="background:#BFDBFE">CPV</span><span class="calc-tx"><span class="calc-nom">Costo por visualización</span><span class="calc-preg">¿Cuánto pago por cada vez que ven mi video?</span></span></a><a href="#cpl" class="calc-tarjeta" data-id="cpl" data-cat="cuesta" data-buscar="cpl costo por lead ¿cuanto me cuesta cada contacto interesado?"><span class="calc-badge" style="background:#BFDBFE">CPL</span><span class="calc-tx"><span class="calc-nom">Costo por lead</span><span class="calc-preg">¿Cuánto me cuesta cada contacto interesado?</span></span></a><a href="#cpa" class="calc-tarjeta" data-id="cpa" data-cat="cuesta" data-buscar="cpa costo por adquisicion ¿cuanto me cuesta cada venta o conversion?"><span class="calc-badge" style="background:#BFDBFE">CPA</span><span class="calc-tx"><span class="calc-nom">Costo por adquisición</span><span class="calc-preg">¿Cuánto me cuesta cada venta o conversión?</span></span></a><a href="#ctr" class="calc-tarjeta" data-id="ctr" data-cat="anuncio" data-buscar="ctr tasa de clics ¿mi anuncio llama la atencion?"><span class="calc-badge" style="background:#99F6E4">CTR</span><span class="calc-tx"><span class="calc-nom">Tasa de clics</span><span class="calc-preg">¿Mi anuncio llama la atención?</span></span></a><a href="#cvr" class="calc-tarjeta" data-id="cvr" data-cat="anuncio" data-buscar="cvr tasa de conversion ¿los clics se convierten en resultados?"><span class="calc-badge" style="background:#99F6E4">CVR</span><span class="calc-tx"><span class="calc-nom">Tasa de conversión</span><span class="calc-preg">¿Los clics se convierten en resultados?</span></span></a><a href="#frecuencia" class="calc-tarjeta" data-id="frecuencia" data-cat="anuncio" data-buscar="frecuencia veces que te ve cada persona ¿estoy cansando a mi publico?"><span class="calc-badge" style="background:#99F6E4">Frecuencia</span><span class="calc-tx"><span class="calc-nom">Veces que te ve cada persona</span><span class="calc-preg">¿Estoy cansando a mi público?</span></span></a><a href="#hook-rate" class="calc-tarjeta" data-id="hook-rate" data-cat="contenido" data-buscar="hook rate tasa de enganche del video ¿los primeros 3 segundos detienen el scroll?"><span class="calc-badge" style="background:#E9D5FF">Hook rate</span><span class="calc-tx"><span class="calc-nom">Tasa de enganche del video</span><span class="calc-preg">¿Los primeros 3 segundos detienen el scroll?</span></span></a><a href="#hold-rate" class="calc-tarjeta" data-id="hold-rate" data-cat="contenido" data-buscar="hold rate tasa de retencion del video ¿los que se detienen se quedan a ver el video?"><span class="calc-badge" style="background:#E9D5FF">Hold rate</span><span class="calc-tx"><span class="calc-nom">Tasa de retención del video</span><span class="calc-preg">¿Los que se detienen se quedan a ver el video?</span></span></a><a href="#engagement" class="calc-tarjeta" data-id="engagement" data-cat="contenido" data-buscar="er alcance tasa de interaccion (engagement) por alcance ¿mi contenido genera conversacion?"><span class="calc-badge" style="background:#E9D5FF">ER alcance</span><span class="calc-tx"><span class="calc-nom">Tasa de interacción (engagement) por alcance</span><span class="calc-preg">¿Mi contenido genera conversación?</span></span></a><a href="#er-seg" class="calc-tarjeta" data-id="er-seg" data-cat="contenido" data-buscar="er seguidores tasa de interaccion (engagement) por seguidores ¿mi comunidad interactua con lo que publico?"><span class="calc-badge" style="background:#E9D5FF">ER seguidores</span><span class="calc-tx"><span class="calc-nom">Tasa de interacción (engagement) por seguidores</span><span class="calc-preg">¿Mi comunidad interactúa con lo que publico?</span></span></a><a href="#crec-seg" class="calc-tarjeta" data-id="crec-seg" data-cat="contenido" data-buscar="seguidores crecimiento de seguidores ¿mi cuenta esta creciendo?"><span class="calc-badge" style="background:#E9D5FF">Seguidores</span><span class="calc-tx"><span class="calc-nom">Crecimiento de seguidores</span><span class="calc-preg">¿Mi cuenta está creciendo?</span></span></a><a href="#tasa-guardado" class="calc-tarjeta" data-id="tasa-guardado" data-cat="contenido" data-buscar="guardados tasa de guardados ¿mi contenido es tan util que lo guardan?"><span class="calc-badge" style="background:#E9D5FF">Guardados</span><span class="calc-tx"><span class="calc-nom">Tasa de guardados</span><span class="calc-preg">¿Mi contenido es tan útil que lo guardan?</span></span></a><a href="#ticket" class="calc-tarjeta" data-id="ticket" data-cat="cliente" data-buscar="ticket ticket promedio ¿cuanto compra cada cliente en promedio?"><span class="calc-badge" style="background:#FDE68A">Ticket</span><span class="calc-tx"><span class="calc-nom">Ticket promedio</span><span class="calc-preg">¿Cuánto compra cada cliente en promedio?</span></span></a><a href="#cac" class="calc-tarjeta" data-id="cac" data-cat="cliente" data-buscar="cac costo de adquisicion de clientes ¿cuanto me cuesta conseguir un cliente nuevo?"><span class="calc-badge" style="background:#FDE68A">CAC</span><span class="calc-tx"><span class="calc-nom">Costo de adquisición de clientes</span><span class="calc-preg">¿Cuánto me cuesta conseguir un cliente nuevo?</span></span></a><a href="#ltv" class="calc-tarjeta" data-id="ltv" data-cat="cliente" data-buscar="ltv valor de vida del cliente ¿cuanto me deja un cliente en toda la relacion?"><span class="calc-badge" style="background:#FDE68A">LTV</span><span class="calc-tx"><span class="calc-nom">Valor de vida del cliente</span><span class="calc-preg">¿Cuánto me deja un cliente en toda la relación?</span></span></a><a href="#ltv-cac" class="calc-tarjeta" data-id="ltv-cac" data-cat="cliente" data-buscar="ltv/cac relacion valor del cliente vs. costo ¿cuantas veces recupero lo que pague por un cliente?"><span class="calc-badge" style="background:#FDE68A">LTV/CAC</span><span class="calc-tx"><span class="calc-nom">Relación valor del cliente vs. costo</span><span class="calc-preg">¿Cuántas veces recupero lo que pagué por un cliente?</span></span></a></div>
+      <div class="pg-vacio" hidden>
+        <p class="pg-vacio-tit">No encontré esa calculadora</p>
+        <p>Prueba con otra palabra o <a href="glosario">búscala en el glosario</a>.</p>
+      </div>
 
-  const fmt = n => new Intl.NumberFormat("es-CL", {maximumFractionDigits: 2}).format(n);
-  const CONTS = {
-    "Paid Media": document.getElementById("grid-paid"),
-    "Social Media": document.getElementById("grid-social"),
-    "Growth & Negocio": document.getElementById("grid-growth")
-  };
-  const cont = document.querySelector(".wrap");
+      <div id="activa" class="pg-panel calc-activa solo-js" tabindex="-1" aria-labelledby="calc-activa-titulo">
+        <div class="pg-panel-halo" aria-hidden="true"></div>
+        <div class="calc-activa-cab">
+          <div>
+            <p class="pg-panel-etq" data-o="cat"></p>
+            <h3 id="calc-activa-titulo"><span data-o="code"></span> <span class="calc-activa-nom">· <span data-o="name"></span></span></h3>
+          </div>
+          <button type="button" class="pg-btn-fantasma" data-accion="reiniciar">Reiniciar</button>
+        </div>
+        <div class="calc-activa-cuerpo">
+          <div class="calc-col">
+            <div class="calc-campos"></div>
+            <div class="pg-caja">
+              <p class="pg-caja-mini">La fórmula con tus números</p>
+              <p class="calc-formula" data-o="formula"></p>
+              <p class="calc-expr" data-o="expr"></p>
+            </div>
+            <div class="pg-caja calc-meta">
+              <p class="calc-campo-fila"><label for="calc-meta" data-o="metaLabel"></label><span class="calc-meta-val" data-o="metaTxt"></span></p>
+              <input type="range" class="calc-rango calc-rango-azul" id="calc-meta">
+              <div class="calc-barra" aria-hidden="true"><div class="calc-barra-fill"></div><div class="calc-barra-marca"></div></div>
+              <p class="calc-barra-eje" aria-hidden="true"><span>0</span><span data-o="metaMarca"></span><span>el doble</span></p>
+            </div>
+          </div>
+          <div class="calc-col">
+            <div class="calc-res">
+              <p class="calc-res-etq">Tu <span data-o="code2"></span></p>
+              <p class="calc-res-num" data-o="res"></p>
+              <p class="calc-res-ver" data-o="ver"></p>
+            </div>
+            <p class="sr-only" aria-live="polite" data-o="anuncio"></p>
+            <div class="pg-caja calc-bandas" hidden>
+              <p class="calc-bandas-tit">Cómo leer este número</p>
+              <div class="calc-bandas-barra" aria-hidden="true"></div>
+              <div class="calc-bandas-lista"></div>
+              <p class="calc-bandas-nota" data-o="bandNote"></p>
+            </div>
+            <p class="calc-significa"><strong>Qué significa: </strong><span data-o="mean"></span></p>
+            <div class="calc-acciones">
+              <a href="glosario" class="calc-link-glos" data-o="gl">Ver en el glosario →</a>
+              <button type="button" class="calc-sig" data-accion="siguiente">Siguiente: <span data-o="nextCode"></span> →</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  CALCS.forEach(c => {
-    const div = document.createElement("div");
-    div.className = "calc";
-    div.dataset.cat = c.cat;
-    let campos = c.ins.map((inp, i) =>
-      '<div><label>' + inp[0] + '</label><input type="number" id="' + c.id + '-' + i + '" placeholder="' + inp[1] + '"></div>'
-    ).join("");
-    div.innerHTML =
-      '<h3>Calculadora de ' + c.t + '</h3>' +
-      '<p style="color:var(--text-2);font-size:0.88rem;margin-bottom:4px">' + c.d + '</p>' +
-      '<p style="color:var(--primary);font-size:0.8rem;font-weight:600;margin-bottom:14px">Fórmula: ' + c.f + '</p>' +
-      '<form onsubmit="return false">' + campos +
-      '<button class="btn btn-primario" data-id="' + c.id + '">Calcular</button></form>' +
-      '<div class="resultado" id="' + c.id + '-res">—</div>';
-    CONTS[c.cat].appendChild(div);
-  });
+      <div class="calc-fichas">
+        <h2 class="calc-fichas-tit">Las 20 calculadoras, con su fórmula y un ejemplo</h2>
+        <p class="aviso-sin-js">Las calculadoras interactivas necesitan JavaScript. Aquí tienes la fórmula de cada una con un ejemplo ya calculado.</p>
+        <section class="calc-fichas-grupo" aria-labelledby="fg-gano"><h3 id="fg-gano">¿Gano plata?</h3><div class="calc-fichas-grid"><article id="roas" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#C8F169">ROAS</span> Retorno de la inversión publicitaria</h4>
+            <p class="calc-ficha-q">¿Cuánto vuelve por cada peso en anuncios?</p>
+            <p><strong>Fórmula:</strong> ROAS = ingresos ÷ inversión</p>
+            <p><strong>Ejemplo:</strong> Ingresos que trajeron los anuncios: $1.500.000 · Inversión en anuncios: $500.000.<br><span class="calc-ficha-ej">$1.500.000 ÷ $500.000 = 3,0x</span></p>
+            <p><strong>Qué significa:</strong> Por cada $1 que pones en anuncios vuelven esos pesos en ventas. Ojo: son ingresos, no ganancia. Para saber si ganas plata, mira también tu margen y el ROI.</p>
+            <p><a href="glosario#roas">Ver en el glosario →</a></p>
+          </article><article id="roi" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#C8F169">ROI</span> Retorno de la inversión</h4>
+            <p class="calc-ficha-q">¿Cuánto gano de verdad, descontando todos los costos?</p>
+            <p><strong>Fórmula:</strong> ROI = (ingresos − costos) ÷ costos × 100</p>
+            <p><strong>Ejemplo:</strong> Ingresos: $2.000.000 · Costos totales (anuncios, producto y operación): $1.600.000.<br><span class="calc-ficha-ej">($2.000.000 − $1.600.000) ÷ $1.600.000 × 100 = 25,0%</span></p>
+            <p><strong>Qué significa:</strong> Si es positivo, el negocio gana después de pagar todo. Si es negativo, cada venta te cuesta más de lo que te deja.</p>
+            <p><a href="glosario#roi">Ver en el glosario →</a></p>
+          </article></div></section><section class="calc-fichas-grupo" aria-labelledby="fg-cuesta"><h3 id="fg-cuesta">¿Cuánto me cuesta?</h3><div class="calc-fichas-grid"><article id="cpc" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#BFDBFE">CPC</span> Costo por clic</h4>
+            <p class="calc-ficha-q">¿Cuánto pago cada vez que alguien hace clic?</p>
+            <p><strong>Fórmula:</strong> CPC = inversión ÷ clics</p>
+            <p><strong>Ejemplo:</strong> Inversión: $300.000 · Clics: 1.500.<br><span class="calc-ficha-ej">$300.000 ÷ 1.500 = $200</span></p>
+            <p><strong>Qué significa:</strong> Un CPC bajo sirve solo si esos clics después compran. Compáralo siempre con tu tasa de conversión.</p>
+            <p><a href="glosario-cpc">Ver en el glosario →</a></p>
+          </article><article id="cpm" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#BFDBFE">CPM</span> Costo por mil impresiones</h4>
+            <p class="calc-ficha-q">¿Cuánto cuesta que me vean mil veces?</p>
+            <p><strong>Fórmula:</strong> CPM = inversión ÷ impresiones × 1.000</p>
+            <p><strong>Ejemplo:</strong> Inversión: $300.000 · Impresiones: 120.000.<br><span class="calc-ficha-ej">$300.000 ÷ 120.000 × 1.000 = $2.500</span></p>
+            <p><strong>Qué significa:</strong> Si sube sin que cambies nada, suele ser más competencia por tu público o un público demasiado chico.</p>
+            <p><a href="glosario-cpm">Ver en el glosario →</a></p>
+          </article><article id="cpv" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#BFDBFE">CPV</span> Costo por visualización</h4>
+            <p class="calc-ficha-q">¿Cuánto pago por cada vez que ven mi video?</p>
+            <p><strong>Fórmula:</strong> CPV = inversión ÷ visualizaciones</p>
+            <p><strong>Ejemplo:</strong> Inversión: $200.000 · Visualizaciones: 40.000.<br><span class="calc-ficha-ej">$200.000 ÷ 40.000 = $5</span></p>
+            <p><strong>Qué significa:</strong> Revisa qué cuenta como visualización en cada plataforma: no es lo mismo 2 segundos que el video completo.</p>
+            <p><a href="glosario#cpv">Ver en el glosario →</a></p>
+          </article><article id="cpl" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#BFDBFE">CPL</span> Costo por lead</h4>
+            <p class="calc-ficha-q">¿Cuánto me cuesta cada contacto interesado?</p>
+            <p><strong>Fórmula:</strong> CPL = inversión ÷ leads</p>
+            <p><strong>Ejemplo:</strong> Inversión: $500.000 · Leads: 50.<br><span class="calc-ficha-ej">$500.000 ÷ 50 = $10.000</span></p>
+            <p><strong>Qué significa:</strong> Un lead barato no sirve si nunca compra. Cruza tu CPL con cuántos de esos leads terminan en venta.</p>
+            <p><a href="glosario-cpl">Ver en el glosario →</a></p>
+          </article><article id="cpa" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#BFDBFE">CPA</span> Costo por adquisición</h4>
+            <p class="calc-ficha-q">¿Cuánto me cuesta cada venta o conversión?</p>
+            <p><strong>Fórmula:</strong> CPA = inversión ÷ conversiones</p>
+            <p><strong>Ejemplo:</strong> Inversión: $500.000 · Conversiones (ventas): 10.<br><span class="calc-ficha-ej">$500.000 ÷ 10 = $50.000</span></p>
+            <p><strong>Qué significa:</strong> Tu CPA tiene que ser menor que lo que te deja cada venta. Si no, estás comprando clientes a pérdida.</p>
+            <p><a href="glosario-cpa">Ver en el glosario →</a></p>
+          </article></div></section><section class="calc-fichas-grupo" aria-labelledby="fg-anuncio"><h3 id="fg-anuncio">¿Funciona mi anuncio?</h3><div class="calc-fichas-grid"><article id="ctr" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#99F6E4">CTR</span> Tasa de clics</h4>
+            <p class="calc-ficha-q">¿Mi anuncio llama la atención?</p>
+            <p><strong>Fórmula:</strong> CTR = clics ÷ impresiones × 100</p>
+            <p><strong>Ejemplo:</strong> Clics: 1.500 · Impresiones: 120.000.<br><span class="calc-ficha-ej">1.500 ÷ 120.000 × 100 = 1,25%</span></p>
+            <p><strong>Qué significa:</strong> Mide qué tan atractivo es el anuncio para quien lo ve. Si cae con el tiempo, prueba otra imagen o un gancho distinto.</p>
+            <p><a href="glosario-ctr">Ver en el glosario →</a></p>
+          </article><article id="cvr" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#99F6E4">CVR</span> Tasa de conversión</h4>
+            <p class="calc-ficha-q">¿Los clics se convierten en resultados?</p>
+            <p><strong>Fórmula:</strong> CVR = conversiones ÷ clics × 100</p>
+            <p><strong>Ejemplo:</strong> Conversiones: 30 · Clics: 1.500.<br><span class="calc-ficha-ej">30 ÷ 1.500 × 100 = 2,00%</span></p>
+            <p><strong>Qué significa:</strong> Si el CTR es bueno pero el CVR es bajo, el problema suele estar en la página de destino, no en el anuncio.</p>
+            <p><a href="glosario-cvr">Ver en el glosario →</a></p>
+          </article><article id="frecuencia" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#99F6E4">Frecuencia</span> Veces que te ve cada persona</h4>
+            <p class="calc-ficha-q">¿Estoy cansando a mi público?</p>
+            <p><strong>Fórmula:</strong> Frecuencia = impresiones ÷ alcance</p>
+            <p><strong>Ejemplo:</strong> Impresiones: 120.000 · Alcance (personas únicas): 40.000.<br><span class="calc-ficha-ej">120.000 ÷ 40.000 = 3,0 veces</span></p>
+            <p><strong>Qué significa:</strong> Si sube mucho y el CTR baja, la misma gente ya vio tu anuncio demasiadas veces: renueva la creatividad o amplía el público.</p>
+            <p><a href="glosario#frecuencia">Ver en el glosario →</a></p>
+          </article></div></section><section class="calc-fichas-grupo" aria-labelledby="fg-contenido"><h3 id="fg-contenido">¿Engancha mi contenido?</h3><div class="calc-fichas-grid"><article id="hook-rate" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#E9D5FF">Hook rate</span> Tasa de enganche del video</h4>
+            <p class="calc-ficha-q">¿Los primeros 3 segundos detienen el scroll?</p>
+            <p><strong>Fórmula:</strong> Hook rate = reproducciones de 3 s ÷ impresiones × 100</p>
+            <p><strong>Ejemplo:</strong> Reproducciones de 3 segundos: 9.000 · Impresiones: 40.000.<br><span class="calc-ficha-ej">9.000 ÷ 40.000 × 100 = 22,5% (rango aceptable)</span></p>
+            <p><strong>Qué significa:</strong> De cada 100 veces que tu video aparece, cuántas personas se quedan al menos 3 segundos. Mide si el inicio del video llama la atención, no si el video vende.</p>
+            <p class="calc-ficha-sub">Cómo leer este número</p><ul class="calc-ficha-bandas"><li><strong>Débil</strong> · 0% a 20%: La mayoría pasa de largo. Cambia los primeros 3 segundos: la primera imagen, la primera frase o el texto en pantalla.</li><li><strong>Aceptable</strong> · 20% a 30%: El inicio funciona, pero hay margen. Prueba otro gancho manteniendo el resto del video igual.</li><li><strong>Bueno</strong> · desde 30%: El gancho detiene a la gente. Ahora mira el hold rate para saber si se quedan.</li></ul><p class="calc-ficha-nota">Rangos referenciales para Meta (vista de 3 s). Meta no publica un estándar oficial; cambian por ubicación (Reels y Stories suelen marcar menos) y TikTok usa 2 s. Lo mejor es compararte con el promedio de tu propia cuenta.</p><p><a href="glosario#hook-rate">Ver en el glosario →</a></p>
+          </article><article id="hold-rate" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#E9D5FF">Hold rate</span> Tasa de retención del video</h4>
+            <p class="calc-ficha-q">¿Los que se detienen se quedan a ver el video?</p>
+            <p><strong>Fórmula:</strong> Hold rate = ThruPlays ÷ reproducciones de 3 s × 100</p>
+            <p><strong>Ejemplo:</strong> ThruPlays (15 segundos o el video completo): 2.300 · Reproducciones de 3 segundos: 9.000.<br><span class="calc-ficha-ej">2.300 ÷ 9.000 × 100 = 25,6% (rango aceptable)</span></p>
+            <p><strong>Qué significa:</strong> De cada 100 personas que se detuvieron, cuántas siguieron mirando hasta los 15 segundos o el final. El hook trae a la gente; el hold dice si el contenido la retiene.</p>
+            <p class="calc-ficha-sub">Cómo leer este número</p><ul class="calc-ficha-bandas"><li><strong>Débil</strong> · 0% a 20%: Detienes a la gente pero se va enseguida: el video no cumple lo que prometió el gancho o tarda en llegar al punto.</li><li><strong>Aceptable</strong> · 20% a 30%: Retienes a una parte. Acorta el video o adelanta lo más interesante.</li><li><strong>Bueno</strong> · desde 30%: La historia sostiene la atención. Si aun así no hay clics, revisa el llamado a la acción.</li></ul><p class="calc-ficha-nota">Rangos referenciales: las fuentes no coinciden y dependen mucho del largo del video (los videos cortos retienen más por defecto). Compárate contra tus propios videos de largo parecido.</p><p><a href="glosario#hold-rate">Ver en el glosario →</a></p>
+          </article><article id="engagement" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#E9D5FF">ER alcance</span> Tasa de interacción (engagement) por alcance</h4>
+            <p class="calc-ficha-q">¿Mi contenido genera conversación?</p>
+            <p><strong>Fórmula:</strong> Engagement = interacciones ÷ alcance × 100</p>
+            <p><strong>Ejemplo:</strong> Interacciones (me gusta, comentarios, compartidos, guardados): 900 · Alcance: 20.000.<br><span class="calc-ficha-ej">900 ÷ 20.000 × 100 = 4,50%</span></p>
+            <p><strong>Qué significa:</strong> Calcúlalo siempre con la misma base (alcance o seguidores) para comparar tus publicaciones entre sí.</p>
+            <p><a href="glosario#tasa-de-interaccion-o-engagement">Ver en el glosario →</a></p>
+          </article><article id="er-seg" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#E9D5FF">ER seguidores</span> Tasa de interacción (engagement) por seguidores</h4>
+            <p class="calc-ficha-q">¿Mi comunidad interactúa con lo que publico?</p>
+            <p><strong>Fórmula:</strong> Engagement = interacciones ÷ seguidores × 100</p>
+            <p><strong>Ejemplo:</strong> Interacciones de la publicación: 620 · Seguidores de la cuenta: 18.000.<br><span class="calc-ficha-ej">620 ÷ 18.000 × 100 = 3,44%</span></p>
+            <p><strong>Qué significa:</strong> Mide la interacción contra tu comunidad completa, no solo contra quienes vieron la publicación. Suele salir más bajo que el engagement por alcance, porque no todos tus seguidores ven cada publicación.</p>
+            <p><a href="glosario#tasa-de-interaccion-o-engagement">Ver en el glosario →</a></p>
+          </article><article id="crec-seg" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#E9D5FF">Seguidores</span> Crecimiento de seguidores</h4>
+            <p class="calc-ficha-q">¿Mi cuenta está creciendo?</p>
+            <p><strong>Fórmula:</strong> Crecimiento = (ganados − perdidos) ÷ seguidores iniciales × 100</p>
+            <p><strong>Ejemplo:</strong> Seguidores ganados: 450 · Seguidores perdidos: 80 · Seguidores al inicio del periodo: 15.000.<br><span class="calc-ficha-ej">(450 − 80) ÷ 15.000 × 100 = 2,47%</span></p>
+            <p><strong>Qué significa:</strong> Más seguidores no es más ventas. Úsalo junto al engagement para saber si la gente nueva de verdad te mira.</p>
+            
+          </article><article id="tasa-guardado" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#E9D5FF">Guardados</span> Tasa de guardados</h4>
+            <p class="calc-ficha-q">¿Mi contenido es tan útil que lo guardan?</p>
+            <p><strong>Fórmula:</strong> Tasa de guardados = guardados ÷ alcance × 100</p>
+            <p><strong>Ejemplo:</strong> Guardados: 120 · Alcance: 20.000.<br><span class="calc-ficha-ej">120 ÷ 20.000 × 100 = 0,60%</span></p>
+            <p><strong>Qué significa:</strong> Un guardado dice &quot;esto me sirve para después&quot;. Es buena señal para contenido educativo como guías y listas.</p>
+            
+          </article></div></section><section class="calc-fichas-grupo" aria-labelledby="fg-cliente"><h3 id="fg-cliente">¿Cuánto vale un cliente?</h3><div class="calc-fichas-grid"><article id="ticket" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#FDE68A">Ticket</span> Ticket promedio</h4>
+            <p class="calc-ficha-q">¿Cuánto compra cada cliente en promedio?</p>
+            <p><strong>Fórmula:</strong> Ticket promedio = ingresos ÷ pedidos</p>
+            <p><strong>Ejemplo:</strong> Ingresos del periodo: $3.500.000 · Número de pedidos: 100.<br><span class="calc-ficha-ej">$3.500.000 ÷ 100 = $35.000</span></p>
+            <p><strong>Qué significa:</strong> Subir el ticket (packs, envío gratis desde cierto monto) te deja pagar más por cada venta sin perder plata.</p>
+            <p><a href="glosario#ticket-promedio">Ver en el glosario →</a></p>
+          </article><article id="cac" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#FDE68A">CAC</span> Costo de adquisición de clientes</h4>
+            <p class="calc-ficha-q">¿Cuánto me cuesta conseguir un cliente nuevo?</p>
+            <p><strong>Fórmula:</strong> CAC = (marketing + ventas) ÷ clientes nuevos</p>
+            <p><strong>Ejemplo:</strong> Gasto en marketing: $800.000 · Gasto en ventas (sueldos, comisiones, herramientas): $400.000 · Clientes nuevos: 20.<br><span class="calc-ficha-ej">($800.000 + $400.000) ÷ 20 = $60.000</span></p>
+            <p><strong>Qué significa:</strong> A diferencia del CPA, el CAC suma todo lo que gastas para conseguir clientes, no solo los anuncios.</p>
+            <p><a href="glosario-cac">Ver en el glosario →</a></p>
+          </article><article id="ltv" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#FDE68A">LTV</span> Valor de vida del cliente</h4>
+            <p class="calc-ficha-q">¿Cuánto me deja un cliente en toda la relación?</p>
+            <p><strong>Fórmula:</strong> LTV = ticket × compras por año × años × margen</p>
+            <p><strong>Ejemplo:</strong> Ticket promedio: $35.000 · Compras por año: 4 · Años que se queda como cliente: 2 · Margen de ganancia (%): 40.<br><span class="calc-ficha-ej">$35.000 × 4 × 2 × 40% = $112.000</span></p>
+            <p><strong>Qué significa:</strong> Es lo máximo que te conviene pagar por un cliente. Si tu CAC se acerca a tu LTV, el negocio no escala.</p>
+            <p><a href="glosario-ltv">Ver en el glosario →</a></p>
+          </article><article id="ltv-cac" class="calc-ficha">
+            <h4><span class="calc-badge" style="background:#FDE68A">LTV/CAC</span> Relación valor del cliente vs. costo</h4>
+            <p class="calc-ficha-q">¿Cuántas veces recupero lo que pagué por un cliente?</p>
+            <p><strong>Fórmula:</strong> LTV/CAC = LTV ÷ CAC</p>
+            <p><strong>Ejemplo:</strong> LTV (valor de vida del cliente): $144.000 · CAC (costo de adquisición): $48.000.<br><span class="calc-ficha-ej">$144.000 ÷ $48.000 = 3,0x</span></p>
+            <p><strong>Qué significa:</strong> Bajo 1x pierdes plata con cada cliente. Muchos equipos se ponen como objetivo 3x, pero define el tuyo según tu margen y tu caja.</p>
+            <p><a href="glosario#ltv-cac">Ver en el glosario →</a></p>
+          </article></div></section>
+      </div>
+    </div>
+  </section>
 
-  // Filtro por categoría
-  document.getElementById("pills-calc").addEventListener("click", e => {
-    if (!e.target.classList.contains("pill")) return;
-    document.querySelectorAll("#pills-calc .pill").forEach(p => p.classList.remove("activa"));
-    e.target.classList.add("activa");
-    const cat = e.target.dataset.cat;
-    document.querySelectorAll(".sec-calc").forEach(s => {
-      s.style.display = (!cat || s.dataset.cat === cat) ? "" : "none";
-    });
-  });
+  <section id="cadena" class="pg-negra" aria-labelledby="cadena-titulo">
+    <div class="pg-negra-halo" aria-hidden="true"></div>
+    <div class="pg-negra-int">
+      <div class="pg-negra-cab rv-up">
+        <p class="pg-etq-turquesa">Simulador de embudo</p>
+        <h2 id="cadena-titulo">Del peso invertido a la venta</h2>
+        <p class="ini-grad pg-negra-sub">Las métricas no viven solas: mueve una y mira cómo cambia todo lo demás</p>
+      </div>
+      <div class="sim-caja">
+        <div class="sim-col">
+          <div class="sim-campo">
+            <p class="calc-campo-fila"><label for="sim-inv">Inversión mensual en anuncios</label><output class="sim-val" data-sim-txt="inv" for="sim-inv">$500.000</output></p>
+            <input type="range" class="calc-rango sim-rango solo-js" id="sim-inv" data-sim="inv" min="50000" max="5000000" step="50000" value="500000" aria-valuetext="$500.000">
+          </div><div class="sim-campo">
+            <p class="calc-campo-fila"><label for="sim-cpm">Costo por mil impresiones (CPM)</label><output class="sim-val" data-sim-txt="cpm" for="sim-cpm">$3.000</output></p>
+            <input type="range" class="calc-rango sim-rango solo-js" id="sim-cpm" data-sim="cpm" min="500" max="15000" step="100" value="3000" aria-valuetext="$3.000">
+          </div><div class="sim-campo">
+            <p class="calc-campo-fila"><label for="sim-ctr">De cada 100 que ven el anuncio, cuántos hacen clic (CTR %)</label><output class="sim-val" data-sim-txt="ctr" for="sim-ctr">1,2%</output></p>
+            <input type="range" class="calc-rango sim-rango solo-js" id="sim-ctr" data-sim="ctr" min="0.2" max="6" step="0.1" value="1.2" aria-valuetext="1,2%">
+          </div><div class="sim-campo">
+            <p class="calc-campo-fila"><label for="sim-cvr">De cada 100 clics, cuántos dejan sus datos (%)</label><output class="sim-val" data-sim-txt="cvr" for="sim-cvr">3,0%</output></p>
+            <input type="range" class="calc-rango sim-rango solo-js" id="sim-cvr" data-sim="cvr" min="0.5" max="20" step="0.5" value="3" aria-valuetext="3,0%">
+          </div><div class="sim-campo">
+            <p class="calc-campo-fila"><label for="sim-cierre">De cada 100 leads, cuántos compran (%)</label><output class="sim-val" data-sim-txt="cierre" for="sim-cierre">10,0%</output></p>
+            <input type="range" class="calc-rango sim-rango solo-js" id="sim-cierre" data-sim="cierre" min="1" max="50" step="1" value="10" aria-valuetext="10,0%">
+          </div><div class="sim-campo">
+            <p class="calc-campo-fila"><label for="sim-ticket">Ticket promedio por venta</label><output class="sim-val" data-sim-txt="ticket" for="sim-ticket">$250.000</output></p>
+            <input type="range" class="calc-rango sim-rango solo-js" id="sim-ticket" data-sim="ticket" min="10000" max="2000000" step="10000" value="250000" aria-valuetext="$250.000">
+          </div>
+          <p class="sim-nota">Ejemplo ilustrativo con valores que tú eliges. No son promedios del mercado.</p>
+          <p class="sim-nota sin-js-solo">Sin JavaScript ves el ejemplo ya calculado con estos valores.</p>
+        </div>
+        <div class="sim-col sim-col-der" aria-live="polite">
+          <div class="sim-paso">
+            <p><span>Impresiones</span><strong data-sim-out="p0">166.667</strong></p>
+            <div class="sim-barra" aria-hidden="true"><div data-sim-bar="p0" style="background:#60A5FA;width:100.0%"></div></div>
+          </div><div class="sim-paso">
+            <p><span>Clics</span><strong data-sim-out="p1">2.000</strong></p>
+            <div class="sim-barra" aria-hidden="true"><div data-sim-bar="p1" style="background:#3B82F6;width:63.2%"></div></div>
+          </div><div class="sim-paso">
+            <p><span>Leads</span><strong data-sim-out="p2">60</strong></p>
+            <div class="sim-barra" aria-hidden="true"><div data-sim-bar="p2" style="background:#2DD4BF;width:34.1%"></div></div>
+          </div><div class="sim-paso">
+            <p><span>Ventas</span><strong data-sim-out="p3">6,0</strong></p>
+            <div class="sim-barra" aria-hidden="true"><div data-sim-bar="p3" style="background:#14B8A6;width:14.9%"></div></div>
+          </div><div class="sim-paso">
+            <p><span>Ingresos</span><strong data-sim-out="p4">$1.500.000</strong></p>
+            <div class="sim-barra" aria-hidden="true"><div data-sim-bar="p4" style="background:#C8F169;width:75.0%"></div></div>
+          </div>
+          <p class="sim-tit">Las métricas que salen de tu embudo <span class="solo-js-inline">(toca una para abrirla en el taller)</span></p>
+          <div class="sim-metricas"><a href="#cpc" class="sim-metrica" data-abre="cpc"><span>CPC</span><strong data-sim-out="cpc">$250</strong></a><a href="#cpl" class="sim-metrica" data-abre="cpl"><span>CPL</span><strong data-sim-out="cpl">$8.333</strong></a><a href="#cpa" class="sim-metrica" data-abre="cpa"><span>CPA</span><strong data-sim-out="cpa">$83.333</strong></a><a href="#roas" class="sim-metrica" data-abre="roas"><span>ROAS</span><strong data-sim-out="roas">3,0x</strong></a><a href="#ctr" class="sim-metrica" data-abre="ctr"><span>CTR</span><strong data-sim-out="ctr">1,2%</strong></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  cont.addEventListener("click", e => {
-    const id = e.target.dataset && e.target.dataset.id;
-    if (!id) return;
-    const c = CALCS.find(x => x.id === id);
-    const vals = c.ins.map((_, i) => +document.getElementById(id + "-" + i).value);
-    const res = document.getElementById(id + "-res");
-    res.textContent = vals.every(v => v > 0) ? c.out(c.fn(...vals)) : "Completa todos los campos";
-  });
-  </script>
+  <section class="pg-banda-clara" aria-labelledby="pg-banda-titulo">
+    <div class="pg-banda-int">
+      <h2 id="pg-banda-titulo">Ya tienes los números. ¿Y ahora qué?</h2>
+      <p>Si tu resultado salió en rojo y no sabes qué mover primero, revisamos tus campañas juntos.</p>
+      <div class="pg-banda-acciones"><a href="contacto" class="pg-btn-oscuro abrir-contacto">Quiero una asesoría <span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+  <script type="application/json" id="calc-datos">{"cats":[{"id":"gano","label":"¿Gano plata?","intro":"Estas métricas responden si los anuncios dejan plata. El ROAS mira ingresos; el ROI descuenta todos los costos.","color":"#C8F169"},{"id":"cuesta","label":"¿Cuánto me cuesta?","intro":"Cuánto pagas por cada resultado, desde que te ven (costo por mil impresiones) hasta que te compran (costo por adquisición). Más barato no siempre es mejor: importa lo que viene después.","color":"#BFDBFE"},{"id":"anuncio","label":"¿Funciona mi anuncio?","intro":"Si tu anuncio atrae y convence. La tasa de clics mide el interés, la tasa de conversión mide si la página cierra y la frecuencia avisa cuando el público se cansa.","color":"#99F6E4"},{"id":"contenido","label":"¿Engancha mi contenido?","intro":"Para videos y publicaciones: el hook rate dice si los primeros 3 segundos detienen el scroll y el hold rate si la gente se queda. Cada una trae rangos para saber si tu número es débil, aceptable o bueno.","color":"#E9D5FF"},{"id":"cliente","label":"¿Cuánto vale un cliente?","intro":"Cuánto cuesta conseguir un cliente y cuánto te deja en el tiempo. Si el costo se acerca al valor, el negocio no escala.","color":"#FDE68A"}],"calcs":[{"id":"roas","code":"ROAS","name":"Retorno de la inversión publicitaria","cat":"gano","q":"¿Cuánto vuelve por cada peso en anuncios?","ins":[{"k":"ing","label":"Ingresos que trajeron los anuncios","min":0,"max":20000000,"step":50000,"def":1500000,"u":"$"},{"k":"inv","label":"Inversión en anuncios","min":50000,"max":10000000,"step":50000,"def":500000,"u":"$"}],"u":"x","up":true,"t":[3,0.5,10,0.1],"scale":null,"bands":null,"bandNote":"","formula":"ROAS = ingresos ÷ inversión","expr":"{ing} ÷ {inv}","mean":"Por cada $1 que pones en anuncios vuelven esos pesos en ventas. Ojo: son ingresos, no ganancia. Para saber si ganas plata, mira también tu margen y el ROI.","next":"roi","gl":"glosario#roas"},{"id":"roi","code":"ROI","name":"Retorno de la inversión","cat":"gano","q":"¿Cuánto gano de verdad, descontando todos los costos?","ins":[{"k":"ing","label":"Ingresos","min":0,"max":20000000,"step":50000,"def":2000000,"u":"$"},{"k":"cost","label":"Costos totales (anuncios, producto y operación)","min":50000,"max":20000000,"step":50000,"def":1600000,"u":"$"}],"u":"%","up":true,"t":[20,1,200,1],"scale":null,"bands":null,"bandNote":"","formula":"ROI = (ingresos − costos) ÷ costos × 100","expr":"({ing} − {cost}) ÷ {cost} × 100","mean":"Si es positivo, el negocio gana después de pagar todo. Si es negativo, cada venta te cuesta más de lo que te deja.","next":"cac","gl":"glosario#roi"},{"id":"cpc","code":"CPC","name":"Costo por clic","cat":"cuesta","q":"¿Cuánto pago cada vez que alguien hace clic?","ins":[{"k":"inv","label":"Inversión","min":10000,"max":5000000,"step":10000,"def":300000,"u":"$"},{"k":"clics","label":"Clics","min":10,"max":20000,"step":10,"def":1500,"u":"n"}],"u":"$","up":false,"t":[250,20,2000,10],"scale":null,"bands":null,"bandNote":"","formula":"CPC = inversión ÷ clics","expr":"{inv} ÷ {clics}","mean":"Un CPC bajo sirve solo si esos clics después compran. Compáralo siempre con tu tasa de conversión.","next":"ctr","gl":"glosario-cpc"},{"id":"cpm","code":"CPM","name":"Costo por mil impresiones","cat":"cuesta","q":"¿Cuánto cuesta que me vean mil veces?","ins":[{"k":"inv","label":"Inversión","min":10000,"max":5000000,"step":10000,"def":300000,"u":"$"},{"k":"imp","label":"Impresiones","min":1000,"max":2000000,"step":1000,"def":120000,"u":"n"}],"u":"$","up":false,"t":[3000,200,15000,100],"scale":null,"bands":null,"bandNote":"","formula":"CPM = inversión ÷ impresiones × 1.000","expr":"{inv} ÷ {imp} × 1.000","mean":"Si sube sin que cambies nada, suele ser más competencia por tu público o un público demasiado chico.","next":"frecuencia","gl":"glosario-cpm"},{"id":"cpv","code":"CPV","name":"Costo por visualización","cat":"cuesta","q":"¿Cuánto pago por cada vez que ven mi video?","ins":[{"k":"inv","label":"Inversión","min":10000,"max":3000000,"step":10000,"def":200000,"u":"$"},{"k":"views","label":"Visualizaciones","min":100,"max":500000,"step":100,"def":40000,"u":"n"}],"u":"$","up":false,"t":[8,1,60,1],"scale":null,"bands":null,"bandNote":"","formula":"CPV = inversión ÷ visualizaciones","expr":"{inv} ÷ {views}","mean":"Revisa qué cuenta como visualización en cada plataforma: no es lo mismo 2 segundos que el video completo.","next":"engagement","gl":"glosario#cpv"},{"id":"cpl","code":"CPL","name":"Costo por lead","cat":"cuesta","q":"¿Cuánto me cuesta cada contacto interesado?","ins":[{"k":"inv","label":"Inversión","min":10000,"max":5000000,"step":10000,"def":500000,"u":"$"},{"k":"leads","label":"Leads","min":1,"max":1000,"step":1,"def":50,"u":"n"}],"u":"$","up":false,"t":[12000,1000,80000,500],"scale":null,"bands":null,"bandNote":"","formula":"CPL = inversión ÷ leads","expr":"{inv} ÷ {leads}","mean":"Un lead barato no sirve si nunca compra. Cruza tu CPL con cuántos de esos leads terminan en venta.","next":"cpa","gl":"glosario-cpl"},{"id":"cpa","code":"CPA","name":"Costo por adquisición","cat":"cuesta","q":"¿Cuánto me cuesta cada venta o conversión?","ins":[{"k":"inv","label":"Inversión","min":10000,"max":5000000,"step":10000,"def":500000,"u":"$"},{"k":"conv","label":"Conversiones (ventas)","min":1,"max":500,"step":1,"def":10,"u":"n"}],"u":"$","up":false,"t":[60000,2000,300000,1000],"scale":null,"bands":null,"bandNote":"","formula":"CPA = inversión ÷ conversiones","expr":"{inv} ÷ {conv}","mean":"Tu CPA tiene que ser menor que lo que te deja cada venta. Si no, estás comprando clientes a pérdida.","next":"cac","gl":"glosario-cpa"},{"id":"ctr","code":"CTR","name":"Tasa de clics","cat":"anuncio","q":"¿Mi anuncio llama la atención?","ins":[{"k":"clics","label":"Clics","min":0,"max":20000,"step":10,"def":1500,"u":"n"},{"k":"imp","label":"Impresiones","min":1000,"max":2000000,"step":1000,"def":120000,"u":"n"}],"u":"%","up":true,"t":[1,0.1,10,0.1],"scale":null,"bands":null,"bandNote":"","formula":"CTR = clics ÷ impresiones × 100","expr":"{clics} ÷ {imp} × 100","mean":"Mide qué tan atractivo es el anuncio para quien lo ve. Si cae con el tiempo, prueba otra imagen o un gancho distinto.","next":"cvr","gl":"glosario-ctr"},{"id":"cvr","code":"CVR","name":"Tasa de conversión","cat":"anuncio","q":"¿Los clics se convierten en resultados?","ins":[{"k":"conv","label":"Conversiones","min":0,"max":1000,"step":1,"def":30,"u":"n"},{"k":"clics","label":"Clics","min":10,"max":20000,"step":10,"def":1500,"u":"n"}],"u":"%","up":true,"t":[2,0.1,20,0.1],"scale":null,"bands":null,"bandNote":"","formula":"CVR = conversiones ÷ clics × 100","expr":"{conv} ÷ {clics} × 100","mean":"Si el CTR es bueno pero el CVR es bajo, el problema suele estar en la página de destino, no en el anuncio.","next":"cpa","gl":"glosario-cvr"},{"id":"frecuencia","code":"Frecuencia","name":"Veces que te ve cada persona","cat":"anuncio","q":"¿Estoy cansando a mi público?","ins":[{"k":"imp","label":"Impresiones","min":1000,"max":2000000,"step":1000,"def":120000,"u":"n"},{"k":"alc","label":"Alcance (personas únicas)","min":500,"max":1000000,"step":500,"def":40000,"u":"n"}],"u":"v","up":false,"t":[3,1,10,0.5],"scale":null,"bands":null,"bandNote":"","formula":"Frecuencia = impresiones ÷ alcance","expr":"{imp} ÷ {alc}","mean":"Si sube mucho y el CTR baja, la misma gente ya vio tu anuncio demasiadas veces: renueva la creatividad o amplía el público.","next":"ctr","gl":"glosario#frecuencia"},{"id":"hook-rate","code":"Hook rate","name":"Tasa de enganche del video","cat":"contenido","q":"¿Los primeros 3 segundos detienen el scroll?","ins":[{"k":"v3","label":"Reproducciones de 3 segundos","min":0,"max":100000,"step":100,"def":9000,"u":"n"},{"k":"imp","label":"Impresiones","min":1000,"max":500000,"step":1000,"def":40000,"u":"n"}],"u":"%","up":true,"t":null,"scale":50,"bands":[[0,20,"Débil","La mayoría pasa de largo. Cambia los primeros 3 segundos: la primera imagen, la primera frase o el texto en pantalla.","#F87171"],[20,30,"Aceptable","El inicio funciona, pero hay margen. Prueba otro gancho manteniendo el resto del video igual.","#FDE68A"],[30,100,"Bueno","El gancho detiene a la gente. Ahora mira el hold rate para saber si se quedan.","#C8F169"]],"bandNote":"Rangos referenciales para Meta (vista de 3 s). Meta no publica un estándar oficial; cambian por ubicación (Reels y Stories suelen marcar menos) y TikTok usa 2 s. Lo mejor es compararte con el promedio de tu propia cuenta.","formula":"Hook rate = reproducciones de 3 s ÷ impresiones × 100","expr":"{v3} ÷ {imp} × 100","mean":"De cada 100 veces que tu video aparece, cuántas personas se quedan al menos 3 segundos. Mide si el inicio del video llama la atención, no si el video vende.","next":"hold-rate","gl":"glosario#hook-rate"},{"id":"hold-rate","code":"Hold rate","name":"Tasa de retención del video","cat":"contenido","q":"¿Los que se detienen se quedan a ver el video?","ins":[{"k":"tp","label":"ThruPlays (15 segundos o el video completo)","min":0,"max":50000,"step":50,"def":2300,"u":"n"},{"k":"v3","label":"Reproducciones de 3 segundos","min":100,"max":100000,"step":100,"def":9000,"u":"n"}],"u":"%","up":true,"t":null,"scale":50,"bands":[[0,20,"Débil","Detienes a la gente pero se va enseguida: el video no cumple lo que prometió el gancho o tarda en llegar al punto.","#F87171"],[20,30,"Aceptable","Retienes a una parte. Acorta el video o adelanta lo más interesante.","#FDE68A"],[30,100,"Bueno","La historia sostiene la atención. Si aun así no hay clics, revisa el llamado a la acción.","#C8F169"]],"bandNote":"Rangos referenciales: las fuentes no coinciden y dependen mucho del largo del video (los videos cortos retienen más por defecto). Compárate contra tus propios videos de largo parecido.","formula":"Hold rate = ThruPlays ÷ reproducciones de 3 s × 100","expr":"{tp} ÷ {v3} × 100","mean":"De cada 100 personas que se detuvieron, cuántas siguieron mirando hasta los 15 segundos o el final. El hook trae a la gente; el hold dice si el contenido la retiene.","next":"engagement","gl":"glosario#hold-rate"},{"id":"engagement","code":"ER alcance","name":"Tasa de interacción (engagement) por alcance","cat":"contenido","q":"¿Mi contenido genera conversación?","ins":[{"k":"int","label":"Interacciones (me gusta, comentarios, compartidos, guardados)","min":0,"max":20000,"step":10,"def":900,"u":"n"},{"k":"alc","label":"Alcance","min":100,"max":500000,"step":100,"def":20000,"u":"n"}],"u":"%","up":true,"t":[3,0.5,20,0.5],"scale":null,"bands":null,"bandNote":"","formula":"Engagement = interacciones ÷ alcance × 100","expr":"{int} ÷ {alc} × 100","mean":"Calcúlalo siempre con la misma base (alcance o seguidores) para comparar tus publicaciones entre sí.","next":"er-seg","gl":"glosario#tasa-de-interaccion-o-engagement"},{"id":"er-seg","code":"ER seguidores","name":"Tasa de interacción (engagement) por seguidores","cat":"contenido","q":"¿Mi comunidad interactúa con lo que publico?","ins":[{"k":"int","label":"Interacciones de la publicación","min":0,"max":20000,"step":10,"def":620,"u":"n"},{"k":"seg","label":"Seguidores de la cuenta","min":100,"max":1000000,"step":100,"def":18000,"u":"n"}],"u":"%","up":true,"t":[2,0.5,20,0.5],"scale":null,"bands":null,"bandNote":"","formula":"Engagement = interacciones ÷ seguidores × 100","expr":"{int} ÷ {seg} × 100","mean":"Mide la interacción contra tu comunidad completa, no solo contra quienes vieron la publicación. Suele salir más bajo que el engagement por alcance, porque no todos tus seguidores ven cada publicación.","next":"tasa-guardado","gl":"glosario#tasa-de-interaccion-o-engagement"},{"id":"crec-seg","code":"Seguidores","name":"Crecimiento de seguidores","cat":"contenido","q":"¿Mi cuenta está creciendo?","ins":[{"k":"gan","label":"Seguidores ganados","min":0,"max":20000,"step":10,"def":450,"u":"n"},{"k":"per","label":"Seguidores perdidos","min":0,"max":20000,"step":10,"def":80,"u":"n"},{"k":"ini","label":"Seguidores al inicio del periodo","min":100,"max":1000000,"step":100,"def":15000,"u":"n"}],"u":"%","up":true,"t":[5,0.5,50,0.5],"scale":null,"bands":null,"bandNote":"","formula":"Crecimiento = (ganados − perdidos) ÷ seguidores iniciales × 100","expr":"({gan} − {per}) ÷ {ini} × 100","mean":"Más seguidores no es más ventas. Úsalo junto al engagement para saber si la gente nueva de verdad te mira.","next":"engagement","gl":""},{"id":"tasa-guardado","code":"Guardados","name":"Tasa de guardados","cat":"contenido","q":"¿Mi contenido es tan útil que lo guardan?","ins":[{"k":"guar","label":"Guardados","min":0,"max":5000,"step":5,"def":120,"u":"n"},{"k":"alc","label":"Alcance","min":100,"max":500000,"step":100,"def":20000,"u":"n"}],"u":"%","up":true,"t":[1,0.1,10,0.1],"scale":null,"bands":null,"bandNote":"","formula":"Tasa de guardados = guardados ÷ alcance × 100","expr":"{guar} ÷ {alc} × 100","mean":"Un guardado dice \"esto me sirve para después\". Es buena señal para contenido educativo como guías y listas.","next":"crec-seg","gl":""},{"id":"ticket","code":"Ticket","name":"Ticket promedio","cat":"cliente","q":"¿Cuánto compra cada cliente en promedio?","ins":[{"k":"ing","label":"Ingresos del periodo","min":50000,"max":50000000,"step":50000,"def":3500000,"u":"$"},{"k":"ped","label":"Número de pedidos","min":1,"max":2000,"step":1,"def":100,"u":"n"}],"u":"$","up":true,"t":[30000,5000,500000,5000],"scale":null,"bands":null,"bandNote":"","formula":"Ticket promedio = ingresos ÷ pedidos","expr":"{ing} ÷ {ped}","mean":"Subir el ticket (packs, envío gratis desde cierto monto) te deja pagar más por cada venta sin perder plata.","next":"ltv","gl":"glosario#ticket-promedio"},{"id":"cac","code":"CAC","name":"Costo de adquisición de clientes","cat":"cliente","q":"¿Cuánto me cuesta conseguir un cliente nuevo?","ins":[{"k":"mkt","label":"Gasto en marketing","min":50000,"max":10000000,"step":50000,"def":800000,"u":"$"},{"k":"ven","label":"Gasto en ventas (sueldos, comisiones, herramientas)","min":0,"max":10000000,"step":50000,"def":400000,"u":"$"},{"k":"cli","label":"Clientes nuevos","min":1,"max":1000,"step":1,"def":20,"u":"n"}],"u":"$","up":false,"t":[50000,2000,500000,1000],"scale":null,"bands":null,"bandNote":"","formula":"CAC = (marketing + ventas) ÷ clientes nuevos","expr":"({mkt} + {ven}) ÷ {cli}","mean":"A diferencia del CPA, el CAC suma todo lo que gastas para conseguir clientes, no solo los anuncios.","next":"ltv-cac","gl":"glosario-cac"},{"id":"ltv","code":"LTV","name":"Valor de vida del cliente","cat":"cliente","q":"¿Cuánto me deja un cliente en toda la relación?","ins":[{"k":"tk","label":"Ticket promedio","min":5000,"max":1000000,"step":5000,"def":35000,"u":"$"},{"k":"fr","label":"Compras por año","min":1,"max":24,"step":1,"def":4,"u":"n"},{"k":"an","label":"Años que se queda como cliente","min":1,"max":10,"step":1,"def":2,"u":"n"},{"k":"mg","label":"Margen de ganancia (%)","min":5,"max":90,"step":1,"def":40,"u":"n"}],"u":"$","up":true,"t":[100000,10000,2000000,5000],"scale":null,"bands":null,"bandNote":"","formula":"LTV = ticket × compras por año × años × margen","expr":"{tk} × {fr} × {an} × {mg}%","mean":"Es lo máximo que te conviene pagar por un cliente. Si tu CAC se acerca a tu LTV, el negocio no escala.","next":"ltv-cac","gl":"glosario-ltv"},{"id":"ltv-cac","code":"LTV/CAC","name":"Relación valor del cliente vs. costo","cat":"cliente","q":"¿Cuántas veces recupero lo que pagué por un cliente?","ins":[{"k":"ltv","label":"LTV (valor de vida del cliente)","min":10000,"max":3000000,"step":5000,"def":144000,"u":"$"},{"k":"cac","label":"CAC (costo de adquisición)","min":2000,"max":1000000,"step":1000,"def":48000,"u":"$"}],"u":"x","up":true,"t":[3,1,10,0.5],"scale":null,"bands":null,"bandNote":"","formula":"LTV/CAC = LTV ÷ CAC","expr":"{ltv} ÷ {cac}","mean":"Bajo 1x pierdes plata con cada cliente. Muchos equipos se ponen como objetivo 3x, pero define el tuyo según tu margen y tu caja.","next":"cac","gl":"glosario#ltv-cac"}],"sim":[{"k":"inv","label":"Inversión mensual en anuncios","min":50000,"max":5000000,"step":50000,"def":500000,"u":"$"},{"k":"cpm","label":"Costo por mil impresiones (CPM)","min":500,"max":15000,"step":100,"def":3000,"u":"$"},{"k":"ctr","label":"De cada 100 que ven el anuncio, cuántos hacen clic (CTR %)","min":0.2,"max":6,"step":0.1,"def":1.2,"u":"%"},{"k":"cvr","label":"De cada 100 clics, cuántos dejan sus datos (%)","min":0.5,"max":20,"step":0.5,"def":3,"u":"%"},{"k":"cierre","label":"De cada 100 leads, cuántos compran (%)","min":1,"max":50,"step":1,"def":10,"u":"%"},{"k":"ticket","label":"Ticket promedio por venta","min":10000,"max":2000000,"step":10000,"def":250000,"u":"$"}]}</script>
 </main>
 
 <footer>
@@ -267,6 +413,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<script src="script.js?v=20261109d" defer></script>
+<script src="script.js?v=20261110a" defer></script>
 </body>
 </html>
