@@ -2070,6 +2070,8 @@ a.ini-tarjeta:hover, .ini-tarjeta:hover { transform: translateY(-8px); box-shado
 .ini-videos-pista:focus-visible { outline: 3px solid var(--azul); outline-offset: 4px; border-radius: 12px; }
 /* El inicio termina en una banda negra: el footer va pegado, sin franja crema */
 main.inicio + footer { margin-top: 0; }
+/* Las tarjetas que entran desde los lados no deben ensanchar la página en celular */
+main.inicio { overflow-x: clip; }
 /* Header en celulares: logo, botón de menú y Contacto en una sola fila */
 @media (max-width: 900px) {
   .js .cabecera-int { flex-wrap: wrap; gap: 8px; }
