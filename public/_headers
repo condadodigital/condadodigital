@@ -20,3 +20,12 @@
 
 /script.js
   Cache-Control: public, max-age=0, must-revalidate
+
+/conde.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/conde.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+/conde-terminos.json
+  Cache-Control: public, max-age=0, must-revalidate

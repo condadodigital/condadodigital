@@ -26,6 +26,13 @@ Cloudflare Pages publica **solo la carpeta `public/`** (directorio de salida: `p
 - Archivos internos: no hace falta ocultarlos. Si un archivo no debe publicarse, déjalo fuera de `public/` (por ejemplo, en `borradores/` o `contenido/`). Nunca pongas en `public/` notas, borradores ni archivos de trabajo.
 - No dejes notas internas en comentarios HTML de las páginas publicadas: cualquiera puede verlas con «Ver código fuente». Las notas van en `borradores/`, en el README o en `contenido/`.
 
+## El Conde (asistente guiado)
+- Archivos: `public/conde.js` (panel, se descarga solo al abrirlo), `public/conde.css`, `public/conde-terminos.json` (los términos que busca) e imágenes en `public/img/conde/`. El botón y el aviso los crea un cargador pequeño al final de `public/script.js`.
+- **Cada vez que cambies el glosario** (`public/glosario.html`), regenera los términos de El Conde y publica los dos archivos juntos:
+  `node herramientas/generar-conde-terminos.mjs`
+  Necesita Node.js 18 o superior. El script avisa cuántos términos escribió; si no encuentra ninguno o falta un dato, se detiene sin tocar el archivo.
+- Si cambias `conde.js` o `conde.css`, sube su versión (`?v=`) en `public/script.js` (constante `CONDE_V`); si cambias `script.js`, sube su versión en todas las páginas, como se indica arriba.
+
 ## Cómo crear contenido nuevo con las plantillas
 Las plantillas están en `borradores/` y usan el mismo encabezado, menú, pie y GTM que el resto del sitio:
 

@@ -1000,3 +1000,158 @@ window.cdNum = (function () {
   });
   pintarDiag();
 })();
+
+// ============================================
+// El Conde: cargador liviano del asistente guiado.
+// Aquí solo se crean el botón y el aviso. El panel (conde.js y conde.css)
+// se descarga con import() la primera vez que alguien lo abre.
+// Sin JavaScript no aparece nada.
+// ============================================
+(function () {
+  if (!("IntersectionObserver" in window) || !window.Promise) return;
+  const CONDE_V = "20261110a";
+  const CEL = window.matchMedia("(max-width: 600px)");
+  const CLAVE_AVISO = "cd_conde_aviso";
+  let boton, envoltura, aviso = null, modulo = null, cargando = null, precargado = false;
+  let enBanda = false, abierto = false;
+
+  const ses = {
+    leer() { try { return sessionStorage.getItem(CLAVE_AVISO); } catch (e) { return "1"; } },
+    marcar() { try { sessionStorage.setItem(CLAVE_AVISO, "1"); } catch (e) {} }
+  };
+  const bannerVisible = () => !!document.querySelector(".cookies-banner");
+
+  function actualizar() {
+    // En celular, nada mientras el banner de cookies espera una respuesta.
+    // En todos los tamaños, nada mientras se ve la banda final o el footer (salvo con el panel abierto).
+    const ocultar = !abierto && (enBanda || (CEL.matches && bannerVisible()));
+    envoltura.classList.toggle("conde-fuera", ocultar);
+    envoltura.toggleAttribute("inert", ocultar);
+    if (ocultar) cerrarAviso();
+    else if (avisoPendiente) mostrarAviso();
+  }
+
+  function precargar() {
+    if (precargado) return;
+    precargado = true;
+    const css = document.createElement("link");
+    css.rel = "preload"; css.as = "style"; css.href = "conde.css?v=" + CONDE_V;
+    const js = document.createElement("link");
+    js.rel = "modulepreload"; js.href = "conde.js?v=" + CONDE_V;
+    document.head.append(css, js);
+  }
+
+  function cargar() {
+    if (cargando) return cargando;
+    precargar();
+    const hoja = new Promise((ok) => {
+      const l = document.createElement("link");
+      l.rel = "stylesheet"; l.href = "conde.css?v=" + CONDE_V;
+      l.onload = ok; l.onerror = ok;
+      document.head.appendChild(l);
+    });
+    cargando = Promise.all([hoja, import("./conde.js?v=" + CONDE_V)]).then((r) => {
+      modulo = r[1].iniciar({
+        boton: boton,
+        version: CONDE_V,
+        alCambiar(estado) {
+          abierto = estado;
+          envoltura.classList.toggle("conde-abierto", estado);
+          boton.setAttribute("aria-expanded", estado ? "true" : "false");
+          boton.setAttribute("aria-label", estado ? "Cerrar la ayuda de El Conde" : "Abrir la ayuda de El Conde");
+          if (estado) boton.setAttribute("aria-controls", "conde-panel");
+          actualizar();
+        }
+      });
+      return modulo;
+    }).catch(() => { cargando = null; window.location.href = "glosario"; });
+    return cargando;
+  }
+
+  function alternar() {
+    cerrarAviso();
+    ses.marcar(); avisoPendiente = false;
+    boton.setAttribute("aria-busy", "true");
+    cargar().then((m) => { boton.removeAttribute("aria-busy"); if (m) m.alternar(); });
+  }
+
+  // --- Aviso «¿Necesitas ayuda?»: una vez por visita, a los 20 s o al pasar la mitad de la página ---
+  let avisoPendiente = false, avisoTimer = null;
+  function cerrarAviso() {
+    if (!aviso) return;
+    clearTimeout(avisoTimer);
+    aviso.remove(); aviso = null;
+  }
+  function mostrarAviso() {
+    if (aviso || abierto || ses.leer()) { avisoPendiente = false; return; }
+    if (envoltura.classList.contains("conde-fuera")) { avisoPendiente = true; return; }
+    avisoPendiente = false;
+    ses.marcar();
+    aviso = document.createElement("div");
+    aviso.className = "conde-aviso";
+    aviso.setAttribute("role", "status");
+    aviso.innerHTML =
+      '<span class="conde-aviso-cola" aria-hidden="true"></span>' +
+      '<div class="conde-aviso-fila">' +
+      '<button type="button" class="conde-aviso-abrir"><strong>¿Necesitas ayuda?</strong><span>Te ayudo a encontrar lo que buscas</span></button>' +
+      '<button type="button" class="conde-aviso-x" aria-label="Cerrar el aviso"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+      "</div>" +
+      '<span class="conde-cuenta" aria-hidden="true"></span>';
+    aviso.querySelector(".conde-aviso-abrir").addEventListener("click", alternar);
+    aviso.querySelector(".conde-aviso-x").addEventListener("click", () => { cerrarAviso(); boton.focus(); });
+    envoltura.appendChild(aviso);
+    avisoTimer = setTimeout(cerrarAviso, 8000);
+  }
+  function programarAviso() {
+    if (ses.leer()) return;
+    let listo = false;
+    const disparar = () => {
+      if (listo) return;
+      listo = true;
+      window.removeEventListener("scroll", alDesplazar);
+      mostrarAviso();
+    };
+    const alDesplazar = () => {
+      const h = document.documentElement;
+      if (h.scrollTop + window.innerHeight / 2 >= h.scrollHeight / 2) disparar();
+    };
+    setTimeout(disparar, 20000);
+    window.addEventListener("scroll", alDesplazar, { passive: true });
+  }
+
+  function crear() {
+    envoltura = document.createElement("div");
+    envoltura.className = "conde-lanzador";
+    envoltura.innerHTML =
+      '<button type="button" class="conde-boton" aria-label="Abrir la ayuda de El Conde" aria-expanded="false">' +
+      '<img src="img/conde/conde-frente-cabeza.webp" alt="" width="135" height="143" decoding="async"></button>' +
+      '<span class="conde-insignia" aria-hidden="true"><svg width="28" height="26" viewBox="0 0 28 26"><path d="M4 2h20a3 3 0 0 1 3 3v11a3 3 0 0 1-3 3H12l-6 5v-5H4a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3z" fill="#C8F169" stroke="#05070A" stroke-width="1.6" stroke-linejoin="round"/><circle cx="8.5" cy="10.5" r="1.8" fill="#05070A"/><circle cx="14" cy="10.5" r="1.8" fill="#05070A"/><circle cx="19.5" cy="10.5" r="1.8" fill="#05070A"/></svg></span>';
+    boton = envoltura.querySelector(".conde-boton");
+    boton.addEventListener("click", alternar);
+    ["pointerenter", "focus", "touchstart"].forEach((t) => boton.addEventListener(t, precargar, { passive: true, once: true }));
+    document.body.appendChild(envoltura);
+
+    // Banda final del inicio y footer
+    const vistos = new Set();
+    const io = new IntersectionObserver((entradas) => {
+      entradas.forEach((en) => { if (en.isIntersecting) vistos.add(en.target); else vistos.delete(en.target); });
+      enBanda = vistos.size > 0;
+      actualizar();
+    });
+    document.querySelectorAll(".ini-final, body > footer").forEach((el) => io.observe(el));
+
+    // Banner de cookies: cuando la persona elige, el banner se quita del DOM
+    if (bannerVisible()) {
+      const mo = new MutationObserver(() => { if (!bannerVisible()) { mo.disconnect(); actualizar(); } });
+      mo.observe(document.body, { childList: true });
+    }
+    if (CEL.addEventListener) CEL.addEventListener("change", actualizar);
+    actualizar();
+    programarAviso();
+  }
+
+  // Después de "load", con margen y en un momento ocioso: el botón nunca compite con la carga de la página
+  const despues = () => setTimeout(() => (window.requestIdleCallback ? requestIdleCallback(crear, { timeout: 3000 }) : crear()), 1500);
+  if (document.readyState === "complete") despues();
+  else window.addEventListener("load", despues, { once: true });
+})();

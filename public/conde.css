@@ -1,0 +1,200 @@
+/* El Conde: panel, vistas y personaje. El botón y el aviso están en styles.css. */
+
+/* ---------- Panel ---------- */
+.conde-panel {
+  position: fixed; z-index: 72; right: 24px; bottom: 104px; width: 400px; height: 640px;
+  max-height: calc(100vh - 128px); display: flex; flex-direction: column; overflow: hidden;
+  background: var(--bg); border: 1px solid var(--borde-tarjeta); border-radius: 22px; box-shadow: 0 24px 60px rgba(11,21,18,.32);
+  color: var(--negro-cabecera); font-family: var(--font-body);
+}
+.conde-panel[hidden], .conde-figura[hidden], .conde-fondo[hidden], .conde-globo-fijo[hidden] { display: none; }
+.conde-fondo { position: fixed; inset: 0; z-index: 71; background: rgba(5,7,10,.55); }
+.conde-panel button { font: inherit; cursor: pointer; }
+.conde-panel button:focus-visible, .conde-panel a:focus-visible, .conde-panel input:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
+.conde-panel .conde-osc button:focus-visible, .conde-panel .conde-osc a:focus-visible { outline-color: var(--accent); }
+/* Los títulos reciben el foco solo para orientar al lector de pantalla: no son interactivos */
+.conde-panel [tabindex="-1"]:focus { outline: none; }
+
+.conde-cab { flex: none; position: relative; display: flex; align-items: center; gap: 12px; padding: 12px 12px 12px 16px; background: var(--negro-cabecera); }
+.conde-cab-cara { flex: none; width: 46px; height: 46px; border-radius: 999px; background: var(--primary); border: 2px solid var(--accent); overflow: hidden; display: flex; justify-content: center; }
+.conde-cab-cara img { display: block; width: 80%; height: auto; margin-top: 12%; }
+.conde-cab-tx { flex: 1; min-width: 0; }
+.conde-cab h2 { margin: 0; font-family: var(--font-head); font-weight: 700; font-size: 20px; line-height: 1.2; color: var(--white); letter-spacing: 0; }
+.conde-cab p { margin: 2px 0 0; font-size: 13px; color: #B8C2CC; }
+.conde-x { width: 44px; height: 44px; flex: none; background: transparent; border: 1.5px solid rgba(255,255,255,.25); border-radius: 12px; color: var(--white); display: flex; align-items: center; justify-content: center; }
+.conde-x:hover { border-color: var(--accent); }
+.conde-cab-linea { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: linear-gradient(90deg, #C8F169, #2DD4BF, #1D4ED8); }
+.conde-cuerpo { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 18px 16px 20px; }
+.conde-pie { flex: none; margin: 0; border-top: 1px solid var(--borde-tarjeta); padding: 10px 16px; font-size: 12.5px; line-height: 1.45; color: var(--texto-suave); display: flex; gap: 8px; align-items: flex-start; }
+.conde-pie svg { flex: none; margin-top: 1px; }
+
+/* ---------- Contenido ---------- */
+.conde-saludo { background: var(--white); border: 1.5px solid var(--borde-tarjeta); border-radius: 6px 18px 18px 18px; padding: 14px 16px; font-size: 16px; line-height: 1.55; }
+.conde-etq { display: block; margin: 18px 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--azul); }
+.conde-ops { display: flex; flex-direction: column; gap: 10px; }
+.conde-op {
+  display: flex; align-items: center; gap: 12px; min-height: 64px; width: 100%; background: var(--white); border: 1.5px solid var(--borde-tarjeta);
+  border-radius: 16px; padding: 10px 12px; text-align: left; color: var(--negro-cabecera);
+}
+.conde-op:hover { border-color: var(--primary); background: var(--white); }
+.conde-op-ico { flex: none; width: 42px; height: 42px; border-radius: 12px; background: var(--azul-noche); display: flex; align-items: center; justify-content: center; }
+.conde-op-ico-verde { background: var(--primary); }
+.conde-op-tx { flex: 1; }
+.conde-op-tx strong { display: block; font-size: 16px; }
+.conde-op-tx span { display: block; font-size: 14px; color: var(--texto-suave); }
+.conde-op-chica { min-height: 52px; border-radius: 14px; padding: 10px 14px; font-size: 15.5px; font-weight: 700; }
+.conde-ops-chicas { gap: 8px; margin-top: 14px; }
+.conde-volver { min-height: 44px; background: transparent; border: 0; padding: 0 6px 0 0; color: var(--primary); font-weight: 700; font-size: 15px; }
+.conde-volver:hover { text-decoration: underline; text-underline-offset: 3px; }
+.conde-subrayado { text-decoration: underline; text-underline-offset: 3px; }
+.conde-panel h3 { margin: 4px 0 12px; font-family: var(--font-head); font-weight: 700; font-size: 23px; line-height: 1.2; color: var(--negro-cabecera); letter-spacing: 0; }
+.conde-label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.conde-input { width: 100%; box-sizing: border-box; height: 50px; border: 1.5px solid #6B7770; border-radius: 12px; padding: 0 14px; font: inherit; font-size: 16px; background: var(--white); color: var(--negro-cabecera); }
+.conde-conteo { margin: 8px 0 12px; font-size: 13.5px; color: var(--texto-suave); }
+.conde-lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.conde-res { width: 100%; min-height: 50px; text-align: left; background: var(--white); border: 1.5px solid var(--borde-tarjeta); border-radius: 12px; padding: 8px 12px; color: var(--negro-cabecera); }
+.conde-res:hover { background: #EEF4EF; }
+.conde-res strong { font-size: 15.5px; }
+.conde-res span { font-size: 13.5px; color: var(--texto-suave); }
+.conde-caja { background: var(--white); border: 1.5px solid var(--borde-tarjeta); border-radius: 16px; padding: 14px 16px; font-size: 15px; line-height: 1.55; }
+.conde-link { color: var(--primary); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.conde-link:hover { color: var(--negro-cabecera); }
+.conde-link-bloque { display: flex; align-items: center; justify-content: center; min-height: 44px; }
+.conde-link-izq { justify-content: flex-start; }
+.conde-ficha { background: var(--white); border: 1.5px solid var(--borde-tarjeta); border-radius: 18px; padding: 18px; margin-bottom: 10px; }
+.conde-ficha p { margin: 0; }
+.conde-ficha-tema { font-size: 12px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--azul); }
+.conde-ficha h4 { margin: 6px 0 0; font-family: var(--font-head); font-weight: 700; font-size: 28px; line-height: 1.1; color: var(--negro-cabecera); overflow-wrap: anywhere; }
+.conde-ficha .conde-ficha-full { margin-top: 4px; font-size: 14px; color: var(--texto-suave); }
+.conde-ficha .conde-ficha-def { margin-top: 12px; font-size: 16px; line-height: 1.6; }
+.conde-ficha-acc { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+.conde-btn-verde, .conde-btn-linea, .conde-btn-lima { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 48px; padding: 6px 14px; font-weight: 700; border-radius: 14px; text-decoration: none; }
+.conde-btn-verde { background: var(--primary); color: var(--white); }
+.conde-btn-verde:hover { background: var(--primary-hover); color: var(--white); }
+.conde-btn-linea { color: var(--primary); border: 1.5px solid var(--primary); }
+.conde-btn-linea:hover { background: #EEF4EF; color: var(--primary); }
+.conde-preg { border: 0; margin: 0; padding: 0; min-width: 0; }
+.conde-preg legend { padding: 0; }
+.conde-preg .conde-etq { margin: 0; }
+.conde-preg-tx { display: block; margin-top: 6px; font-family: var(--font-head); font-weight: 600; font-size: 21px; line-height: 1.25; color: var(--negro-cabecera); }
+.conde-rec { background: radial-gradient(circle at 85% 0%, rgba(45,212,191,.25), rgba(5,7,10,0) 55%), var(--negro-banda); border-radius: 20px; padding: 20px; color: var(--white); }
+.conde-rec p { margin: 0; }
+.conde-rec-etq { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
+.conde-rec .conde-rec-n { margin-top: 8px; font-family: var(--font-head); font-weight: 700; font-size: 34px; line-height: 1; }
+.conde-rec .conde-rec-s { margin-top: 4px; font-size: 15px; color: #B8C2CC; }
+.conde-rec .conde-rec-p { margin-top: 14px; font-size: 17px; line-height: 1.5; }
+.conde-rec .conde-rec-fo { margin-top: 12px; display: inline-block; font-size: 14px; color: var(--accent); background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 8px 10px; }
+.conde-btn-lima { margin-top: 16px; min-height: 50px; background: var(--accent); color: var(--negro-banda); border-radius: 999px; }
+.conde-btn-lima:hover { color: var(--negro-banda); background: #D6F68C; }
+.conde-porque { margin: 12px 2px 0; font-size: 13.5px; line-height: 1.5; color: var(--texto-suave); }
+.conde-rec-acc { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 6px; }
+.conde-intro { margin: 0 0 14px; font-size: 15px; line-height: 1.55; color: var(--texto-suave); }
+.conde-rutas { display: flex; flex-direction: column; gap: 10px; }
+.conde-ruta { background: var(--white); border: 1.5px solid var(--borde-tarjeta); border-radius: 16px; padding: 14px 16px; }
+.conde-ruta h4 { margin: 0; font-size: 16px; font-family: var(--font-body); font-weight: 700; color: var(--negro-cabecera); letter-spacing: 0; }
+.conde-ruta p { margin: 2px 0 8px; font-size: 14px; color: var(--texto-suave); }
+.conde-ruta ol { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.9; }
+.conde-ruta a { display: inline-block; min-height: 24px; }
+
+/* ---------- Personaje (decorativo) ---------- */
+/* En escritorio pasa por detrás del banner de cookies (z-index 60), nunca encima */
+.conde-figura { position: fixed; z-index: 55; right: 440px; bottom: 28px; width: 110px; height: 216px; pointer-events: none; }
+.conde-mov { position: absolute; inset: 0; --conde-track: 820px; --conde-ciclo: .75s; --conde-vuelta: 20s; }
+.conde-globo-pos { position: absolute; left: -60px; right: -10px; bottom: calc(100% + 10px); display: flex; justify-content: center; }
+.conde-globo {
+  margin: 0; background: var(--white); color: var(--negro-cabecera); border: 1.5px solid var(--borde-tarjeta); border-radius: 14px;
+  padding: 7px 12px; font-size: 14px; font-weight: 700; white-space: nowrap; box-shadow: 0 8px 20px rgba(11,21,18,.16); font-family: var(--font-body); line-height: 1.4;
+}
+.conde-globo[hidden] { display: none; }
+.conde-ciclo { display: grid; }
+.conde-ciclo > span { grid-area: 1 / 1; }
+.conde-ciclo > span:not(:first-child) { opacity: 0; }
+.conde-sombra { position: absolute; left: 12%; right: 12%; bottom: -7px; height: 14px; border-radius: 50%; background: radial-gradient(closest-side, rgba(5,7,10,.38), rgba(5,7,10,0)); }
+.conde-gira { position: absolute; inset: 0; }
+.conde-perfil { position: absolute; left: 14.1%; bottom: -3.2%; width: 71.8%; height: 102.8%; opacity: 0; }
+.conde-rebote { position: absolute; inset: 0; }
+.conde-perfil img, .conde-frente img { position: absolute; display: block; max-width: none; }
+.conde-ba, .conde-bf { left: 32%; top: 38.57%; width: 46%; height: 43.1%; transform-origin: 47.83% 4.97%; }
+.conde-pa, .conde-pf { left: 35.33%; top: 73.57%; width: 57.33%; height: 26.43%; transform-origin: 32.56% 2.7%; }
+.conde-ba, .conde-pa { filter: brightness(.7); }
+.conde-torso { left: 0; top: 35%; width: 100%; height: 39.52%; }
+.conde-cab2 { left: 0; top: 0; width: 100%; height: 35.95%; transform-origin: 55% 100%; }
+.conde-frente { position: absolute; inset: 0; transform-origin: 50% 100%; }
+.conde-accion { position: relative; width: 100%; height: 100%; transform-origin: 50% 100%; }
+.conde-cuerpo-img { left: 0; top: 34.23%; width: 100%; height: 65.77%; }
+.conde-cabeza { left: 17.31%; top: 0; width: 64.9%; height: 34.96%; transform-origin: 50% 100%; }
+.conde-chispa { position: absolute; border-radius: 2px; opacity: 0; }
+.conde-ch1 { left: -6%; top: 6%; width: 10px; height: 10px; background: #C8F169; }
+.conde-ch2 { right: -8%; top: 0; width: 12px; height: 12px; background: #2DD4BF; animation-delay: .15s; }
+.conde-ch3 { right: 2%; top: 26%; width: 8px; height: 8px; background: #C8F169; animation-delay: .3s; }
+.conde-globo-fijo { position: fixed; z-index: 74; left: 16px; right: 16px; top: 22px; display: flex; justify-content: center; pointer-events: none; }
+.conde-globo-fijo .conde-globo { font-size: 14px; }
+/* En escritorio solo hay espacio para pasear con una ventana ancha */
+@media (min-width: 601px) and (max-width: 1099px) { .conde-figura { display: none; } }
+
+/* ---------- Celular: hoja inferior modal ---------- */
+@media (max-width: 600px) {
+  .conde-panel { left: 0; right: 0; bottom: 0; width: auto; height: min(640px, 76vh); max-height: none; border-radius: 22px 22px 0 0; border-bottom: 0; }
+  .conde-figura { z-index: 73; right: 16px; bottom: calc(min(640px, 76vh) - 6px); width: 70px; height: 138px; }
+  .conde-figura .conde-globo-pos { display: none; }
+}
+
+/* ---------- Movimiento (solo si la persona no pidió reducirlo) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .conde-panel { animation: conde-panel .2s ease-out both; }
+  .conde-op, .conde-res { transition: border-color .15s, background .15s; }
+  .conde-globo-in { animation: conde-in .25s ease-out both; }
+  .conde-act-idle { animation: conde-bob 3s ease-in-out infinite; }
+  .conde-act-piensa { animation: conde-bob 3s ease-in-out infinite; }
+  .conde-act-piensa .conde-cabeza { animation: conde-think 2.2s ease-in-out infinite; }
+  .conde-act-explica { animation: conde-lean .45s ease-out forwards; }
+  .conde-act-explica .conde-cabeza { animation: conde-nod .8s ease-in-out .3s 3; }
+  .conde-act-celebra { animation: conde-jump .7s cubic-bezier(.3,1.5,.5,1) 2, conde-bob 3s ease-in-out 1.4s infinite; }
+  .conde-act-celebra .conde-chispa { animation: conde-chispa .9s ease-out 3; }
+  .conde-camina { animation: conde-pasea var(--conde-vuelta) linear infinite; will-change: transform; }
+  .conde-camina .conde-gira { animation: conde-gira var(--conde-vuelta) step-end infinite; }
+  .conde-camina .conde-frente { animation: conde-ver-frente var(--conde-vuelta) linear infinite; }
+  .conde-camina .conde-perfil { animation: conde-ver-perfil var(--conde-vuelta) linear infinite; }
+  .conde-camina .conde-pf { animation: conde-pierna var(--conde-ciclo) ease-in-out infinite; }
+  .conde-camina .conde-pa { animation: conde-pierna var(--conde-ciclo) ease-in-out calc(var(--conde-ciclo) / -2) infinite; }
+  .conde-camina .conde-bf { animation: conde-brazo var(--conde-ciclo) ease-in-out infinite; }
+  .conde-camina .conde-ba { animation: conde-brazo var(--conde-ciclo) ease-in-out calc(var(--conde-ciclo) / -2) infinite; }
+  .conde-camina .conde-rebote { animation: conde-rebote calc(var(--conde-ciclo) / 2) ease-in-out infinite; }
+  .conde-camina .conde-sombra { animation: conde-sombra calc(var(--conde-ciclo) / 2) ease-in-out infinite; }
+  .conde-camina .conde-cabeza { animation: conde-think 2.2s ease-in-out infinite; }
+  .conde-pausa, .conde-pausa .conde-gira { animation-play-state: paused; will-change: auto; }
+  .conde-pausa .conde-perfil { animation: none; opacity: 0; }
+  .conde-pausa .conde-frente { animation: none; opacity: 1; }
+  .conde-pausa .conde-sombra { animation: none; }
+  .conde-pausa .conde-cabeza { animation: conde-nod .8s ease-in-out infinite; }
+  .conde-act-asiente { animation: conde-bob 3s ease-in-out infinite; }
+  .conde-act-asiente .conde-cabeza { animation: conde-nod .8s ease-in-out infinite; }
+  .conde-ciclo > span { animation: conde-ciclo 10s linear infinite; }
+  .conde-ciclo > span:nth-child(2) { animation-delay: 2.5s; }
+  .conde-ciclo > span:nth-child(3) { animation-delay: 5s; }
+  .conde-ciclo > span:nth-child(4) { animation-delay: 7.5s; }
+}
+/* Con movimiento reducido el globo muestra una sola frase */
+@media (prefers-reduced-motion: reduce) {
+  .conde-ciclo > span:not(:first-child) { display: none; }
+}
+
+@keyframes conde-pasea { 0%, 12% { transform: translateX(0); } 45%, 58% { transform: translateX(calc(-1 * var(--conde-track))); } 90%, 100% { transform: translateX(0); } }
+@keyframes conde-gira { 0% { transform: scaleX(1); } 12% { transform: scaleX(-1); } 58% { transform: scaleX(1); } 100% { transform: scaleX(1); } }
+@keyframes conde-ver-frente { 0%, 11% { opacity: 1; } 12.5%, 44.5% { opacity: 0; } 46%, 57% { opacity: 1; } 58.5%, 89.5% { opacity: 0; } 91%, 100% { opacity: 1; } }
+@keyframes conde-ver-perfil { 0%, 11% { opacity: 0; } 12.5%, 44.5% { opacity: 1; } 46%, 57% { opacity: 0; } 58.5%, 89.5% { opacity: 1; } 91%, 100% { opacity: 0; } }
+@keyframes conde-pierna { 0%, 100% { transform: rotate(-24deg); } 50% { transform: rotate(24deg); } }
+@keyframes conde-brazo { 0%, 100% { transform: rotate(28deg); } 50% { transform: rotate(-28deg); } }
+@keyframes conde-rebote { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3.5%); } }
+@keyframes conde-sombra { 0%, 100% { transform: scaleX(1); opacity: 1; } 50% { transform: scaleX(.82); opacity: .7; } }
+@keyframes conde-ciclo { 0% { opacity: 0; } 3%, 22% { opacity: 1; } 25%, 100% { opacity: 0; } }
+@keyframes conde-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes conde-hop { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-14px); } }
+@keyframes conde-tilt { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-10deg); } }
+@keyframes conde-think { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(-12deg) translateY(-1px); } }
+@keyframes conde-lean { to { transform: rotate(4deg); } }
+@keyframes conde-nod { 0%, 100% { transform: rotate(0); } 35% { transform: rotate(7deg); } 70% { transform: rotate(-2deg); } }
+@keyframes conde-jump { 0%, 100% { transform: translateY(0) scale(1); } 40% { transform: translateY(-26px) scale(1.04); } }
+@keyframes conde-chispa { 0% { opacity: 0; transform: scale(.3); } 40% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: translateY(-16px) scale(.8); } }
+@keyframes conde-panel { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media print { .conde-panel, .conde-figura, .conde-fondo, .conde-globo-fijo { display: none !important; } }

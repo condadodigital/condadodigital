@@ -2720,3 +2720,48 @@ main.pg + footer { margin-top: 0; }
   }
 }
 @media (max-width: 520px) { .calc-txt { width: 7.5em; } }
+
+/* =====================================================================
+   EL CONDE: botón y aviso (el panel y el personaje están en conde.css)
+   ===================================================================== */
+.conde-lanzador { position: fixed; right: 24px; bottom: 24px; width: 64px; height: 64px; z-index: 58; }
+.conde-boton {
+  width: 100%; height: 100%; padding: 0; border-radius: 999px; background: var(--primary); border: 3px solid var(--bg);
+  box-shadow: 0 10px 26px rgba(11,21,18,.32); overflow: hidden; display: flex; align-items: flex-start; justify-content: center; cursor: pointer;
+}
+.conde-boton img { display: block; width: 80%; height: auto; margin-top: 12%; }
+.conde-abierto .conde-boton { border-color: var(--accent); }
+.conde-boton:focus-visible { outline: 3px solid var(--azul); outline-offset: 3px; }
+.conde-insignia { position: absolute; top: -8px; right: -8px; width: 28px; height: 26px; pointer-events: none; }
+.conde-abierto .conde-insignia { display: none; }
+.conde-fuera { visibility: hidden; opacity: 0; pointer-events: none; }
+.conde-aviso {
+  position: absolute; right: 82px; bottom: 6px; width: max-content; max-width: min(300px, calc(100vw - 120px));
+  background: var(--white); border: 1.5px solid var(--borde-tarjeta); border-radius: 16px; box-shadow: 0 14px 34px rgba(11,21,18,.18); color: var(--negro-cabecera);
+}
+.conde-aviso-cola { position: absolute; right: -8px; bottom: 20px; width: 14px; height: 14px; background: var(--white); border-right: 1.5px solid var(--borde-tarjeta); border-bottom: 1.5px solid var(--borde-tarjeta); transform: rotate(-45deg); }
+.conde-aviso-fila { position: relative; display: flex; align-items: center; gap: 2px; padding: 4px 4px 4px 6px; }
+.conde-aviso-abrir { min-height: 52px; background: transparent; border: 0; padding: 4px 10px; color: var(--negro-cabecera); text-align: left; font: inherit; cursor: pointer; border-radius: 12px; }
+.conde-aviso-abrir strong { display: block; font-size: 17px; }
+.conde-aviso-abrir span { display: block; font-size: 13.5px; color: var(--texto-suave); }
+.conde-aviso-x { width: 44px; height: 44px; flex: none; background: transparent; border: 0; border-radius: 12px; color: var(--texto-suave); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.conde-aviso-x:hover, .conde-aviso-abrir:hover { background: #EEF4EF; }
+.conde-aviso button:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
+.conde-cuenta { display: block; height: 3px; width: 100%; border-radius: 0 0 16px 16px; background: linear-gradient(90deg, #C8F169, #2DD4BF, #1D4ED8); }
+@media (max-width: 600px) {
+  .conde-lanzador { right: 16px; bottom: 16px; width: 56px; height: 56px; }
+  .conde-aviso { right: -2px; bottom: 74px; max-width: calc(100vw - 32px); }
+  .conde-aviso-cola { right: 22px; bottom: -8px; transform: rotate(45deg); }
+  .js .conde-abierto { visibility: hidden; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .conde-lanzador { transition: opacity .25s; }
+  .conde-lanzador.conde-fuera { transition: opacity .25s, visibility 0s .25s; }
+  .conde-insignia { animation: conde-pop 3s ease-in-out 3; }
+  .conde-aviso { animation: conde-in .25s ease-out both; }
+  .conde-cuenta { animation: conde-cuenta 8s linear forwards; }
+}
+@keyframes conde-pop { 0%, 82%, 100% { transform: scale(1); } 90% { transform: scale(1.18); } }
+@keyframes conde-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes conde-cuenta { from { width: 100%; } to { width: 0%; } }
+@media print { .conde-lanzador { display: none; } }
