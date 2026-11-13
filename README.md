@@ -6,7 +6,7 @@ Publicado en https://www.condadodigital.cl
 ## Estructura
 Cloudflare Pages publica **solo la carpeta `public/`** (directorio de salida: `public`). Todo lo que está fuera de ella (este README, `borradores/`, `contenido/`, `.gitignore`) queda en el repositorio pero no existe en el sitio.
 
-- `public/`: el sitio completo. `index.html` y demás páginas, `styles.css`, `script.js`, `img/`, `fonts/`, `favicon.svg`, `logo.svg`, `robots.txt`, `sitemap.xml`, `llms.txt`, `404.html`, `_headers` y `_redirects`
+- `public/`: el sitio completo. `index.html` y demás páginas (incluidas las 4 landings de servicios), `styles.css`, `script.js`, `img/`, `fonts/`, `favicon.svg`, `logo.svg`, `robots.txt`, `sitemap.xml`, `llms.txt`, `404.html`, `_headers` y `_redirects`
   - `styles.css`: sistema de diseño (paleta y tipografías al inicio del archivo)
   - `script.js`: menú móvil y buscador (agrega cada contenido nuevo al arreglo `INDICE`)
   - `img/`: avatar.jpg, retrato.jpg, hero.jpg (y hero.webp / hero-movil.webp, que son las que se cargan), og-condado-digital.jpg (imagen para compartir en redes, 1200x630)
@@ -25,6 +25,13 @@ Cloudflare Pages publica **solo la carpeta `public/`** (directorio de salida: `p
   `sed -i '' 's/?v=20261109b/?v=20261201/g' public/*.html`
 - Archivos internos: no hace falta ocultarlos. Si un archivo no debe publicarse, déjalo fuera de `public/` (por ejemplo, en `borradores/` o `contenido/`). Nunca pongas en `public/` notas, borradores ni archivos de trabajo.
 - No dejes notas internas en comentarios HTML de las páginas publicadas: cualquiera puede verlas con «Ver código fuente». Las notas van en `borradores/`, en el README o en `contenido/`.
+
+## Landings de servicios
+- Son 4, con URL plana: `public/paid-media.html`, `public/social-media.html`, `public/mentorias.html` y `public/diseno-web.html`. Su estilo está en el bloque «Landings de servicios» de `styles.css` (clases `lnd-*`).
+- Se llega a ellas solo desde las 4 tarjetas de la sección Asesorías del inicio (`/#asesorias`), que miden `servicio_click`. Están en `sitemap.xml` y `llms.txt`, pero no en el pie ni en el buscador (`INDICE`).
+- Los botones «Quiero una propuesta» son enlaces `.abrir-contacto` con `data-servicio="<id>"`: abren el formulario emergente con ese servicio ya elegido, su etiqueta y su ejemplo de mensaje (los 4 servicios están en `SERVICIOS`, dentro de `script.js`). Sin JavaScript llevan a `contacto?servicio=<id>`. El formulario envía también `origen`, la página desde donde se abrió.
+- Si cambias una pregunta frecuente, cámbiala también en el JSON-LD `FAQPage` de esa página: el texto debe ser idéntico al visible.
+- `/servicios` ya no existe: redirige con 301 a `/#asesorias` (`_redirects`) y la página anterior quedó en `borradores/servicios.html`.
 
 ## El Conde (asistente guiado)
 - Archivos: `public/conde.js` (panel, se descarga solo al abrirlo), `public/conde.css`, `public/conde-terminos.json` (los términos que busca) e imágenes en `public/img/conde/`. El botón y el aviso los crea un cargador pequeño al final de `public/script.js`.

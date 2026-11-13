@@ -241,7 +241,19 @@
 // ============================================
 (function () {
   const ENDPOINT = "https://formspree.io/f/mvkkjakn";
-  let dialogo = null, ultimoFoco = null;
+  const EJEMPLO = "Qué vendes, en qué plataformas inviertes y cuánto, más o menos, al mes";
+  // Servicios que se pueden preelegir con data-servicio en el enlace .abrir-contacto
+  const SERVICIOS = {
+    "paid-media": { n: "Paid Media", c: "#1D4ED8", ej: "Qué vendes, en qué plataformas inviertes y cuánto, más o menos, al mes",
+      ico: '<path d="M4 4v16h16"/><path d="M7 15l4-4 3 3 5-6"/>' },
+    "social-media": { n: "Social Media", c: "#0F766E", ej: "Qué vendes, en qué redes estás hoy y qué quieres lograr con ellas",
+      ico: '<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/>' },
+    "mentorias": { n: "Mentorías", c: "#1E6B47", ej: "Qué quieres aprender y si es para ti o para tu equipo",
+      ico: '<path d="M2.5 9.5L12 5l9.5 4.5L12 14z"/><path d="M6.5 11.5v4c1.5 1.4 3.5 2 5.5 2s4-.6 5.5-2v-4"/>' },
+    "diseno-web": { n: "Diseño web", c: "#13294A", ej: "Qué necesitas (sitio nuevo, landing o rediseño) y si ya tienes dominio",
+      ico: '<rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M3 8.5h18"/><path d="M10 12.5l-2 2 2 2M14 12.5l2 2-2 2"/>' }
+  };
+  let dialogo = null, ultimoFoco = null, ponerServicio = null;
 
   function crear() {
     dialogo = document.createElement("dialog");
@@ -251,10 +263,12 @@
       '<button type="button" class="dialogo-cerrar" aria-label="Cerrar formulario">×</button>' +
       '<div class="dialogo-paso-form">' +
       '<p class="ini-etiqueta" style="margin-bottom:6px">Asesorías</p>' +
-      '<h2 id="dialogo-contacto-titulo">Cuéntame qué necesitas</h2>' +
-      '<p class="dialogo-sub">Te respondo en un plazo de 2 días hábiles.</p>' +
+      '<p class="dialogo-chip" hidden><span class="dialogo-chip-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></span><span class="dialogo-chip-nombre"></span></p>' +
+      '<h2 id="dialogo-contacto-titulo">Cuéntanos qué necesitas</h2>' +
+      '<p class="dialogo-sub">Te respondemos en un plazo de 24 horas.</p>' +
       '<form novalidate>' +
       '<input type="hidden" name="formulario" value="asesoria">' +
+      '<input type="hidden" name="origen" value="">' +
       '<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">' +
       '<label>Nombre y apellido<input type="text" name="nombre" required autocomplete="name" placeholder="Ej: Camila Rojas"></label>' +
       '<label>Correo electrónico<input type="email" name="email" required autocomplete="email" placeholder="tu@correo.com"></label>' +
@@ -263,19 +277,20 @@
       '<option value="">Elige una opción</option>' +
       '<option value="paid-media">Paid Media</option>' +
       '<option value="social-media">Social Media</option>' +
-      '<option value="mentoria">Mentoría</option>' +
-      '<option value="asesoria-1a1">Asesoría 1 a 1 personalizada</option>' +
+      '<option value="mentorias">Mentorías</option>' +
+      '<option value="diseno-web">Diseño web</option>' +
       '<option value="otro">Otro</option>' +
       '</select></label>' +
-      '<label>Cuéntame tu caso<textarea name="mensaje" rows="4" required placeholder="Qué vendes, en qué plataformas inviertes y cuánto, más o menos, al mes"></textarea></label>' +
+      '<p class="dialogo-elegido" id="dialogo-elegido" hidden>Ya viene elegido según la página desde donde lo abriste. Puedes cambiarlo.</p>' +
+      '<label>Cuéntanos tu caso<textarea name="mensaje" rows="4" required placeholder="' + EJEMPLO + '"></textarea></label>' +
       '<button type="submit" class="dialogo-enviar">Enviar solicitud</button>' +
       '<p class="dialogo-error" role="alert" hidden></p>' +
       '<p class="dialogo-legal">Al enviar, aceptas que usemos tus datos para responder tu solicitud y hacer su seguimiento. El formulario lo procesa Formspree, fuera de Chile. Más detalles en la <a href="privacidad">política de privacidad</a>.</p>' +
       '</form></div>' +
       '<div class="dialogo-ok" hidden>' +
       '<div class="dialogo-ok-ico ani-pulse"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg></div>' +
-      '<h2 tabindex="-1">¡Listo! Recibí tu solicitud</h2>' +
-      '<p>Te escribo en un plazo de 2 días hábiles.</p>' +
+      '<h2 tabindex="-1">¡Listo! Recibimos tu solicitud</h2>' +
+      '<p>Te escribimos en un plazo de 24 horas.</p>' +
       '<button type="button" class="dialogo-ok-cerrar">Cerrar</button>' +
       '</div>';
     document.body.appendChild(dialogo);
@@ -284,6 +299,34 @@
     const error = dialogo.querySelector(".dialogo-error");
     const enviar = dialogo.querySelector(".dialogo-enviar");
     let iniciado = false;
+    const chip = dialogo.querySelector(".dialogo-chip");
+    const elegido = dialogo.querySelector(".dialogo-elegido");
+
+    // Estado del servicio: con un id válido, lo preelige y muestra su etiqueta y su ejemplo;
+    // sin id (o con uno desconocido), vuelve al estado general.
+    function mostrarServicio(id) {
+      const sv = SERVICIOS[id];
+      chip.hidden = !sv;
+      if (sv) {
+        chip.querySelector(".dialogo-chip-ico").style.background = sv.c;
+        chip.querySelector("svg").innerHTML = sv.ico;
+        chip.querySelector(".dialogo-chip-nombre").textContent = sv.n;
+      }
+      form.mensaje.placeholder = sv ? sv.ej : EJEMPLO;
+    }
+    ponerServicio = function (id) {
+      const preelegido = !!SERVICIOS[id];
+      form.servicio.value = preelegido ? id : "";
+      dialogo.classList.toggle("con-servicio", preelegido);
+      elegido.hidden = !preelegido;
+      if (preelegido) form.servicio.setAttribute("aria-describedby", "dialogo-elegido");
+      else form.servicio.removeAttribute("aria-describedby");
+      mostrarServicio(preelegido ? id : "");
+    };
+    // Si la persona cambia el servicio preelegido, la etiqueta y el ejemplo la siguen
+    form.servicio.addEventListener("change", () => {
+      if (dialogo.classList.contains("con-servicio")) mostrarServicio(form.servicio.value);
+    });
 
     function servicio() { return form.servicio.value || "sin-elegir"; }
     function marcarInicio(e) {
@@ -312,7 +355,7 @@
         ok.hidden = false;
         ok.querySelector("h2").focus();
       } catch (err) {
-        error.textContent = "No se pudo enviar. Inténtalo de nuevo o escríbeme a hola@condadodigital.cl.";
+        error.textContent = "No se pudo enviar. Inténtalo de nuevo o escríbenos a hola@condadodigital.cl.";
         error.hidden = false;
       }
       enviar.disabled = false; enviar.textContent = "Enviar solicitud";
@@ -328,15 +371,21 @@
     dialogo.addEventListener("close", () => {
       dialogo.querySelector(".dialogo-paso-form").hidden = false;
       dialogo.querySelector(".dialogo-ok").hidden = true;
+      if (dialogo.classList.contains("con-servicio")) ponerServicio("");
       if (ultimoFoco && document.contains(ultimoFoco)) ultimoFoco.focus();
     });
   }
 
-  function abrir(e) {
+  function abrir(e, a) {
     if (typeof HTMLDialogElement !== "function") return; // navegador sin <dialog>: sigue a /contacto
     e.preventDefault();
     if (!dialogo) crear();
-    ultimoFoco = document.activeElement;
+    // Safari no enfoca los enlaces al hacer clic: en ese caso el foco vuelve al enlace
+    const activo = document.activeElement;
+    ultimoFoco = activo && activo !== document.body ? activo : a;
+    if (a.dataset.servicio) ponerServicio(a.dataset.servicio);
+    else if (dialogo.classList.contains("con-servicio")) ponerServicio("");
+    dialogo.querySelector('input[name="origen"]').value = location.pathname;
     dialogo.showModal();
     dialogo.querySelector('input[name="nombre"]').focus();
   }
@@ -344,7 +393,15 @@
 
   document.addEventListener("click", (e) => {
     const a = e.target.closest(".abrir-contacto");
-    if (a) abrir(e);
+    if (a) abrir(e, a);
+  });
+
+  // Tarjetas de Asesorías del inicio: qué servicio eligen
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest("a[data-servicio-click]");
+    if (!t) return;
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({ event: "servicio_click", servicio: t.dataset.servicioClick });
   });
 })();
 

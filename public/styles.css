@@ -1974,8 +1974,8 @@ a.ini-tarjeta:hover, .ini-tarjeta:hover { transform: translateY(-8px); box-shado
 .ini-serv-grid > div { display: flex; }
 .ini-serv-grid .ini-tarjeta { gap: 12px; padding: 26px; border-top-width: 5px; }
 .ini-serv-grid .ini-tarjeta-texto { font-size: 15.5px; }
-@media (max-width: 900px) { .ini-serv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .ini-serv-grid { grid-template-columns: minmax(0, 1fr); } }
+
+
 
 /* ---------- Franja final ---------- */
 .ini-final { position: relative; overflow: hidden; background: var(--negro-banda); color: var(--bg); padding: 130px 24px; text-align: center; }
@@ -2765,3 +2765,168 @@ main.pg + footer { margin-top: 0; }
 @keyframes conde-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @keyframes conde-cuenta { from { width: 100%; } to { width: 0%; } }
 @media print { .conde-lanzador { display: none; } }
+
+/* =====================================================================
+   LANDINGS DE SERVICIOS (/paid-media, /social-media, /mentorias, /diseno-web)
+   y tarjetas de la sección Asesorías del inicio.
+   Reutiliza .pg-hero, .pg-tile, .ini-btn, .ini-etiqueta e .ini-h2.
+   Sin JavaScript ni animaciones, todo se ve quieto y completo.
+   ===================================================================== */
+.lnd-int { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.lnd h2, .lnd h3 { font-family: var(--font-head); font-weight: 700; color: var(--ink); }
+.lnd .ini-h2 { margin: 0; font-size: clamp(32px, 4.2vw, 52px); }
+
+/* Hero */
+.lnd-hero { padding: 40px 0 88px; text-align: left; }
+.lnd-hero .lnd-int { position: relative; }
+.lnd-migas { margin: 0 0 56px; font-size: 14px; color: #B8C2CC; }
+.lnd-migas a { color: #B8C2CC; }
+.lnd-migas a:hover { color: var(--accent); }
+.lnd-migas [aria-current] { color: var(--white); }
+.lnd-hero-int { position: relative; max-width: 820px; }
+.lnd-hero-ico { width: 64px; height: 64px; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: var(--white); margin-bottom: 22px; }
+.lnd-kicker { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); }
+.lnd-hero h1 { font-family: var(--font-head); font-weight: 700; font-size: clamp(46px, 7vw, 92px); line-height: 1.02; letter-spacing: -1.5px; margin: 0; color: var(--white); }
+.lnd-promesa { margin: 20px 0 0; max-width: 680px; font-size: clamp(19px, 2vw, 24px); line-height: 1.45; color: #D3DCD5; }
+.lnd-acciones { justify-content: flex-start; margin-top: 32px; }
+.lnd .pg-hero-acciones .ini-btn { min-height: 52px; padding: 0 26px; }
+.lnd-nota { font-size: 14px; }
+.lnd-siglas { display: block; }
+.lnd-sigla { padding: 12px 18px; border-radius: 16px; background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.12); font-family: var(--font-head); font-size: 26px; }
+.lnd-hero a:focus-visible, .lnd-banda a:focus-visible, .lnd-final a:focus-visible { outline-color: var(--accent); }
+
+/* Qué hacemos: tarjeta montada sobre el borde del hero */
+.lnd-corto { position: relative; z-index: 2; margin-top: -56px; background: var(--white); border: 1.5px solid var(--borde-tarjeta); border-radius: 24px; padding: 36px; box-shadow: 0 20px 50px rgba(11,21,18,.10); }
+.lnd-corto-t { margin: 0; max-width: 820px; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.1; letter-spacing: -.6px; }
+.lnd-def { margin: 16px 0 0; max-width: 960px; font-size: 20px; line-height: 1.7; color: #24302A; }
+.lnd-ficha { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 28px 0 0; padding: 24px 0 0; border-top: 1px solid var(--borde-tarjeta); }
+.lnd-ficha dt { font-size: 12px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--azul); }
+.lnd-ficha dd { margin: 4px 0 0; font-size: 16px; font-weight: 500; }
+
+/* Secciones y tarjetas */
+.lnd-sec { padding: 96px 0; }
+.lnd-sec.lnd-sigue { padding-top: 0; }
+#como { scroll-margin-top: 80px; }
+.lnd-bajada { margin: 14px 0 0; max-width: 720px; font-size: 19px; line-height: 1.65; color: var(--texto-suave); }
+.lnd-tarjeta { background: var(--white); border: 1.5px solid var(--borde-tarjeta); transition: border-color .25s, box-shadow .25s, translate .25s; }
+.lnd-tarjeta:hover { border-color: var(--primary); box-shadow: 0 18px 40px rgba(11,21,18,.12); }
+.lnd-g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 36px; }
+.lnd-dolor { margin: 0; border-radius: 22px; padding: 26px; font-family: var(--font-head); font-weight: 600; font-size: 21px; line-height: 1.3; }
+.lnd-comilla { display: block; margin-bottom: 10px; font-size: 44px; line-height: .6; color: var(--turquesa-2); }
+.lnd-incluye { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 28px; margin: 40px 0 0; padding: 0; list-style: none; }
+.lnd-incluye li { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; border-radius: 20px; padding: 22px 24px; }
+.lnd-num { flex: none; width: 44px; height: 44px; border-radius: 13px; background: var(--azul-noche); color: var(--turquesa-2); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 700; font-size: 20px; transition: background .25s, color .25s, rotate .25s; }
+.lnd-incluye li:hover .lnd-num { background: var(--accent); color: var(--negro-banda); }
+.lnd-incluye h3 { margin: 0; font-size: 21px; line-height: 1.25; }
+.lnd-incluye p { margin: 4px 0 0; font-size: 16px; color: var(--texto-suave); }
+
+/* Bandas negras */
+.lnd-banda, .lnd-final { position: relative; overflow: hidden; background: var(--negro-banda); color: var(--white); text-align: center; }
+.lnd-banda { padding: 120px 0; }
+.lnd-final { padding: 130px 0; }
+.lnd-halo { position: absolute; inset: 0; pointer-events: none; }
+.lnd-banda .lnd-halo { background: radial-gradient(circle at 50% 30%, rgba(45,212,191,.20), rgba(5,7,10,0) 60%); }
+.lnd-final .lnd-halo { background: radial-gradient(circle at 50% 100%, rgba(200,241,105,.16), rgba(5,7,10,0) 60%); }
+.lnd-banda .lnd-int, .lnd-final .lnd-int { position: relative; }
+.lnd-banda h2, .lnd-final h2 { margin: 0 auto; max-width: 900px; line-height: 1.04; letter-spacing: -1.5px; color: var(--white); }
+.lnd-banda h2 { font-size: clamp(40px, 6vw, 76px); }
+.lnd-final h2 { font-size: clamp(40px, 6.5vw, 84px); line-height: 1.02; }
+.lnd-banda p, .lnd-final p { margin: 18px auto 0; max-width: 640px; font-size: 19px; color: #B8C2CC; }
+.lnd-final p { max-width: 600px; }
+.lnd-banda .pg-hero-acciones { margin-top: 32px; }
+.lnd-flota { margin-top: 32px; min-height: 60px; padding: 0 34px; font-size: 18px; }
+
+/* Cómo trabajamos: línea de tiempo */
+.lnd-pasos { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin: 40px 0 0; padding: 0; list-style: none; }
+.lnd-pasos li { position: relative; padding-top: 28px; }
+.lnd-pasos li::before { content: ""; position: absolute; left: 0; right: -20px; top: 9px; height: 2px; background: linear-gradient(90deg, #C8F169, #2DD4BF, #1D4ED8); }
+.lnd-pasos li:last-child::before { right: 0; }
+.lnd-punto { position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--bg); border: 3px solid var(--primary); }
+.lnd-pasos h3 { margin: 10px 0 0; font-size: 21px; }
+.lnd-pasos p { margin: 6px 0 0; font-size: 16px; color: var(--texto-suave); }
+
+/* Lo que no vas a recibir y preguntas frecuentes */
+.lnd-dos { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+.lnd-nohago { display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.lnd-nohago li { display: flex; gap: 14px; align-items: center; border-radius: 18px; padding: 18px 20px; font-size: 18px; font-weight: 500; }
+.lnd-x { flex: none; width: 34px; height: 34px; border-radius: 10px; background: #FDECEC; color: #B42318; display: flex; align-items: center; justify-content: center; }
+.lnd-faq details { margin-bottom: 12px; background: var(--white); border: 1.5px solid var(--borde-tarjeta); border-radius: 18px; }
+.lnd-faq summary { position: relative; min-height: 64px; padding: 18px 56px 18px 22px; list-style: none; cursor: pointer; font-weight: 700; font-size: 18px; }
+.lnd-faq summary::-webkit-details-marker { display: none; }
+.lnd-faq summary::after { content: "+"; position: absolute; right: 22px; top: 50%; transform: translateY(-50%); font-size: 26px; color: var(--primary); }
+.lnd-faq details[open] summary::after { content: "−"; }
+.lnd-faq details p { margin: 0; padding: 0 22px 22px; font-size: 17px; line-height: 1.6; color: var(--texto-suave); }
+
+/* Otros servicios */
+.lnd-otros { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 32px; }
+.lnd-otro { display: flex; flex-direction: column; gap: 10px; min-height: 150px; border-radius: 20px; padding: 22px; text-decoration: none; color: var(--ink); }
+.lnd-otro:hover { color: var(--ink); }
+.lnd-mini { width: 44px; height: 44px; border-radius: 13px; display: flex; align-items: center; justify-content: center; color: var(--white); }
+.lnd-otro-t { font-family: var(--font-head); font-weight: 700; font-size: 21px; }
+.lnd-otro-d { font-size: 15px; color: var(--texto-suave); }
+.lnd-ir { margin-top: auto; font-size: 15px; font-weight: 700; color: var(--primary); }
+
+/* Inicio: tarjetas enlazadas de Asesorías */
+.ini-serv-grid .ini-tarjeta { min-height: 300px; }
+.ini-serv-grid .ini-tarjeta-titulo { margin: 6px 0 0; }
+.ini-nuevo { align-self: flex-start; padding: 4px 10px; border-radius: 999px; background: #E6F0FF; color: var(--azul-noche); font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
+.ini-serv-nota { margin: 28px 0 0; font-size: 16px; color: var(--texto-suave); }
+.ini-serv-nota a { font-weight: 700; color: var(--primary); }
+
+/* Formulario emergente: servicio ya elegido */
+.dialogo-chip { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 12px; padding: 6px 12px 6px 6px; border-radius: 999px; background: var(--white); border: 1.5px solid var(--borde-tarjeta); font-size: 14px; font-weight: 700; color: var(--ink); }
+.dialogo-chip-ico { width: 28px; height: 28px; border-radius: 9px; display: flex; align-items: center; justify-content: center; color: var(--white); }
+.dialogo-contacto.con-servicio select { border-color: var(--primary); background: #F1F7F3; }
+.dialogo-elegido { margin: -6px 0 0; font-size: 13px; font-weight: 700; color: var(--primary); }
+
+@media (max-width: 1100px) { .ini-serv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1000px) {
+  .lnd-g4, .lnd-incluye { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lnd-otros { grid-template-columns: minmax(0, 1fr); }
+  .lnd-pasos { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
+  .lnd-pasos li::before { right: 0; }
+  .lnd-dos { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+@media (max-width: 640px) {
+  .lnd-int { padding: 0 20px; }
+  .lnd-hero { padding: 24px 0 80px; }
+  .lnd-migas { margin-bottom: 36px; }
+  .lnd-siglas { display: none; }
+  .lnd-acciones .ini-btn, .lnd-banda .ini-btn, .lnd-flota { width: 100%; }
+  .lnd-sec { padding: 64px 0; }
+  .lnd-corto { padding: 24px; margin-top: -48px; }
+  .lnd-def { font-size: 18px; }
+  .lnd-ficha, .lnd-g4, .lnd-incluye, .lnd-otros, .lnd-pasos { grid-template-columns: minmax(0, 1fr); }
+  .lnd-dolor { font-size: 19px; }
+  .lnd-banda, .lnd-final { padding: 88px 0; }
+}
+@media (max-width: 520px) { .ini-serv-grid { grid-template-columns: minmax(0, 1fr); } .ini-serv-grid .ini-tarjeta { min-height: 0; } }
+
+/* Movimiento: solo si la persona no pidió reducirlo */
+@keyframes cdEntra { from { opacity: 0; transform: translateY(46px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes cdFlotaBtn { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes cdBrillo {
+  0% { box-shadow: 0 0 0 0 rgba(200,241,105,.55), 0 18px 40px rgba(200,241,105,.18); }
+  70% { box-shadow: 0 0 0 18px rgba(200,241,105,0), 0 18px 40px rgba(200,241,105,.18); }
+  100% { box-shadow: 0 0 0 0 rgba(200,241,105,0), 0 18px 40px rgba(200,241,105,.18); }
+}
+@keyframes cdSiglaFlota { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@media (prefers-reduced-motion: no-preference) {
+  .lnd-sigla { animation: cdSiglaFlota 6s ease-in-out infinite; }
+  .lnd-sigla:nth-child(2) { animation-delay: 1.2s; }
+  .lnd-sigla:nth-child(3) { animation-delay: 2.4s; }
+  .lnd-sigla:nth-child(4) { animation-delay: 3.6s; }
+  .lnd-flota { animation: cdFlotaBtn 3.2s ease-in-out infinite, cdBrillo 2.4s ease-out infinite; }
+  .lnd-flota:hover { animation-play-state: paused; }
+  .lnd-dolor:hover, .lnd-incluye li:hover, .lnd-otro:hover { translate: 0 -8px; }
+  .lnd-incluye li:hover .lnd-num { rotate: -10deg; }
+  .lnd-faq details { transition: border-color .2s; }
+  @supports (animation-timeline: view()) {
+    .lnd-tarjeta, .lnd-pasos li, .lnd-faq details { animation: cdEntra linear both; animation-timeline: view(); animation-range: entry 0% cover 26%; }
+    .lnd-g4 > :nth-child(2), .lnd-incluye > :nth-child(2), .lnd-otros > :nth-child(2), .lnd-pasos > :nth-child(2), .lnd-nohago > :nth-child(2) { animation-range: entry 6% cover 32%; }
+    .lnd-g4 > :nth-child(3), .lnd-incluye > :nth-child(3), .lnd-otros > :nth-child(3), .lnd-pasos > :nth-child(3), .lnd-nohago > :nth-child(3) { animation-range: entry 12% cover 38%; }
+    .lnd-g4 > :nth-child(4), .lnd-incluye > :nth-child(4), .lnd-pasos > :nth-child(4) { animation-range: entry 18% cover 44%; }
+    .lnd-incluye > :nth-child(5) { animation-range: entry 6% cover 32%; }
+    .lnd-incluye > :nth-child(6) { animation-range: entry 12% cover 38%; }
+  }
+}

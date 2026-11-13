@@ -44,7 +44,7 @@
   <link rel="preload" href="fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dmsans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261110b">
+  <link rel="stylesheet" href="styles.css?v=20261113a">
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@graph": [{"@type": "ContactPage", "@id": "https://www.condadodigital.cl/contacto#pagina", "url": "https://www.condadodigital.cl/contacto", "name": "Contacto", "inLanguage": "es-CL", "about": {"@id": "https://www.condadodigital.cl/#organizacion"}, "isPartOf": {"@type": "WebSite", "name": "Condado Digital", "url": "https://www.condadodigital.cl/"}, "breadcrumb": {"@id": "https://www.condadodigital.cl/contacto#migas"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.condadodigital.cl/"}, {"@type": "ListItem", "position": 2, "name": "Contacto", "item": "https://www.condadodigital.cl/contacto"}], "@id": "https://www.condadodigital.cl/contacto#migas"}]}
   </script>
@@ -78,7 +78,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="wrap">
       <span class="etiqueta">Contacto</span>
       <h1 class="titulo-h2">Hablemos</h1>
-      <p class="intro">¿Quieres un diagnóstico de tus campañas, una asesoría o colaborar? Escríbeme y te respondo en un plazo de 2 días hábiles. También puedes escribirme por <a href="https://www.linkedin.com/company/145435900/" target="_blank" rel="noopener" aria-label="Condado Digital en LinkedIn">LinkedIn</a>.</p>
+      <p class="intro">¿Quieres un diagnóstico de tus campañas, una asesoría o colaborar? Escríbeme y te respondo en un plazo de 24 horas. También puedes escribirme por <a href="https://www.linkedin.com/company/145435900/" target="_blank" rel="noopener" aria-label="Condado Digital en LinkedIn">LinkedIn</a>.</p>
       <form id="form-contacto" action="https://formspree.io/f/mvkkjakn" method="POST">
         <div><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required></div>
         <div><label for="correo">Email</label><input type="email" id="correo" name="email" placeholder="tu@correo.com" required></div>
@@ -88,8 +88,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <option value="">Elige una opción</option>
             <option value="paid-media">Paid Media</option>
             <option value="social-media">Social Media</option>
-            <option value="mentoria">Mentoría</option>
-            <option value="asesoria-1a1">Asesoría 1 a 1 personalizada</option>
+            <option value="mentorias">Mentorías</option>
+            <option value="diseno-web">Diseño web</option>
             <option value="otro">Otro</option>
           </select>
         </div>
@@ -106,7 +106,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const estado = document.getElementById("form-estado");
         // Preselecciona el servicio si viene en la URL: contacto?servicio=paid-media
         // o con los enlaces antiguos de /servicios: contacto?motivo=diagnostico
-        const EQUIVALENCIAS = { diagnostico: "asesoria-1a1", medicion: "asesoria-1a1", gestion: "paid-media", mentoria: "mentoria", colaboracion: "otro", entrevista: "otro", otro: "otro" };
+        const EQUIVALENCIAS = { diagnostico: "paid-media", medicion: "paid-media", gestion: "paid-media", mentoria: "mentorias", colaboracion: "otro", entrevista: "otro", otro: "otro" };
         const q = new URLSearchParams(location.search);
         const pedido = q.get("servicio") || EQUIVALENCIAS[q.get("motivo")];
         if (pedido && form.servicio.querySelector('option[value="' + pedido + '"]')) form.servicio.value = pedido;
@@ -198,6 +198,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<script src="script.js?v=20261110b" defer></script>
+<script src="script.js?v=20261113a" defer></script>
 </body>
 </html>
