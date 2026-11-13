@@ -19,6 +19,9 @@ Cloudflare Pages publica **solo la carpeta `public/`** (directorio de salida: `p
 
 ## Cómo publicar
 - Cada push a `main` se publica solo en Cloudflare Pages (sin comando de build, directorio de salida `public`). En uno o dos minutos el cambio está en https://www.condadodigital.cl.
+- **Después de cada deploy, purga la caché** de la zona condadodigital.cl. Usa las variables de entorno `CLOUDFLARE_API_TOKEN` (token «claude-code-purga», con permisos solo para purgar la caché y leer Pages) y `CLOUDFLARE_ZONE_ID`, guardadas en `~/.zshrc` de tu equipo:
+  `curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" --data '{"purge_everything":true}'`
+  Nunca escribas el token en archivos del repositorio, en commits ni en la salida de un comando.
 - Cloudflare quita la extensión `.html`: los enlaces internos, canonical, schema y `sitemap.xml` usan URL sin extensión (por ejemplo, `/glosario`).
 - Cuando `/blog`, `/aprendizaje` y `/noticias` tengan contenido: quita su `<meta name="robots" content="noindex, follow">` y vuelve a agregarlas a `sitemap.xml`. Para reactivar el contenido que estaba oculto, cópialo desde `borradores/inicio-proximos-articulos.html`, `borradores/blog-filtros-y-articulos.html` y `borradores/aprendizaje-capsulas.html`: cada bloque indica en qué página y en qué posición va.
 - Imágenes, fuentes y SVG tienen caché de 1 año: si reemplazas uno, usa un nombre de archivo nuevo y actualiza las referencias. `styles.css` y `script.js` llevan una versión en su URL (`styles.css?v=20261109b`): Cloudflare guarda CSS y JS 4 horas en el navegador, así que **cada vez que cambies uno de ellos, sube la versión en todas las páginas**, por ejemplo:
