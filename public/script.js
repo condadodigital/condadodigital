@@ -65,7 +65,7 @@
     { t: "Preguntas frecuentes", u: "preguntas-frecuentes", tipo: "Sección", k: "faq preguntas que es paid media seo sem aeo geo pixel capi" },
     { t: "Herramientas de Marketing", u: "herramientas", tipo: "Sección", k: "herramientas google ads meta ga4 gtm looker ahrefs semrush claude chatgpt" },
     { t: "Acerca de Condado Digital", u: "acerca", tipo: "Página", k: "acerca de condado digital quienes somos principios sobre mi esleyter conde creador" },
-    { t: "Servicios y asesorías", u: "servicios", tipo: "Página", k: "servicios asesoria diagnostico campanas auditoria gestion medicion mentoria freelance" },
+    { t: "Asesorías", u: "/#asesorias", tipo: "Página", k: "servicios asesorias asesoria paid media social media mentorias mentoria diseno web campanas gestion medicion" },
     { t: "Contacto", u: "contacto", tipo: "Página", k: "contacto colaboraciones consultoria asesoria" }
   ];
 

@@ -5,7 +5,7 @@
 ## Páginas principales
 
 - [Inicio](https://www.condadodigital.cl/): presentación del sitio y secciones destacadas
-- [Servicios y asesorías](https://www.condadodigital.cl/servicios): diagnóstico y asesoría de campañas de Paid Media
+- [Asesorías](https://www.condadodigital.cl/#asesorias): los 4 servicios de Condado Digital para pymes y marcas de Chile y Latinoamérica
 - [Paid Media](https://www.condadodigital.cl/paid-media): gestión de campañas en Google, Meta, TikTok, LinkedIn, Pinterest y X Ads con foco en costo por lead y costo por adquisición
 - [Social Media](https://www.condadodigital.cl/social-media): estrategia, parrilla de contenidos, guiones y reportería para Instagram, Facebook, TikTok y LinkedIn
 - [Mentorías](https://www.condadodigital.cl/mentorias): sesiones en vivo para aprender a gestionar Google Ads, Meta Ads, TikTok Ads, GA4 y GTM sobre tus propias cuentas
