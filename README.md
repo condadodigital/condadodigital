@@ -67,3 +67,5 @@ Las plantillas están en `borradores/` y usan el mismo encabezado, menú, pie y 
   - SEM: `glosario.html`, `script.js`, `glosario-aeo.html` (Términos relacionados)
   - Pixel: `glosario.html`, `script.js`, `glosario-capi.html` y `glosario-gtm.html` (Términos relacionados)
 - Enciclopedia: los datos que no se publicaron por falta de fuente están en `contenido/pendientes-enciclopedia.md` (solo local)
+- 28 de noviembre de 2026: revisar si se aprobó la postergación de la Ley 21.719. Si cambió, actualizar chatgpt-ads-chile (Críticas y limitaciones, paso 4 de Cómo aplicarlo y pregunta relacionada) y analitica-digital, con línea en el historial y dateModified.
+- Cuando Google dé por terminado el core update de noviembre 2026: actualizar core-update-google-noviembre-2026 (tabla de fechas, pregunta ¿Cuándo termina?, historial y dateModified).
