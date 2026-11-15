@@ -1616,6 +1616,13 @@ h2, h1.titulo-h2, .articulo h1, .masthead h1 { letter-spacing: -0.015em; }
 .articulo .referencias li:target { background: #F4FAE3; }
 .articulo .bibliografia li, .articulo .historial li { font-size: 0.92rem; margin-bottom: 6px; }
 
+/* Postura bajo la definición, aviso de ejemplo ilustrativo y tabla «Sí hacer / No hacer» */
+.articulo .postura-destacada { margin: 0 0 20px; padding: 14px 18px; border-radius: 16px; background: #EEF6D9; border: 1.5px solid #D6E9A8; font-size: 1rem; color: var(--ink); }
+.postura-destacada span { font-weight: 700; color: #1E6B47; }
+.articulo .aviso-ejemplo { display: inline-block; margin: 0 0 12px; padding: 6px 12px; border-radius: 999px; background: #E6F0FF; color: #13294A; font-size: .88rem; font-weight: 700; line-height: 1.5; }
+.tabla-si-no th:first-child { color: #1E6B47; }
+.tabla-si-no th:last-child { color: #B42318; }
+
 @media (max-width: 960px) {
   .enciclo-grid { grid-template-columns: 1fr; }
   .enciclo-cabecera, .enciclo-cuerpo, .relacionados { grid-column: 1; grid-row: auto; }
