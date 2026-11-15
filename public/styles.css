@@ -1505,6 +1505,9 @@ footer ul { list-style: none; display: grid; gap: 7px; }
   border-radius: 50%;
 }
 
+/* La caja de autor de los artículos es un enlace: mismo aspecto que antes, sin color ni subrayado de enlace */
+a.caja-autor { color: inherit; text-decoration: none; }
+
 /* Los callouts nunca desbordan (URLs y textos largos se quiebran dentro del cuadro) */
 .callout {
   overflow-wrap: anywhere;
