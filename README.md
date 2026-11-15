@@ -12,7 +12,7 @@ Cloudflare Pages publica **solo la carpeta `public/`** (directorio de salida: `p
   - `img/`: avatar.jpg, retrato.jpg, hero.jpg (y hero.webp / hero-movil.webp, que son las que se cargan), og-condado-digital.jpg (imagen para compartir en redes, 1200x630)
   - `fonts/`: Fraunces y DM Sans alojadas en el sitio (antes Google Fonts)
   - `_headers`: caché de Cloudflare Pages (1 año para imágenes, fuentes y SVG)
-  - Enciclopedia: `enciclopedia.html` (índice) y 7 artículos de referencia con URL plana (`que-es-el-marketing-digital`, `marketing-tradicional-vs-digital`, `embudo-de-marketing`, `publicidad-pagada-vs-organica`, `analitica-digital`, `marketing-con-ia`, `core-update-google-noviembre-2026`). Llevan referencias numeradas, schema Article + FAQPage + BreadcrumbList y su historial de actualizaciones: si cambias un dato, agrega una línea al historial y actualiza `dateModified`
+  - Enciclopedia: `enciclopedia.html` (índice) y 8 artículos de referencia con URL plana (`que-es-el-marketing-digital`, `marketing-tradicional-vs-digital`, `embudo-de-marketing`, `publicidad-pagada-vs-organica`, `analitica-digital`, `marketing-con-ia`, `core-update-google-noviembre-2026`, `chatgpt-ads-chile`). Llevan referencias numeradas, schema Article + FAQPage + BreadcrumbList y su historial de actualizaciones: si cambias un dato, agrega una línea al historial y actualiza `dateModified`
 - `DISENO.md`: sistema de diseño (colores, tipografías, componentes y reglas de movimiento). No se publica
 - `contenido/`: borradores e investigación de los artículos (no se publica, está en `.gitignore`)
 - `borradores/`: plantillas y contenido aún no publicado. Está en el repositorio, pero **no se publica** porque está fuera de `public/`

@@ -62,6 +62,7 @@
     { t: "Analítica digital", u: "analitica-digital", tipo: "Enciclopedia", k: "analitica ga4 gtm pixel utm eventos clave medicion ley 21719 datos personales" },
     { t: "Marketing con inteligencia artificial", u: "marketing-con-ia", tipo: "Enciclopedia", k: "ia inteligencia artificial performance max advantage aeo geo chatgpt" },
     { t: "Core update de Google de noviembre 2026", u: "core-update-google-noviembre-2026", tipo: "Enciclopedia", k: "core update google noviembre 2026 actualizacion algoritmo seo black friday ranking" },
+    { t: "ChatGPT Ads en Chile", u: "chatgpt-ads-chile", tipo: "Enciclopedia", k: "chatgpt ads chile openai anuncios publicidad aleph target cpa target cpc ia" },
     { t: "Glosario de Marketing (168 términos)", u: "glosario", tipo: "Sección", k: "glosario diccionario terminos cpc cpm ctr cac ltv roas mer ymyl pujas audiencias formatos" },
     { t: "Preguntas frecuentes", u: "preguntas-frecuentes", tipo: "Sección", k: "faq preguntas que es paid media seo sem aeo geo pixel capi" },
     { t: "Herramientas de Marketing", u: "herramientas", tipo: "Sección", k: "herramientas google ads meta ga4 gtm looker ahrefs semrush claude chatgpt" },
