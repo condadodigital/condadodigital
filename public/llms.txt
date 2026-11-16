@@ -15,14 +15,10 @@
 
 ## Contenido
 
-- [Blog](https://www.condadodigital.cl/blog): artículos de Paid Media, SEO, Growth, Social Media, Analytics e IA
-- [Noticias](https://www.condadodigital.cl/noticias): novedades del marketing digital con análisis
 - [Calculadoras](https://www.condadodigital.cl/calculadoras): 20 calculadoras (ROAS, CPA, CPL, CAC, LTV, hook rate, hold rate, LTV/CAC y otras métricas) y un simulador de embudo
 - [Enciclopedia](https://www.condadodigital.cl/enciclopedia): artículos de referencia sobre marketing digital para pymes de Chile y Latinoamérica, con datos verificados y fuentes
 - [Glosario](https://www.condadodigital.cl/glosario): 168 términos de marketing digital con definición, fórmula y ejemplo
-- [Aprendizaje](https://www.condadodigital.cl/aprendizaje): cápsulas paso a paso para Meta, Google y TikTok Ads
 - [Herramientas](https://www.condadodigital.cl/herramientas): herramientas de marketing recomendadas
-- [Recursos](https://www.condadodigital.cl/recursos): recursos gratuitos de marketing digital
 - [Preguntas frecuentes](https://www.condadodigital.cl/preguntas-frecuentes): respuestas breves sobre marketing digital
 
 ## Enciclopedia
@@ -43,6 +39,25 @@
 - [Meta Ads vs Google Ads](https://www.condadodigital.cl/meta-ads-vs-google-ads)
 - [Cómo investigar los anuncios de tu competencia](https://www.condadodigital.cl/biblioteca-de-anuncios)
 - [Fechas comerciales en Chile](https://www.condadodigital.cl/fechas-comerciales-chile)
+
+## Glosario
+
+- [AEO](https://www.condadodigital.cl/glosario-aeo)
+- [CAC (Costo de Adquisición de Cliente)](https://www.condadodigital.cl/glosario-cac)
+- [CAPI (Conversions API)](https://www.condadodigital.cl/glosario-capi)
+- [CPA (Costo Por Adquisición)](https://www.condadodigital.cl/glosario-cpa)
+- [CPC (Costo Por Clic)](https://www.condadodigital.cl/glosario-cpc)
+- [CPL (Costo Por Lead)](https://www.condadodigital.cl/glosario-cpl)
+- [CPM (Costo Por Mil)](https://www.condadodigital.cl/glosario-cpm)
+- [CRM](https://www.condadodigital.cl/glosario-crm)
+- [CRO](https://www.condadodigital.cl/glosario-cro)
+- [CTR (Click-Through Rate)](https://www.condadodigital.cl/glosario-ctr)
+- [CVR (Tasa de conversión)](https://www.condadodigital.cl/glosario-cvr)
+- [GA4 (Google Analytics 4)](https://www.condadodigital.cl/glosario-ga4)
+- [GEO](https://www.condadodigital.cl/glosario-geo)
+- [GTM (Google Tag Manager)](https://www.condadodigital.cl/glosario-gtm)
+- [LTV (Lifetime Value)](https://www.condadodigital.cl/glosario-ltv)
+- [UTM](https://www.condadodigital.cl/glosario-utm)
 
 ## Redes sociales
 

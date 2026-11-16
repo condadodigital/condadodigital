@@ -29,15 +29,7 @@
 (function () {
   // Índice de búsqueda del sitio: agregar aquí cada contenido nuevo
   const INDICE = [
-    { t: "Blog — Paid Media", u: "blog#paid-media", tipo: "Categoría", k: "paid media google ads meta ads tiktok linkedin campañas" },
-    { t: "Blog — SEO · AEO · GEO", u: "blog#seo", tipo: "Categoría", k: "seo aeo geo posicionamiento buscadores ia" },
-    { t: "Blog — Growth Marketing", u: "blog#growth", tipo: "Categoría", k: "growth cro funnels cac ltv experimentos" },
-    { t: "Blog — Social Media", u: "blog#social", tipo: "Categoría", k: "social media instagram tiktok contenido comunidad" },
-    { t: "Blog — Analytics", u: "blog#analytics", tipo: "Categoría", k: "analytics ga4 gtm looker bigquery datos tracking" },
-    { t: "Blog — IA & MarTech", u: "blog#ia", tipo: "Categoría", k: "ia inteligencia artificial martech automatizacion agentes" },
-    { t: "Noticias de Marketing", u: "noticias", tipo: "Sección", k: "noticias actualidad meta google tiktok openai" },
     { t: "Calculadoras de marketing (20 métricas)", u: "calculadoras", tipo: "Recurso", k: "calculadora roas roi cpa cpl cac cpc cpm cpv ctr cvr frecuencia hook rate hold rate engagement seguidores guardados ticket ltv ltv/cac simulador embudo metricas" },
-    { t: "Aprendizaje: cápsulas paso a paso", u: "aprendizaje", tipo: "Sección", k: "aprendizaje capsulas tutoriales como implementar campana meta google tiktok ads paso a paso ga4 pixel" },
     { t: "¿Qué es el CPA?", u: "glosario-cpa", tipo: "Glosario", k: "cpa costo por adquisicion formula" },
     { t: "¿Qué es el CAC?", u: "glosario-cac", tipo: "Glosario", k: "cac costo adquisicion cliente" },
     { t: "¿Qué es el LTV?", u: "glosario-ltv", tipo: "Glosario", k: "ltv lifetime value valor vida cliente" },
@@ -76,6 +68,10 @@
     { t: "Herramientas de Marketing", u: "herramientas", tipo: "Sección", k: "herramientas google ads meta ga4 gtm looker ahrefs semrush claude chatgpt" },
     { t: "Acerca de Condado Digital", u: "acerca", tipo: "Página", k: "acerca de condado digital quienes somos principios sobre mi esleyter conde creador" },
     { t: "Asesorías", u: "/#asesorias", tipo: "Página", k: "servicios asesorias asesoria paid media social media mentorias mentoria diseno web campanas gestion medicion" },
+    { t: "Asesoría de Paid Media", u: "paid-media", tipo: "Servicio", k: "asesoria paid media gestion campanas google ads meta ads tiktok linkedin pinterest x ads costo por lead cpa" },
+    { t: "Asesoría de Social Media", u: "social-media", tipo: "Servicio", k: "asesoria social media redes sociales estrategia parrilla contenidos guiones reporteria instagram facebook tiktok linkedin" },
+    { t: "Mentorías de Paid Media y analítica", u: "mentorias", tipo: "Servicio", k: "mentorias mentoria sesiones en vivo aprender google ads meta ads tiktok ads ga4 gtm" },
+    { t: "Diseño web", u: "diseno-web", tipo: "Servicio", k: "diseno web sitio web landing page pagina rapida gtm ga4 cookies seo ia" },
     { t: "Contacto", u: "contacto", tipo: "Página", k: "contacto colaboraciones consultoria asesoria" }
   ];
 

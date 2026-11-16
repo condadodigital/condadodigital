@@ -1539,6 +1539,13 @@ a.caja-autor { color: inherit; text-decoration: none; }
 /* Contenido aún no publicado */
 .proximamente { opacity: 0.55; }
 .proximamente:hover { transform: none; box-shadow: none; }
+footer .pie-pronto { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; background: rgba(255,255,255,0.1); color: #C9D4CE; font-size: 0.72rem; font-weight: 600; white-space: nowrap; vertical-align: 1px; }
+footer li:has(> .pie-pronto) { white-space: nowrap; }
+/* Móvil: cada enlace de las listas del pie con área táctil de 44 px de alto */
+@media (max-width: 600px) {
+  footer ul { gap: 0; }
+  footer ul a { display: inline-flex; align-items: center; min-height: 44px; }
+}
 
 
 /* ============================================
