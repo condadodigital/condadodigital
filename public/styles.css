@@ -1818,6 +1818,20 @@ footer h4, footer .pie-titulo { color: var(--bg); }
 footer .redes a { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
 footer .redes a:hover { background: var(--primary); border-color: var(--primary); }
 .creditos { border-top-color: rgba(255,255,255,0.08); }
+/* Móvil: área táctil de 44 px en redes y enlaces legales del pie, sin cambiar lo que se ve.
+   Cada enlace de redes mide 44×44 y dibuja su recuadro de 38×38 con ::before (3 px de aire
+   por lado); el gap baja de 10 a 4 px y los márgenes corrigen esos 3 px, así los recuadros quedan donde estaban */
+@media (max-width: 600px) {
+  .redes { gap: 4px; margin: 9px 0 -3px -3px; max-width: 206px; }
+  footer .redes a, footer .redes a:hover { position: relative; width: 44px; height: 44px; background: none; border: 0; }
+  footer .redes a::before {
+    content: ""; position: absolute; inset: 3px; border-radius: 8px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); transition: background 0.15s, border-color 0.15s;
+  }
+  footer .redes a:hover::before { background: var(--primary); border-color: var(--primary); }
+  footer .redes svg { position: relative; }
+  .creditos a, .creditos .abrir-cookies { display: inline-flex; align-items: center; min-height: 44px; vertical-align: middle; }
+}
 
 /* ---------- Componentes compartidos del nuevo diseño ---------- */
 .ini-etiqueta { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--azul); }
