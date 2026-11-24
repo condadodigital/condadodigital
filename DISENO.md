@@ -1,6 +1,25 @@
 # Sistema de diseño de Condado Digital (2026)
 
-Guía interna (no se publica: está fuera de `public/`). Referencia visual: `contenido/maqueta-inicio-condado-digital.html` y el inicio publicado. Todo lo de aquí ya existe como variables o clases en `public/styles.css`.
+Guía interna (no se publica: está fuera de `public/`).
+
+## Rediseño de noviembre 2026
+
+Desde el 23-11-2026 el sitio sigue las maquetas aprobadas del rediseño (carpeta local `rediseno-2026/`, fuera del repositorio): escritorio a 1440 px y teléfono a 390 px. Todo vive en `public/styles.css`:
+
+- **Marca:** blanco y negro minimalista; verde `#1E6B47` para botones sobre claro y palabras destacadas; lima `#C8F169` solo como acento (destacador a mano, botones sobre oscuro). Lima nunca como texto sobre fondo claro. Poco verde, a propósito.
+- **Cabecera** (`.k-head`): negro `#0B1512` al 94 % con desenfoque; menú Servicios, Cómo trabajamos, Enciclopedia, Glosario, Calculadoras y Aprendizaje, y el botón «Hablemos» que abre el formulario. «Quiénes somos» y «Contacto» se enlazan solo desde el pie.
+- **Pie** (`.k-foot`): 4 columnas y solo 4 redes (Instagram, Facebook, YouTube y LinkedIn). «Configurar cookies» reabre el panel.
+- **Franja final «Hablemos»** (`.k-grid-dark`): fondo noche `#05070A`, letras que se animan una a una y botón lima.
+- **Palabras que rotan** (`.pr-rot`, `.sv-rot`): cambian cada 2,5 s con destacador lima dibujado a mano; con movimiento reducido queda fija la primera.
+- **Páginas** (`.pg-*`): hero blanco con cuadrícula, migas, kicker azul, `pg-h1`, tarjetas `pg-card`, preguntas `pg-faq` y filas `pg-row`.
+- **Artículos** (`.ar-*`): portada ilustrada propia, línea de autor arriba, índice lateral, columna de términos, recuadro «En resumen», firma con bio al final y sin El Conde.
+- **Movimiento:** todo lo que en escritorio pasa «al pasar el cursor» funciona con un toque en el teléfono, y todas las animaciones respetan `prefers-reduced-motion`.
+
+Las secciones siguientes describen el sistema anterior y quedan como referencia histórica.
+
+## Sistema anterior (hasta el 22-11-2026)
+
+Referencia visual: `contenido/maqueta-inicio-condado-digital.html` y el inicio publicado. Todo lo de aquí ya existe como variables o clases en `public/styles.css`.
 
 ## 1. Colores y su uso
 
