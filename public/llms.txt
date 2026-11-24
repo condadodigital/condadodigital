@@ -5,18 +5,19 @@
 ## Páginas principales
 
 - [Inicio](https://www.condadodigital.cl/): presentación del sitio y secciones destacadas
-- [Asesorías](https://www.condadodigital.cl/#asesorias): los 4 servicios de Condado Digital para pymes y marcas de Chile y Latinoamérica
+- [Servicios](https://www.condadodigital.cl/#servicios): los 5 servicios de Condado Digital para pymes y marcas de Chile y Latinoamérica
 - [Paid Media](https://www.condadodigital.cl/paid-media): gestión de campañas en Google, Meta, TikTok, LinkedIn, Pinterest y X Ads con foco en costo por lead y costo por adquisición
 - [Social Media](https://www.condadodigital.cl/social-media): estrategia, parrilla de contenidos, guiones y reportería para Instagram, Facebook, TikTok y LinkedIn
 - [Mentorías](https://www.condadodigital.cl/mentorias): sesiones en vivo para aprender a gestionar Google Ads, Meta Ads, TikTok Ads, GA4 y GTM sobre tus propias cuentas
+- [Posicionamiento SEO](https://www.condadodigital.cl/seo): auditoría técnica, palabras clave, SEO local y optimización para buscadores con IA, con seguimiento mensual en Search Console
 - [Diseño web](https://www.condadodigital.cl/diseno-web): sitios y landing pages rápidos, con GTM, GA4 y cookies desde el primer día, preparados para Google y los asistentes de IA
-- [Acerca de Condado Digital](https://www.condadodigital.cl/acerca): por qué nació el sitio, cómo trabajamos y quién está detrás
+- [Quiénes somos](https://www.condadodigital.cl/acerca): por qué nació Condado Digital, nuestros principios y quién está detrás
 - [Contacto](https://www.condadodigital.cl/contacto): formulario para asesorías y colaboraciones
 
 ## Contenido
 
 - [Calculadoras](https://www.condadodigital.cl/calculadoras): 20 calculadoras (ROAS, CPA, CPL, CAC, LTV, hook rate, hold rate, LTV/CAC y otras métricas) y un simulador de embudo
-- [Enciclopedia](https://www.condadodigital.cl/enciclopedia): artículos de referencia sobre marketing digital para pymes de Chile y Latinoamérica, con datos verificados y fuentes
+- [Enciclopedia](https://www.condadodigital.cl/enciclopedia): 16 guías de referencia sobre marketing digital para pymes de Chile y Latinoamérica, con datos verificados y fuentes
 - [Glosario](https://www.condadodigital.cl/glosario): 168 términos de marketing digital con definición, fórmula y ejemplo
 - [Herramientas](https://www.condadodigital.cl/herramientas): herramientas de marketing recomendadas
 - [Preguntas frecuentes](https://www.condadodigital.cl/preguntas-frecuentes): respuestas breves sobre marketing digital
