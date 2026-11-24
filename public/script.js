@@ -125,11 +125,12 @@
         ["—", "Google Tag Manager", "Cargar las demás herramientas solo según tu elección (no guarda cookies propias)", "—"]] },
       { k: "an", n: "Analítica", d: "Nos dicen cuántas personas visitan el sitio y qué páginas sirven más, de forma agregada. Usamos Google Analytics 4.", f: [
         ["_ga, _ga_&lt;id&gt;", "Google Analytics 4", "Contar visitas y saber qué contenidos se usan", "2 años"]] },
-      { k: "ad", n: "Publicidad", d: "Permiten medir si nuestros anuncios funcionan y mostrar anuncios a quien ya visitó el sitio en Google, Meta, TikTok y LinkedIn.", f: [
+      { k: "ad", n: "Publicidad", d: "Permiten medir si nuestros anuncios funcionan y mostrar anuncios a quien ya visitó el sitio en Google, Meta, TikTok y LinkedIn. También miden los anuncios en ChatGPT.", f: [
         ["_gcl_au", "Google Ads", "Medir conversiones y remarketing", "90 días"],
         ["_fbp", "Meta", "Medir campañas y remarketing en Facebook e Instagram", "Hasta 90 días"],
         ["_ttp, ttclid", "TikTok", "Medir campañas y remarketing en TikTok", "13 meses desde el último uso"],
-        ["li_fat_id", "LinkedIn", "Medir campañas y remarketing en LinkedIn", "30 días"]] }
+        ["li_fat_id", "LinkedIn", "Medir campañas y remarketing en LinkedIn", "30 días"],
+        ["__oppref, __obref", "OpenAI (píxel de ChatGPT Ads)", "Medir visitas y leads de los anuncios en ChatGPT", "30 días (__oppref) y 365 días (__obref)"]] }
     ];
     var tarjeta = null, over = null, re = null, foco = null, est = { an: false, ad: false };
     var toast = function (t) {
@@ -394,7 +395,7 @@
 
   (function conde() {
     if (document.body.classList.contains("sin-conde")) return;
-    var URL_CONDE = "/conde.js?v=20261123a", CLAVE = "cd_conde_aviso";
+    var URL_CONDE = "/conde.js?v=20261124c", CLAVE = "cd_conde_aviso";
     var visto = function () { try { return sessionStorage.getItem(CLAVE); } catch (e) { return "1"; } };
     var btn, hint, ping, mod = null, cargando = null;
     var quitarAviso = function () { if (hint) { hint.remove(); hint = null; } if (ping) { ping.remove(); ping = null; } try { sessionStorage.setItem(CLAVE, "1"); } catch (e) {} };

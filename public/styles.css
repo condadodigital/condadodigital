@@ -1491,3 +1491,39 @@ a.a-row:hover{color:#FFFFFF}
 .sv-diag h2{max-width:560px}
 @media (max-width:760px){.sv-b{grid-template-columns:minmax(0,1fr);gap:10px;padding:32px 4px}.sv-arr{display:none}.sv-n{padding-top:0}.sv-d{font-size:16.5px}.sv-diag{padding:26px}.sv-diag h2{font-size:27px!important}}
 @media (prefers-reduced-motion:reduce){.sv-b::before,.sv-t,.sv-arr{transition:none}}
+.fc-prox{margin:0 0 40px;padding:28px 30px 22px;border-radius:22px;border:1.5px solid #0B1512;background:#F7F5EF}
+.fc-prox p.k{margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.fc-prox .fc-resp{margin:0 0 18px;font-family:'Fraunces',serif;font-size:24px;line-height:1.3}
+.fc-prox .ar-tw{margin:0 0 14px;background:#FFFFFF;border-radius:14px}
+.fc-tabla td:first-child{width:30%}
+.fc-tabla td:nth-child(3){width:1%;white-space:nowrap}
+.fc-estado{display:inline-block;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;border:1.5px solid currentColor;white-space:nowrap}
+.fc-proximo{color:#1E6B47}
+.fc-curso{background:#0B1512;color:#C8F169;border-color:#0B1512}
+.fc-terminado{color:#55635B}
+.fc-prox .fc-act{margin:0;font-size:14px;color:#55635B}
+@media (max-width:760px){.fc-prox{padding:22px 18px 18px}.fc-prox .fc-resp{font-size:20px}.fc-tabla td:first-child{width:auto}}
+.pg-sbox .pg-type{max-width:24ch;animation:pgTypeB 4s steps(26,end) 3s infinite alternate,pgCar .8s step-end 3s infinite}
+@keyframes pgTypeB{0%,40%{max-width:24ch}90%,100%{max-width:0}}
+.es-enciclopedia .pg-hero .pg-lead,.es-glosario .pg-hero .pg-lead,.es-enciclopedia .pg-sbox,.es-glosario .pg-sbox{animation:none}
+@media (prefers-reduced-motion:reduce){.pg-sbox .pg-type{animation:none;max-width:none;border-right:0}}
+.pg-step .n{color:#7D8A83}
+.pg-row .n{opacity:.7}
+@media (max-width:760px){.fc-tabla thead{display:none}.fc-tabla,.fc-tabla tbody{display:block!important;overflow:visible!important}.fc-tabla tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:center;padding:14px 16px;border-bottom:1px solid #E4E0D5}.fc-tabla tr:last-child{border-bottom:0}.fc-tabla td{padding:0!important;border:0!important;width:auto!important}.fc-tabla td:nth-child(2){grid-column:1/-1;grid-row:2;color:#55635B}.fc-tabla td:nth-child(3){grid-column:2;grid-row:1}}
+.cd-franja{padding:clamp(64px,6.7vw,96px) 24px!important}
+.cd-franja>p:first-of-type{margin-bottom:12px!important}
+.cd-franja h2{font-size:clamp(36px,calc(2.4vw + 28px),64px)!important;line-height:1.02!important;letter-spacing:-1.2px!important;margin:0 auto 14px!important;max-width:1100px}
+.cd-franja h2+p{margin-bottom:24px!important;font-size:18px!important}
+.cd-franja .k-btn{font-size:18px!important;padding:16px 34px!important}
+.cd-franja .k-halo{width:620px!important;height:620px!important;margin:-310px 0 0 -310px!important}
+.cd-franja .k-spin{width:360px!important;height:360px!important;margin:-180px 0 0 -180px!important}
+.cd-franja .k-spin-r{width:440px!important;height:440px!important;margin:-220px 0 0 -220px!important}
+.cd-franja .k-float:not([style*="border-radius:50%"]){width:40px!important;height:40px!important;border-radius:11px!important}
+.cd-franja .k-float[style*="border-radius:50%"]{width:14px!important;height:14px!important}
+.cd-franja .k-floaty i{width:8px!important}
+.cd-franja .k-floaty i:nth-child(1){height:14px!important}
+.cd-franja .k-floaty i:nth-child(2){height:24px!important}
+.cd-franja .k-floaty i:nth-child(3){height:34px!important}
+.cd-franja .k-floaty:not(:has(i)){font-size:28px!important}
+@media (max-width:760px){.cd-franja{padding:64px 20px!important}.cd-franja .k-halo{width:460px!important;height:460px!important;margin:-230px 0 0 -230px!important}.cd-franja .k-spin{width:260px!important;height:260px!important;margin:-130px 0 0 -130px!important}.cd-franja .k-spin-r{width:340px!important;height:340px!important;margin:-170px 0 0 -170px!important}.cd-franja h2+p{font-size:16.5px!important;margin-bottom:22px!important}.cd-franja .k-btn{font-size:17px!important;padding:15px 30px!important}}
+.ar-body strong,.ar-body code,.ar-body a{overflow-wrap:anywhere}
