@@ -29,7 +29,7 @@ while ((m = reLi.exec(html))) {
   const [, tag, cuerpo] = m;
   terminos.push([
     attr(tag, "id"),
-    parte(cuerpo, /<h4 class="gt-code">([\s\S]*?)<\/h4>/),
+    parte(cuerpo, /<h[34] class="gt-code">([\s\S]*?)<\/h[34]>/),
     parte(cuerpo, /<p class="gt-full">([\s\S]*?)<\/p>/),
     parte(cuerpo, /<p class="gt-def">([\s\S]*?)<\/p>/),
     attr(tag, "data-calc"),

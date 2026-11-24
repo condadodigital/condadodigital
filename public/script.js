@@ -394,7 +394,7 @@
 
   (function conde() {
     if (document.body.classList.contains("sin-conde")) return;
-    var URL_CONDE = "/conde.js?v=20261123a", CLAVE = "cd_conde_aviso";
+    var URL_CONDE = "/conde.js?v=20261124a", CLAVE = "cd_conde_aviso";
     var visto = function () { try { return sessionStorage.getItem(CLAVE); } catch (e) { return "1"; } };
     var btn, hint, ping, mod = null, cargando = null;
     var quitarAviso = function () { if (hint) { hint.remove(); hint = null; } if (ping) { ping.remove(); ping = null; } try { sessionStorage.setItem(CLAVE, "1"); } catch (e) {} };
