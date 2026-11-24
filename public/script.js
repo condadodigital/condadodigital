@@ -1,1220 +1,429 @@
-// CONDADO DIGITAL — Menú móvil, submenús y buscador
-
-// Menú principal en pantallas pequeñas (el botón solo existe con JavaScript)
 (function () {
-  const boton = document.querySelector(".cabecera-menu-btn");
-  const menu = document.getElementById("menu-principal");
-  if (boton && menu) {
-    boton.addEventListener("click", () => {
-      const abierto = menu.classList.toggle("abierto");
-      boton.setAttribute("aria-expanded", abierto ? "true" : "false");
-      boton.setAttribute("aria-label", abierto ? "Cerrar menú" : "Abrir menú");
-    });
-    menu.addEventListener("click", (e) => {
-      if (e.target.closest("a")) { menu.classList.remove("abierto"); boton.setAttribute("aria-expanded", "false"); boton.setAttribute("aria-label", "Abrir menú"); }
-    });
-  }
-  // Marca en el menú la sección actual
-  const actual = (window.location.pathname.split("/").pop() || "").replace(/\.html$/, "");
-  document.querySelectorAll(".menu-principal a").forEach((a) => {
-    const destino = a.getAttribute("href");
-    if (actual && (destino === actual || (actual.startsWith("glosario-") && destino === "glosario"))) a.setAttribute("aria-current", "page");
-  });
-})();
+  "use strict";
+  window.dataLayer = window.dataLayer || [];
+  var medir = function (evento, datos) { var o = { event: evento }; for (var k in datos || {}) o[k] = datos[k]; window.dataLayer.push(o); };
+  window.cdMedir = medir;
+  var quieto = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.cdQuieto = quieto;
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+  window.cdEsc = esc;
 
-// ============================================
-// Buscador desplegable global (overlay)
-// Se abre desde la lupa del menú sin salir de la página
-// ============================================
-(function () {
-  // Índice de búsqueda del sitio: agregar aquí cada contenido nuevo
   const INDICE = [
-    { t: "Calculadoras de marketing (20 métricas)", u: "calculadoras", tipo: "Recurso", k: "calculadora roas roi cpa cpl cac cpc cpm cpv ctr cvr frecuencia hook rate hold rate engagement seguidores guardados ticket ltv ltv/cac simulador embudo metricas" },
-    { t: "¿Qué es el CPA?", u: "glosario-cpa", tipo: "Glosario", k: "cpa costo por adquisicion formula" },
-    { t: "¿Qué es el CAC?", u: "glosario-cac", tipo: "Glosario", k: "cac costo adquisicion cliente" },
-    { t: "¿Qué es el LTV?", u: "glosario-ltv", tipo: "Glosario", k: "ltv lifetime value valor vida cliente" },
-    { t: "¿Qué es el CPC?", u: "glosario-cpc", tipo: "Glosario", k: "cpc costo por clic" },
-    { t: "¿Qué es el CPM?", u: "glosario-cpm", tipo: "Glosario", k: "cpm costo mil impresiones" },
-    { t: "¿Qué es el CTR?", u: "glosario-ctr", tipo: "Glosario", k: "ctr tasa clics click through rate" },
-    { t: "¿Qué es el CVR?", u: "glosario-cvr", tipo: "Glosario", k: "cvr tasa conversion" },
-    { t: "¿Qué es el CPL?", u: "glosario-cpl", tipo: "Glosario", k: "cpl costo por lead" },
-    { t: "¿Qué es AEO?", u: "glosario-aeo", tipo: "Glosario", k: "aeo answer engine optimization respuestas" },
-    { t: "¿Qué es GEO?", u: "glosario-geo", tipo: "Glosario", k: "geo generative engine optimization ia chatgpt" },
-    { t: "¿Qué es CRO?", u: "glosario-cro", tipo: "Glosario", k: "cro optimizacion conversion tests ab" },
-    { t: "¿Qué es un CRM?", u: "glosario-crm", tipo: "Glosario", k: "crm gestion clientes hubspot pipedrive" },
-    { t: "¿Qué es GA4?", u: "glosario-ga4", tipo: "Glosario", k: "ga4 google analytics eventos medicion" },
-    { t: "¿Qué es GTM?", u: "glosario-gtm", tipo: "Glosario", k: "gtm google tag manager etiquetas" },
-    { t: "¿Qué es la CAPI?", u: "glosario-capi", tipo: "Glosario", k: "capi conversions api servidor meta" },
-    { t: "¿Qué son las UTM?", u: "glosario-utm", tipo: "Glosario", k: "utm parametros seguimiento campanas atribucion" },
-    { t: "Enciclopedia de marketing digital", u: "enciclopedia", tipo: "Sección", k: "enciclopedia articulos referencia conceptos marketing digital" },
-    { t: "Marketing digital", u: "que-es-el-marketing-digital", tipo: "Enciclopedia", k: "marketing digital que es canales pymes chile empezar presupuesto" },
-    { t: "Marketing tradicional vs. marketing digital", u: "marketing-tradicional-vs-digital", tipo: "Enciclopedia", k: "tradicional digital radio via publica tv ferias combinar diferencias" },
-    { t: "Embudo de marketing", u: "embudo-de-marketing", tipo: "Enciclopedia", k: "embudo funnel etapas metricas aida messy middle flywheel cpm ctr cpl cac ltv" },
-    { t: "Publicidad pagada vs. orgánica", u: "publicidad-pagada-vs-organica", tipo: "Enciclopedia", k: "pagada organica seo pauta efecto halo cyberday black friday" },
-    { t: "Analítica digital", u: "analitica-digital", tipo: "Enciclopedia", k: "analitica ga4 gtm pixel utm eventos clave medicion ley 21719 datos personales" },
-    { t: "Marketing con inteligencia artificial", u: "marketing-con-ia", tipo: "Enciclopedia", k: "ia inteligencia artificial performance max advantage aeo geo chatgpt" },
-    { t: "Core update de Google de noviembre 2026", u: "core-update-google-noviembre-2026", tipo: "Enciclopedia", k: "core update google noviembre 2026 actualizacion algoritmo seo black friday ranking" },
-    { t: "ChatGPT Ads en Chile", u: "chatgpt-ads-chile", tipo: "Enciclopedia", k: "chatgpt ads chile openai anuncios publicidad aleph target cpa target cpc ia" },
-    { t: "Sitio web", u: "sitio-web", tipo: "Enciclopedia", k: "sitio web pagina web dominio cl hosting wordpress shopify jumpseller tiendanube github pages cloudflare cuanto cuesta" },
-    { t: "Tienda online en Chile", u: "tienda-online", tipo: "Enciclopedia", k: "tienda online ecommerce comercio electronico shopify jumpseller tiendanube woocommerce marketplace mercado libre dropshipping retracto" },
-    { t: "Crear un sitio web con inteligencia artificial", u: "crear-sitio-web-con-ia", tipo: "Enciclopedia", k: "crear sitio web pagina web con ia inteligencia artificial lovable vibe coding wix hostinger constructor" },
-    { t: "Perfil de Empresa de Google", u: "perfil-de-empresa-google", tipo: "Enciclopedia", k: "perfil de empresa google mi negocio my business maps ficha resenas verificacion seo local" },
-    { t: "WhatsApp Business", u: "whatsapp-business", tipo: "Enciclopedia", k: "whatsapp business api catalogo respuestas rapidas mensajes costo por mensaje ventas" },
-    { t: "Meta Ads vs Google Ads", u: "meta-ads-vs-google-ads", tipo: "Enciclopedia", k: "meta ads google ads facebook instagram publicidad cpm cpc comparacion cual conviene" },
-    { t: "Cómo investigar los anuncios de tu competencia", u: "biblioteca-de-anuncios", tipo: "Enciclopedia", k: "biblioteca de anuncios meta ad library centro de transparencia google competencia espiar anuncios" },
-    { t: "Fechas comerciales en Chile", u: "fechas-comerciales-chile", tipo: "Enciclopedia", k: "fechas comerciales chile cyberday cybermonday black friday navidad calendario ccs" },
-    { t: "Glosario de Marketing (168 términos)", u: "glosario", tipo: "Sección", k: "glosario diccionario terminos cpc cpm ctr cac ltv roas mer ymyl pujas audiencias formatos" },
-    { t: "Preguntas frecuentes", u: "preguntas-frecuentes", tipo: "Sección", k: "faq preguntas que es paid media seo sem aeo geo pixel capi" },
-    { t: "Herramientas de Marketing", u: "herramientas", tipo: "Sección", k: "herramientas google ads meta ga4 gtm looker ahrefs semrush claude chatgpt" },
-    { t: "Acerca de Condado Digital", u: "acerca", tipo: "Página", k: "acerca de condado digital quienes somos principios sobre mi esleyter conde creador" },
-    { t: "Asesorías", u: "/#asesorias", tipo: "Página", k: "servicios asesorias asesoria paid media social media mentorias mentoria diseno web campanas gestion medicion" },
-    { t: "Asesoría de Paid Media", u: "paid-media", tipo: "Servicio", k: "asesoria paid media gestion campanas google ads meta ads tiktok linkedin pinterest x ads costo por lead cpa" },
-    { t: "Asesoría de Social Media", u: "social-media", tipo: "Servicio", k: "asesoria social media redes sociales estrategia parrilla contenidos guiones reporteria instagram facebook tiktok linkedin" },
-    { t: "Mentorías de Paid Media y analítica", u: "mentorias", tipo: "Servicio", k: "mentorias mentoria sesiones en vivo aprender google ads meta ads tiktok ads ga4 gtm" },
-    { t: "Diseño web", u: "diseno-web", tipo: "Servicio", k: "diseno web sitio web landing page pagina rapida gtm ga4 cookies seo ia" },
-    { t: "Contacto", u: "contacto", tipo: "Página", k: "contacto colaboraciones consultoria asesoria" }
-  ];
+  { t: "Calculadoras de marketing (20 métricas)", u: "/calculadoras", tipo: "Recurso", k: "calculadora roas roi cpa cpl cac cpc cpm cpv ctr cvr frecuencia hook rate hold rate engagement seguidores guardados ticket ltv ltv/cac simulador embudo metricas" },
+  { t: "¿Qué es el CPA?", u: "/glosario-cpa", tipo: "Glosario", k: "cpa costo por adquisicion formula" },
+  { t: "¿Qué es el CAC?", u: "/glosario-cac", tipo: "Glosario", k: "cac costo adquisicion cliente" },
+  { t: "¿Qué es el LTV?", u: "/glosario-ltv", tipo: "Glosario", k: "ltv lifetime value valor vida cliente" },
+  { t: "¿Qué es el CPC?", u: "/glosario-cpc", tipo: "Glosario", k: "cpc costo por clic" },
+  { t: "¿Qué es el CPM?", u: "/glosario-cpm", tipo: "Glosario", k: "cpm costo mil impresiones" },
+  { t: "¿Qué es el CTR?", u: "/glosario-ctr", tipo: "Glosario", k: "ctr tasa clics click through rate" },
+  { t: "¿Qué es el CVR?", u: "/glosario-cvr", tipo: "Glosario", k: "cvr tasa conversion" },
+  { t: "¿Qué es el CPL?", u: "/glosario-cpl", tipo: "Glosario", k: "cpl costo por lead" },
+  { t: "¿Qué es AEO?", u: "/glosario-aeo", tipo: "Glosario", k: "aeo answer engine optimization respuestas" },
+  { t: "¿Qué es GEO?", u: "/glosario-geo", tipo: "Glosario", k: "geo generative engine optimization ia chatgpt" },
+  { t: "¿Qué es CRO?", u: "/glosario-cro", tipo: "Glosario", k: "cro optimizacion conversion tests ab" },
+  { t: "¿Qué es un CRM?", u: "/glosario-crm", tipo: "Glosario", k: "crm gestion clientes hubspot pipedrive" },
+  { t: "¿Qué es GA4?", u: "/glosario-ga4", tipo: "Glosario", k: "ga4 google analytics eventos medicion" },
+  { t: "¿Qué es GTM?", u: "/glosario-gtm", tipo: "Glosario", k: "gtm google tag manager etiquetas" },
+  { t: "¿Qué es la CAPI?", u: "/glosario-capi", tipo: "Glosario", k: "capi conversions api servidor meta" },
+  { t: "¿Qué son las UTM?", u: "/glosario-utm", tipo: "Glosario", k: "utm parametros seguimiento campanas atribucion" },
+  { t: "Enciclopedia de marketing digital", u: "/enciclopedia", tipo: "Sección", k: "enciclopedia articulos referencia conceptos marketing digital" },
+  { t: "Marketing digital", u: "/que-es-el-marketing-digital", tipo: "Enciclopedia", k: "marketing digital que es canales pymes chile empezar presupuesto" },
+  { t: "Marketing tradicional vs. marketing digital", u: "/marketing-tradicional-vs-digital", tipo: "Enciclopedia", k: "tradicional digital radio via publica tv ferias combinar diferencias" },
+  { t: "Embudo de marketing", u: "/embudo-de-marketing", tipo: "Enciclopedia", k: "embudo funnel etapas metricas aida messy middle flywheel cpm ctr cpl cac ltv" },
+  { t: "Publicidad pagada vs. orgánica", u: "/publicidad-pagada-vs-organica", tipo: "Enciclopedia", k: "pagada organica seo pauta efecto halo cyberday black friday" },
+  { t: "Analítica digital", u: "/analitica-digital", tipo: "Enciclopedia", k: "analitica ga4 gtm pixel utm eventos clave medicion ley 21719 datos personales" },
+  { t: "Marketing con inteligencia artificial", u: "/marketing-con-ia", tipo: "Enciclopedia", k: "ia inteligencia artificial performance max advantage aeo geo chatgpt" },
+  { t: "Core update de Google de noviembre 2026", u: "/core-update-google-noviembre-2026", tipo: "Enciclopedia", k: "core update google noviembre 2026 actualizacion algoritmo seo black friday ranking" },
+  { t: "ChatGPT Ads en Chile", u: "/chatgpt-ads-chile", tipo: "Enciclopedia", k: "chatgpt ads chile openai anuncios publicidad aleph target cpa target cpc ia" },
+  { t: "Sitio web", u: "/sitio-web", tipo: "Enciclopedia", k: "sitio web pagina web dominio cl hosting wordpress shopify jumpseller tiendanube github pages cloudflare cuanto cuesta" },
+  { t: "Tienda online en Chile", u: "/tienda-online", tipo: "Enciclopedia", k: "tienda online ecommerce comercio electronico shopify jumpseller tiendanube woocommerce marketplace mercado libre dropshipping retracto" },
+  { t: "Crear un sitio web con inteligencia artificial", u: "/crear-sitio-web-con-ia", tipo: "Enciclopedia", k: "crear sitio web pagina web con ia inteligencia artificial lovable vibe coding wix hostinger constructor" },
+  { t: "Perfil de Empresa de Google", u: "/perfil-de-empresa-google", tipo: "Enciclopedia", k: "perfil de empresa google mi negocio my business maps ficha resenas verificacion seo local" },
+  { t: "WhatsApp Business", u: "/whatsapp-business", tipo: "Enciclopedia", k: "whatsapp business api catalogo respuestas rapidas mensajes costo por mensaje ventas" },
+  { t: "Meta Ads vs Google Ads", u: "/meta-ads-vs-google-ads", tipo: "Enciclopedia", k: "meta ads google ads facebook instagram publicidad cpm cpc comparacion cual conviene" },
+  { t: "Cómo investigar los anuncios de tu competencia", u: "/biblioteca-de-anuncios", tipo: "Enciclopedia", k: "biblioteca de anuncios meta ad library centro de transparencia google competencia espiar anuncios" },
+  { t: "Fechas comerciales en Chile", u: "/fechas-comerciales-chile", tipo: "Enciclopedia", k: "fechas comerciales chile cyberday cybermonday black friday navidad calendario ccs" },
+  { t: "Glosario de Marketing (168 términos)", u: "/glosario", tipo: "Sección", k: "glosario diccionario terminos cpc cpm ctr cac ltv roas mer ymyl pujas audiencias formatos" },
+  { t: "Preguntas frecuentes", u: "/preguntas-frecuentes", tipo: "Sección", k: "faq preguntas que es paid media seo sem aeo geo pixel capi" },
+  { t: "Herramientas de Marketing", u: "/herramientas", tipo: "Sección", k: "herramientas google ads meta ga4 gtm looker ahrefs semrush claude chatgpt" },
+  { t: "Quiénes somos", u: "/acerca", tipo: "Página", k: "acerca de condado digital quienes somos principios sobre mi esleyter conde creador" },
+  { t: "Servicios", u: "/servicios", tipo: "Página", k: "servicios asesorias asesoria seo posicionamiento paid media social media mentorias mentoria diseno web campanas gestion medicion" },
+  { t: "Asesoría de Paid Media", u: "/paid-media", tipo: "Servicio", k: "asesoria paid media gestion campanas google ads meta ads tiktok linkedin pinterest x ads costo por lead cpa" },
+  { t: "Asesoría de Social Media", u: "/social-media", tipo: "Servicio", k: "asesoria social media redes sociales estrategia parrilla contenidos guiones reporteria instagram facebook tiktok linkedin" },
+  { t: "Mentorías de Paid Media y analítica", u: "/mentorias", tipo: "Servicio", k: "mentorias mentoria sesiones en vivo aprender google ads meta ads tiktok ads ga4 gtm" },
+  { t: "Posicionamiento SEO", u: "/seo", tipo: "Servicio", k: "seo posicionamiento web google buscadores ia aeo geo search console palabras clave seo local perfil de empresa" },
+  { t: "Diseño web", u: "/diseno-web", tipo: "Servicio", k: "diseno web sitio web landing page pagina rapida gtm ga4 cookies seo ia" },
+  { t: "Contacto", u: "/contacto", tipo: "Página", k: "contacto colaboraciones consultoria asesoria" }
+];
 
-  // Crear el overlay una sola vez
-  const overlay = document.createElement("div");
-  overlay.className = "overlay-busqueda";
-  overlay.innerHTML =
-    '<div class="panel-busqueda">' +
-    '  <div class="cabecera"><strong>¿Qué estás buscando?</strong>' +
-    '  <button class="cerrar-busqueda" aria-label="Cerrar búsqueda">✕</button></div>' +
-    '  <input type="search" id="overlay-q" placeholder="Ej: Meta Ads, ROAS, GA4..." aria-label="Buscar en el sitio">' +
-    '  <div id="overlay-resultados"></div>' +
-    '  <p class="pista-busqueda">Presiona Esc para cerrar</p>' +
-    "</div>";
-  document.body.appendChild(overlay);
-
-  const input = overlay.querySelector("#overlay-q");
-  const resultados = overlay.querySelector("#overlay-resultados");
-
-  function abrir(e) {
-    if (e) e.preventDefault();
-    overlay.classList.add("abierto");
-    input.value = "";
-    resultados.innerHTML = "";
-    setTimeout(() => input.focus(), 50);
-  }
-
-  function cerrar() { overlay.classList.remove("abierto"); }
-
-  // La lupa del menú abre el overlay (en vez de navegar a buscar)
-  document.querySelectorAll('a[href="buscar"]').forEach(a => a.addEventListener("click", abrir));
-
-  overlay.querySelector(".cerrar-busqueda").addEventListener("click", cerrar);
-  overlay.addEventListener("click", e => { if (e.target === overlay) cerrar(); });
-  document.addEventListener("keydown", e => { if (e.key === "Escape") cerrar(); });
-
-  input.addEventListener("input", () => {
-    const v = input.value.toLowerCase().trim();
-    resultados.innerHTML = "";
-    if (v.length < 2) return;
-    const hits = INDICE.filter(i => (i.t + " " + i.k).toLowerCase().includes(v));
-    if (!hits.length) {
-      resultados.innerHTML = "<p style='color:var(--text-2);padding:10px 0'>Sin resultados para «" + input.value + "».</p>";
-      return;
-    }
-    hits.forEach(i => {
-      const a = document.createElement("a");
-      a.className = "resultado-busqueda";
-      a.href = i.u;
-      a.innerHTML = "<span class='tipo'>" + i.tipo + "</span><div class='titulo'>" + i.t + "</div>";
-      resultados.appendChild(a);
-    });
-  });
-})();
-
-// ============================================
-// Consentimiento de cookies (Ley 21.719 + Google Consent Mode v2)
-// El estado por defecto ("denied") se define en el <head> de cada página, antes de GTM.
-// Aquí: banner de primera visita, panel de configuración y actualización del consentimiento.
-// ============================================
-(function () {
-  const CLAVE = "cd_consentimiento";
-  const VERSION = 1;
-  const DURACION = 182 * 24 * 60 * 60 * 1000; // 6 meses
-
-  function leer() {
-    try {
-      const c = JSON.parse(localStorage.getItem(CLAVE));
-      if (c && c.v === VERSION && c.exp > Date.now()) return c;
-    } catch (e) {}
-    return null;
-  }
-
-  function guardar(analitica, publicidad) {
-    const c = { v: VERSION, analitica: !!analitica, publicidad: !!publicidad, fecha: Date.now(), exp: Date.now() + DURACION };
-    try { localStorage.setItem(CLAVE, JSON.stringify(c)); } catch (e) {}
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    const ads = c.publicidad ? "granted" : "denied";
-    gtag("consent", "update", {
-      analytics_storage: c.analitica ? "granted" : "denied",
-      ad_storage: ads, ad_user_data: ads, ad_personalization: ads
-    });
-    dataLayer.push({ event: "consent_update", analytics: c.analitica, ads: c.publicidad });
-    return c;
-  }
-
-  let banner = null, panel = null, ultimoFoco = null;
-
-  function cerrarBanner() {
-    if (banner) { banner.remove(); banner = null; }
-  }
-
-  function crearBanner() {
-    banner = document.createElement("section");
-    banner.className = "cookies-banner";
-    banner.setAttribute("aria-label", "Aviso de cookies");
-    banner.innerHTML =
-      '<p>Usamos cookies propias y de terceros para medir visitas y, si lo aceptas, para publicidad. ' +
-      'Más detalles en la <a href="privacidad#cookies">política de privacidad</a>.</p>' +
-      '<div class="cookies-acciones">' +
-      '<button type="button" class="btn btn-primario" data-cookies="aceptar">Aceptar todas</button>' +
-      '<button type="button" class="btn btn-secundario" data-cookies="rechazar">Rechazar</button>' +
-      '<button type="button" class="btn btn-secundario" data-cookies="configurar" aria-haspopup="dialog">Configurar</button>' +
-      "</div>";
-    document.body.appendChild(banner);
-  }
-
-  function crearPanel() {
-    panel = document.createElement("dialog");
-    panel.className = "cookies-panel";
-    panel.setAttribute("aria-labelledby", "cookies-titulo");
-    panel.innerHTML =
-      '<h2 id="cookies-titulo">Configurar cookies</h2>' +
-      '<p>Elige qué cookies aceptas. Puedes cambiarlo cuando quieras desde «Configurar cookies», al pie de cada página.</p>' +
-      '<div class="cookies-opcion"><div><strong id="ck-nec">Necesarias</strong>' +
-      '<p id="ck-nec-d">Guardan tu elección de cookies y protegen el sitio. Siempre activas.</p></div>' +
-      '<input type="checkbox" role="switch" checked disabled aria-labelledby="ck-nec" aria-describedby="ck-nec-d"></div>' +
-      '<div class="cookies-opcion"><div><label for="ck-analitica"><strong>Analítica</strong></label>' +
-      '<p id="ck-ana-d">Google Analytics 4: nos dice qué páginas se visitan, de forma agregada.</p></div>' +
-      '<input type="checkbox" role="switch" id="ck-analitica" aria-describedby="ck-ana-d"></div>' +
-      '<div class="cookies-opcion"><div><label for="ck-publicidad"><strong>Publicidad</strong></label>' +
-      '<p id="ck-pub-d">Google Ads, Meta, TikTok y LinkedIn: miden campañas y muestran anuncios a quien ya visitó el sitio.</p></div>' +
-      '<input type="checkbox" role="switch" id="ck-publicidad" aria-describedby="ck-pub-d"></div>' +
-      '<div class="cookies-acciones">' +
-      '<button type="button" class="btn btn-primario" data-cookies="guardar">Guardar selección</button>' +
-      '<button type="button" class="btn btn-secundario" data-cookies="aceptar">Aceptar todas</button>' +
-      '<button type="button" class="btn btn-secundario" data-cookies="rechazar">Rechazar</button>' +
-      "</div>" +
-      '<button type="button" class="cookies-cerrar" data-cookies="cerrar" aria-label="Cerrar configuración de cookies">✕</button>';
-    document.body.appendChild(panel);
-    panel.addEventListener("close", () => {
-      if (ultimoFoco && document.contains(ultimoFoco)) ultimoFoco.focus();
-    });
-  }
-
-  function abrirPanel() {
-    if (!panel) crearPanel();
-    const c = leer();
-    panel.querySelector("#ck-analitica").checked = c ? c.analitica : false;
-    panel.querySelector("#ck-publicidad").checked = c ? c.publicidad : false;
-    ultimoFoco = document.activeElement;
-    if (typeof panel.showModal === "function") panel.showModal(); else panel.setAttribute("open", "");
-    panel.querySelector("#ck-analitica").focus();
-  }
-
-  function cerrarPanel() {
-    if (!panel) return;
-    if (typeof panel.close === "function" && panel.open) panel.close(); else panel.removeAttribute("open");
-  }
-
-  document.addEventListener("click", (e) => {
-    const abrir = e.target.closest(".abrir-cookies");
-    if (abrir) { e.preventDefault(); abrirPanel(); return; }
-    const b = e.target.closest("[data-cookies]");
-    if (!b) return;
-    const accion = b.getAttribute("data-cookies");
-    if (accion === "aceptar") guardar(true, true);
-    else if (accion === "rechazar") guardar(false, false);
-    else if (accion === "guardar") guardar(panel.querySelector("#ck-analitica").checked, panel.querySelector("#ck-publicidad").checked);
-    else if (accion === "configurar") { abrirPanel(); return; }
-    else if (accion === "cerrar") { cerrarPanel(); return; }
-    cerrarBanner();
-    cerrarPanel();
-  });
-
-  if (!leer()) crearBanner();
-})();
-
-// ============================================
-// Formulario emergente de asesorías (todas las páginas)
-// Los enlaces .abrir-contacto apuntan a /contacto: sin JavaScript llevan a esa página.
-// ============================================
-(function () {
-  const ENDPOINT = "https://formspree.io/f/mvkkjakn";
-  const EJEMPLO = "Qué vendes, en qué plataformas inviertes y cuánto, más o menos, al mes";
-  // Servicios que se pueden preelegir con data-servicio en el enlace .abrir-contacto
-  const SERVICIOS = {
-    "paid-media": { n: "Paid Media", c: "#1D4ED8", ej: "Qué vendes, en qué plataformas inviertes y cuánto, más o menos, al mes",
-      ico: '<path d="M4 4v16h16"/><path d="M7 15l4-4 3 3 5-6"/>' },
-    "social-media": { n: "Social Media", c: "#0F766E", ej: "Qué vendes, en qué redes estás hoy y qué quieres lograr con ellas",
-      ico: '<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/>' },
-    "mentorias": { n: "Mentorías", c: "#1E6B47", ej: "Qué quieres aprender y si es para ti o para tu equipo",
-      ico: '<path d="M2.5 9.5L12 5l9.5 4.5L12 14z"/><path d="M6.5 11.5v4c1.5 1.4 3.5 2 5.5 2s4-.6 5.5-2v-4"/>' },
-    "diseno-web": { n: "Diseño web", c: "#13294A", ej: "Qué necesitas (sitio nuevo, landing o rediseño) y si ya tienes dominio",
-      ico: '<rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M3 8.5h18"/><path d="M10 12.5l-2 2 2 2M14 12.5l2 2-2 2"/>' }
-  };
-  let dialogo = null, ultimoFoco = null, ponerServicio = null;
-
-  function crear() {
-    dialogo = document.createElement("dialog");
-    dialogo.className = "dialogo-contacto";
-    dialogo.setAttribute("aria-labelledby", "dialogo-contacto-titulo");
-    dialogo.innerHTML =
-      '<button type="button" class="dialogo-cerrar" aria-label="Cerrar formulario">×</button>' +
-      '<div class="dialogo-paso-form">' +
-      '<p class="ini-etiqueta" style="margin-bottom:6px">Asesorías</p>' +
-      '<p class="dialogo-chip" hidden><span class="dialogo-chip-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></span><span class="dialogo-chip-nombre"></span></p>' +
-      '<h2 id="dialogo-contacto-titulo">Cuéntanos qué necesitas</h2>' +
-      '<p class="dialogo-sub">Te respondemos en un plazo de 24 horas.</p>' +
-      '<form novalidate>' +
-      '<input type="hidden" name="formulario" value="asesoria">' +
-      '<input type="hidden" name="origen" value="">' +
-      '<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">' +
-      '<label>Nombre y apellido<input type="text" name="nombre" required autocomplete="name" placeholder="Ej: Camila Rojas"></label>' +
-      '<label>Correo electrónico<input type="email" name="email" required autocomplete="email" placeholder="tu@correo.com"></label>' +
-      '<label>Teléfono o WhatsApp (opcional)<input type="tel" name="telefono" autocomplete="tel" placeholder="+56 9 1234 5678"></label>' +
-      '<label>¿Qué servicio te interesa?<select name="servicio" required>' +
-      '<option value="">Elige una opción</option>' +
-      '<option value="paid-media">Paid Media</option>' +
-      '<option value="social-media">Social Media</option>' +
-      '<option value="mentorias">Mentorías</option>' +
-      '<option value="diseno-web">Diseño web</option>' +
-      '<option value="otro">Otro</option>' +
-      '</select></label>' +
-      '<p class="dialogo-elegido" id="dialogo-elegido" hidden>Ya viene elegido según la página desde donde lo abriste. Puedes cambiarlo.</p>' +
-      '<label>Cuéntanos tu caso<textarea name="mensaje" rows="4" required placeholder="' + EJEMPLO + '"></textarea></label>' +
-      '<button type="submit" class="dialogo-enviar">Enviar solicitud</button>' +
-      '<p class="dialogo-error" role="alert" hidden></p>' +
-      '<p class="dialogo-legal">Al enviar, aceptas que usemos tus datos para responder tu solicitud y hacer su seguimiento. El formulario lo procesa Formspree, fuera de Chile. Más detalles en la <a href="privacidad">política de privacidad</a>.</p>' +
-      '</form></div>' +
-      '<div class="dialogo-ok" hidden>' +
-      '<div class="dialogo-ok-ico ani-pulse"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg></div>' +
-      '<h2 tabindex="-1">¡Listo! Recibimos tu solicitud</h2>' +
-      '<p>Te escribimos en un plazo de 24 horas.</p>' +
-      '<button type="button" class="dialogo-ok-cerrar">Cerrar</button>' +
-      '</div>';
-    document.body.appendChild(dialogo);
-
-    const form = dialogo.querySelector("form");
-    const error = dialogo.querySelector(".dialogo-error");
-    const enviar = dialogo.querySelector(".dialogo-enviar");
-    let iniciado = false;
-    const chip = dialogo.querySelector(".dialogo-chip");
-    const elegido = dialogo.querySelector(".dialogo-elegido");
-
-    // Estado del servicio: con un id válido, lo preelige y muestra su etiqueta y su ejemplo;
-    // sin id (o con uno desconocido), vuelve al estado general.
-    function mostrarServicio(id) {
-      const sv = SERVICIOS[id];
-      chip.hidden = !sv;
-      if (sv) {
-        chip.querySelector(".dialogo-chip-ico").style.background = sv.c;
-        chip.querySelector("svg").innerHTML = sv.ico;
-        chip.querySelector(".dialogo-chip-nombre").textContent = sv.n;
-      }
-      form.mensaje.placeholder = sv ? sv.ej : EJEMPLO;
-    }
-    ponerServicio = function (id) {
-      const preelegido = !!SERVICIOS[id];
-      form.servicio.value = preelegido ? id : "";
-      dialogo.classList.toggle("con-servicio", preelegido);
-      elegido.hidden = !preelegido;
-      if (preelegido) form.servicio.setAttribute("aria-describedby", "dialogo-elegido");
-      else form.servicio.removeAttribute("aria-describedby");
-      mostrarServicio(preelegido ? id : "");
-    };
-    // Si la persona cambia el servicio preelegido, la etiqueta y el ejemplo la siguen
-    form.servicio.addEventListener("change", () => {
-      if (dialogo.classList.contains("con-servicio")) mostrarServicio(form.servicio.value);
-    });
-
-    function servicio() { return form.servicio.value || "sin-elegir"; }
-    function marcarInicio(e) {
-      if (iniciado || !e.target.matches("input, select, textarea")) return;
-      iniciado = true;
-      window.dataLayer = window.dataLayer || [];
-      dataLayer.push({ event: "formulario_iniciado", formulario: "asesoria", motivo: servicio() });
-    }
-    form.addEventListener("focusin", marcarInicio);
-    form.addEventListener("input", marcarInicio);
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      error.hidden = true;
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-      const motivo = servicio();
-      enviar.disabled = true; enviar.textContent = "Enviando...";
-      try {
-        const r = await fetch(ENDPOINT, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
-        if (!r.ok) throw new Error();
-        window.dataLayer = window.dataLayer || [];
-        dataLayer.push({ event: "generate_lead", formulario: "asesoria", motivo: motivo });
-        form.reset();
-        dialogo.querySelector(".dialogo-paso-form").hidden = true;
-        const ok = dialogo.querySelector(".dialogo-ok");
-        ok.hidden = false;
-        ok.querySelector("h2").focus();
-      } catch (err) {
-        error.textContent = "No se pudo enviar. Inténtalo de nuevo o escríbenos a hola@condadodigital.cl.";
-        error.hidden = false;
-      }
-      enviar.disabled = false; enviar.textContent = "Enviar solicitud";
-    });
-
-    dialogo.querySelector(".dialogo-cerrar").addEventListener("click", cerrar);
-    dialogo.querySelector(".dialogo-ok-cerrar").addEventListener("click", cerrar);
-    dialogo.addEventListener("click", (e) => { // clic en el fondo oscuro (fuera del recuadro)
-      if (e.target !== dialogo) return;
-      const r = dialogo.getBoundingClientRect();
-      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) cerrar();
-    });
-    dialogo.addEventListener("close", () => {
-      dialogo.querySelector(".dialogo-paso-form").hidden = false;
-      dialogo.querySelector(".dialogo-ok").hidden = true;
-      if (dialogo.classList.contains("con-servicio")) ponerServicio("");
-      if (ultimoFoco && document.contains(ultimoFoco)) ultimoFoco.focus();
-    });
-  }
-
-  function abrir(e, a) {
-    if (typeof HTMLDialogElement !== "function") return; // navegador sin <dialog>: sigue a /contacto
-    e.preventDefault();
-    if (!dialogo) crear();
-    // Safari no enfoca los enlaces al hacer clic: en ese caso el foco vuelve al enlace
-    const activo = document.activeElement;
-    ultimoFoco = activo && activo !== document.body ? activo : a;
-    if (a.dataset.servicio) ponerServicio(a.dataset.servicio);
-    else if (dialogo.classList.contains("con-servicio")) ponerServicio("");
-    dialogo.querySelector('input[name="origen"]').value = location.pathname;
-    dialogo.showModal();
-    dialogo.querySelector('input[name="nombre"]').focus();
-  }
-  function cerrar() { if (dialogo && dialogo.open) dialogo.close(); }
-
-  document.addEventListener("click", (e) => {
-    const a = e.target.closest(".abrir-contacto");
-    if (a) abrir(e, a);
-  });
-
-  // Tarjetas de Asesorías del inicio: qué servicio eligen
-  document.addEventListener("click", (e) => {
-    const t = e.target.closest("a[data-servicio-click]");
-    if (!t) return;
-    window.dataLayer = window.dataLayer || [];
-    dataLayer.push({ event: "servicio_click", servicio: t.dataset.servicioClick });
-  });
-})();
-
-// ============================================
-// Calculadora del inicio: ¿tu campaña gana o pierde plata?
-// El HTML trae calculado el ejemplo "Servicios" para que funcione sin JavaScript.
-// ============================================
-(function () {
-  const raiz = document.getElementById("calculadora");
-  if (!raiz || !raiz.querySelector("[data-calc]")) return;
-  const EJEMPLOS = {
-    tienda: { inv: 600000, leads: 300, cierre: 3, ticket: 35000, margen: 35 },
-    servicios: { inv: 500000, leads: 50, cierre: 10, ticket: 250000, margen: 40 },
-    b2b: { inv: 1500000, leads: 40, cierre: 8, ticket: 1800000, margen: 30 }
-  };
-  const campos = ["inv", "leads", "cierre", "ticket", "margen"];
-  const entrada = {}; campos.forEach((c) => { entrada[c] = raiz.querySelector('[data-calc="' + c + '"]'); });
-  const salida = (n) => raiz.querySelector('[data-out="' + n + '"]');
-  const money = (n) => { const r = Math.round(n); return (r < 0 ? "-$" : "$") + Math.abs(r).toLocaleString("es-CL"); };
-  const coma = (n) => String(n).replace(".", ",");
-
-  function calcular() {
-    const inv = Number(entrada.inv.value) || 0, leads = Math.max(1, Number(entrada.leads.value) || 1);
-    const cierre = Number(entrada.cierre.value) || 0, ticket = Number(entrada.ticket.value) || 0, margen = Number(entrada.margen.value) || 0;
-    const ventas = leads * cierre / 100, ingresos = ventas * ticket, ganVenta = ticket * margen / 100;
-    const cpa = ventas > 0 ? inv / ventas : 0, resultado = ventas * ganVenta - inv, gana = resultado >= 0;
-    const maxBar = Math.max(cpa, ganVenta, 1);
-    const ancho = (v) => Math.max(2, Math.min(100, v / maxBar * 100)).toFixed(1) + "%";
-    salida("inv").textContent = money(inv);
-    salida("leads").textContent = leads;
-    salida("cierre").textContent = cierre + " de 100";
-    salida("ticket").textContent = money(ticket);
-    salida("margen").textContent = margen + "%";
-    salida("cpl").textContent = money(inv / leads);
-    salida("cpa").textContent = ventas > 0 ? money(cpa) : "—";
-    salida("cpa2").textContent = ventas > 0 ? money(cpa) : "—";
-    salida("roas").textContent = inv > 0 ? coma(Math.round(ingresos / inv * 10) / 10) + "x" : "—";
-    salida("resultado").textContent = money(resultado);
-    salida("veredicto").textContent = gana ? "Tu campaña gana plata" : "Tu campaña pierde plata";
-    salida("veredicto-texto").textContent = gana ? "Resultado mensual después de pagar los anuncios." : "Cada venta cuesta más de lo que te deja. Mejora tu tasa de cierre o tu margen antes de invertir más.";
-    salida("ganancia").textContent = money(ganVenta);
-    salida("ventas").textContent = "Con estos números cierras " + coma(Math.round(ventas * 10) / 10) + " ventas al mes e ingresas " + money(ingresos) + ".";
-    raiz.querySelector(".ini-veredicto").classList.toggle("pierde", !gana);
-    raiz.querySelector(".ini-barras").classList.toggle("pierde-barra", !gana);
-    raiz.querySelector(".ini-barra-cpa").style.width = ancho(cpa);
-    raiz.querySelector(".ini-barra-gan").style.width = ancho(ganVenta);
-  }
-  function marcar(clave) {
-    raiz.querySelectorAll("[data-ejemplo]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.ejemplo === clave ? "true" : "false"));
-  }
-  raiz.querySelectorAll("[data-ejemplo]").forEach((b) => b.addEventListener("click", () => {
-    const v = EJEMPLOS[b.dataset.ejemplo];
-    campos.forEach((c) => { entrada[c].value = v[c]; });
-    marcar(b.dataset.ejemplo); calcular();
-  }));
-  campos.forEach((c) => entrada[c].addEventListener("input", () => { marcar(""); calcular(); }));
-  calcular();
-})();
-
-// ============================================
-// Formato de números para Chile (miles con punto, decimales con coma)
-// ============================================
-window.cdNum = (function () {
-  function miles(n, d) {
-    d = d || 0;
-    if (!isFinite(n)) return "—";
-    const s = Math.abs(n).toFixed(d);
-    const p = s.split(".");
-    const ent = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    return (n < 0 && Number(s) !== 0 ? "-" : "") + ent + (p[1] ? "," + p[1] : "");
-  }
-  function money(n) {
-    if (!isFinite(n)) return "—";
-    const r = Math.round(n);
-    return (r < 0 ? "-$" : "$") + miles(Math.abs(r));
-  }
-  function fmt(u, v) {
-    if (!isFinite(v)) return "—";
-    if (u === "$") return money(v);
-    if (u === "%") return miles(v, Math.abs(v) < 10 ? 2 : 1) + "%";
-    if (u === "x") return miles(v, 1) + "x";
-    if (u === "v") return miles(v, 1) + " veces";
-    return miles(v);
-  }
-  function leer(texto) { // "1.500.000" → 1500000 · "1,5" → 1.5
-    const t = String(texto).replace(/[^\d,.-]/g, "");
-    if (t.indexOf(",") >= 0) return Number(t.replace(/\./g, "").replace(",", "."));
-    if (/^\d{1,3}(\.\d{3})+$/.test(t)) return Number(t.replace(/\./g, ""));
-    return Number(t);
-  }
-  function quitarTildes(t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
-  return { miles: miles, money: money, fmt: fmt, leer: leer, norm: quitarTildes };
-})();
-
-// ============================================
-// /calculadoras: el taller, la calculadora activa y el simulador de embudo.
-// Sin JavaScript, la página muestra la fórmula y un ejemplo calculado de cada una.
-// ============================================
-(function () {
-  const datos = document.getElementById("calc-datos");
-  const taller = document.getElementById("taller");
-  if (!datos || !taller) return;
-  const N = window.cdNum;
-  const CFG = JSON.parse(datos.textContent);
-  const C = CFG.calcs, byId = {}, catPor = {};
-  C.forEach((c) => { byId[c.id] = c; });
-  CFG.cats.forEach((k) => { catPor[k.id] = k; });
-
-  const F = {
-    "roas": (v) => v.ing / v.inv,
-    "roi": (v) => (v.ing - v.cost) / v.cost * 100,
-    "cpc": (v) => v.inv / v.clics,
-    "cpm": (v) => v.inv / v.imp * 1000,
-    "cpv": (v) => v.inv / v.views,
-    "cpl": (v) => v.inv / v.leads,
-    "cpa": (v) => v.inv / v.conv,
-    "ctr": (v) => v.clics / v.imp * 100,
-    "cvr": (v) => v.conv / v.clics * 100,
-    "frecuencia": (v) => v.imp / v.alc,
-    "hook-rate": (v) => v.v3 / v.imp * 100,
-    "hold-rate": (v) => v.tp / v.v3 * 100,
-    "engagement": (v) => v.int / v.alc * 100,
-    "er-seg": (v) => v.int / v.seg * 100,
-    "crec-seg": (v) => (v.gan - v.per) / v.ini * 100,
-    "tasa-guardado": (v) => v.guar / v.alc * 100,
-    "ticket": (v) => v.ing / v.ped,
-    "cac": (v) => (v.mkt + v.ven) / v.cli,
-    "ltv": (v) => v.tk * v.fr * v.an * v.mg / 100,
-    "ltv-cac": (v) => v.ltv / v.cac
-  };
-
-  const panel = document.getElementById("activa");
-  const o = (k) => panel.querySelector('[data-o="' + k + '"]');
-  const campos = panel.querySelector(".calc-campos");
-  const metaRango = document.getElementById("calc-meta");
-  const tarjetas = Array.prototype.slice.call(taller.querySelectorAll(".calc-tarjeta"));
-  let sel = "roas", cat = "todas", q = "";
-  const vals = {}, metas = {};
-
-  const valTxt = (u, v) => (u === "$" ? N.money(v) : u === "%" ? N.miles(v, 1) + "%" : N.miles(v));
-  const valCampo = (u, v) => (u === "$" ? N.miles(Math.round(v)) : u === "%" ? N.miles(v, 1) : N.miles(v, v % 1 ? 1 : 0));
-  function getV(c) {
-    const v = {};
-    c.ins.forEach((i) => { v[i.k] = vals[c.id] && vals[c.id][i.k] != null ? vals[c.id][i.k] : i.def; });
-    return v;
-  }
-  function meta(c) { return metas[c.id] != null ? metas[c.id] : c.t[0]; }
-
-  // --- Construye la calculadora activa ---
-  function armar() {
-    const c = byId[sel], v = getV(c);
-    o("cat").textContent = catPor[c.cat].label;
-    o("code").textContent = c.code; o("code2").textContent = c.code;
-    o("name").textContent = c.name;
-    o("formula").textContent = c.formula;
-    o("mean").textContent = c.mean;
-    const gl = o("gl");
-    if (c.gl) { gl.hidden = false; gl.setAttribute("href", c.gl); } else { gl.hidden = true; }
-    o("nextCode").textContent = byId[c.next].code;
-    campos.innerHTML = "";
-    c.ins.forEach((i) => {
-      const id = "cf-" + i.k;
-      const d = document.createElement("div");
-      d.className = "calc-campo";
-      d.innerHTML =
-        '<p class="calc-campo-fila"><label for="' + id + '"></label><span class="calc-num">' +
-        (i.u === "$" ? '<span aria-hidden="true">$</span>' : "") +
-        '<input type="text" class="calc-txt" id="' + id + '" inputmode="' + (i.u === "%" ? "decimal" : "numeric") + '" autocomplete="off"></span></p>' +
-        '<input type="range" class="calc-rango">';
-      d.querySelector("label").textContent = i.label;
-      const txt = d.querySelector(".calc-txt"), rango = d.querySelector(".calc-rango");
-      rango.min = i.min; rango.max = i.max; rango.step = i.step;
-      rango.setAttribute("aria-label", i.label + " (control deslizante)");
-      txt.value = valCampo(i.u, v[i.k]);
-      rango.value = v[i.k];
-      rango.setAttribute("aria-valuetext", valTxt(i.u, v[i.k]));
-      const fijar = (n) => {
-        vals[c.id] = vals[c.id] || {};
-        vals[c.id][i.k] = n;
-        calcular();
+  (function menu() {
+    var b = $(".k-burger"), m = $("#k-menu-movil");
+    if (b && m) {
+      var poner = function (abierto) {
+        m.hidden = !abierto;
+        b.setAttribute("aria-expanded", abierto ? "true" : "false");
+        b.setAttribute("aria-label", abierto ? "Cerrar menú" : "Abrir menú");
       };
-      rango.addEventListener("input", () => {
-        const n = Number(rango.value);
-        txt.value = valCampo(i.u, n);
-        rango.setAttribute("aria-valuetext", valTxt(i.u, n));
-        fijar(n);
-      });
-      txt.addEventListener("input", () => {
-        const n = N.leer(txt.value);
-        if (!isFinite(n) || txt.value.trim() === "") return;
-        rango.value = n;
-        rango.setAttribute("aria-valuetext", valTxt(i.u, n));
-        fijar(n);
-      });
-      txt.addEventListener("change", () => {
-        const n = N.leer(txt.value);
-        txt.value = valCampo(i.u, isFinite(n) ? n : getV(c)[i.k]);
-      });
-      campos.appendChild(d);
-    });
-    const conBandas = !!c.bands;
-    panel.querySelector(".calc-meta").hidden = conBandas;
-    panel.querySelector(".calc-bandas").hidden = !conBandas;
-    if (!conBandas) {
-      metaRango.min = c.t[1]; metaRango.max = c.t[2]; metaRango.step = c.t[3];
-      metaRango.value = meta(c);
-      o("metaLabel").textContent = c.up ? "Tu objetivo" : "El máximo que estás dispuesto a pagar";
-    } else {
-      o("bandNote").textContent = c.bandNote;
-      const barra = panel.querySelector(".calc-bandas-barra"), lista = panel.querySelector(".calc-bandas-lista");
-      barra.innerHTML = ""; lista.innerHTML = "";
-      c.bands.forEach((z) => {
-        const seg = document.createElement("span");
-        seg.style.background = z[4];
-        seg.style.width = ((Math.min(z[1], c.scale) - z[0]) / c.scale * 100).toFixed(1) + "%";
-        barra.appendChild(seg);
-        const fila = document.createElement("div");
-        fila.className = "calc-banda";
-        fila.innerHTML = '<span class="calc-banda-punto" aria-hidden="true"></span><span class="calc-banda-tx"><span class="calc-banda-tit"></span><span class="calc-banda-txt"></span></span>';
-        fila.querySelector(".calc-banda-punto").style.background = z[4];
-        fila.querySelector(".calc-banda-tit").innerHTML = "";
-        fila.querySelector(".calc-banda-tit").appendChild(document.createTextNode(z[2] + " "));
-        const r = document.createElement("span");
-        r.textContent = "· " + (z[1] === 100 ? "desde " + z[0] + "%" : z[0] + "% a " + z[1] + "%");
-        fila.querySelector(".calc-banda-tit").appendChild(r);
-        fila.querySelector(".calc-banda-txt").textContent = z[3];
-        lista.appendChild(fila);
-      });
-      const marca = document.createElement("span");
-      marca.className = "calc-bandas-marca";
-      barra.appendChild(marca);
+      b.addEventListener("click", function () { poner(m.hidden); });
+      m.addEventListener("click", function (e) { if (e.target.closest("a")) poner(false); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !m.hidden) { poner(false); b.focus(); } });
+      window.addEventListener("resize", function () { if (window.innerWidth > 860 && !m.hidden) poner(false); });
     }
-    tarjetas.forEach((t) => t.setAttribute("aria-current", t.dataset.id === sel ? "true" : "false"));
-    calcular();
-  }
-
-  let anuncioT = null;
-  function calcular() {
-    const c = byId[sel], v = getV(c), r = F[c.id](v);
-    const ins = {}; c.ins.forEach((i) => { ins[i.k] = i.u; });
-    const expr = c.expr.replace(/\{(\w+)\}/g, (m, k) => (ins[k] === "$" ? N.money(v[k]) : N.miles(v[k], v[k] % 1 ? 1 : 0)));
-    o("expr").textContent = expr + " = " + N.fmt(c.u, r);
-    o("res").textContent = N.fmt(c.u, r);
-    const caja = panel.querySelector(".calc-res");
-    let veredicto, color;
-    if (c.bands) {
-      let band = null;
-      c.bands.forEach((z) => { if (r >= z[0] && (r < z[1] || z[1] === 100)) band = z; });
-      if (!band) band = c.bands[c.bands.length - 1];
-      veredicto = isFinite(r) ? "Rango " + band[2].toLowerCase() + ". Abajo te explico qué significa." : "Revisa los valores: hay una división por cero.";
-      color = isFinite(r) ? band[4] : "#FDE68A";
-      panel.querySelectorAll(".calc-banda").forEach((f, n) => f.classList.toggle("activa", c.bands[n] === band));
-      panel.querySelectorAll(".calc-bandas-barra > span:not(.calc-bandas-marca)").forEach((s, n) => { s.style.opacity = c.bands[n] === band ? "1" : ".35"; });
-      const pos = Math.max(0, Math.min(99, (isFinite(r) ? r : 0) / c.scale * 100));
-      panel.querySelector(".calc-bandas-marca").style.left = "calc(" + pos.toFixed(1) + "% - 2px)";
-    } else {
-      const tv = meta(c);
-      const bueno = isFinite(r) && (c.up ? r >= tv : r <= tv);
-      const ratio = tv > 0 && isFinite(r) ? r / tv : 0;
-      const dif = Math.round(Math.abs(ratio - 1) * 100);
-      if (!isFinite(r)) veredicto = "Revisa los valores: hay una división por cero.";
-      else if (dif === 0) veredicto = "Justo en tu objetivo.";
-      else if (c.up) veredicto = bueno ? "Un " + dif + "% por sobre tu objetivo. Vas bien." : "Un " + dif + "% bajo tu objetivo. Hay espacio para mejorar.";
-      else veredicto = bueno ? "Un " + dif + "% bajo tu límite. Vas bien." : "Un " + dif + "% por sobre tu límite. Te está saliendo caro.";
-      color = bueno ? "#C8F169" : "#FCA5A5";
-      o("metaTxt").textContent = N.fmt(c.u, tv);
-      o("metaMarca").textContent = (c.up ? "objetivo " : "límite ") + N.fmt(c.u, tv);
-      metaRango.setAttribute("aria-valuetext", N.fmt(c.u, tv));
-      const fill = panel.querySelector(".calc-barra-fill");
-      fill.style.width = Math.max(2, Math.min(100, ratio * 50)).toFixed(1) + "%";
-      fill.style.background = bueno ? "#C8F169" : "#F87171";
-    }
-    caja.style.background = color;
-    o("ver").textContent = veredicto;
-    clearTimeout(anuncioT);
-    anuncioT = setTimeout(() => { o("anuncio").textContent = "Tu " + c.code + ": " + N.fmt(c.u, r) + ". " + veredicto; }, 700);
-  }
-
-  metaRango.addEventListener("input", () => { metas[sel] = Number(metaRango.value); calcular(); });
-
-  function elegir(id, ir) {
-    if (!byId[id]) return;
-    sel = id;
-    armar();
-    if (ir) {
-      panel.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-      panel.focus({ preventScroll: true });
-    }
-    try { history.replaceState(null, "", "#" + id); } catch (e) {}
-  }
-
-  // --- Filtros y buscador ---
-  const cuenta = taller.querySelector(".pg-cuenta"), vacio = taller.querySelector(".pg-vacio"), intro = taller.querySelector(".pg-intro");
-  function filtrar() {
-    const nq = N.norm(q).trim();
-    let n = 0;
-    tarjetas.forEach((t) => {
-      const ok = (cat === "todas" || t.dataset.cat === cat) && (!nq || t.dataset.buscar.indexOf(nq) >= 0);
-      t.hidden = !ok;
-      if (ok) n++;
+    var actual = location.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
+    $$(".k-nav-l a").forEach(function (a) {
+      var h = a.getAttribute("href");
+      if (h === actual || (actual.indexOf("/glosario-") === 0 && h === "/glosario") || (document.body.classList.contains("es-articulo") && h === "/enciclopedia")) a.setAttribute("aria-current", "page");
     });
-    cuenta.textContent = n === C.length ? C.length + " calculadoras" : n + " de " + C.length + " calculadoras";
-    vacio.hidden = n > 0;
-    if (cat !== "todas") {
-      intro.hidden = false;
-      intro.querySelector("p").textContent = catPor[cat].intro;
-      intro.querySelector(".pg-intro-punto").style.background = catPor[cat].color;
-    } else intro.hidden = true;
-  }
-  taller.querySelectorAll(".pg-chip").forEach((b) => b.addEventListener("click", () => {
-    cat = b.dataset.cat;
-    taller.querySelectorAll(".pg-chip").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
-    filtrar();
-    if (cat !== "todas") { const p = C.filter((x) => x.cat === cat)[0]; if (p) { sel = p.id; armar(); } }
-  }));
-  document.getElementById("calc-q").addEventListener("input", (e) => { q = e.target.value; filtrar(); });
-  tarjetas.forEach((t) => t.addEventListener("click", (e) => { e.preventDefault(); elegir(t.dataset.id, true); }));
-  panel.querySelector('[data-accion="siguiente"]').addEventListener("click", () => elegir(byId[sel].next, false));
-  panel.querySelector('[data-accion="reiniciar"]').addEventListener("click", () => { delete vals[sel]; delete metas[sel]; armar(); });
+  })();
 
-  // --- Simulador de embudo ---
-  const cadena = document.getElementById("cadena");
-  const h = {}; CFG.sim.forEach((s) => { h[s.k] = s.def; });
-  const COL = ["#60A5FA", "#3B82F6", "#2DD4BF", "#14B8A6", "#C8F169"];
-  let ultimo = {};
-  function simular() {
-    const imp = h.inv / h.cpm * 1000, clics = imp * h.ctr / 100, leads = clics * h.cvr / 100, ventas = leads * h.cierre / 100, ing = ventas * h.ticket;
-    const m = Math.log10(Math.max(imp, 10));
-    const logw = (x) => Math.max(3, Math.min(100, Math.log10(Math.max(x, 1)) / m * 100));
-    const pasos = [[imp, N.miles(imp)], [clics, N.miles(clics)], [leads, N.miles(leads)], [ventas, N.miles(ventas, 1)], [ing, N.money(ing)]];
-    pasos.forEach((p, n) => {
-      cadena.querySelector('[data-sim-out="p' + n + '"]').textContent = p[1];
-      const w = n === 4 ? Math.max(3, Math.min(100, ing / Math.max(h.inv, 1) * 25)) : logw(p[0]);
-      cadena.querySelector('[data-sim-bar="p' + n + '"]').style.width = w.toFixed(1) + "%";
-    });
-    const set = (k, t) => { cadena.querySelector('[data-sim-out="' + k + '"]').textContent = t; };
-    set("cpc", N.money(h.inv / clics)); set("cpl", N.money(h.inv / leads));
-    set("cpa", ventas > 0 ? N.money(h.inv / ventas) : "—");
-    set("roas", N.miles(ing / h.inv, 1) + "x"); set("ctr", N.miles(h.ctr, 1) + "%");
-    ultimo = {
-      cpc: { inv: h.inv, clics: Math.round(clics) },
-      cpl: { inv: h.inv, leads: Math.max(1, Math.round(leads)) },
-      cpa: { inv: h.inv, conv: Math.max(1, Math.round(ventas)) },
-      roas: { ing: Math.round(ing / 50000) * 50000, inv: h.inv },
-      ctr: { clics: Math.round(clics / 10) * 10, imp: Math.round(imp / 1000) * 1000 }
+  (function buscador() {
+    var q = $("#buscar-q"), out = $("#buscar-res");
+    if (!q || !out) return;
+    var norm = function (t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
+    var pintar = function () {
+      var v = norm(q.value.trim());
+      out.innerHTML = "";
+      if (v.length < 2) return;
+      var hits = INDICE.filter(function (i) { return norm(i.t + " " + i.k).indexOf(v) !== -1; });
+      if (!hits.length) { out.innerHTML = '<p class="bs-vacio">Sin resultados para «' + esc(q.value) + '». Prueba con otra palabra o revisa el listado completo.</p>'; return; }
+      out.innerHTML = hits.map(function (i) { return '<a class="bs-hit" href="' + i.u + '"><span>' + esc(i.tipo) + "</span><b>" + esc(i.t) + "</b></a>"; }).join("");
     };
-  }
-  CFG.sim.forEach((s) => {
-    const r = cadena.querySelector('[data-sim="' + s.k + '"]');
-    r.addEventListener("input", () => {
-      h[s.k] = Number(r.value);
-      const t = valTxt(s.u, h[s.k]);
-      cadena.querySelector('[data-sim-txt="' + s.k + '"]').textContent = t;
-      r.setAttribute("aria-valuetext", t);
-      simular();
-    });
-  });
-  cadena.querySelectorAll("[data-abre]").forEach((a) => a.addEventListener("click", (e) => {
-    e.preventDefault();
-    const id = a.dataset.abre;
-    vals[id] = Object.assign({}, ultimo[id]);
-    cat = "todas"; q = "";
-    document.getElementById("calc-q").value = "";
-    taller.querySelectorAll(".pg-chip").forEach((x) => x.setAttribute("aria-pressed", x.dataset.cat === "todas" ? "true" : "false"));
-    filtrar();
-    elegir(id, true);
-  }));
-  simular();
+    q.addEventListener("input", pintar);
+    var p = new URLSearchParams(location.search).get("q");
+    if (p) { q.value = p; pintar(); }
+  })();
 
-  // --- Inicio: la calculadora del enlace (#roas, #cpa, …) o ROAS ---
-  const ancla = decodeURIComponent(location.hash.slice(1));
-  if (byId[ancla]) { sel = ancla; armar(); setTimeout(() => panel.scrollIntoView({ block: "start" }), 0); }
-  else armar();
-  window.addEventListener("hashchange", () => { const id = location.hash.slice(1); if (byId[id] && id !== sel) elegir(id, true); });
-})();
-
-// ============================================
-// /glosario: filtros por tema y letra, buscador, tarjetas de 16 en 16,
-// ficha rápida y "Ponte a prueba". Los datos salen de la lista completa
-// que trae el HTML (la que se ve sin JavaScript).
-// ============================================
-(function () {
-  const datos = document.getElementById("glo-datos");
-  const sec = document.getElementById("terminos");
-  if (!datos || !sec) return;
-  const N = window.cdNum;
-  const CFG = JSON.parse(datos.textContent);
-  const temaPor = {}; CFG.temas.forEach((t) => { temaPor[t.id] = t; });
-  const txt = (li, s) => { const x = li.querySelector(s); return x ? x.textContent : ""; };
-  const T = Array.prototype.slice.call(sec.querySelectorAll(".glo-lista li.gt")).map((li) => ({
-    id: li.id, orden: Number(li.dataset.orden), tema: li.dataset.tema, pub: li.dataset.pub === "1", calc: li.dataset.calc,
-    rel: li.dataset.rel ? li.dataset.rel.split(" ") : [],
-    code: txt(li, ".gt-code"), full: txt(li, ".gt-full"), def: txt(li, ".gt-def"),
-    formula: txt(li, ".gt-formula dd"), ej: txt(li, ".gt-ej dd"), err: txt(li, ".gt-err dd"), pv: txt(li, ".gt-pv dd")
-  })).sort((a, b) => a.orden - b.orden);
-  const by = {}; T.forEach((t) => { by[t.id] = t; t.buscar = N.norm(t.code + " " + t.full + " " + t.def); t.letra = N.norm(t.code).charAt(0).toUpperCase(); });
-
-  const PAG = 16;
-  let tema = "todas", letra = "", q = "", mas = 0, sel = by.cpa ? "cpa" : T[0].id;
-  const grid = sec.querySelector(".glo-grid"), cuenta = sec.querySelector(".pg-cuenta"), vacio = sec.querySelector(".pg-vacio");
-  const intro = sec.querySelector(".pg-intro-simple"), masCaja = sec.querySelector(".glo-mas"), masBtn = masCaja.querySelector("button");
-  const ficha = document.getElementById("ficha");
-  const npub = T.filter((t) => t.pub).length;
-
-  function lista() {
-    const nq = N.norm(q).trim();
-    return T.filter((t) => (tema === "todas" || t.tema === tema) && (!letra || t.letra === letra) && (!nq || t.buscar.indexOf(nq) >= 0));
-  }
-  function pintar() {
-    const l = lista(), vis = l.slice(0, PAG * (1 + mas));
-    grid.innerHTML = "";
-    vis.forEach((t) => {
-      const a = document.createElement("a");
-      a.className = "glo-tarjeta";
-      a.href = "#" + t.id;
-      a.dataset.id = t.id;
-      a.setAttribute("aria-current", t.id === sel ? "true" : "false");
-      a.innerHTML = '<span class="glo-badge"></span><span class="glo-code"></span><span class="glo-full"></span><span class="glo-corta"></span><span class="glo-estado"></span>';
-      a.querySelector(".glo-badge").textContent = temaPor[t.tema].label;
-      a.querySelector(".glo-badge").style.background = temaPor[t.tema].color;
-      a.querySelector(".glo-code").textContent = t.code;
-      a.querySelector(".glo-full").textContent = t.full;
-      a.querySelector(".glo-corta").textContent = t.def;
-      a.querySelector(".glo-estado").textContent = t.pub ? "Ficha completa" : "Nuevo";
-      a.addEventListener("click", (e) => { e.preventDefault(); elegir(t.id, true); });
-      grid.appendChild(a);
-    });
-    const quedan = l.length - vis.length;
-    masCaja.hidden = quedan <= 0;
-    masBtn.textContent = "Mostrar " + Math.min(PAG, quedan) + " términos más (quedan " + quedan + ")";
-    vacio.hidden = l.length > 0;
-    cuenta.textContent = (l.length === T.length ? T.length + " términos" : l.length + " de " + T.length + " términos") + " · " + npub + " con ficha completa";
-    if (tema !== "todas") { intro.hidden = false; intro.textContent = temaPor[tema].intro; } else intro.hidden = true;
-    sec.querySelectorAll(".pg-chip").forEach((b) => {
-      const on = b.dataset.tema === tema;
-      b.setAttribute("aria-pressed", on ? "true" : "false");
-      b.style.background = on && b.dataset.color ? b.dataset.color : "";
-      b.style.borderColor = on && b.dataset.color ? "var(--ink)" : "";
-    });
-    sec.querySelectorAll(".glo-letra").forEach((b) => b.setAttribute("aria-pressed", b.dataset.letra === letra ? "true" : "false"));
-  }
-  masBtn.addEventListener("click", () => {
-    const antes = grid.children.length;
-    mas++; pintar();
-    const sig = grid.children[antes];
-    if (sig) sig.focus();
-  });
-
-  function caja(nombre, valor) {
-    const c = ficha.querySelector('[data-caja="' + nombre + '"]');
-    c.hidden = !valor;
-    const p = c.querySelector('[data-o]');
-    if (p && valor) p.textContent = valor;
-  }
-  function elegir(id, ir) {
-    const t = by[id]; if (!t) return;
-    sel = id;
-    const q = (k) => ficha.querySelector('[data-o="' + k + '"]');
-    q("tema").textContent = temaPor[t.tema].label;
-    q("code").textContent = t.code;
-    q("full").textContent = t.full;
-    q("def").textContent = t.def;
-    q("href").hidden = !t.pub; q("href").setAttribute("href", "glosario-" + t.id);
-    q("prox").hidden = t.pub;
-    q("calc").hidden = !t.calc;
-    if (t.calc) { q("calc").setAttribute("href", "calculadoras#" + t.calc); q("calc").textContent = "Calcular mi " + t.code; }
-    caja("formula", t.formula); caja("ej", t.ej); caja("err", t.err); caja("pv", t.pv);
-    const rel = ficha.querySelector('[data-caja="rel"]');
-    rel.querySelectorAll("button").forEach((b) => b.remove());
-    rel.hidden = !t.rel.length;
-    t.rel.forEach((r) => {
-      if (!by[r]) return;
-      const b = document.createElement("button");
-      b.type = "button"; b.textContent = by[r].code;
-      b.addEventListener("click", () => elegir(r, false));
-      rel.appendChild(b);
-    });
-    grid.querySelectorAll(".glo-tarjeta").forEach((a) => a.setAttribute("aria-current", a.dataset.id === id ? "true" : "false"));
-    if (ir) {
-      ficha.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-      ficha.focus({ preventScroll: true });
-    }
-    try { history.replaceState(null, "", "#" + id); } catch (e) {}
-  }
-
-  sec.querySelectorAll(".pg-chip").forEach((b) => b.addEventListener("click", () => {
-    tema = b.dataset.tema; letra = ""; mas = 0;
-    pintar();
-    const p = lista()[0];
-    if (tema !== "todas" && p) elegir(p.id, false);
-  }));
-  sec.querySelectorAll(".glo-letra").forEach((b) => b.addEventListener("click", () => {
-    if (b.disabled) return;
-    letra = letra === b.dataset.letra ? "" : b.dataset.letra; tema = "todas"; mas = 0;
-    pintar();
-  }));
-  const buscador = document.querySelector(".glo-buscador"), entrada = document.getElementById("glo-q");
-  entrada.addEventListener("input", () => { q = entrada.value; tema = "todas"; letra = ""; mas = 0; pintar(); });
-  buscador.addEventListener("submit", (e) => {
-    e.preventDefault();
-    q = entrada.value; tema = "todas"; letra = ""; mas = 0; pintar();
-    sec.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-  });
-
-  pintar();
-  const ancla = decodeURIComponent(location.hash.slice(1));
-  if (by[ancla]) { elegir(ancla, false); setTimeout(() => ficha.scrollIntoView({ block: "start" }), 0); }
-  else elegir(sel, false);
-  window.addEventListener("hashchange", () => { const id = location.hash.slice(1); if (by[id] && id !== sel) elegir(id, true); });
-
-  // --- Ponte a prueba ---
-  const prueba = document.getElementById("prueba");
-  if (!prueba) return;
-  // Se excluyen los términos cuya definición menciona su propio nombre (darían la respuesta)
-  const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  // y se quita el nombre que antecede a algunas definiciones («Click-Through Rate: …»)
-  const sinNombre = (d) => { const m = d.match(/^[^:]{2,45}:\s+(.*)$/); return m ? m[1].charAt(0).toUpperCase() + m[1].slice(1) : d; };
-  T.forEach((t) => { t.defQuiz = sinNombre(t.def); });
-  const pool = T.filter((t) => {
-    const nombre = N.norm(t.code).split(/[\s/(]/)[0];
-    return nombre.length < 2 || !new RegExp("(^|[^a-z0-9])" + esc(nombre) + "($|[^a-z0-9])").test(N.norm(t.defQuiz));
-  });
-  const orden = []; for (let i = 0; i < pool.length; i++) orden.push((i * 7 + 3) % pool.length);
-  let qi = 0, respondida = false;
-  const opts = prueba.querySelector(".quiz-opts"), res = prueba.querySelector(".quiz-res"), msg = prueba.querySelector(".quiz-msg");
-  function pregunta() {
-    const n = qi % orden.length, ans = pool[orden[n]];
-    let ops = [ans, pool[orden[(n + 5) % orden.length]], pool[orden[(n + 9) % orden.length]]];
-    const rot = n % 3; ops = ops.slice(rot).concat(ops.slice(0, rot));
-    prueba.querySelector('[data-q="cont"]').textContent = "Pregunta " + (n + 1) + " de " + orden.length;
-    prueba.querySelector('[data-q="def"]').textContent = "“" + ans.defQuiz + "”";
-    opts.innerHTML = ""; res.hidden = true; respondida = false; msg.className = "quiz-msg";
-    ops.forEach((t) => {
-      const b = document.createElement("button");
-      b.type = "button"; b.textContent = t.code;
-      b.addEventListener("click", () => {
-        if (respondida) return;
-        respondida = true;
-        const ok = t.id === ans.id;
-        opts.querySelectorAll("button").forEach((x, k) => {
-          x.disabled = true;
-          if (ops[k].id === ans.id) x.classList.add("ok"); else if (x === b) x.classList.add("mal");
-        });
-        msg.textContent = ok ? "¡Correcto! Es " + ans.code + " (" + ans.full.toLowerCase() + ")." : "Casi. La respuesta es " + ans.code + ": " + ans.full.toLowerCase() + ".";
-        msg.classList.add(ok ? "ok" : "mal");
-        res.hidden = false;
-        window.dataLayer = window.dataLayer || [];
-        dataLayer.push({ event: "glosario_quiz", resultado: ok ? "correcto" : "incorrecto" });
+  (function cookies() {
+    var CLAVE = "cd_consentimiento", VERSION = 1, DURACION = 182 * 24 * 60 * 60 * 1000;
+    var leer = function () {
+      try { var c = JSON.parse(localStorage.getItem(CLAVE)); if (c && c.v === VERSION && c.exp > Date.now()) return c; } catch (e) {}
+      return null;
+    };
+    var guardar = function (an, pu) {
+      var c = { v: VERSION, analitica: !!an, publicidad: !!pu, fecha: Date.now(), exp: Date.now() + DURACION };
+      try { localStorage.setItem(CLAVE, JSON.stringify(c)); } catch (e) {}
+      var gtag = function () { window.dataLayer.push(arguments); };
+      var ads = c.publicidad ? "granted" : "denied";
+      gtag("consent", "update", { analytics_storage: c.analitica ? "granted" : "denied", ad_storage: ads, ad_user_data: ads, ad_personalization: ads });
+      window.dataLayer.push({ event: "consent_update", analytics: c.analitica, ads: c.publicidad });
+      return c;
+    };
+    var ICO = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B1512" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 4 4 0 0 1-4-4 4 4 0 0 1-5-5z"></path><circle cx="8.5" cy="12" r=".8" fill="#0B1512"></circle><circle cx="12" cy="16" r=".8" fill="#0B1512"></circle><circle cx="15.5" cy="13" r=".8" fill="#0B1512"></circle></svg>';
+    var tabla = function (filas) {
+      return '<table class="ck-tab"><thead><tr><th scope="col">Cookie</th><th scope="col">Proveedor</th><th scope="col">Para qué</th><th scope="col">Duración</th></tr></thead><tbody>' +
+        filas.map(function (f) { return "<tr><td>" + f[0] + "</td><td>" + f[1] + "</td><td>" + f[2] + "</td><td>" + f[3] + "</td></tr>"; }).join("") + "</tbody></table>";
+    };
+    var CATS = [
+      { k: "nec", n: "Necesarias", d: "Hacen que el sitio funcione: guardar tus preferencias de cookies y proteger el sitio. No se pueden desactivar.", f: [
+        ["cd_consentimiento", "Condado Digital (almacenamiento local)", "Recordar tu elección de cookies", "6 meses"],
+        ["cd_enciclopedia_leidos", "Condado Digital (almacenamiento local)", "Recordar qué artículos marcaste como leídos en la Enciclopedia", "Hasta que lo borres"],
+        ["cd_conde_aviso", "Condado Digital (almacenamiento de sesión)", "No repetir el aviso de El Conde en la misma visita", "Hasta que cierres la pestaña"],
+        ["cd_intro", "Condado Digital (almacenamiento de sesión)", "Mostrar la animación de entrada del inicio solo una vez por visita", "Hasta que cierres la pestaña"],
+        ["__cf_bm", "Cloudflare", "Distinguir personas de bots y proteger el sitio (solo si se activan sus protecciones)", "30 minutos de inactividad"],
+        ["—", "Google Tag Manager", "Cargar las demás herramientas solo según tu elección (no guarda cookies propias)", "—"]] },
+      { k: "an", n: "Analítica", d: "Nos dicen cuántas personas visitan el sitio y qué páginas sirven más, de forma agregada. Usamos Google Analytics 4.", f: [
+        ["_ga, _ga_&lt;id&gt;", "Google Analytics 4", "Contar visitas y saber qué contenidos se usan", "2 años"]] },
+      { k: "ad", n: "Publicidad", d: "Permiten medir si nuestros anuncios funcionan y mostrar anuncios a quien ya visitó el sitio en Google, Meta, TikTok y LinkedIn.", f: [
+        ["_gcl_au", "Google Ads", "Medir conversiones y remarketing", "90 días"],
+        ["_fbp", "Meta", "Medir campañas y remarketing en Facebook e Instagram", "Hasta 90 días"],
+        ["_ttp, ttclid", "TikTok", "Medir campañas y remarketing en TikTok", "13 meses desde el último uso"],
+        ["li_fat_id", "LinkedIn", "Medir campañas y remarketing en LinkedIn", "30 días"]] }
+    ];
+    var tarjeta = null, over = null, re = null, foco = null, est = { an: false, ad: false };
+    var toast = function (t) {
+      var v = $(".ck-toast"); if (v) v.remove();
+      v = document.createElement("div"); v.className = "ck-toast"; v.setAttribute("role", "status"); v.textContent = t;
+      document.body.appendChild(v); setTimeout(function () { if (v.parentNode) v.remove(); }, 3200);
+    };
+    var reabrir = function () {
+      if (re) return;
+      re = document.createElement("button"); re.type = "button"; re.className = "ck-re";
+      re.innerHTML = ICO.replace('width="24" height="24"', 'width="18" height="18"') + " Preferencias de cookies";
+      re.addEventListener("click", abrirPanel);
+      document.body.appendChild(re);
+      setTimeout(function () { if (re && document.activeElement !== re) { re.remove(); re = null; } }, 9000);
+    };
+    var cerrarTarjeta = function () { if (tarjeta) { tarjeta.remove(); tarjeta = null; document.dispatchEvent(new CustomEvent("cd:cookies")); } };
+    var crearTarjeta = function () {
+      tarjeta = document.createElement("section");
+      tarjeta.className = "ck-card"; tarjeta.setAttribute("aria-label", "Aviso de cookies");
+      tarjeta.innerHTML = '<div style="display:flex;gap:14px;align-items:flex-start"><span class="ck-ico">' + ICO + '</span><div><h2 style="margin:0;font-family:\'Fraunces\',serif;font-size:23px;line-height:1.2">Usamos cookies</h2>' +
+        '<p style="margin:8px 0 0;font-size:15px;line-height:1.6;color:#55635B">Usamos las necesarias para que el sitio funcione y, si nos dejas, otras para medir visitas y saber si nuestros anuncios sirven. Tú eliges. <a href="/privacidad#cookies" style="color:#0B1512;font-weight:700">Política de privacidad</a></p></div></div>' +
+        '<div class="ck-btns"><button type="button" class="ck-b ol" data-ck="rechazar">Rechazar</button><button type="button" class="ck-b dk" data-ck="aceptar">Aceptar todas</button><button type="button" class="ck-link" data-ck="configurar" aria-haspopup="dialog">Configurar cookies</button></div>';
+      document.body.appendChild(tarjeta);
+    };
+    var pintarTg = function () {
+      ["an", "ad"].forEach(function (k) {
+        var b = over.querySelector('[data-tg="' + k + '"]'), on = est[k];
+        b.className = "ck-tg" + (on ? " on" : ""); b.setAttribute("aria-checked", on ? "true" : "false");
+        over.querySelector('[data-st="' + k + '"]').textContent = on ? "Activadas" : "Desactivadas";
       });
-      opts.appendChild(b);
+    };
+    var cerrarPanel = function () {
+      if (!over) return;
+      over.remove(); over = null;
+      document.removeEventListener("keydown", teclaPanel);
+      if (foco && document.contains(foco)) foco.focus();
+    };
+    var teclaPanel = function (e) {
+      if (e.key === "Escape") { cerrarPanel(); return; }
+      if (e.key !== "Tab" || !over) return;
+      var f = $$("button:not([disabled]), a[href], summary", over).filter(function (x) { return x.offsetParent !== null; });
+      if (!f.length) return;
+      if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+    };
+    var abrirPanel = function () {
+      if (over) return;
+      var c = leer(); est.an = c ? c.analitica : false; est.ad = c ? c.publicidad : false;
+      foco = document.activeElement;
+      over = document.createElement("div"); over.className = "ck-over";
+      over.innerHTML = '<div class="ck-panel" role="dialog" aria-modal="true" aria-labelledby="ck-t">' +
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:8px"><div><p class="pg-kick" style="margin-bottom:8px">Preferencias</p><h2 id="ck-t" style="margin:0;font-family:\'Fraunces\',serif;font-size:32px;line-height:1.1">Configura tus cookies</h2></div><button type="button" data-ck="cerrar" aria-label="Cerrar" style="flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid #0B1512;background:#FFFFFF;cursor:pointer;font-size:16px;color:#0B1512">✕</button></div>' +
+        '<p style="margin:0 0 14px;font-size:15px;line-height:1.6;color:#55635B">Activa solo lo que quieras. Puedes cambiarlo cuando quieras desde "Configurar cookies" en el pie de página.</p>' +
+        CATS.map(function (c) {
+          var ctrl = c.k === "nec"
+            ? '<button type="button" class="ck-tg lock" role="switch" aria-checked="true" aria-label="Necesarias: siempre activas" disabled></button><span style="font-size:12px;font-weight:700;color:#55635B">Siempre activas</span>'
+            : '<button type="button" class="ck-tg" role="switch" aria-checked="false" data-tg="' + c.k + '" aria-label="' + c.n + '"></button><span data-st="' + c.k + '" style="font-size:12px;font-weight:700;color:#55635B"></span>';
+          return '<div class="ck-cat"><div class="ck-row"><div style="flex:1"><b style="display:block;font-family:\'Fraunces\',serif;font-size:21px">' + c.n + '</b><span style="font-size:14.5px;line-height:1.55;color:#55635B">' + c.d + '</span></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">' + ctrl + '</div></div><details><summary>Ver cookies (' + c.f.length + ')</summary><div class="ck-tabw">' + tabla(c.f) + '</div></details></div>';
+        }).join("") +
+        '<div class="ck-btns ck-btns3" style="grid-template-columns:1fr 1fr 1fr;border-top:1.5px solid #E4E0D5;padding-top:20px"><button type="button" class="ck-b ol" data-ck="rechazar">Rechazar todo</button><button type="button" class="ck-b ol" data-ck="guardar">Guardar selección</button><button type="button" class="ck-b dk" data-ck="aceptar">Aceptar todas</button></div></div>';
+      over.addEventListener("click", function (e) { if (e.target === over) cerrarPanel(); });
+      document.body.appendChild(over);
+      pintarTg();
+      document.addEventListener("keydown", teclaPanel);
+      over.querySelector('[data-ck="cerrar"]').focus();
+    };
+    var terminar = function (msg) { cerrarTarjeta(); cerrarPanel(); toast(msg); reabrir(); };
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest(".abrir-cookies");
+      if (a) { e.preventDefault(); abrirPanel(); return; }
+      var t = e.target.closest("[data-tg]");
+      if (t && over) { est[t.getAttribute("data-tg")] = !est[t.getAttribute("data-tg")]; pintarTg(); return; }
+      var b = e.target.closest("[data-ck]");
+      if (!b) return;
+      var acc = b.getAttribute("data-ck");
+      if (acc === "aceptar") { guardar(true, true); terminar("Listo: aceptaste todas las cookies."); }
+      else if (acc === "rechazar") { guardar(false, false); terminar("Listo: solo usamos las cookies necesarias."); }
+      else if (acc === "guardar") { var an = est.an, ad = est.ad; guardar(an, ad); terminar("Guardado: " + (an && ad ? "analítica y publicidad activas." : an ? "solo analítica activa." : ad ? "solo publicidad activa." : "solo las necesarias.")); }
+      else if (acc === "configurar") abrirPanel();
+      else if (acc === "cerrar") cerrarPanel();
     });
-  }
-  prueba.querySelector(".quiz-otra").addEventListener("click", () => { qi++; pregunta(); opts.querySelector("button").focus(); });
-  pregunta();
-})();
+    window.cdCookiesPendiente = function () { return !!tarjeta; };
+    if (!leer()) crearTarjeta();
+  })();
 
-// ============================================
-// /enciclopedia: rutas de lectura (con "Marcar como leído" guardado en este
-// navegador), filtro por tema y autodiagnóstico de 5 preguntas.
-// ============================================
-(function () {
-  const datos = document.getElementById("diag-datos");
-  const ruta = document.getElementById("ruta");
-  if (!datos || !ruta) return;
-  const CLAVE = "cd_enciclopedia_leidos";
-  let leidos = {};
-  try { leidos = JSON.parse(localStorage.getItem(CLAVE)) || {}; } catch (e) { leidos = {}; }
-  const guardar = () => { try { localStorage.setItem(CLAVE, JSON.stringify(leidos)); } catch (e) {} };
-
-  // Rutas
-  const botones = ruta.querySelectorAll(".enc-ruta-btn"), paneles = ruta.querySelectorAll(".enc-ruta");
-  function pintarRutas() {
-    paneles.forEach((p) => {
-      const pasos = p.querySelectorAll(".enc-paso");
-      let n = 0;
-      pasos.forEach((li) => {
-        const d = !!leidos[li.dataset.art];
-        if (d) n++;
-        li.classList.toggle("leido", d);
-        const b = li.querySelector(".enc-leido");
-        b.setAttribute("aria-pressed", d ? "true" : "false");
-        b.textContent = d ? "✓ Leído" : "Marcar como leído";
+  (function formulario() {
+    var ENDPOINT = "https://formspree.io/f/mvkkjakn";
+    var EJ = "Qué vendes, en qué plataformas inviertes y cuánto, más o menos, al mes";
+    var SV = {
+      "paid-media": ["Paid Media", "Qué vendes, en qué plataformas inviertes y cuánto, más o menos, al mes"],
+      "social-media": ["Social Media", "Qué vendes, en qué redes estás hoy y qué quieres lograr con ellas"],
+      "mentorias": ["Mentorías", "Qué quieres aprender y si es para ti o para tu equipo"],
+      "diseno-web": ["Diseño web", "Qué necesitas (sitio nuevo, landing o rediseño) y si ya tienes dominio"],
+      "seo": ["SEO", "Tu sitio web, qué vendes y en qué zona o país quieres que te encuentren"],
+      "diagnostico": ["No lo sé, quiero un diagnóstico", "Qué vendes, qué has probado hasta ahora y qué te gustaría mejorar"]
+    };
+    window.cdServicios = SV;
+    var campos = function (pre) {
+      var lab = function (t, inp) { return '<label class="k-f">' + t + inp + "</label>"; };
+      return '<input type="hidden" name="formulario" value="asesoria"><input type="hidden" name="origen" value="">' +
+        '<label class="k-hp" aria-hidden="true">No completar<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>' +
+        '<div class="k-two">' + lab("Nombre y apellido", '<input class="k-in" type="text" name="nombre" required autocomplete="name" placeholder="Ej: Camila Rojas">') +
+        lab("Nombre de la empresa", '<input class="k-in" type="text" name="empresa" required autocomplete="organization">') + "</div>" +
+        '<div class="k-two">' + lab("Correo electrónico", '<input class="k-in" type="email" name="email" required autocomplete="email" placeholder="tu@correo.com">') +
+        lab("Teléfono o WhatsApp (opcional)", '<input class="k-in" type="tel" name="telefono" autocomplete="tel" placeholder="+56 9 1234 5678">') + "</div>" +
+        '<label class="wa-sw"><input type="checkbox" name="autoriza_whatsapp" value="si"><span class="wa-tg" aria-hidden="true"></span><span><b style="display:block;font-size:14px">Autorizo que me contacten por WhatsApp</b><span style="font-size:13px;font-weight:400;color:#55635B">Si no lo marcas, te escribimos solo por correo.</span></span></label>' +
+        lab("¿Qué servicio te interesa?", '<select class="k-in" name="servicio" required><option value="">Elige una opción</option>' +
+          Object.keys(SV).map(function (k) { return '<option value="' + k + '">' + SV[k][0] + "</option>"; }).join("") + "</select>") +
+        lab("Sitio web o redes (opcional)", '<input class="k-in" type="text" name="sitio" inputmode="url" autocomplete="url" placeholder="https://">') +
+        lab("Cuéntanos tu caso", '<textarea class="k-in" name="mensaje" rows="4" required placeholder="' + EJ + '"></textarea>') +
+        '<button type="submit" class="k-send">' + (pre || "Enviar") + ' <span aria-hidden="true">→</span></button>' +
+        '<p class="k-err" role="alert" hidden></p>' +
+        '<p class="k-legal">Al enviar, aceptas que usemos tus datos para responder tu consulta y hacer su seguimiento. El formulario lo procesa Formspree, fuera de Chile. Puedes acceder a tus datos, corregirlos o pedir que los eliminemos escribiendo a hola@condadodigital.cl. Más detalles en la <a href="/privacidad">política de privacidad</a>.</p>';
+    };
+    window.cdCamposFormulario = campos;
+    var ponerServicio = function (form, id) {
+      var sel = form.querySelector('[name="servicio"]');
+      sel.value = SV[id] ? id : "";
+      form.querySelector('[name="mensaje"]').placeholder = SV[id] ? SV[id][1] : EJ;
+    };
+    var preparar = function (form) {
+      if (form.dataset.listo) return;
+      form.dataset.listo = "1";
+      var iniciado = false;
+      var marcar = function (e) {
+        if (iniciado || !e.target.matches("input, select, textarea")) return;
+        iniciado = true;
+        medir("formulario_iniciado", { formulario: "asesoria", motivo: form.servicio.value || "sin-elegir" });
+      };
+      form.addEventListener("focusin", marcar);
+      form.addEventListener("input", marcar);
+      form.servicio.addEventListener("change", function () { ponerServicio(form, form.servicio.value); });
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var err = form.querySelector(".k-err"), btn = form.querySelector('[type="submit"]');
+        err.hidden = true;
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        form.origen.value = location.pathname;
+        var motivo = form.servicio.value || "sin-elegir";
+        var txt = btn.innerHTML;
+        btn.disabled = true; btn.textContent = "Enviando…";
+        fetch(ENDPOINT, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
+          .then(function (r) { if (!r.ok) throw new Error(); })
+          .then(function () {
+            var destino = "/gracias" + (form.servicio.value ? "?servicio=" + encodeURIComponent(form.servicio.value) : "");
+            var ido = false, ir = function () { if (ido) return; ido = true; location.href = destino; };
+            window.dataLayer.push({ event: "generate_lead", formulario: "asesoria", motivo: motivo, autoriza_whatsapp: form.autoriza_whatsapp.checked ? "si" : "no", eventCallback: ir, eventTimeout: 1500 });
+            setTimeout(ir, 1700);
+          })
+          .catch(function () {
+            err.textContent = "No se pudo enviar. Inténtalo de nuevo o escríbenos a hola@condadodigital.cl.";
+            err.hidden = false; btn.disabled = false; btn.innerHTML = txt;
+          });
       });
-      p.querySelector(".enc-avance-txt").textContent = "Llevas " + n + " de " + pasos.length + " artículos";
-      p.querySelector(".enc-avance-barra > div").style.width = Math.max(2, Math.round(n / pasos.length * 100)) + "%";
+    };
+    $$("form.k-form").forEach(function (f) {
+      preparar(f);
+      var p = new URLSearchParams(location.search).get("servicio");
+      if (p && SV[p]) ponerServicio(f, p);
     });
+    var dlg = null, foco = null;
+    var crear = function () {
+      dlg = document.createElement("dialog");
+      dlg.className = "k-dlg"; dlg.setAttribute("aria-labelledby", "k-dlg-t");
+      dlg.innerHTML = '<div class="k-dlg-in"><button type="button" class="k-dlg-x" aria-label="Cerrar formulario">×</button>' +
+        '<p class="k-kick" style="margin:0 0 8px">Hablemos</p><h2 id="k-dlg-t">Cuéntanos tu proyecto</h2>' +
+        '<p style="margin:0 0 22px;font-size:15px;line-height:1.6;color:#55635B">Te respondemos en menos de 24 horas.</p>' +
+        '<form class="k-form" novalidate>' + campos("Enviar") + "</form></div>";
+      document.body.appendChild(dlg);
+      preparar(dlg.querySelector("form"));
+      dlg.querySelector(".k-dlg-x").addEventListener("click", function () { dlg.close(); });
+      dlg.addEventListener("click", function (e) {
+        if (e.target !== dlg) return;
+        var r = dlg.getBoundingClientRect();
+        if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+      });
+      dlg.addEventListener("close", function () { document.documentElement.style.overflow = ""; if (foco && document.contains(foco)) foco.focus(); });
+    };
+    var abrir = function (servicio, desde) {
+      if (typeof HTMLDialogElement !== "function") { location.href = "/contacto" + (servicio ? "?servicio=" + servicio : ""); return; }
+      if (!dlg) crear();
+      foco = desde || document.activeElement;
+      ponerServicio(dlg.querySelector("form"), servicio || "");
+      dlg.showModal();
+      document.documentElement.style.overflow = "hidden";
+      dlg.querySelector('[name="nombre"]').focus();
+    };
+    window.cdAbrirFormulario = abrir;
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest(".abrir-contacto");
+      if (!a) return;
+      e.preventDefault();
+      abrir(a.getAttribute("data-servicio") || "", a);
+    });
+  })();
+
+  if (document.body.classList.contains("es-gracias")) {
+    var sv = new URLSearchParams(location.search).get("servicio");
+    medir("gracias_vista", { servicio: sv && window.cdServicios && window.cdServicios[sv] ? sv : "sin-elegir" });
   }
-  botones.forEach((b) => b.addEventListener("click", () => {
-    botones.forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
-    paneles.forEach((p) => p.classList.toggle("activa", p.dataset.ruta === b.dataset.ruta));
-  }));
-  ruta.querySelectorAll(".enc-leido").forEach((b) => b.addEventListener("click", () => {
-    const art = b.closest(".enc-paso").dataset.art;
-    if (leidos[art]) delete leidos[art]; else leidos[art] = true;
-    guardar(); pintarRutas();
-  }));
-  pintarRutas();
 
-  // Filtro por tema
-  const sa = document.getElementById("articulos");
-  sa.querySelectorAll(".pg-chip").forEach((b) => b.addEventListener("click", () => {
-    sa.querySelectorAll(".pg-chip").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
-    sa.querySelectorAll(".enc-art").forEach((a) => { a.hidden = !(b.dataset.tema === "todos" || a.dataset.tema === b.dataset.tema); });
-  }));
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-servicio-click]");
+    if (t) medir("servicio_click", { servicio: t.getAttribute("data-servicio-click"), ubicacion: t.getAttribute("data-ubicacion") || location.pathname });
+  });
 
-  // Autodiagnóstico
-  const D = JSON.parse(datos.textContent).preguntas;
-  const diag = document.getElementById("diagnostico");
-  const resp = {};
-  let enviado = "";
-  const d = (k) => diag.querySelector('[data-d="' + k + '"]');
-  function pintarDiag() {
-    let contestadas = 0, si = 0, rec = null;
-    D.forEach((p, i) => {
-      const a = resp[i];
-      if (a) contestadas++;
-      if (a === "si") si++;
-      if (!rec && (a === "no" || a === "ns")) rec = p;
-      const li = diag.querySelector('.diag-q[data-i="' + i + '"]');
-      li.classList.toggle("respondida", !!a);
-      li.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.r === a ? "true" : "false"));
-    });
-    let tit, txt;
-    if (contestadas === 0) { tit = "Responde para ver tu resultado"; txt = "No hay respuestas buenas ni malas: es para saber por dónde partir."; }
-    else if (contestadas < D.length) { tit = "Vas " + contestadas + " de " + D.length; txt = "Termina las preguntas para ver tu recomendación completa."; }
-    else if (si === 5) { tit = "Tienes las bases claras"; txt = "El siguiente paso es afinar: revisa la Enciclopedia por tema o pon a prueba tus números en las calculadoras."; }
-    else if (si >= 3) { tit = "Vas bien, con huecos puntuales"; txt = "Tienes casi todo ordenado. Parte por el tema donde respondiste \"no\" o \"no sé\"."; }
-    else { tit = "Estás invirtiendo a ciegas en partes clave"; txt = "Es más común de lo que crees. Lee la guía recomendada o, si prefieres ir más rápido, lo revisamos juntos."; }
-    const completo = contestadas === D.length;
-    d("score").textContent = si;
-    d("score").style.color = !completo ? "" : si >= 4 ? "#C8F169" : si >= 3 ? "#FDE68A" : "#FCA5A5";
-    diag.querySelector(".diag-barra > div").style.width = Math.max(2, si / D.length * 100) + "%";
-    d("tit").textContent = tit; d("txt").textContent = txt;
-    const a = diag.querySelector(".diag-rec");
-    a.hidden = !rec;
-    if (rec) { a.setAttribute("href", rec.art); d("recTit").textContent = rec.title; d("recPor").textContent = rec.why; }
-    diag.querySelector(".diag-juntos").hidden = !(completo && si < 3);
-    if (completo) {
-      const firma = D.map((p, i) => resp[i]).join(",");
-      if (firma !== enviado) {
-        enviado = firma;
-        window.dataLayer = window.dataLayer || [];
-        dataLayer.push({ event: "diagnostico_completado", puntaje: si, recomendado: rec ? rec.art : "ninguno" });
+  (function compartir() {
+    var avisar = function (b, txt) {
+      var o = b.getAttribute("data-txt") || b.textContent;
+      b.setAttribute("data-txt", o); b.textContent = txt;
+      setTimeout(function () { b.textContent = o; }, 2200);
+    };
+    var copiar = function (b) {
+      var url = location.href.split("#")[0];
+      var ok = function () { avisar(b, "¡Enlace copiado!"); medir("compartir", { metodo: "copiar_enlace", pagina: location.pathname }); };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(ok, function () { window.prompt("Copia este enlace:", url); });
+      else { var i = document.createElement("textarea"); i.value = url; document.body.appendChild(i); i.select(); try { document.execCommand("copy"); ok(); } catch (er) {} i.remove(); }
+    };
+    document.addEventListener("click", function (e) {
+      var s = e.target.closest("[data-compartir]");
+      if (s) {
+        if (navigator.share) navigator.share({ title: document.title, url: location.href.split("#")[0] }).then(function () { medir("compartir", { metodo: "web_share", pagina: location.pathname }); }, function () {});
+        else copiar(s);
+        return;
       }
-    }
-  }
-  diag.querySelectorAll(".diag-q").forEach((li) => li.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
-    resp[li.dataset.i] = b.dataset.r; pintarDiag();
-  })));
-  diag.querySelector(".diag-reset").addEventListener("click", () => {
-    Object.keys(resp).forEach((k) => delete resp[k]); enviado = ""; pintarDiag();
-    diag.querySelector(".diag-opts button").focus();
-  });
-  pintarDiag();
-})();
-
-// ============================================
-// El Conde: cargador liviano del asistente guiado.
-// Aquí solo se crean el botón y el aviso. El panel (conde.js y conde.css)
-// se descarga con import() la primera vez que alguien lo abre.
-// Sin JavaScript no aparece nada.
-// ============================================
-(function () {
-  if (!("IntersectionObserver" in window) || !window.Promise) return;
-  const CONDE_V = "20261110a";
-  const CEL = window.matchMedia("(max-width: 600px)");
-  const CLAVE_AVISO = "cd_conde_aviso";
-  let boton, envoltura, aviso = null, modulo = null, cargando = null, precargado = false;
-  let enBanda = false, abierto = false;
-
-  const ses = {
-    leer() { try { return sessionStorage.getItem(CLAVE_AVISO); } catch (e) { return "1"; } },
-    marcar() { try { sessionStorage.setItem(CLAVE_AVISO, "1"); } catch (e) {} }
-  };
-  const bannerVisible = () => !!document.querySelector(".cookies-banner");
-
-  function actualizar() {
-    // En celular, nada mientras el banner de cookies espera una respuesta.
-    // En todos los tamaños, nada mientras se ve la banda final o el footer (salvo con el panel abierto).
-    const ocultar = !abierto && (enBanda || (CEL.matches && bannerVisible()));
-    envoltura.classList.toggle("conde-fuera", ocultar);
-    envoltura.toggleAttribute("inert", ocultar);
-    if (ocultar) cerrarAviso();
-    else if (avisoPendiente) mostrarAviso();
-  }
-
-  function precargar() {
-    if (precargado) return;
-    precargado = true;
-    const css = document.createElement("link");
-    css.rel = "preload"; css.as = "style"; css.href = "conde.css?v=" + CONDE_V;
-    const js = document.createElement("link");
-    js.rel = "modulepreload"; js.href = "conde.js?v=" + CONDE_V;
-    document.head.append(css, js);
-  }
-
-  function cargar() {
-    if (cargando) return cargando;
-    precargar();
-    const hoja = new Promise((ok) => {
-      const l = document.createElement("link");
-      l.rel = "stylesheet"; l.href = "conde.css?v=" + CONDE_V;
-      l.onload = ok; l.onerror = ok;
-      document.head.appendChild(l);
+      var c = e.target.closest("[data-copiar]");
+      if (c) copiar(c);
     });
-    cargando = Promise.all([hoja, import("./conde.js?v=" + CONDE_V)]).then((r) => {
-      modulo = r[1].iniciar({
-        boton: boton,
-        version: CONDE_V,
-        alCambiar(estado) {
-          abierto = estado;
-          envoltura.classList.toggle("conde-abierto", estado);
-          boton.setAttribute("aria-expanded", estado ? "true" : "false");
-          boton.setAttribute("aria-label", estado ? "Cerrar la ayuda de El Conde" : "Abrir la ayuda de El Conde");
-          if (estado) boton.setAttribute("aria-controls", "conde-panel");
-          actualizar();
-        }
-      });
-      return modulo;
-    }).catch(() => { cargando = null; window.location.href = "glosario"; });
-    return cargando;
-  }
+  })();
 
-  function alternar() {
-    cerrarAviso();
-    ses.marcar(); avisoPendiente = false;
-    boton.setAttribute("aria-busy", "true");
-    cargar().then((m) => { boton.removeAttribute("aria-busy"); if (m) m.alternar(); });
-  }
-
-  // --- Aviso «¿Necesitas ayuda?»: una vez por visita, a los 20 s o al pasar la mitad de la página ---
-  let avisoPendiente = false, avisoTimer = null;
-  function cerrarAviso() {
-    if (!aviso) return;
-    clearTimeout(avisoTimer);
-    aviso.remove(); aviso = null;
-  }
-  function mostrarAviso() {
-    if (aviso || abierto || ses.leer()) { avisoPendiente = false; return; }
-    if (envoltura.classList.contains("conde-fuera")) { avisoPendiente = true; return; }
-    avisoPendiente = false;
-    ses.marcar();
-    aviso = document.createElement("div");
-    aviso.className = "conde-aviso";
-    aviso.setAttribute("role", "status");
-    aviso.innerHTML =
-      '<span class="conde-aviso-cola" aria-hidden="true"></span>' +
-      '<div class="conde-aviso-fila">' +
-      '<button type="button" class="conde-aviso-abrir"><strong>¿Necesitas ayuda?</strong><span>Te ayudo a encontrar lo que buscas</span></button>' +
-      '<button type="button" class="conde-aviso-x" aria-label="Cerrar el aviso"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
-      "</div>" +
-      '<span class="conde-cuenta" aria-hidden="true"></span>';
-    aviso.querySelector(".conde-aviso-abrir").addEventListener("click", alternar);
-    aviso.querySelector(".conde-aviso-x").addEventListener("click", () => { cerrarAviso(); boton.focus(); });
-    envoltura.appendChild(aviso);
-    avisoTimer = setTimeout(cerrarAviso, 8000);
-  }
-  function programarAviso() {
-    if (ses.leer()) return;
-    let listo = false;
-    const disparar = () => {
-      if (listo) return;
-      listo = true;
-      window.removeEventListener("scroll", alDesplazar);
-      mostrarAviso();
-    };
-    const alDesplazar = () => {
-      const h = document.documentElement;
-      if (h.scrollTop + window.innerHeight / 2 >= h.scrollHeight / 2) disparar();
-    };
-    setTimeout(disparar, 20000);
-    window.addEventListener("scroll", alDesplazar, { passive: true });
-  }
-
-  function crear() {
-    envoltura = document.createElement("div");
-    envoltura.className = "conde-lanzador";
-    envoltura.innerHTML =
-      '<button type="button" class="conde-boton" aria-label="Abrir la ayuda de El Conde" aria-expanded="false">' +
-      '<img src="img/conde/conde-frente-cabeza.webp" alt="" width="135" height="143" decoding="async"></button>' +
-      '<span class="conde-insignia" aria-hidden="true"><svg width="28" height="26" viewBox="0 0 28 26"><path d="M4 2h20a3 3 0 0 1 3 3v11a3 3 0 0 1-3 3H12l-6 5v-5H4a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3z" fill="#C8F169" stroke="#05070A" stroke-width="1.6" stroke-linejoin="round"/><circle cx="8.5" cy="10.5" r="1.8" fill="#05070A"/><circle cx="14" cy="10.5" r="1.8" fill="#05070A"/><circle cx="19.5" cy="10.5" r="1.8" fill="#05070A"/></svg></span>';
-    boton = envoltura.querySelector(".conde-boton");
-    boton.addEventListener("click", alternar);
-    ["pointerenter", "focus", "touchstart"].forEach((t) => boton.addEventListener(t, precargar, { passive: true, once: true }));
-    document.body.appendChild(envoltura);
-
-    // Banda final del inicio y footer
-    const vistos = new Set();
-    const io = new IntersectionObserver((entradas) => {
-      entradas.forEach((en) => { if (en.isIntersecting) vistos.add(en.target); else vistos.delete(en.target); });
-      enBanda = vistos.size > 0;
-      actualizar();
+  (function util() {
+    var box = $(".ar-fb");
+    if (!box) return;
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-util]");
+      if (!b || box.dataset.hecho) return;
+      box.dataset.hecho = "1";
+      var si = b.getAttribute("data-util") === "si";
+      $$("[data-util]", box).forEach(function (x) { x.disabled = true; x.classList.toggle("on", x === b); x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      $(".ar-fb-t", box).textContent = si ? "¡Gracias! Nos alegra que te sirviera." : "Gracias. Escríbenos qué te faltó a hola@condadodigital.cl.";
+      medir("articulo_util", { util: si ? "si" : "no", articulo: location.pathname });
     });
-    document.querySelectorAll(".ini-final, body > footer").forEach((el) => io.observe(el));
+  })();
 
-    // Banner de cookies: cuando la persona elige, el banner se quita del DOM
-    if (bannerVisible()) {
-      const mo = new MutationObserver(() => { if (!bannerVisible()) { mo.disconnect(); actualizar(); } });
-      mo.observe(document.body, { childList: true });
-    }
-    if (CEL.addEventListener) CEL.addEventListener("change", actualizar);
-    actualizar();
-    programarAviso();
-  }
+  (function tactil() {
+    var sel = "[data-toca]";
+    document.addEventListener("click", function (e) {
+      var t = e.target.closest(sel);
+      if (!t || e.target.closest("a, button:not([data-toca])")) return;
+      var on = !t.classList.contains("on");
+      $$(sel + ".on").forEach(function (x) { if (x !== t && x.getAttribute("data-toca") === t.getAttribute("data-toca")) { x.classList.remove("on"); x.setAttribute("aria-expanded", "false"); } });
+      t.classList.toggle("on", on);
+      t.setAttribute("aria-expanded", on ? "true" : "false");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      var t = e.target.closest && e.target.closest(sel);
+      if (!t || t !== e.target) return;
+      e.preventDefault(); t.click();
+    });
+  })();
 
-  // Después de "load", con margen y en un momento ocioso: el botón nunca compite con la carga de la página
-  const despues = () => setTimeout(() => (window.requestIdleCallback ? requestIdleCallback(crear, { timeout: 3000 }) : crear()), 1500);
-  if (document.readyState === "complete") despues();
-  else window.addEventListener("load", despues, { once: true });
+  (function conde() {
+    if (document.body.classList.contains("sin-conde")) return;
+    var URL_CONDE = "/conde.js?v=20261123a", CLAVE = "cd_conde_aviso";
+    var visto = function () { try { return sessionStorage.getItem(CLAVE); } catch (e) { return "1"; } };
+    var btn, hint, ping, mod = null, cargando = null;
+    var quitarAviso = function () { if (hint) { hint.remove(); hint = null; } if (ping) { ping.remove(); ping = null; } try { sessionStorage.setItem(CLAVE, "1"); } catch (e) {} };
+    var cargar = function () {
+      if (!cargando) cargando = import(URL_CONDE).then(function (m) {
+        mod = m.iniciar({ boton: btn, medir: medir, abrirFormulario: function (s) { window.cdAbrirFormulario(s || ""); } });
+        return mod;
+      }).catch(function () { cargando = null; location.href = "/glosario"; });
+      return cargando;
+    };
+    var crear = function () {
+      btn = document.createElement("button");
+      btn.type = "button"; btn.className = "ec-btn";
+      btn.setAttribute("aria-expanded", "false");
+      btn.setAttribute("aria-label", "Abrir El Conde, asistente de Condado Digital");
+      btn.innerHTML = '<img src="/img/conde/conde-frente-cabeza.webp" alt="" width="135" height="143" decoding="async">';
+      if (!visto()) {
+        hint = document.createElement("span"); hint.className = "ec-hint"; hint.setAttribute("aria-hidden", "true"); hint.textContent = "¿Te ayudo?";
+        ping = document.createElement("span"); ping.className = "ec-ping"; ping.setAttribute("aria-hidden", "true");
+        document.body.appendChild(hint); document.body.appendChild(ping);
+        setTimeout(function () { if (hint) { hint.remove(); hint = null; } }, 9000);
+      }
+      document.body.appendChild(btn);
+      btn.addEventListener("click", function () { quitarAviso(); cargar().then(function (m) { if (m) m.alternar(); }); });
+      ["pointerenter", "focus", "touchstart"].forEach(function (t) { btn.addEventListener(t, function () { var l = document.createElement("link"); l.rel = "modulepreload"; l.href = URL_CONDE; document.head.appendChild(l); }, { once: true, passive: true }); });
+      var mover = function () { document.body.classList.toggle("ck-pendiente", !!(window.cdCookiesPendiente && window.cdCookiesPendiente())); };
+      mover(); document.addEventListener("cd:cookies", mover);
+    };
+    var despues = function () { setTimeout(function () { (window.requestIdleCallback || setTimeout)(crear, { timeout: 2500 }); }, 600); };
+    if (document.readyState === "complete") despues(); else window.addEventListener("load", despues, { once: true });
+  })();
 })();

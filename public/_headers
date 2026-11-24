@@ -24,8 +24,21 @@
 /conde.js
   Cache-Control: public, max-age=0, must-revalidate
 
-/conde.css
-  Cache-Control: public, max-age=0, must-revalidate
 
 /conde-terminos.json
+  Cache-Control: public, max-age=0, must-revalidate
+
+/inicio.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/calculadoras.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/enciclopedia.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/glosario.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/articulo.js
   Cache-Control: public, max-age=0, must-revalidate
