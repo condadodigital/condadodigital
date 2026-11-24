@@ -49,7 +49,7 @@
   { t: "Preguntas frecuentes", u: "/preguntas-frecuentes", tipo: "Sección", k: "faq preguntas que es paid media seo sem aeo geo pixel capi" },
   { t: "Herramientas de Marketing", u: "/herramientas", tipo: "Sección", k: "herramientas google ads meta ga4 gtm looker ahrefs semrush claude chatgpt" },
   { t: "Quiénes somos", u: "/acerca", tipo: "Página", k: "acerca de condado digital quienes somos principios sobre mi esleyter conde creador" },
-  { t: "Servicios", u: "/#servicios", tipo: "Página", k: "servicios asesorias asesoria seo posicionamiento paid media social media mentorias mentoria diseno web campanas gestion medicion" },
+  { t: "Servicios", u: "/servicios", tipo: "Página", k: "servicios asesorias asesoria seo posicionamiento paid media social media mentorias mentoria diseno web campanas gestion medicion" },
   { t: "Asesoría de Paid Media", u: "/paid-media", tipo: "Servicio", k: "asesoria paid media gestion campanas google ads meta ads tiktok linkedin pinterest x ads costo por lead cpa" },
   { t: "Asesoría de Social Media", u: "/social-media", tipo: "Servicio", k: "asesoria social media redes sociales estrategia parrilla contenidos guiones reporteria instagram facebook tiktok linkedin" },
   { t: "Mentorías de Paid Media y analítica", u: "/mentorias", tipo: "Servicio", k: "mentorias mentoria sesiones en vivo aprender google ads meta ads tiktok ads ga4 gtm" },
@@ -333,7 +333,7 @@
 
   document.addEventListener("click", function (e) {
     var t = e.target.closest("[data-servicio-click]");
-    if (t) medir("servicio_click", { servicio: t.getAttribute("data-servicio-click") });
+    if (t) medir("servicio_click", { servicio: t.getAttribute("data-servicio-click"), ubicacion: t.getAttribute("data-ubicacion") || location.pathname });
   });
 
   (function compartir() {

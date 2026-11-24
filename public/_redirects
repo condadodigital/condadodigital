@@ -2,8 +2,6 @@
 /sobre-mi.html /acerca 301
 /quienes-somos /acerca 301
 /quienes-somos.html /acerca 301
-/servicios /#servicios 301
-/servicios.html /#servicios 301
 /servicios/:slug /:slug 301
 /recursos /calculadoras 301
 /recursos.html /calculadoras 301

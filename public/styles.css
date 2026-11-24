@@ -1460,3 +1460,34 @@ div.pg-card{cursor:default}
 @media (max-width:430px){.hE h1{font-size:clamp(32px,9.4vw,46px)!important}}
 @media (max-width:600px){.ck-toast{bottom:74px;max-width:calc(100vw - 32px);text-align:center}}
 @media (max-width:760px){.gl-tabs-w .gt-tabs{height:80px;padding-top:16px}}
+a.a-row{text-decoration:none}
+a.a-row:hover{color:#FFFFFF}
+.sv-link{color:#0B1512;font-weight:700;text-decoration:none}
+.sv-link:hover{color:#1E6B47}
+.sv-lista{border-top:1.5px solid #0B1512}
+.sv-b{position:relative;display:grid;grid-template-columns:80px minmax(0,1fr) 64px;gap:28px;align-items:start;padding:44px 20px;border-bottom:1.5px solid #0B1512;color:#0B1512;text-decoration:none;isolation:isolate;overflow:hidden}
+.sv-b::before{content:"";position:absolute;inset:0;background:#0B1512;transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.7,0,.2,1);z-index:-1}
+.sv-b:hover::before,.sv-b:focus-visible::before{transform:scaleX(1)}
+.sv-b:hover,.sv-b:focus-visible{color:#FFFFFF}
+.sv-n{font-size:14px;font-weight:700;letter-spacing:1px;color:#55635B;padding-top:14px;transition:color .3s}
+.sv-main{display:flex;flex-direction:column;gap:14px;min-width:0}
+.sv-t{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(34px,4.4vw,56px);line-height:1.05;letter-spacing:-1.2px;transition:transform .5s cubic-bezier(.2,.9,.2,1)}
+.sv-t em{font-style:italic;font-weight:600;transition:color .3s}
+.sv-d{max-width:680px;font-size:18px;line-height:1.6;color:#55635B;transition:color .3s}
+.sv-inc{display:flex;flex-wrap:wrap;gap:8px 18px}
+.sv-inc span{display:inline-flex;align-items:center;gap:8px;font-size:15.5px;font-weight:600}
+.sv-inc svg{flex:none;width:22px;height:22px;padding:4px;border-radius:50%;background:#C8F169;color:#05070A}
+.sv-q{max-width:680px;font-size:15.5px;line-height:1.6;color:#55635B;transition:color .3s}
+.sv-q b{color:inherit}
+.sv-go{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:4px;font-size:15px;font-weight:700;padding:12px 20px;border-radius:999px;background:#0B1512;color:#FFFFFF;transition:background .3s,color .3s}
+.sv-arr{width:56px;height:56px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:22px;transition:all .35s}
+.sv-b:hover .sv-t,.sv-b:focus-visible .sv-t{transform:translateX(14px)}
+.sv-b:hover .sv-t em,.sv-b:focus-visible .sv-t em{color:#C8F169}
+.sv-b:hover .sv-n,.sv-b:hover .sv-d,.sv-b:hover .sv-q,.sv-b:focus-visible .sv-d,.sv-b:focus-visible .sv-q,.sv-b:focus-visible .sv-n{color:#D3DCD5}
+.sv-b:hover .sv-go,.sv-b:focus-visible .sv-go{background:#C8F169;color:#05070A}
+.sv-b:hover .sv-arr,.sv-b:focus-visible .sv-arr{background:#C8F169;color:#05070A;border-color:#C8F169;transform:rotate(45deg)}
+.sv-b:focus-visible{outline:3px solid #C8F169;outline-offset:-3px}
+.sv-diag{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;padding:40px}
+.sv-diag h2{max-width:560px}
+@media (max-width:760px){.sv-b{grid-template-columns:minmax(0,1fr);gap:10px;padding:32px 4px}.sv-arr{display:none}.sv-n{padding-top:0}.sv-d{font-size:16.5px}.sv-diag{padding:26px}.sv-diag h2{font-size:27px!important}}
+@media (prefers-reduced-motion:reduce){.sv-b::before,.sv-t,.sv-arr{transition:none}}
