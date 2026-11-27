@@ -45,6 +45,26 @@
   { t: "Meta Ads vs Google Ads", u: "/meta-ads-vs-google-ads", tipo: "Enciclopedia", k: "meta ads google ads facebook instagram publicidad cpm cpc comparacion cual conviene" },
   { t: "Cómo investigar los anuncios de tu competencia", u: "/biblioteca-de-anuncios", tipo: "Enciclopedia", k: "biblioteca de anuncios meta ad library centro de transparencia google competencia espiar anuncios" },
   { t: "Fechas comerciales en Chile", u: "/fechas-comerciales-chile", tipo: "Enciclopedia", k: "fechas comerciales chile cyberday cybermonday black friday navidad calendario ccs" },
+  { t: "Meta Andromeda", u: "/meta-andromeda", tipo: "Enciclopedia", k: "meta andromeda algoritmo facebook instagram anuncios creatividades diversificacion recuperacion gem advantage+" },
+  { t: "Advantage+ de Meta", u: "/advantage-plus-meta", tipo: "Enciclopedia", k: "advantage+ advantage plus meta ads automatizacion campañas audiencia ubicaciones presupuesto leads" },
+  { t: "AI Max para campañas de Búsqueda", u: "/ai-max-google-ads", tipo: "Enciclopedia", k: "ai max google ads busqueda concordancia amplia palabras clave smart bidding performance max ia" },
+  { t: "Anuncios creados con IA", u: "/anuncios-con-ia", tipo: "Enciclopedia", k: "anuncios con ia creatividades generativa imagenes video meta google tiktok etiquetas" },
+  { t: "Cómo usar la IA en el marketing de tu pyme", u: "/como-usar-ia-en-marketing", tipo: "Enciclopedia", k: "como usar ia inteligencia artificial marketing pyme prompts chatgpt gemini tareas" },
+  { t: "Agentes de IA en marketing", u: "/agentes-de-ia-marketing", tipo: "Enciclopedia", k: "agentes de ia agente inteligencia artificial automatizacion marketing ads advisor chatbot" },
+  { t: "IA para tu marca", u: "/ia-para-tu-marca", tipo: "Enciclopedia", k: "ia marca branding manual de voz logo pomelli identidad inapi" },
+  { t: "IA para redes sociales", u: "/ia-para-redes-sociales", tipo: "Enciclopedia", k: "ia redes sociales contenido instagram tiktok publicaciones calendario autenticidad etiquetas" },
+  { t: "Meta Business Agent", u: "/meta-business-agent", tipo: "Enciclopedia", k: "meta business agent whatsapp business ia agente atencion clientes mensajes ventas" },
+  { t: "Cómo medir el tráfico de IA en GA4", u: "/trafico-de-ia-en-ga4", tipo: "Enciclopedia", k: "trafico ia ga4 google analytics chatgpt perplexity gemini canal ai assistant referencias geo aeo" },
+  { t: "Agencia, freelance o equipo interno", u: "/agencia-freelance-o-equipo-interno", tipo: "Enciclopedia", k: "agencia freelance equipo interno contratar marketing digital community manager costo" },
+  { t: "Asesoría de marketing digital", u: "/asesoria-de-marketing-digital", tipo: "Enciclopedia", k: "asesoria marketing digital asesor consultor mentoria pyme" },
+  { t: "Cómo elegir una agencia de marketing digital", u: "/como-elegir-agencia-marketing-digital", tipo: "Enciclopedia", k: "como elegir agencia marketing digital preguntas señales de alerta propuestas" },
+  { t: "Brief para una agencia de marketing", u: "/brief-para-agencia-de-marketing", tipo: "Enciclopedia", k: "brief agencia marketing plantilla objetivos presupuesto encargo" },
+  { t: "Cuánto cuesta una agencia de marketing digital en Chile", u: "/precio-agencia-marketing-digital", tipo: "Enciclopedia", k: "precio agencia marketing digital cuanto cuesta fee tarifa cotizacion chile inversion medios" },
+  { t: "Cuánto invertir en publicidad digital", u: "/cuanto-invertir-en-publicidad-digital", tipo: "Enciclopedia", k: "cuanto invertir publicidad digital presupuesto anuncios google meta cpa cac ltv" },
+  { t: "Tus cuentas publicitarias, a tu nombre", u: "/cuentas-publicitarias-a-tu-nombre", tipo: "Enciclopedia", k: "cuentas publicitarias propiedad accesos business manager google ads ga4 gtm agencia" },
+  { t: "Auditoría de campañas publicitarias", u: "/auditoria-de-campanas-publicitarias", tipo: "Enciclopedia", k: "auditoria campañas publicitarias revisar google ads meta ads checklist medicion" },
+  { t: "Google Partner y Meta Business Partner", u: "/google-partner-meta-business-partner", tipo: "Enciclopedia", k: "google partner meta business partner insignia certificacion agencia" },
+  { t: "KPIs para evaluar a tu agencia de marketing", u: "/kpis-para-evaluar-agencia-de-marketing", tipo: "Enciclopedia", k: "kpis evaluar agencia metricas informe cpl cpa cac ltv incrementalidad" },
   { t: "Glosario de Marketing (168 términos)", u: "/glosario", tipo: "Sección", k: "glosario diccionario terminos cpc cpm ctr cac ltv roas mer ymyl pujas audiencias formatos" },
   { t: "Preguntas frecuentes", u: "/preguntas-frecuentes", tipo: "Sección", k: "faq preguntas que es paid media seo sem aeo geo pixel capi" },
   { t: "Herramientas de Marketing", u: "/herramientas", tipo: "Sección", k: "herramientas google ads meta ga4 gtm looker ahrefs semrush claude chatgpt" },
@@ -395,7 +415,7 @@
 
   (function conde() {
     if (document.body.classList.contains("sin-conde")) return;
-    var URL_CONDE = "/conde.js?v=20261124c", CLAVE = "cd_conde_aviso";
+    var URL_CONDE = "/conde.js?v=20261127a", CLAVE = "cd_conde_aviso";
     var visto = function () { try { return sessionStorage.getItem(CLAVE); } catch (e) { return "1"; } };
     var btn, hint, ping, mod = null, cargando = null;
     var quitarAviso = function () { if (hint) { hint.remove(); hint = null; } if (ping) { ping.remove(); ping = null; } try { sessionStorage.setItem(CLAVE, "1"); } catch (e) {} };

@@ -1527,3 +1527,16 @@ a.a-row:hover{color:#FFFFFF}
 .cd-franja .k-floaty:not(:has(i)){font-size:28px!important}
 @media (max-width:760px){.cd-franja{padding:64px 20px!important}.cd-franja .k-halo{width:460px!important;height:460px!important;margin:-230px 0 0 -230px!important}.cd-franja .k-spin{width:260px!important;height:260px!important;margin:-130px 0 0 -130px!important}.cd-franja .k-spin-r{width:340px!important;height:340px!important;margin:-170px 0 0 -170px!important}.cd-franja h2+p{font-size:16.5px!important;margin-bottom:22px!important}.cd-franja .k-btn{font-size:17px!important;padding:15px 30px!important}}
 .ar-body strong,.ar-body code,.ar-body a{overflow-wrap:anywhere}
+.ar-note{margin:30px 0 34px;padding:22px 26px;border-radius:18px;background:#F7F5EF;border-left:4px solid #1D4ED8;font-size:16.5px;line-height:1.65}
+.ar-note b.k{display:block;margin-bottom:6px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#1D4ED8}
+.ar-call div{max-width:470px}
+.ar-call small{display:block;margin-bottom:8px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C8F169}
+.ar-call h3{margin:0 0 8px;font-family:'Fraunces',serif;font-size:26px;line-height:1.2;color:#FFFFFF}
+.ar-call p{margin:0!important;font-size:16px;line-height:1.6;color:#D3DCD5}
+.ar-call a.bt{flex:none;display:inline-flex;padding:15px 24px;border-radius:999px;background:#C8F169;color:#05070A!important;font-size:16px;font-weight:700;text-decoration:none!important;transition:transform .2s}
+.ar-call a.bt:hover{transform:translateY(-3px)}
+.ar-tr.t3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ar-tr div strong{display:block;margin-bottom:8px;font-family:'Fraunces',serif;font-size:19px;line-height:1.3;color:#0B1512}
+.ar-body em{overflow-wrap:anywhere}
+@media (max-width:760px){.ar-tr.t3{grid-template-columns:minmax(0,1fr)}.ar-call a.bt{align-self:stretch;justify-content:center}.ar-table{font-size:14.5px}.ar-note{padding:18px 18px}}
+@media (prefers-reduced-motion:reduce){.ar-call a.bt{transition:none}.ar-call a.bt:hover{transform:none}}
