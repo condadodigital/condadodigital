@@ -11,6 +11,19 @@
 
 Lo que no pude confirmar está marcado como **por validar**.
 
+## Resumen
+
+1. **La base técnica está sana.** No hay duplicados de title ni description, los canonical son correctos, el sitemap tiene exactamente las 68 indexables, no hay cadenas de redirección, los JSON-LD (Article, FAQPage, Service, DefinedTerm, BreadcrumbList) son válidos y los bots de IA están permitidos en robots.txt.
+2. **El mayor riesgo hoy es la indexación:** 32 de 68 URL no están indexadas. Entre ellas están /glosario, /marketing-con-ia y /meta-ads-vs-google-ads, y /chatgpt-ads-chile, /biblioteca-de-anuncios y otras 3 ni siquiera son conocidas por Google.
+3. **Una sola página trae el 69 % de las impresiones:** /fechas-comerciales-chile (2.248 en 28 días, posición 7,7). Pero su CTR es 0,22 % porque la primera línea define el concepto en vez de decir la fecha del próximo evento.
+4. **/sitio-web se lleva las búsquedas de compra** («páginas web chile», «cotizar página web») que deberían ir a /diseno-web, que casi no aparece.
+5. **AEO bien encaminado:** los 36 artículos abren con una definición directa y la mitad de sus H2 ya tiene forma de pregunta. Las fichas del glosario no dan la fórmula en la primera línea.
+6. **GEO:** 19 de 20 búsquedas de prueba muestran resumen de IA en Google y ninguno cita a condadodigital.cl. Citan blogs de agencias chilenas pequeñas, así que es alcanzable. Perplexity exige iniciar sesión (por validar).
+7. **Rendimiento móvil:** 59–82 en Lighthouse. El LCP de 6,6–8 s lo causa el aviso de cookies, no el contenido, y es barato de arreglar.
+8. **El contenido casi no lleva a servicios:** 15 de los 16 artículos antiguos, /calculadoras, /glosario y /enciclopedia no enlazan a ninguna landing. Solo los 20 artículos nuevos tienen bloque «Hablemos».
+9. **La medición no responde la pregunta de negocio:** GA4 no tiene dimensiones personalizadas (no se ve `ubicacion` ni `servicio`) y Tag Assistant ensucia las sesiones.
+10. **Faltan registros básicos:** Perfil de Empresa sin verificar, Bing Webmaster Tools e IndexNow probablemente sin activar, y Search Console sin vínculo con Google Ads. Las 10 acciones de las próximas 4 semanas están en la sección 10.6.
+
 ---
 
 ## 1. SEO técnico
@@ -646,3 +659,103 @@ Revisado el 27-11-2026 con Claude in Chrome, solo leyendo. No cambié ninguna co
 | **qué es gtm / gtm** | Posición 13,4 para «gtm» (109 impresiones). El resumen de «qué es gtm» mezcla Google Tag Manager con go-to-market: hay espacio para una respuesta que desambigüe | /glosario-gtm: primera línea «GTM es la sigla de Google Tag Manager, el gestor de etiquetas gratuito de Google (no confundir con go-to-market)», y la auditoría con H2 propio y lista numerada |
 | **cuánto cuesta una agencia de marketing digital en chile** | El resumen de IA cita solo 2 fuentes (nexbu.com y smartgrowth.cl), así que hay poca competencia. /precio-agencia-marketing-digital ya está indexada | Tabla de rangos con fecha («noviembre 2026») en el primer tercio, la frase citable «En Chile, el fee mensual de una agencia para pymes va de $X a $Y, sin contar la inversión en medios» con su fuente, y el title de la sección 7 |
 | **cómo medir tráfico de chatgpt en ga4** | /trafico-de-ia-en-ga4 está indexada. El resumen cita blogs de agencias con el mismo paso a paso | Title «Cómo medir el tráfico de ChatGPT en GA4 paso a paso», la expresión regular del canal personalizado en un bloque copiable al inicio y una captura del informe |
+
+
+---
+
+## 10. Plan priorizado
+
+**ICE** = promedio de Impacto, Confianza y Facilidad (de 1 a 10). Impacto es el efecto esperado en visitas calificadas o leads; Confianza, qué tan seguros estamos de ese efecto con la evidencia de este informe; Facilidad, el esfuerzo inverso. «Quién» indica si lo puede hacer el código (una rama nueva, con tu aprobación) o si requiere tu acceso a una cuenta.
+
+### 10.1 Técnico
+
+| ID | Acción | URL afectada (sección) | I | C | E | ICE | Quién |
+|---|---|---|---|---|---|---|---|
+| T1 | Pedir la indexación en Search Console de las páginas clave sin indexar (10 por día) y sumar enlaces hacia ellas desde las indexadas con impresiones | /glosario, /marketing-con-ia, /meta-ads-vs-google-ads, /chatgpt-ads-chile, /embudo-de-marketing, /publicidad-pagada-vs-organica y 26 más (1.1) | 9 | 7 | 9 | **8.3** | Tú (Search Console) + código |
+| T2 | Que el aviso de cookies deje de ser el LCP: incluirlo en el HTML inicial o mostrarlo sin animación de entrada | Todas (LCP de 6,6–8,0 s en laboratorio) (1.8) | 7 | 7 | 7 | **7.0** | Código |
+| T3 | Accesibilidad del inicio: contraste de `.mq-m` y aria-label que contenga el texto visible | / (1.8) | 3 | 9 | 9 | **7.0** | Código |
+| T7 | retrato.jpg a WebP o AVIF; borrar hero.jpg, hero.webp y hero-movil.webp, que no se usan | /acerca, / (1.7) | 2 | 9 | 9 | **6.7** | Código |
+| T4 | Espacio entre las dos líneas del H1 y patrón sr-only/aria-hidden en los H1 rotativos de las landings | 36 artículos, 5 landings (1.5) | 4 | 6 | 9 | **6.3** | Código |
+| T5 | JSON-LD: correo y ContactPoint en todas las Organization, un solo jobTitle para Person, BreadcrumbList en /preguntas-frecuentes y /herramientas, logo PNG 512×512 | Todas (1.9, 4.3) | 4 | 6 | 8 | **6.0** | Código |
+| T6 | `max-image-preview:large` + una imagen propia de 1.200 px o más por artículo en og:image y en Article | 36 artículos, 16 fichas (5.4, 8.2) | 6 | 6 | 5 | **5.7** | Diseño + código |
+| T8 | CSS crítico en línea (cabecera y hero) para quitar 0,9 s de bloqueo | Todas (1.8) | 5 | 6 | 5 | **5.3** | Código |
+
+### 10.2 Contenido
+
+| ID | Acción | URL afectada (sección) | I | C | E | ICE | Quién |
+|---|---|---|---|---|---|---|---|
+| C1 | Primera línea con el próximo evento y su fecha, tabla «Próximos eventos» bajo el H1 y 2 FAQ nuevas (próximo Black Friday y próximo Cyber) | /fechas-comerciales-chile (3.1, 3.3, 5.1) | 9 | 8 | 9 | **8.7** | Contenido |
+| C3 | Fichas del glosario: definición de una oración + fórmula en la primera línea (empezar por CVR, CTR, GTM, CPM y CPL) | 16 fichas (3.1) | 7 | 7 | 8 | **7.3** | Contenido |
+| C2 | Separar intenciones: /sitio-web informativa con enlace visible a /diseno-web; /diseno-web con «diseño de páginas web» y enlace a /sitio-web | /sitio-web, /diseno-web (2.2) | 7 | 7 | 7 | **7.0** | Contenido |
+| C4 | Enlaces cruzados que faltan entre pares relacionados | /meta-andromeda ↔ /advantage-plus-meta, /precio-agencia… ↔ /cuanto-invertir…, /diseno-web → /sitio-web (2.2) | 4 | 7 | 10 | **7.0** | Contenido |
+| C5 | /acerca: años de experiencia, certificaciones, 2 o 3 casos con resultados y correo visible | /acerca (4.3) | 6 | 6 | 7 | **6.3** | Tú + contenido |
+| C6 | Tablas comparativas en los 6 artículos que no tienen ninguna | /sitio-web, /tienda-online, /whatsapp-business, /perfil-de-empresa-google, /crear-sitio-web-con-ia, /biblioteca-de-anuncios (3.4) | 5 | 6 | 6 | **5.7** | Contenido |
+| C7 | H2 como preguntas y respuesta de 25 palabras o menos bajo cada H2 en los artículos antiguos | 11 artículos con 2 o menos H2 en forma de pregunta (3.2) | 5 | 5 | 7 | **5.7** | Contenido |
+
+### 10.3 GEO
+
+| ID | Acción | URL afectada (sección) | I | C | E | ICE | Quién |
+|---|---|---|---|---|---|---|---|
+| G1 | Revisar en Cloudflare → Seguridad → Bots / AI Crawl Control que no se bloquee a los bots de IA de búsqueda (OAI-SearchBot, Claude-SearchBot, PerplexityBot) | Todo el sitio (4.1), por validar | 8 | 5 | 10 | **7.7** | Tú (Cloudflare) |
+| G2 | Importar el sitio en Bing Webmaster Tools desde Search Console y activar Crawler Hints (IndexNow) en Cloudflare | Todo el sitio (4.5, 8.2) | 6 | 7 | 9 | **7.3** | Tú (Bing, Cloudflare) |
+| G3 | Verificar el Perfil de Empresa de Google y completarlo | Perfil «Condado Digital» (8.1) | 6 | 8 | 6 | **6.7** | Tú |
+| G5 | Perfil en Clutch Chile (y Sortlist) con 2 o 3 reseñas de clientes | Externo (9.3 a) | 5 | 6 | 7 | **6.0** | Tú |
+| G6 | Un dato propio por trimestre (por ejemplo, CPM de Meta en Chile por evento, de N cuentas) y comunicado a Mediabanco y Portal Innova | Nuevo artículo o página de datos (9.3 c) | 8 | 6 | 4 | **6.0** | Tú + contenido |
+| G4 | Descripciones en llms.txt para los 16 artículos antiguos y las 16 fichas, más una línea de autoría | /llms.txt (4.2) | 3 | 5 | 9 | **5.7** | Código |
+| G8 | Columna de opinión en Portal Innova con enlace a un artículo | Externo (9.3 a) | 5 | 5 | 6 | **5.3** | Tú |
+| G7 | 5 videos cortos en YouTube para los artículos con más potencial, con enlace | Externo (9.3 b) | 6 | 5 | 4 | **5.0** | Tú |
+
+### 10.4 Títulos
+
+| ID | Acción | URL afectada (sección) | I | C | E | ICE | Quién |
+|---|---|---|---|---|---|---|---|
+| Ti1 | Title y description de /fechas-comerciales-chile | /fechas-comerciales-chile (7.1) | 8 | 7 | 10 | **8.3** | Código |
+| Ti2 | Titles de las fichas con impresiones | /glosario-cvr, /glosario-gtm, /glosario-ctr (7.3) | 6 | 6 | 10 | **7.3** | Código |
+| Ti3 | Quitar el sufijo « — Condado Digital» y llevar al rango 30–60 / 120–160 las 28 páginas fuera de rango | Fichas, hubs, inicio y artículos antiguos (1.2, 7) | 5 | 6 | 9 | **6.7** | Código |
+| Ti4 | Titles de las landings con la búsqueda real («Google Ads y Meta Ads», «gestión de redes sociales», «diseño de páginas web») | /paid-media, /social-media, /diseno-web, /seo, /mentorias (7.1) | 5 | 5 | 10 | **6.7** | Código |
+
+### 10.5 Conversión
+
+| ID | Acción | URL afectada (sección) | I | C | E | ICE | Quién |
+|---|---|---|---|---|---|---|---|
+| V1 | Registrar en GA4 las dimensiones personalizadas `ubicacion`, `servicio`, `formulario` y `origen` | GA4 (6.1, 8.2) | 8 | 10 | 10 | **9.3** | Tú (GA4) |
+| V2 | Excluir tráfico interno y referencias de tagassistant.google.com en GA4 | GA4 (6.1, 8.2) | 6 | 9 | 9 | **8.0** | Tú (GA4) |
+| V3 | Bloque «Hablemos» con el servicio que corresponde en los 16 artículos antiguos, medido con `servicio_click` | 16 artículos (6.3) | 8 | 7 | 8 | **7.7** | Código |
+| V4 | Línea con enlace a /paid-media bajo la tabla de fechas | /fechas-comerciales-chile (6.3) | 6 | 6 | 10 | **7.3** | Código |
+| V5 | Filas a servicios en /calculadoras (por grupo), /glosario y /enciclopedia | /calculadoras, /glosario, /enciclopedia (6.3) | 6 | 6 | 8 | **6.7** | Código |
+| V6 | Enlazar /seo y /diseno-web desde los 5 artículos de web, SEO y buscadores con IA | /sitio-web, /tienda-online, /crear-sitio-web-con-ia, /core-update…, /trafico-de-ia-en-ga4 (6.3) | 5 | 6 | 9 | **6.7** | Código |
+| V8 | Vincular Search Console con Google Ads | Google Ads (8.2) | 2 | 8 | 10 | **6.7** | Tú (Google Ads) |
+| V7 | Subir el enlace al servicio a la mitad de cada ficha del glosario, con texto en contexto | 16 fichas (6.3) | 5 | 5 | 8 | **6.0** | Código |
+
+### 10.6 Las 10 acciones de mayor impacto para las próximas 4 semanas (28-11 al 26-12-2026)
+
+| # | Semana | Acción | ICE | Quién |
+|---|---|---|---|---|
+| 1 | 1 | **V1** · Registrar en GA4 las dimensiones personalizadas `ubicacion`, `servicio`, `formulario` y `origen` | 9.3 | Tú (GA4) |
+| 2 | 1 | **C1** · Primera línea con el próximo evento y su fecha, tabla «Próximos eventos» bajo el H1 y 2 FAQ nuevas (próximo Black Friday y próximo Cyber) | 8.7 | Contenido |
+| 3 | 1 | **Ti1** · Title y description de /fechas-comerciales-chile | 8.3 | Código |
+| 4 | 1–2 | **T1** · Pedir la indexación en Search Console de las páginas clave sin indexar (10 por día) y sumar enlaces hacia ellas desde las indexadas con impresiones | 8.3 | Tú (Search Console) + código |
+| 5 | 1 | **V2** · Excluir tráfico interno y referencias de tagassistant.google.com en GA4 | 8.0 | Tú (GA4) |
+| 6 | 2 | **V3** · Bloque «Hablemos» con el servicio que corresponde en los 16 artículos antiguos, medido con `servicio_click` | 7.7 | Código |
+| 7 | 1 | **G1** · Revisar en Cloudflare → Seguridad → Bots / AI Crawl Control que no se bloquee a los bots de IA de búsqueda (OAI-SearchBot, Claude-SearchBot, PerplexityBot) | 7.7 | Tú (Cloudflare) |
+| 8 | 1 | **G2** · Importar el sitio en Bing Webmaster Tools desde Search Console y activar Crawler Hints (IndexNow) en Cloudflare | 7.3 | Tú (Bing, Cloudflare) |
+| 9 | 2–3 | **C3** · Fichas del glosario: definición de una oración + fórmula en la primera línea (empezar por CVR, CTR, GTM, CPM y CPL) | 7.3 | Contenido |
+| 10 | 3–4 | **T2** · Que el aviso de cookies deje de ser el LCP: incluirlo en el HTML inicial o mostrarlo sin animación de entrada | 7.0 | Código |
+
+**Por qué este orden:**
+
+- **V1 y V2 van primero** aunque no traen visitas: sin dimensiones personalizadas ni filtro de tráfico interno, no se podrá medir si el resto funciona.
+- **C1 + Ti1** atacan el 69 % de las impresiones del sitio, que ya está en primera página.
+- **T1** destraba 32 páginas que hoy no pueden aparecer.
+- **V3** convierte las visitas que ya llegan.
+- **G1 y G2** son minutos de configuración con impacto potencial alto en los asistentes de IA.
+- **C3 y T2** cierran el mes con las fichas y el rendimiento.
+- **En paralelo, solo con tu acceso:** verificar el Perfil de Empresa (G3) y crear el perfil de Clutch (G5).
+
+**Qué medir al final de las 4 semanas:**
+
+- páginas indexadas (meta: más de 55 de 68);
+- CTR de /fechas-comerciales-chile (hoy 0,22 %);
+- `servicio_click` por `ubicacion` (hoy no se puede ver);
+- `generate_lead` por página de entrada;
+- y repetir las 20 consultas de la sección 9 con la misma metodología.
