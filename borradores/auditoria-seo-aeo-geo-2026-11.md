@@ -147,3 +147,124 @@ Accesibilidad, Prácticas recomendadas y SEO dan 100 en las 7 páginas, salvo Ac
 
 - **/glosario-gtm** aparece por «gtm» (109 impresiones, posición 13,4) y por «auditar gtm» o «auditoría gtm» (21 impresiones, posiciones 70–81). La ficha mezcla definición y auditoría. Una sección corta «Cómo auditar tu contenedor de GTM», con un H2 propio, puede subir en las segundas. A futuro podría ser un artículo propio.
 - **Fórmulas del glosario** («cómo se calcula el ctr», «fórmula cpm», «fórmula ctr»: más de 100 impresiones en conjunto, posiciones 60–90). Las fichas existen, pero Google las ve lejos. Una línea de fórmula en texto plano bien visible justo bajo el H1 (por ejemplo, «CTR = clics ÷ impresiones × 100») y un enlace a la calculadora correspondiente es lo que piden esas búsquedas.
+
+---
+
+## 3. AEO: respuestas directas para Google y fragmentos destacados
+
+### 3.1 Respuesta en las primeras líneas
+
+- **Los 36 artículos abren con una definición directa** del tipo «X es…», de 37 a 74 palabras, en el lead visible bajo el H1 (por ejemplo: «Meta Andromeda es el sistema de inteligencia artificial que hace la primera selección de anuncios en Facebook e Instagram…»). Es el formato que Google y los asistentes toman como fragmento.
+- **La excepción que más importa es /fechas-comerciales-chile.** Es la página con más impresiones del sitio (2.248, el 69 % del total), y su consulta principal es una pregunta de fecha: «cuándo es el próximo black friday o cyber day» (113 impresiones, posición 8), «cuando hay cyber o black friday» (41), «black friday 2027 chile» (36, posición 5,5), «cuando hay ofertas en chile» (32). Pero el lead define el concepto: «Las fechas comerciales son los días o eventos del año en que el consumo se concentra…». La respuesta a «cuándo» no está en las dos primeras líneas. **Recomendación:** que la primera frase diga cuál es el próximo evento y su fecha («El próximo evento de descuentos en Chile es el … del … de 202x; luego vienen…»), con una tabla corta de próximas fechas justo debajo. Esta página tiene CTR de 0,22 % en posición 7,7: mejorar el fragmento es la palanca más directa de clics del sitio.
+- **Fichas del glosario:** la primera línea visible es la sigla desarrollada («Click-Through Rate — Tasa de clics») y la definición viene después. Las búsquedas de fórmula («fórmula ctr», «cpm fórmula», «cómo se calcula el ctr») no encuentran la fórmula en la primera línea. Conviene poner primero la definición y la fórmula en una línea («El CTR es el porcentaje de impresiones que terminan en clic: CTR = clics ÷ impresiones × 100»).
+
+### 3.2 H2 como preguntas
+
+- 124 de 234 H2 temáticos (53 %) ya tienen forma de pregunta o empiezan con «Cómo/Qué/Cuánto». Excluí los fijos de la plantilla (Críticas, En Chile, Cómo aplicarlo, Hacia 2027-2028, Postura, Bibliografía, FAQ, Véase también, Referencias e Historial).
+- **Los que menos lo cumplen:** /kpis-para-evaluar-agencia-de-marketing (1 de 6), /marketing-con-ia (1 de 5), /agentes-de-ia-marketing, /ai-max-google-ads, /analitica-digital, /brief-para-agencia-de-marketing, /como-elegir-agencia-marketing-digital, /embudo-de-marketing, /ia-para-redes-sociales, /publicidad-pagada-vs-organica y /que-es-el-marketing-digital (2 de 5 o 6 cada uno).
+- **Ejemplos de reescritura sin cambiar el contenido:** «Definición y alcance» → «¿Qué es el marketing digital y qué incluye?»; «Los canales principales» → «¿Cuáles son los canales del marketing digital?»; «Eventos comerciales del año en Chile» → «¿Cuándo son los eventos de descuentos en Chile en 2026 y 2027?»; «Fórmula» (glosario) → «¿Cómo se calcula el CTR?».
+- **Respuesta justo bajo el H2:** en los artículos nuevos, el primer párrafo de cada sección responde. En los antiguos hay H2 que abren con contexto («Por qué el calendario importa tanto…»). Regla para todo el sitio: la primera oración bajo cada H2 debe responder el H2 en 25 palabras o menos.
+
+### 3.3 Preguntas frecuentes vs búsquedas reales
+
+- Las FAQ de los 36 artículos y de las fichas son **idénticas a su FAQPage** (revisión automática, 0 diferencias).
+- Cruce con Search Console (28 días):
+
+| Página | Búsqueda real con impresiones | ¿Hay una FAQ que la responda? |
+|---|---|---|
+| /fechas-comerciales-chile | «cuándo es el próximo black friday o cyber day» (113), «black friday 2027 chile» (36+10), «cuando es el cyber en noviembre» (25) | **No.** Solo hay «¿Cuándo es el CyberDay 2027?». Faltan «¿Cuándo es el próximo Black Friday en Chile?» y «¿Cuándo es el próximo Cyber en Chile?» |
+| /glosario-gtm | «gtm» (109), «auditar gtm» (14), «auditoria gtm» (6) | Sí: «¿Qué es GTM?» y «¿Cómo auditar Google Tag Manager?» |
+| /glosario-cvr | «que es cvr en meta» (8), «que es cvr en meta ads» (4), «cvr formula» (5) | Sí: «¿Qué es el CVR en Meta Ads?». Falta la fórmula en la primera línea |
+| /glosario-ctr | «formula ctr» (17), «como calcular ctr» (15), «como se calcula ctr» (11) | Sí: «¿Cómo se calcula el CTR?». La posición es lejana (60–90): es un tema de autoridad e indexación, no de FAQ |
+| /sitio-web | «cuánto cuesta una página web en chile» y variantes (≈15 en total) | Sí: «¿Cuánto cuesta hacer una página web en Chile?» |
+| /que-es-el-marketing-digital | «que es marketing digital» (2), «marketing digital que es y para que sirve» (3) | Parcial: no hay «¿Para qué sirve el marketing digital?» |
+
+### 3.4 Tablas y listas donde la búsqueda pide comparar o seguir pasos
+
+- 30 de 36 artículos tienen al menos una tabla. **Sin ninguna tabla:** /sitio-web, /tienda-online, /crear-sitio-web-con-ia, /perfil-de-empresa-google, /whatsapp-business y /biblioteca-de-anuncios.
+- **Las que más la necesitan:**
+  - /sitio-web: tabla «Costo del primer año por tipo de sitio (en pesos)». Es la intención de unas 15 búsquedas de precio.
+  - /tienda-online: comparación Shopify vs Jumpseller vs Tiendanube (comisión, plan inicial, pagos locales). Ya la responde una FAQ, pero sin tabla.
+  - /whatsapp-business: «App de WhatsApp Business vs API (WhatsApp Business Platform)».
+  - /perfil-de-empresa-google: checklist de verificación y campos.
+- Las listas numeradas de pasos («Cómo aplicarlo en tu pyme») existen en todos los artículos.
+
+---
+
+## 4. GEO: que ChatGPT, Gemini, Perplexity, Copilot y Claude nos encuentren y nos citen
+
+### 4.1 robots.txt y bots de IA
+
+**robots.txt publicado** (idéntico al del repositorio; Cloudflare no lo modifica):
+
+```
+User-agent: *
+Allow: /
+
+# Buscadores y asistentes de IA (permitidos)
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: PerplexityBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://www.condadodigital.cl/sitemap.xml
+```
+
+Nombres vigentes, verificados en la documentación oficial (27-11-2026):
+
+| Empresa | Robot | Para qué sirve | ¿Permitido? |
+|---|---|---|---|
+| OpenAI | OAI-SearchBot | Mostrar sitios en la búsqueda de ChatGPT | Sí |
+| OpenAI | GPTBot | Entrenamiento de modelos | Sí |
+| OpenAI | ChatGPT-User | Visitas pedidas por una persona (OpenAI dice que robots.txt puede no aplicarse) | Sí |
+| Anthropic | Claude-SearchBot | Índice de búsqueda de Claude | Sí |
+| Anthropic | Claude-User | Visitas pedidas por una persona en Claude | Sí |
+| Anthropic | ClaudeBot | Entrenamiento | Sí |
+| Perplexity | PerplexityBot | Índice de búsqueda de Perplexity | Sí |
+| Perplexity | Perplexity-User | Visitas pedidas por una persona (en general ignora robots.txt) | Sí, por `User-agent: *` (no está nombrado) |
+| Google | Google-Extended | Token de control para entrenamiento y grounding de Gemini; no es un rastreador ni afecta a la Búsqueda | Sí |
+| Microsoft | Bingbot | Índice de Bing, que usan Copilot y otros asistentes | Sí |
+| Apple | Applebot / Applebot-Extended | Búsqueda de Apple (Siri, Spotlight) / control de entrenamiento | Sí, por `User-agent: *` (no están nombrados) |
+
+Fuentes: [OpenAI, Overview of OpenAI Crawlers](https://developers.openai.com/api/docs/bots); [Anthropic, ¿Anthropic rastrea la web?](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler); [Perplexity Crawlers](https://docs.perplexity.ai/docs/resources/perplexity-crawlers); [Google, Google-Extended](https://developers.google.com/crawling/docs/google-extended) y [rastreadores comunes de Google](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers); [Apple, About Applebot](https://support.apple.com/en-us/119829).
+
+**Prueba contra Cloudflare:** pedí /meta-andromeda con el user-agent de GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, PerplexityBot, Applebot, Bingbot, Googlebot, Bytespider y CCBot. Todos respondieron **200**. Las cabeceras no traen `X-Robots-Tag` y `cf-cache-status` es `DYNAMIC`. Esta prueba sale desde una IP que no es la de los bots. Cloudflare puede bloquear a los bots verificados por su IP con «Bloquear bots de IA» o «AI Crawl Control», y eso solo se ve en el panel: **por validar** en Cloudflare → condadodigital.cl → Seguridad → Bots (y AI Crawl Control). Si ahí aparece «Block AI bots» activado, desactívalo, o deja bloqueados solo los de entrenamiento si esa es tu decisión. No lo cambié.
+
+**Mejora opcional:** nombrar explícitamente a Perplexity-User, Applebot y Applebot-Extended en robots.txt. Hoy ya están permitidos por `*`; nombrarlos sirve para documentar la decisión.
+
+### 4.2 llms.txt
+
+- Publicado y al día: 36 artículos, 16 fichas del glosario, 5 servicios, /servicios, /calculadoras (20 calculadoras), /glosario (168 términos), /herramientas, /preguntas-frecuentes y redes.
+- **Faltan descripciones:** los 20 artículos nuevos tienen descripción («: Andromeda es la IA de Meta…»), pero los **16 artículos antiguos y las 16 fichas del glosario son solo título y enlace**. Agregar una línea por cada uno, igual que en los nuevos, ayuda a los asistentes a decidir cuál citar.
+- Falta una línea que diga cómo citar y quién es el autor de las guías.
+
+### 4.3 Entidad de marca: Organization y Person
+
+- **Nombre, URL, logo y sameAs** son los mismos en las 54 páginas con el nodo completo: Instagram, LinkedIn de la empresa, TikTok, YouTube, Facebook, X y Threads.
+- **Inconsistencias:**
+  - El correo de contacto (`hola@condadodigital.cl`) solo aparece en 1 de 60 nodos Organization, y ningún nodo tiene `contactPoint`.
+  - Las 5 landings llevan un Organization reducido, sin logo ni sameAs. Se resuelve por `@id`, pero conviene completarlo.
+  - Person tiene dos `jobTitle` distintos para el mismo `@id`.
+- **El logo es SVG.** Google pide para el logo de Organization una imagen de al menos 112×112 px en un formato compatible con Google Imágenes (**por validar** si toma el SVG). Es más seguro sumar un PNG de 512×512.
+- **/acerca** (457 palabras) muestra la autoría con foto, LinkedIn, Duoc UC, Universidad Adolfo Ibáñez y los mercados donde ha trabajado (Chile, Perú, Colombia). **No muestra** años de experiencia, certificaciones (Google Ads, Meta Blueprint o similares), clientes o casos con resultados, ni un correo visible. Para E-E-A-T y para que un asistente describa a Esleyter Conde con datos verificables, esos cuatro elementos son lo que falta.
+
+### 4.4 Contenido citable
+
+- **Bien:**
+  - Los 36 artículos tienen autor visible, «Actualizado el …» o «Publicado y actualizado el …», minutos de lectura, «Verificado con N fuentes», referencias numeradas con enlace, historial y `dateModified` en el JSON-LD.
+  - Las definiciones del lead son frases autocontenidas de una o dos oraciones.
+- **Mejorable:**
+  1. **Datos propios:** hoy casi todo se cita de terceros. Una tabla propia (por ejemplo, «CPM y CPC de Meta en Chile, mediana de N cuentas gestionadas, nov 2026», anonimizada) es lo que más cita una IA, porque no está en otro lado.
+  2. **Fechas en la primera línea** de las páginas de actualidad: /fechas-comerciales-chile, /core-update-google-noviembre-2026 y /chatgpt-ads-chile.
+  3. **Fichas del glosario:** la definición citable debería ser la primera oración (sección 3.1).
+
+### 4.5 Bing e IndexNow
+
+- No hay etiqueta `msvalidate.01` ni `BingSiteAuth.xml` (404), y en este Chrome no hay sesión en Bing Webmaster Tools. **Por validar** si el sitio ya se importó desde Search Console; lo más probable es que no.
+- No hay archivo de clave de IndexNow. Con Cloudflare se puede activar **Crawler Hints**, que avisa a IndexNow cuando cambia el contenido; es gratis en todos los planes ([Cloudflare, Crawler Hints](https://developers.cloudflare.com/cache/about/crawler-hints/)). IndexNow lo usan Bing y Yandex, entre otros ([Bing Webmaster Blog](https://blogs.bing.com/webmaster/november-2021/Cloudflare-Supports-IndexNow-via-one-click-Integration)). Esto importa porque Copilot y otros asistentes se apoyan en el índice de Bing.
