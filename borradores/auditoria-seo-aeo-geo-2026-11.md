@@ -502,3 +502,62 @@ No estaban en el alcance pedido, pero son la 3.ª, 4.ª y 5.ª página del sitio
 - **/glosario-ctr** · A: «Qué es el CTR y cómo se calcula: fórmula y ejemplo» (50) · B: «Fórmula del CTR: cómo calcularlo paso a paso» (44) · **Recomendada: A.** Recoge «cómo se calcula» y «fórmula», las dos familias de consultas con más impresiones.
 
 **Patrón para las 16 fichas:** «Qué es el [SIGLA]: [lo que se busca: fórmula / cómo se calcula / en Meta Ads]». Quedan en 45–55 caracteres sin el sufijo.
+
+---
+
+## 8. Lo que falta registrar o activar en Google y Bing
+
+Revisado el 27-11-2026 con Claude in Chrome, solo leyendo. No cambié ninguna configuración.
+
+### 8.1 Estado actual
+
+| Servicio | Qué vi | Estado |
+|---|---|---|
+| Search Console: tipo de propiedad | `sc-domain:condadodigital.cl` (**propiedad de dominio**: cubre www, apex, http y https) | Bien |
+| Search Console: usuarios | 2: `admin@condadodigital.cl` (Propietario verificado) y `el-conde@condado-digital-agentes.iam.gserviceaccount.com` (cuenta de servicio, permiso **Completo**) | La cuenta de servicio es la que usa la herramienta de datos (la misma con la que hice las consultas de este informe). **Por validar** si sigue en uso; si no, quítala. Si sigue, con permiso «Restringido» basta para leer |
+| Search Console ↔ GA4 | Asociado con la propiedad GA4 «condadodigital.cl», flujo «Sitio web» (desde GA4: vinculado el 10-11-2026 por admin@condadodigital.cl) | Bien |
+| Search Console ↔ Google Ads | **No aparece** en «Asociaciones» (solo GA4) | **Falta** |
+| Search Console: sitemap | 1 sitemap, 0 errores | Bien |
+| GA4 ↔ Google Ads | Cuenta «Condado Digital» 936-634-3954, publicidad personalizada habilitada, vinculada el 08-11-2026 | Bien |
+| GA4: retención de datos | Eventos 14 meses, usuarios 14 meses | Bien |
+| GA4: dimensiones personalizadas | **0** | **Falta**: registrar `ubicacion`, `servicio`, `formulario` y `origen` (ámbito evento) |
+| GA4: eventos clave | `generate_lead` (con datos). `close_convert_lead`, `purchase` y `qualify_lead` sin datos | Bien. Considera marcar también `servicio_click` como evento clave secundario, o al menos medirlo en un informe |
+| GA4: tráfico interno | `tagassistant.google.com / referral` es la 1.ª fuente de sesiones de la semana (11 de 27) | **Falta** definir tráfico interno, activar el filtro y excluir referencias de tagassistant.google.com (**por validar** si ya existe un filtro en estado «Prueba») |
+| GA4 ↔ Perfil de Empresa | No pude abrir la pantalla de vinculación | Por validar (y depende de verificar el perfil) |
+| Perfil de Empresa de Google | «Condado Digital», empresa de área de servicio (Valparaíso, Rancagua y 10 áreas más). **«Requiere la verificación»: 0 % verificado** | **Falta verificar** |
+| Bing Webmaster Tools | En este Chrome no hay sesión: la página redirige a la presentación | **Por validar.** No hay etiqueta `msvalidate.01` ni `BingSiteAuth.xml`, así que lo más probable es que no esté |
+| IndexNow | Sin archivo de clave | Falta (lo resuelve Crawler Hints de Cloudflare) |
+| Google Discover | **Ninguna página tiene `max-image-preview:large`** y los artículos no tienen imagen propia | Falta |
+| Verificación de dominio de Meta | Presente (`facebook-domain-verification`) | Bien |
+
+### 8.2 Qué hacer, en orden de prioridad
+
+1. **GA4: registrar las dimensiones personalizadas** `ubicacion`, `servicio`, `formulario` y `origen` (Administrar → Definiciones personalizadas → Crear dimensión personalizada, ámbito «Evento»). Sin esto no se puede medir el camino del contenido al servicio, que es la pregunta de negocio. No es retroactivo: cada día de espera es un día sin dato.
+2. **GA4: excluir el tráfico interno y Tag Assistant:**
+   - Administrar → Flujos de datos → Sitio web → Configurar etiqueta → Definir tráfico interno (tu IP).
+   - Administrar → Filtros de datos → activar «Tráfico interno».
+   - En la misma configuración de etiqueta, «Lista de referencias no deseadas» → `tagassistant.google.com`.
+3. **Verificar el Perfil de Empresa de Google** (business.google.com → Verificar). Para una empresa de área de servicio, Google suele pedir un video o una llamada. Después:
+   - completar categorías («Agencia de marketing», «Consultor de marketing»), servicios con descripción, horario, sitio web con UTM (`?utm_source=google&utm_medium=organic&utm_campaign=perfil`) y logo;
+   - publicar una entrada con el enlace a /fechas-comerciales-chile;
+   - pedir las primeras reseñas a clientes reales.
+4. **Bing Webmaster Tools:** entra a bing.com/webmasters con una cuenta Microsoft, «Mis sitios» → **Importar** desde Google Search Console. Verifica el sitio y trae el sitemap sin tocar el código ([Bing, importar desde Search Console](https://blogs.bing.com/webmaster/2019/9/Import-sites-from-Search-Console-to-Bing-Webmaster-Tools/)).
+5. **Cloudflare → Caching → Configuration → Crawler Hints: activar.** Así Bing (vía IndexNow) se entera de cada cambio. Es gratis ([Cloudflare, Crawler Hints](https://developers.cloudflare.com/cache/about/crawler-hints/)). Aprovecha para revisar **Seguridad → Bots / AI Crawl Control** (sección 4.1).
+6. **Search Console ↔ Google Ads:** en Google Ads → Herramientas → Cuentas vinculadas → Search Console, vincula `condadodigital.cl`. Habilita el informe «Pagado y orgánico», útil cuando corras campañas propias.
+7. **Discover y miniaturas:**
+   - agregar `<meta name="robots" content="max-image-preview:large">` a las páginas indexables;
+   - crear una imagen de al menos 1.200 px de ancho por artículo y ponerla en `og:image` y en el `image` del Article.
+   Google recomienda imágenes de al menos 1.200 px de ancho y 300.000 píxeles para Discover ([Google, aparecer en Discover](https://developers.google.com/search/docs/appearance/google-discover)) y varias proporciones (16:9, 4:3, 1:1) para Article ([Google, Article](https://developers.google.com/search/docs/appearance/structured-data/article)).
+8. **Search Console: pedir la indexación** de las páginas clave sin indexar (sección 1.1), unas 10 por día.
+9. **Revisar la cuenta de servicio** de Search Console (8.1): bajarla a permiso «Restringido» o quitarla si ya no se usa.
+
+### 8.3 Otras opciones para un sitio de contenido y servicios en Chile
+
+| Opción | Qué es | ¿Vale la pena ahora? |
+|---|---|---|
+| **Canal de YouTube vinculado** | El canal ya está en `sameAs`. Vincularlo a Google Ads (Herramientas → Cuentas vinculadas → YouTube) y a GA4 permite audiencias y medición de videos | **Sí, cuando haya videos.** Hoy el inicio tiene 1 video. Si publicas los videos «paso a paso», cada uno con enlace a su artículo, suma presencia en Google Videos y en las respuestas de IA, que citan YouTube con frecuencia |
+| **Panel de conocimiento de la marca** | Google lo genera solo cuando reconoce la entidad. No se solicita; se gana con coherencia de Organization, perfiles sociales activos y menciones en terceros | **Todavía no.** Primero: Perfil de Empresa verificado, `sameAs` coherente y 5 a 10 menciones externas (sección 9). Reclamarlo es posible después |
+| **Perfil personal de autor** | Una página de autor (/acerca#fundador ya lo es) con enlaces a LinkedIn personal, charlas y entrevistas | **Sí, barato.** Sumar a /acerca años de experiencia, certificaciones y 2 o 3 casos |
+| **Google Merchant Center** | Para vender productos | No aplica (no vendes productos) |
+| **Google News / Publisher Center** | Para medios de noticias | **No ahora.** /noticias está en `noindex` y sin contenido |
+| **Wikidata** | Ficha de la entidad que usan Google y los asistentes | **No ahora.** Wikidata exige notoriedad con fuentes independientes; crearla sin eso suele terminar borrada |
