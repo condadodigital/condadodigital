@@ -65,6 +65,15 @@
   { t: "Auditoría de campañas publicitarias", u: "/auditoria-de-campanas-publicitarias", tipo: "Enciclopedia", k: "auditoria campañas publicitarias revisar google ads meta ads checklist medicion" },
   { t: "Google Partner y Meta Business Partner", u: "/google-partner-meta-business-partner", tipo: "Enciclopedia", k: "google partner meta business partner insignia certificacion agencia" },
   { t: "KPIs para evaluar a tu agencia de marketing", u: "/kpis-para-evaluar-agencia-de-marketing", tipo: "Enciclopedia", k: "kpis evaluar agencia metricas informe cpl cpa cac ltv incrementalidad" },
+  { t: "Marketing de Navidad para pymes", u: "/marketing-de-navidad", tipo: "Enciclopedia", k: "marketing navidad diciembre campañas despacho regalos tienda online" },
+  { t: "Marketing de verano para pymes", u: "/marketing-de-verano", tipo: "Enciclopedia", k: "marketing verano temporada local google maps turismo anuncios por zona" },
+  { t: "Plan de marketing 2027 para pymes", u: "/plan-de-marketing-2027", tipo: "Enciclopedia", k: "plan de marketing 2027 plantilla tendencias objetivos presupuesto calendario" },
+  { t: "Retail media en Chile", u: "/retail-media-chile", tipo: "Enciclopedia", k: "retail media mercado ads falabella marketplace publicidad productos patrocinados" },
+  { t: "TikTok Shop en Chile", u: "/tiktok-shop-chile", tipo: "Enciclopedia", k: "tiktok shop chile tienda creadores live shopping lanzamiento" },
+  { t: "Conversiones medidas en el dispositivo del cliente (Meta Pixel)", u: "/conversiones-en-el-dispositivo-meta", tipo: "Enciclopedia", k: "meta pixel conversiones en el dispositivo medicion ajuste atribucion" },
+  { t: "Google tag y Google Tag Manager se unifican", u: "/google-tag-y-tag-manager", tipo: "Enciclopedia", k: "google tag tag manager gtm contenedor etiqueta cambio enero 2027" },
+  { t: "Cómo aparecer en las respuestas de la IA de Google", u: "/aparecer-en-respuestas-de-ia", tipo: "Enciclopedia", k: "aparecer ai overviews modo ia google respuestas geo aeo" },
+  { t: "Comercio agéntico", u: "/comercio-agentico", tipo: "Enciclopedia", k: "comercio agentico agentes ia compras tienda online protocolo" },
   { t: "Glosario de Marketing (168 términos)", u: "/glosario", tipo: "Sección", k: "glosario diccionario terminos cpc cpm ctr cac ltv roas mer ymyl pujas audiencias formatos" },
   { t: "Preguntas frecuentes", u: "/preguntas-frecuentes", tipo: "Sección", k: "faq preguntas que es paid media seo sem aeo geo pixel capi" },
   { t: "Herramientas de Marketing", u: "/herramientas", tipo: "Sección", k: "herramientas google ads meta ga4 gtm looker ahrefs semrush claude chatgpt" },
@@ -415,7 +424,7 @@
 
   (function conde() {
     if (document.body.classList.contains("sin-conde")) return;
-    var URL_CONDE = "/conde.js?v=20261127b", CLAVE = "cd_conde_aviso";
+    var URL_CONDE = "/conde.js?v=20261127c", CLAVE = "cd_conde_aviso";
     var visto = function () { try { return sessionStorage.getItem(CLAVE); } catch (e) { return "1"; } };
     var btn, hint, ping, mod = null, cargando = null;
     var quitarAviso = function () { if (hint) { hint.remove(); hint = null; } if (ping) { ping.remove(); ping = null; } try { sessionStorage.setItem(CLAVE, "1"); } catch (e) {} };

@@ -17,7 +17,7 @@
 ## Contenido
 
 - [Calculadoras](https://www.condadodigital.cl/calculadoras): 20 calculadoras (ROAS, CPA, CPL, CAC, LTV, hook rate, hold rate, LTV/CAC y otras métricas) y un simulador de embudo
-- [Enciclopedia](https://www.condadodigital.cl/enciclopedia): 36 guías de referencia sobre marketing digital para pymes de Chile y Latinoamérica, con datos verificados y fuentes
+- [Enciclopedia](https://www.condadodigital.cl/enciclopedia): 45 guías de referencia sobre marketing digital para pymes de Chile y Latinoamérica, con datos verificados y fuentes
 - [Glosario](https://www.condadodigital.cl/glosario): 168 términos de marketing digital con definición, fórmula y ejemplo
 - [Herramientas](https://www.condadodigital.cl/herramientas): herramientas de marketing recomendadas
 - [Preguntas frecuentes](https://www.condadodigital.cl/preguntas-frecuentes): respuestas breves sobre marketing digital
@@ -60,6 +60,15 @@
 - [Auditoría de campañas publicitarias](https://www.condadodigital.cl/auditoria-de-campanas-publicitarias): Qué revisa una auditoría de campañas en Google Ads y Meta Ads: medición, estructura, búsquedas, públicos y anuncios. Checklist paso a paso para tu pyme.
 - [Google Partner y Meta Business Partner](https://www.condadodigital.cl/google-partner-meta-business-partner): Qué exige Google para ser Partner o Premier Partner, qué es Meta Business Partner, cómo verificar una insignia y qué no te garantiza una agencia.
 - [KPIs para evaluar a tu agencia de marketing](https://www.condadodigital.cl/kpis-para-evaluar-agencia-de-marketing): Qué métricas pedirle a tu agencia de marketing: costo por lead, costo de adquisición, incrementalidad y calidad de datos. Con tablero mensual para pymes.
+- [Marketing de Navidad para pymes](https://www.condadodigital.cl/marketing-de-navidad): Cómo preparar tu marketing de Navidad: fechas clave del peak de compras en Chile, campañas en Meta y Google, despacho y retracto. Plan semana a semana.
+- [Marketing de verano para pymes](https://www.condadodigital.cl/marketing-de-verano): Cómo vender en el verano en Chile: turismo, comercio local y servicios. Perfil de Google, redes, anuncios por zona y calendario de diciembre a marzo.
+- [Plan de marketing 2027 para pymes](https://www.condadodigital.cl/plan-de-marketing-2027): Cómo armar el plan de marketing 2027 de tu pyme: diagnóstico, objetivos, presupuesto, calendario chileno y las tendencias que sí importan. Con plantilla.
+- [Retail media en Chile](https://www.condadodigital.cl/retail-media-chile): Qué es el retail media, quién lo ofrece en Chile (Mercado Ads, Fmedia, Cencosud Media) y cuándo le conviene a una pyme que vende en marketplaces.
+- [TikTok Shop en Chile](https://www.condadodigital.cl/tiktok-shop-chile): Qué es TikTok Shop, qué se sabe de su llegada a Chile, cómo funciona en México y Brasil y qué puede preparar hoy tu pyme para vender en TikTok.
+- [Conversiones medidas en el dispositivo del cliente (Meta Pixel)](https://www.condadodigital.cl/conversiones-en-el-dispositivo-meta): Desde el 12 de noviembre de 2026, Meta mide algunas compras en el dispositivo del cliente y puede reportar más conversiones. Qué cambia y cómo leerlo.
+- [Google tag y Google Tag Manager se unifican](https://www.condadodigital.cl/google-tag-y-tag-manager): Google convierte cada Google tag en un contenedor de Tag Manager y las instalaciones no compatibles cambian en enero de 2027. Qué revisar.
+- [Cómo aparecer en las respuestas de la IA de Google](https://www.condadodigital.cl/aparecer-en-respuestas-de-ia): Qué dice Google sobre aparecer en AI Overviews y el Modo IA: no hay requisitos especiales, pero sí prácticas que importan. Guía para pymes.
+- [Comercio agéntico](https://www.condadodigital.cl/comercio-agentico): Qué es el comercio agéntico, cuando agentes de IA buscan, comparan y compran por las personas. Datos de Chile y cómo preparar el sitio de tu pyme.
 
 ## Glosario
 
