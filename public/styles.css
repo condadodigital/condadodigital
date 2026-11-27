@@ -1540,3 +1540,5 @@ a.a-row:hover{color:#FFFFFF}
 .ar-body em{overflow-wrap:anywhere}
 @media (max-width:760px){.ar-tr.t3{grid-template-columns:minmax(0,1fr)}.ar-call a.bt{align-self:stretch;justify-content:center}.ar-table{font-size:14.5px}.ar-note{padding:18px 18px}}
 @media (prefers-reduced-motion:reduce){.ar-call a.bt{transition:none}.ar-call a.bt:hover{transform:none}}
+.pg-lead b{color:#0B1512;font-weight:600}
+.pg-lead a{color:#1E6B47;font-weight:600;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
