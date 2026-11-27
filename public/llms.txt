@@ -17,7 +17,7 @@
 ## Contenido
 
 - [Calculadoras](https://www.condadodigital.cl/calculadoras): 20 calculadoras (ROAS, CPA, CPL, CAC, LTV, hook rate, hold rate, LTV/CAC y otras métricas) y un simulador de embudo
-- [Enciclopedia](https://www.condadodigital.cl/enciclopedia): 16 guías de referencia sobre marketing digital para pymes de Chile y Latinoamérica, con datos verificados y fuentes
+- [Enciclopedia](https://www.condadodigital.cl/enciclopedia): 36 guías de referencia sobre marketing digital para pymes de Chile y Latinoamérica, con datos verificados y fuentes
 - [Glosario](https://www.condadodigital.cl/glosario): 168 términos de marketing digital con definición, fórmula y ejemplo
 - [Herramientas](https://www.condadodigital.cl/herramientas): herramientas de marketing recomendadas
 - [Preguntas frecuentes](https://www.condadodigital.cl/preguntas-frecuentes): respuestas breves sobre marketing digital
@@ -40,6 +40,26 @@
 - [Meta Ads vs Google Ads](https://www.condadodigital.cl/meta-ads-vs-google-ads)
 - [Cómo investigar los anuncios de tu competencia](https://www.condadodigital.cl/biblioteca-de-anuncios)
 - [Fechas comerciales en Chile](https://www.condadodigital.cl/fechas-comerciales-chile)
+- [Meta Andromeda](https://www.condadodigital.cl/meta-andromeda): Andromeda es la IA de Meta que elige qué anuncios entran a competir. Qué hace, qué no, y cómo ajustar tus creatividades y campañas en tu pyme.
+- [Advantage+ de Meta](https://www.condadodigital.cl/advantage-plus-meta): Advantage+ automatiza audiencia, ubicaciones, presupuesto y creatividades en Meta. Qué cambió en 2025-2026 y qué debe seguir controlando tu pyme.
+- [AI Max para campañas de Búsqueda](https://www.condadodigital.cl/ai-max-google-ads): AI Max amplía tus campañas de Búsqueda con IA: más consultas, textos y URLs automáticos. Qué promete Google, qué dicen los estudios y cómo probarlo.
+- [Anuncios creados con IA](https://www.condadodigital.cl/anuncios-con-ia): Qué herramientas de IA generativa ofrecen Meta, Google y TikTok para crear anuncios, cuándo convienen, qué etiquetas aplican y cómo usarlas en tu pyme.
+- [Cómo usar la IA en el marketing de tu pyme](https://www.condadodigital.cl/como-usar-ia-en-marketing): Guía práctica para usar ChatGPT, Gemini o Claude en el marketing de tu pyme: qué tareas delegar, cómo escribir prompts y 10 prompts listos para copiar.
+- [Agentes de IA en marketing](https://www.condadodigital.cl/agentes-de-ia-marketing): Qué es un agente de IA, en qué se diferencia de un chatbot, qué agentes ya traen Google, Meta y TikTok, y qué tareas de marketing conviene delegarles.
+- [IA para tu marca](https://www.condadodigital.cl/ia-para-tu-marca): Cómo usar la IA para definir la voz, el manual y los contenidos de tu marca sin perder identidad. Herramientas, pasos y qué dice la ley sobre logos con IA.
+- [IA para redes sociales](https://www.condadodigital.cl/ia-para-redes-sociales): Cómo usar la IA para planificar, crear y analizar contenido en Instagram, TikTok y Facebook sin sonar genérico. Flujo semanal, etiquetas y reglas.
+- [Meta Business Agent](https://www.condadodigital.cl/meta-business-agent): Meta Business Agent responde clientes con IA en WhatsApp, Instagram y Messenger. Qué hace, cuánto cuesta, cómo configurarlo y qué cuidar en tu pyme.
+- [Cómo medir el tráfico de IA en GA4](https://www.condadodigital.cl/trafico-de-ia-en-ga4): GA4 ya tiene un canal «AI Assistant» para visitas desde ChatGPT, Gemini o Claude. Qué mide, qué se le escapa y cómo armar un canal propio paso a paso.
+- [Agencia, freelance o equipo interno](https://www.condadodigital.cl/agencia-freelance-o-equipo-interno): Compara agencia, freelance y equipo interno de marketing digital: costos reales en Chile, ventajas, riesgos y cuándo conviene cada modelo o una mezcla.
+- [Asesoría de marketing digital](https://www.condadodigital.cl/asesoria-de-marketing-digital): Qué es una asesoría de marketing digital, en qué se diferencia de una agencia y una mentoría, cuándo le conviene a una pyme y qué debería entregarte.
+- [Cómo elegir una agencia de marketing digital](https://www.condadodigital.cl/como-elegir-agencia-marketing-digital): Preguntas para entrevistar a una agencia, señales de alerta y una tabla para comparar propuestas. Basado en la guía oficial de Google y datos de Chile.
+- [Brief para una agencia de marketing](https://www.condadodigital.cl/brief-para-agencia-de-marketing): Qué es un brief, por qué la mayoría falla y una plantilla de una página con ejemplo para pedirle campañas a tu agencia de marketing digital en Chile.
+- [Cuánto cuesta una agencia de marketing digital en Chile](https://www.condadodigital.cl/precio-agencia-marketing-digital): Rangos de fee en Chile, modelos de cobro, qué incluye cada precio, IVA y costos ocultos. Cómo presupuestar agencia más inversión en anuncios en tu pyme.
+- [Cuánto invertir en publicidad digital](https://www.condadodigital.cl/cuanto-invertir-en-publicidad-digital): Cuánto invertir en publicidad digital siendo pyme en Chile: referencias de mercado, cálculo desde tu costo por venta, cómo cobra Google y fondos Sercotec.
+- [Tus cuentas publicitarias, a tu nombre](https://www.condadodigital.cl/cuentas-publicitarias-a-tu-nombre): Por qué tus cuentas de Google Ads, Meta, GA4 y píxel deben ser tuyas, cómo dar acceso a una agencia sin perder el control y qué revisar al terminar.
+- [Auditoría de campañas publicitarias](https://www.condadodigital.cl/auditoria-de-campanas-publicitarias): Qué revisa una auditoría de campañas en Google Ads y Meta Ads: medición, estructura, búsquedas, públicos y anuncios. Checklist paso a paso para tu pyme.
+- [Google Partner y Meta Business Partner](https://www.condadodigital.cl/google-partner-meta-business-partner): Qué exige Google para ser Partner o Premier Partner, qué es Meta Business Partner, cómo verificar una insignia y qué no te garantiza una agencia.
+- [KPIs para evaluar a tu agencia de marketing](https://www.condadodigital.cl/kpis-para-evaluar-agencia-de-marketing): Qué métricas pedirle a tu agencia de marketing: costo por lead, costo de adquisición, incrementalidad y calidad de datos. Con tablero mensual para pymes.
 
 ## Glosario
 
