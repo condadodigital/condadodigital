@@ -28,8 +28,8 @@ Cloudflare Pages publica **solo la carpeta `public/`** (directorio de salida: `p
 - `/recursos` ya no existe: redirige con 301 a `/calculadoras` (`_redirects`).
 - Cuando `/blog`, `/aprendizaje` y `/noticias` tengan contenido: quita su `<meta name="robots" content="noindex, follow">` y vuelve a agregarlas a `sitemap.xml`, `llms.txt` y al `INDICE` de `script.js` (el blog también al pie; de Aprendizaje quita la etiqueta «Próximamente» del pie). Para reactivar el contenido que estaba oculto, cópialo desde `borradores/inicio-proximos-articulos.html`, `borradores/blog-filtros-y-articulos.html` y `borradores/aprendizaje-capsulas.html`: cada bloque indica en qué página y en qué posición va.
 - No usar la etiqueta «Nuevo» en tarjetas ni artículos, ni en los actuales ni en los futuros.
-- Imágenes, fuentes y SVG tienen caché de 1 año: si reemplazas uno, usa un nombre de archivo nuevo y actualiza las referencias. `styles.css`, `script.js`, `conde.js` y los módulos de página llevan una misma versión en su URL (`?v=20261127a`): **cada vez que cambies uno de ellos, sube la versión en todas las páginas y en `script.js`** (que carga `conde.js`), por ejemplo:
-  `sed -i '' 's/?v=20261127a/?v=20261201a/g' public/*.html public/script.js`
+- Imágenes, fuentes y SVG tienen caché de 1 año: si reemplazas uno, usa un nombre de archivo nuevo y actualiza las referencias. `styles.css`, `script.js`, `conde.js` y los módulos de página llevan una misma versión en su URL (`?v=20261127b`): **cada vez que cambies uno de ellos, sube la versión en todas las páginas y en `script.js`** (que carga `conde.js`), por ejemplo:
+  `sed -i '' 's/?v=20261127b/?v=20261201a/g' public/*.html public/script.js`
 - Archivos internos: no hace falta ocultarlos. Si un archivo no debe publicarse, déjalo fuera de `public/` (por ejemplo, en `borradores/` o `contenido/`). Nunca pongas en `public/` notas, borradores ni archivos de trabajo.
 - No dejes notas internas en comentarios HTML de las páginas publicadas: cualquiera puede verlas con «Ver código fuente». Las notas van en `borradores/`, en el README o en `contenido/`.
 

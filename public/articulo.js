@@ -32,7 +32,16 @@
     if (e === "curso" && !curso) curso = tr;
     if (e === "proximo" && !prox) prox = tr;
   });
-  var r = caja.querySelector(".fc-resp"), tr = curso || prox;
+  var r = caja.querySelector(".fc-resp"), tr = curso || prox, lead = document.querySelector(".fc-lead");
+  if (lead) {
+    if (tr) {
+      var cl = tr.querySelectorAll("td"), fl = limpio(cl[1]);
+      lead.textContent = (curso ? "Ahora está en curso el " : "El próximo evento de descuentos en Chile es el ") + limpio(cl[0]) + (curso ? " en Chile: " : ": ") + fl.charAt(0).toLowerCase() + fl.slice(1) + ".";
+    } else {
+      var sig = caja.querySelector("tr:not([data-inicio]) td");
+      if (sig) lead.textContent = "El próximo evento de descuentos en Chile es el " + limpio(sig) + ", cuya fecha aún no anuncia la Cámara de Comercio de Santiago.";
+    }
+  }
   if (!r) return;
   if (tr) {
     var c = tr.querySelectorAll("td");
