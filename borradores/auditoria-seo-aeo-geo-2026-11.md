@@ -514,7 +514,7 @@ Revisado el 27-11-2026 con Claude in Chrome, solo leyendo. No cambié ninguna co
 | Servicio | Qué vi | Estado |
 |---|---|---|
 | Search Console: tipo de propiedad | `sc-domain:condadodigital.cl` (**propiedad de dominio**: cubre www, apex, http y https) | Bien |
-| Search Console: usuarios | 2: `admin@condadodigital.cl` (Propietario verificado) y `el-conde@condado-digital-agentes.iam.gserviceaccount.com` (cuenta de servicio, permiso **Completo**) | La cuenta de servicio es la que usa la herramienta de datos (la misma con la que hice las consultas de este informe). **Por validar** si sigue en uso; si no, quítala. Si sigue, con permiso «Restringido» basta para leer |
+| Search Console: usuarios | 2: `admin@condadodigital.cl` (Propietario verificado) y `el-conde@condado-digital-agentes.iam.gserviceaccount.com` (cuenta de servicio, permiso **Completo**) | Probablemente es la cuenta de un conector o agente propio («condado-digital-agentes»). **Por validar** quién la usa y si sigue en uso; si no, quítala. Si sigue, con permiso «Restringido» basta para leer |
 | Search Console ↔ GA4 | Asociado con la propiedad GA4 «condadodigital.cl», flujo «Sitio web» (desde GA4: vinculado el 10-11-2026 por admin@condadodigital.cl) | Bien |
 | Search Console ↔ Google Ads | **No aparece** en «Asociaciones» (solo GA4) | **Falta** |
 | Search Console: sitemap | 1 sitemap, 0 errores | Bien |
@@ -561,3 +561,88 @@ Revisado el 27-11-2026 con Claude in Chrome, solo leyendo. No cambié ninguna co
 | **Google Merchant Center** | Para vender productos | No aplica (no vendes productos) |
 | **Google News / Publisher Center** | Para medios de noticias | **No ahora.** /noticias está en `noindex` y sin contenido |
 | **Wikidata** | Ficha de la entidad que usan Google y los asistentes | **No ahora.** Wikidata exige notoriedad con fuentes independientes; crearla sin eso suele terminar borrada |
+
+---
+
+## 9. ¿Ya nos menciona la IA? Y cómo ganar autoridad
+
+### 9.1 Cómo se hizo y qué limita el resultado
+
+- Búsquedas del 27-11-2026 en google.cl con `hl=es&gl=cl&pws=0` (personalización desactivada), con Claude in Chrome.
+- **No fue una ventana sin sesión:** la extensión trabaja en tu Chrome, que tiene abierta la sesión de Google (admin@condadodigital.cl), y no puede abrir una ventana de incógnito. Google puede mostrar distinto a quien no tiene sesión.
+- «Posición» es la posición entre los resultados orgánicos de la primera página (entre 6 y 9 resultados web visibles, sin contar anuncios ni módulos).
+- **Los resultados de IA cambian según la persona, el lugar, el momento y la redacción de la pregunta. Esto es una foto de hoy, no una medición estable.** El 27-11-2026 además es el primer día del Black Friday en Chile, lo que altera la primera consulta.
+- **Perplexity:** sin iniciar sesión, en perplexity.ai respondió «Regístrate y repite tu solicitud» y abrió el panel de inicio de sesión. Como pediste, me detuve en esa herramienta: **las 20 consultas en Perplexity quedan por validar**. Puedes repetirlas con una cuenta gratuita o con la API de Perplexity.
+- Google no mostró captcha en ninguna de las 20.
+
+### 9.2 Resultados en Google (google.cl)
+
+| # | Consulta | ¿Resumen de IA? | ¿Cita a condadodigital.cl? | Posición orgánica | Fuentes del resumen de IA (dominios) |
+|---|---|---|---|---|---|
+| 1 | cuándo es el próximo black friday en chile | Sí | No | No aparece (de 7) | cyber.cl, blackfriday.cl, falabella.com, tntsports.cl, simple.ripley.cl |
+| 2 | fechas comerciales chile 2027 | No | — | No aparece (de 9) | — (top: forrate.cl, ce.entel.cl, tiendanube.com) |
+| 3 | cuánto cuesta una agencia de marketing digital en chile | Sí | No | No aparece (de 9) | nexbu.com, smartgrowth.cl |
+| 4 | cuánto invertir en publicidad digital pyme | Sí | No | No aparece (de 9) | mulleryperez.cl, octopusmedia.cl, expertia.consulting, bysnet.cl, cimamkt.com, blueads.cl, agenciaprodyne.cl |
+| 5 | cómo elegir una agencia de marketing digital | Sí | No | No aparece (de 9) | lacalle.cl, maktagg.com, puromarketing.com, rompecabeza.cl, octopusmedia.cl, flamacreators.com, blacksharkstudios.cl |
+| 6 | agencia o freelance marketing | Sí | No | No aparece (de 9) | mukane.com, nexoclientes.com, interactivo.cl, chiletrabajos.cl, barbarablum.cl |
+| 7 | qué es meta andromeda | Sí | No | No aparece (de 7) | tomaleads.com, bluecaribu.com, bunkerdb.com, luzzidigital.com, Instagram, YouTube y TikTok |
+| 8 | advantage+ meta qué es | Sí | No | No aparece (de 7) | es-la.facebook.com, rableb.com, nashmarketinglabs.com, gfmarketing.com.ar, forrate.cl, cangrejodigital.com |
+| 9 | ai max google ads qué es | Sí | No | No aparece (de 8) | cyberclick.es, orbetec.com, YouTube |
+| 10 | chatgpt ads chile | Sí | No | No aparece (de 8) | nexcommerce.cl, kin-comm.com, peraymanzanas.com, bleads.cl, focus-ads.cl, mmdwebsites.cl |
+| 11 | cómo medir tráfico de chatgpt en ga4 | Sí | No | No aparece (de 9) | digitalriders.com, achalay.net, brandcrops.com, meteoria.ai, sparktraffic.com |
+| 12 | meta business agent whatsapp | Sí | No | No aparece (de 7) | faq.whatsapp.com, facebook.com, atomchat.io |
+| 13 | qué es el cpl | Sí | No | No aparece (de 7) | santanderopenacademy.com, seotek.es, globaltrainingaviation.com, aulacm.com |
+| 14 | fórmula ctr | Sí | No | No aparece (de 6) | weareboost.online, cronuts.digital, isocialweb.agency |
+| 15 | qué es cvr en meta ads | **No** | — | **1.º: /glosario-cvr** | — |
+| 16 | qué es gtm | Sí | No | No aparece (de 7) | mooncamp.com, asana.com, reddit.com, piensasolutions.com, unir.net (mezcla Google Tag Manager con go-to-market) |
+| 17 | auditoría de campañas google ads | Sí | No | No aparece (de 8) | mulleryperez.cl, agenciadigitalvenezuela.com, factors.ai, agenciagl.cl, growthdigital.marketing, focus-ads.cl |
+| 18 | cuentas publicitarias a nombre de la empresa | Sí | No | No aparece (de 8) | agenciamarketingdigital.com.co, agenciademarketingdigital.com.co, agenciadigitalamd.com, americanprana.com |
+| 19 | google partner qué significa | Sí | No | No aparece (de 8) | seo-buscadores.com, olpagroup.com, gloulab.com, motorleads.co, caissa.digital |
+| 20 | kpis para evaluar agencia de marketing | Sí | No | No aparece (de 9) | blog.wearedrew.co, universidadunie.com, netsuite.com, fromdoppler.com, databox.com, myagency.cl |
+
+**Lectura:**
+
+- 19 de 20 consultas muestran resumen de IA, y **ninguno cita a condadodigital.cl**. Solo estamos en la primera página en 1 de 20 («qué es cvr en meta ads», 1.º).
+- Search Console confirma el patrón en las fechas: /fechas-comerciales-chile está en posición 5 a 10 para variantes de «cuándo es el próximo cyber o black friday», pero no en la consulta exacta de hoy.
+- Los resúmenes citan sobre todo **blogs de agencias chilenas pequeñas** (mulleryperez.cl, octopusmedia.cl, blueads.cl, focus-ads.cl, agenciagl.cl, forrate.cl, smartgrowth.cl, nexbu.com), **redes sociales** (YouTube, Instagram, TikTok) y fuentes oficiales. No es un terreno reservado a medios grandes: es alcanzable.
+- La causa principal para no aparecer es la **indexación** (sección 1.1). /chatgpt-ads-chile, /kpis-para-evaluar-agencia-de-marketing y /ia-para-redes-sociales ni siquiera son conocidas por Google, y /meta-ads-vs-google-ads, /cuentas-publicitarias-a-tu-nombre y /agencia-freelance-o-equipo-interno están sin indexar. Los 20 artículos nuevos llevan horas publicados.
+
+### 9.3 Plan para ganar autoridad en 3 meses (diciembre 2026 a febrero 2027)
+
+**a) Enlaces externos.** Todos verificados en la web el 27-11-2026:
+
+| Dónde | Qué ofrecer | Prioridad |
+|---|---|---|
+| **Clutch Chile** ([clutch.co/cl/agencies/digital-marketing](https://clutch.co/cl/agencies/digital-marketing); 190 empresas listadas en marketing digital) | Perfil gratuito de Condado Digital con servicios y 2 o 3 reseñas verificadas de clientes. Los resúmenes de IA citan directorios para «agencia de marketing digital en Chile» | Alta |
+| **Sortlist** (sortlist.cl o sortlist.com; **por validar**: no apareció en la búsqueda) | Perfil gratuito | Media |
+| **Mediabanco** ([mediabanco.com](https://www.mediabanco.com/ecommerce-day-2026-ccs-proyecta-crecimiento-a-dos-digitos-en-ventas-online-y-anuncia-el-lanzamiento-del-codigo-de-autorregulacion-de-ia/)), agencia de noticias que publica comunicados del sector ecommerce | Un comunicado con un dato propio antes del CyberDay 2027 (sección c) | Alta |
+| **Portal Innova** ([portalinnova.cl](https://portalinnova.cl/camara-de-comercio-de-santiago-preve-crecimiento-del-8-en-el-comercio-electronico-durante-2024/)), ya citado en 3 artículos del sitio y con columnas de opinión de agencias locales | Columna de opinión de Esleyter Conde, por ejemplo sobre Andromeda o tráfico de IA, con enlace al artículo | Alta |
+| **Blogs de ecommerce que publican calendarios comerciales:** Tiendanube ([tiendanube.com/blog/ecommerce-chile](https://www.tiendanube.com/blog/ecommerce-chile/)), Entel Empresas (ce.entel.cl, 2.º en «fechas comerciales chile 2027») y forrate.cl | Ofrecer /fechas-comerciales-chile como fuente actualizada: tabla de fechas confirmadas por la CCS + costos de publicidad por evento. Ellos actualizan cada año y necesitan fuente | Media |
+| **Cámara de Comercio de Santiago**, organizadora del CyberDay y del CyberMonday con su Comité de eCommerce ([ccs.cl/tag/ecommerce](https://www.ccs.cl/tag/ecommerce)) | No esperar enlace directo, pero sí citarla bien y avisar a su área de prensa cuando /fechas-comerciales-chile se actualice con sus fechas oficiales | Baja |
+| **Comunidad Empresas de Entel** (más de 60.000 usuarios pyme, con contenidos de marketing digital; [El Rancagüino](https://www.elrancaguino.cl/?p=127964)) | Proponer un taller o un artículo invitado | Media |
+| **Medios de negocios** (La Tercera, etiqueta [ecommerce](https://www.latercera.com/etiqueta/ecommerce/); [Forbes Chile](https://forbes.cl/tag/ecommerce/); Diario Financiero) | Solo con un dato propio con valor de noticia | Baja ahora, media con datos |
+
+**b) Presencia de marca fuera del sitio:**
+
+1. **LinkedIn personal de Esleyter Conde y de la empresa:** 2 publicaciones por semana. Cada artículo nuevo se resume en 5 líneas con el enlace (el Anexo C de cada Word ya trae el texto). La IA cita LinkedIn con frecuencia en temas B2B.
+2. **YouTube:** los resúmenes citan YouTube en 9 de 19 consultas. Un video corto por artículo de mayor potencial (Andromeda, Advantage+, AI Max, tráfico de IA en GA4, fórmula del CTR), con el enlace en la descripción y el capítulo «Qué es». Bajo costo con el formato de videos animados del servicio Social Media.
+3. **Instagram y TikTok:** carruseles con los datos de cada artículo (el Anexo C ya los trae). Aparecen como fuentes en 4 de 19 resúmenes.
+4. **Comunidades donde preguntan pymes chilenas:** responder con criterio, sin vender, enlazando solo cuando la guía responde mejor. Por ejemplo: grupos de Facebook de emprendedores chilenos, la comunidad de Entel Empresas y foros de Jumpseller o Shopify en español (**por validar** cuáles están activos). Reddit aparece como fuente en «qué es gtm»; r/chile y r/marketing en español son opciones de bajo volumen (**por validar** la actividad real).
+
+**c) Contenido que los asistentes de IA citan:**
+
+1. **Un dato propio por trimestre.** Por ejemplo: «Costo por mil impresiones de Meta en Chile en CyberMonday y Black Friday 2026: mediana de N cuentas», anonimizado, con metodología. Es lo único que no se puede citar de otro lado.
+2. **Tablas comparativas** en los 6 artículos sin tabla (sección 3.4).
+3. **Definición de una oración + fórmula** al inicio de cada ficha del glosario (sección 3.1).
+4. **Actualizaciones con fecha visible** en las páginas de actualidad: el «Actualizado el …» ya existe; sumar «Próximo evento: …» en /fechas-comerciales-chile y revisarlo después de cada evento.
+5. **Una página de datos o estadísticas** («Marketing digital en Chile en cifras 2026») que reúna las cifras ya citadas en los 36 artículos, con fuente y fecha. Los asistentes la usarían como referencia.
+
+**d) Las 5 consultas donde estamos más cerca de que la IA nos cite, y qué cambiar:**
+
+| Consulta | Por qué estamos cerca | Qué cambiar en la página |
+|---|---|---|
+| **qué es cvr en meta ads** (y «qué es el cvr», «cvr fórmula») | 1.º orgánico hoy; Search Console: posición 6–10 en 6 variantes. Sin resumen de IA hoy: cuando aparezca, citará a quien esté arriba | /glosario-cvr: primera oración «El CVR (tasa de conversión) es el porcentaje de clics o visitas que terminan en una conversión: CVR = conversiones ÷ clics × 100», y una tabla corta «CVR en Meta Ads vs Google Ads» |
+| **cuándo es el próximo cyber / black friday en chile** (y 30+ variantes) | Posición 5–10 en Search Console, 2.248 impresiones. El resumen cita a cyber.cl y a retailers porque responden la fecha en la primera línea | /fechas-comerciales-chile: primera línea con el próximo evento y su fecha, tabla «Próximos eventos» bajo el H1 y 2 FAQ nuevas («¿Cuándo es el próximo Black Friday en Chile?» y «¿Cuándo es el próximo Cyber en Chile?») |
+| **qué es gtm / gtm** | Posición 13,4 para «gtm» (109 impresiones). El resumen de «qué es gtm» mezcla Google Tag Manager con go-to-market: hay espacio para una respuesta que desambigüe | /glosario-gtm: primera línea «GTM es la sigla de Google Tag Manager, el gestor de etiquetas gratuito de Google (no confundir con go-to-market)», y la auditoría con H2 propio y lista numerada |
+| **cuánto cuesta una agencia de marketing digital en chile** | El resumen de IA cita solo 2 fuentes (nexbu.com y smartgrowth.cl), así que hay poca competencia. /precio-agencia-marketing-digital ya está indexada | Tabla de rangos con fecha («noviembre 2026») en el primer tercio, la frase citable «En Chile, el fee mensual de una agencia para pymes va de $X a $Y, sin contar la inversión en medios» con su fuente, y el title de la sección 7 |
+| **cómo medir tráfico de chatgpt en ga4** | /trafico-de-ia-en-ga4 está indexada. El resumen cita blogs de agencias con el mismo paso a paso | Title «Cómo medir el tráfico de ChatGPT en GA4 paso a paso», la expresión regular del canal personalizado en un bloque copiable al inicio y una captura del informe |
