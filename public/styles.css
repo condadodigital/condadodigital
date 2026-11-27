@@ -1542,3 +1542,5 @@ a.a-row:hover{color:#FFFFFF}
 @media (prefers-reduced-motion:reduce){.ar-call a.bt{transition:none}.ar-call a.bt:hover{transform:none}}
 .pg-lead b{color:#0B1512;font-weight:600}
 .pg-lead a{color:#1E6B47;font-weight:600;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.pr-in .pg-em[data-w]::before{content:attr(data-w)}
+.sv-rot [aria-hidden] .k-it[data-w]::before{content:attr(data-w)}
