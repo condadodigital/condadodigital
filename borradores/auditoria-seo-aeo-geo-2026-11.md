@@ -604,7 +604,7 @@ Revisado el 27-11-2026 con Claude in Chrome, solo leyendo. No cambié ninguna co
 
 - 19 de 20 consultas muestran resumen de IA, y **ninguno cita a condadodigital.cl**. Solo estamos en la primera página en 1 de 20 («qué es cvr en meta ads», 1.º).
 - Search Console confirma el patrón en las fechas: /fechas-comerciales-chile está en posición 5 a 10 para variantes de «cuándo es el próximo cyber o black friday», pero no en la consulta exacta de hoy.
-- Los resúmenes citan sobre todo **blogs de agencias chilenas pequeñas** (mulleryperez.cl, octopusmedia.cl, blueads.cl, focus-ads.cl, agenciagl.cl, forrate.cl, smartgrowth.cl, nexbu.com), **redes sociales** (YouTube, Instagram, TikTok) y fuentes oficiales. No es un terreno reservado a medios grandes: es alcanzable.
+- Los resúmenes citan sobre todo **blogs de agencias chilenas pequeñas** (mulleryperez.cl, octopusmedia.cl, blueads.cl, focus-ads.cl, agenciagl.cl, forrate.cl, smartgrowth.cl, nexbu.com), **redes sociales** (YouTube, Instagram, TikTok) y fuentes oficiales (Google, Meta, WhatsApp). No es un terreno reservado a medios grandes: es alcanzable.
 - La causa principal para no aparecer es la **indexación** (sección 1.1). /chatgpt-ads-chile, /kpis-para-evaluar-agencia-de-marketing y /ia-para-redes-sociales ni siquiera son conocidas por Google, y /meta-ads-vs-google-ads, /cuentas-publicitarias-a-tu-nombre y /agencia-freelance-o-equipo-interno están sin indexar. Los 20 artículos nuevos llevan horas publicados.
 
 ### 9.3 Plan para ganar autoridad en 3 meses (diciembre 2026 a febrero 2027)
@@ -625,8 +625,8 @@ Revisado el 27-11-2026 con Claude in Chrome, solo leyendo. No cambié ninguna co
 **b) Presencia de marca fuera del sitio:**
 
 1. **LinkedIn personal de Esleyter Conde y de la empresa:** 2 publicaciones por semana. Cada artículo nuevo se resume en 5 líneas con el enlace (el Anexo C de cada Word ya trae el texto). La IA cita LinkedIn con frecuencia en temas B2B.
-2. **YouTube:** los resúmenes citan YouTube en 9 de 19 consultas. Un video corto por artículo de mayor potencial (Andromeda, Advantage+, AI Max, tráfico de IA en GA4, fórmula del CTR), con el enlace en la descripción y el capítulo «Qué es». Bajo costo con el formato de videos animados del servicio Social Media.
-3. **Instagram y TikTok:** carruseles con los datos de cada artículo (el Anexo C ya los trae). Aparecen como fuentes en 4 de 19 resúmenes.
+2. **YouTube:** YouTube aparece entre las fuentes del resumen de IA en 13 de las 19 consultas con resumen (en la tabla lo omití en algunas filas por espacio). Un video corto por artículo de mayor potencial (Andromeda, Advantage+, AI Max, tráfico de IA en GA4, fórmula del CTR), con el enlace en la descripción y el capítulo «Qué es». Bajo costo con el formato de videos animados del servicio Social Media.
+3. **Instagram y TikTok:** carruseles con los datos de cada artículo (el Anexo C ya los trae). Uno de los dos aparece como fuente en 6 de 19 resúmenes, y LinkedIn en 1 («auditoría de campañas google ads»).
 4. **Comunidades donde preguntan pymes chilenas:** responder con criterio, sin vender, enlazando solo cuando la guía responde mejor. Por ejemplo: grupos de Facebook de emprendedores chilenos, la comunidad de Entel Empresas y foros de Jumpseller o Shopify en español (**por validar** cuáles están activos). Reddit aparece como fuente en «qué es gtm»; r/chile y r/marketing en español son opciones de bajo volumen (**por validar** la actividad real).
 
 **c) Contenido que los asistentes de IA citan:**
