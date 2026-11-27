@@ -17,7 +17,7 @@
 ## Contenido
 
 - [Calculadoras](https://www.condadodigital.cl/calculadoras): 20 calculadoras (ROAS, CPA, CPL, CAC, LTV, hook rate, hold rate, LTV/CAC y otras métricas) y un simulador de embudo
-- [Enciclopedia](https://www.condadodigital.cl/enciclopedia): 46 guías de referencia sobre marketing digital para pymes de Chile y Latinoamérica, con datos verificados y fuentes
+- [Enciclopedia](https://www.condadodigital.cl/enciclopedia): 45 guías de referencia sobre marketing digital para pymes de Chile y Latinoamérica, con datos verificados y fuentes
 - [Glosario](https://www.condadodigital.cl/glosario): 168 términos de marketing digital con definición, fórmula y ejemplo
 - [Herramientas](https://www.condadodigital.cl/herramientas): herramientas de marketing recomendadas
 - [Preguntas frecuentes](https://www.condadodigital.cl/preguntas-frecuentes): respuestas breves sobre marketing digital
@@ -60,7 +60,6 @@
 - [Auditoría de campañas publicitarias](https://www.condadodigital.cl/auditoria-de-campanas-publicitarias): Qué revisa una auditoría de campañas en Google Ads y Meta Ads: medición, estructura, búsquedas, públicos y anuncios. Checklist paso a paso para tu pyme.
 - [Google Partner y Meta Business Partner](https://www.condadodigital.cl/google-partner-meta-business-partner): Qué exige Google para ser Partner o Premier Partner, qué es Meta Business Partner, cómo verificar una insignia y qué no te garantiza una agencia.
 - [KPIs para evaluar a tu agencia de marketing](https://www.condadodigital.cl/kpis-para-evaluar-agencia-de-marketing): Qué métricas pedirle a tu agencia de marketing: costo por lead, costo de adquisición, incrementalidad y calidad de datos. Con tablero mensual para pymes.
-- [Cómo evaluar los resultados de tu Black Friday](https://www.condadodigital.cl/evaluar-resultados-black-friday): Cómo medir si tu Black Friday funcionó: ventas reales, margen, clientes nuevos y efecto en Navidad. Errores de lectura en Meta y Google y checklist.
 - [Marketing de Navidad para pymes](https://www.condadodigital.cl/marketing-de-navidad): Cómo preparar tu marketing de Navidad: fechas clave del peak de compras en Chile, campañas en Meta y Google, despacho y retracto. Plan semana a semana.
 - [Marketing de verano para pymes](https://www.condadodigital.cl/marketing-de-verano): Cómo vender en el verano en Chile: turismo, comercio local y servicios. Perfil de Google, redes, anuncios por zona y calendario de diciembre a marzo.
 - [Plan de marketing 2027 para pymes](https://www.condadodigital.cl/plan-de-marketing-2027): Cómo armar el plan de marketing 2027 de tu pyme: diagnóstico, objetivos, presupuesto, calendario chileno y las tendencias que sí importan. Con plantilla.

@@ -65,7 +65,6 @@
   { t: "Auditoría de campañas publicitarias", u: "/auditoria-de-campanas-publicitarias", tipo: "Enciclopedia", k: "auditoria campañas publicitarias revisar google ads meta ads checklist medicion" },
   { t: "Google Partner y Meta Business Partner", u: "/google-partner-meta-business-partner", tipo: "Enciclopedia", k: "google partner meta business partner insignia certificacion agencia" },
   { t: "KPIs para evaluar a tu agencia de marketing", u: "/kpis-para-evaluar-agencia-de-marketing", tipo: "Enciclopedia", k: "kpis evaluar agencia metricas informe cpl cpa cac ltv incrementalidad" },
-  { t: "Cómo evaluar los resultados de tu Black Friday", u: "/evaluar-resultados-black-friday", tipo: "Enciclopedia", k: "evaluar black friday resultados metricas informe devoluciones margen cyber" },
   { t: "Marketing de Navidad para pymes", u: "/marketing-de-navidad", tipo: "Enciclopedia", k: "marketing navidad diciembre campañas despacho regalos tienda online" },
   { t: "Marketing de verano para pymes", u: "/marketing-de-verano", tipo: "Enciclopedia", k: "marketing verano temporada local google maps turismo anuncios por zona" },
   { t: "Plan de marketing 2027 para pymes", u: "/plan-de-marketing-2027", tipo: "Enciclopedia", k: "plan de marketing 2027 plantilla tendencias objetivos presupuesto calendario" },
