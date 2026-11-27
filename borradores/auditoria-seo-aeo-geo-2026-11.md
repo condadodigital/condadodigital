@@ -268,3 +268,104 @@ Fuentes: [OpenAI, Overview of OpenAI Crawlers](https://developers.openai.com/api
 
 - No hay etiqueta `msvalidate.01` ni `BingSiteAuth.xml` (404), y en este Chrome no hay sesión en Bing Webmaster Tools. **Por validar** si el sitio ya se importó desde Search Console; lo más probable es que no.
 - No hay archivo de clave de IndexNow. Con Cloudflare se puede activar **Crawler Hints**, que avisa a IndexNow cuando cambia el contenido; es gratis en todos los planes ([Cloudflare, Crawler Hints](https://developers.cloudflare.com/cache/about/crawler-hints/)). IndexNow lo usan Bing y Yandex, entre otros ([Bing Webmaster Blog](https://blogs.bing.com/webmaster/november-2021/Cloudflare-Supports-IndexNow-via-one-click-Integration)). Esto importa porque Copilot y otros asistentes se apoyan en el índice de Bing.
+
+---
+
+## 5. De la búsqueda al clic (CTR)
+
+Contexto: el sitio tiene un mes en Google. En 28 días suma 3.238 impresiones y 23 clics (CTR 0,71 %, posición media 19,2). El inicio aporta 14 de los 23 clics, casi todos por búsquedas de marca.
+
+### 5.1 Páginas con más de 100 impresiones y CTR menor a 2 %
+
+| Página | Impresiones | Clics | CTR | Posición | Lectura |
+|---|---|---|---|---|---|
+| /fechas-comerciales-chile | 2.248 | 5 | 0,22 % | 7,7 | **Prioridad 1.** Está en la primera página y casi nadie hace clic: el title y el fragmento no responden «cuándo» (sección 3.1) |
+| /sitio-web | 298 | 0 | 0 % | 61 | Aparece por búsquedas comerciales de «páginas web» que no son su intención (sección 2) |
+| /glosario-gtm | 149 | 0 | 0 % | 26,4 | «gtm» (109 impresiones, posición 13,4) |
+| /que-es-el-marketing-digital | 133 | 0 | 0 % | 48,6 | Genéricas («marketing digital», «marketing»). Lejos |
+| /glosario-ctr | 112 | 1 | 0,89 % | 64,4 | Búsquedas de fórmula, lejos |
+
+Casi en el umbral: **/glosario-cvr**, con 99 impresiones, 0 clics y **posición 9,6** («que es cvr en meta» posición 7,3; «que es el cvr» 9,9; «cvr formula» 8,6). Está en primera página y el title es mejorable (sección 7).
+
+### 5.2 Consultas con más de 100 impresiones y CTR menor a 2 %
+
+| Consulta | Página | Impresiones | CTR | Posición |
+|---|---|---|---|---|
+| cuándo es el próximo black friday o cyber day | /fechas-comerciales-chile | 113 | 0 % | 8,0 |
+| gtm | /glosario-gtm | 109 | 0 % | 13,4 |
+
+### 5.3 Consultas en posición 5 a 15 (con 10 o más impresiones y CTR menor a 2 %)
+
+Las 16 que detecta Search Console son de dos páginas. Hay 15 de /fechas-comerciales-chile y 1 de /glosario-gtm:
+
+| Consulta | Impresiones | Posición |
+|---|---|---|
+| cuándo es el próximo black friday o cyber day | 113 | 8,0 |
+| gtm (/glosario-gtm) | 109 | 13,4 |
+| cuando hay cyber o black friday | 41 | 8,2 |
+| black friday 2027 chile | 36 | 5,5 |
+| cuando hay ofertas en chile | 32 | 10,1 |
+| cuando es el cyber en noviembre | 25 | 8,6 |
+| cuando hay cyber day o black friday | 25 | 6,9 |
+| cuando viene un cyber day o black friday | 22 | 8,7 |
+| cuando hay descuentos en chile | 19 | 10,2 |
+| cuando es el proximo cyber o black friday | 18 | 7,5 |
+| cuando hay otro cyber o black friday | 17 | 6,5 |
+| cuando son las ofertas en chile | 13 | 9,4 |
+| cuando es el siguiente cyber day o black friday | 11 | 7,8 |
+| cuando es cyber day o black friday, fechas de cyber 2027, fechas de descuentos en chile 2027 | 10 cada una | 6,0 / 7,3 / 6,8 |
+
+Con un CTR de 5 % en esa posición (supuesto, no pronóstico), serían unos 25 clics más al mes solo en estas consultas. Es más que todo lo que el sitio recibe hoy.
+
+### 5.4 Resultados enriquecidos
+
+- **Migas de pan:** las 36 páginas de artículo, las 16 fichas, las landings, /enciclopedia, /glosario y /calculadoras ya tienen BreadcrumbList. Faltan en /preguntas-frecuentes y /herramientas.
+- **FAQ:** Google dejó de mostrar el resultado enriquecido de preguntas frecuentes en 2026; antes, desde agosto de 2023, ya lo limitaba a sitios de gobierno y salud ([Google, cambios en HowTo y FAQ](https://developers.google.com/search/blog/2023/08/howto-faq-changes)). El FAQPage no hace daño y sigue siendo texto estructurado que leen los asistentes, pero **no esperes un resultado enriquecido**. No conviene invertir más en él para Google.
+- **Fechas:** todas las páginas de contenido tienen `datePublished` y `dateModified` y la fecha visible. Google puede mostrar la fecha en el fragmento sin cambios adicionales.
+- **Miniatura:** Google recomienda para Article varias imágenes de alta resolución en 16:9, 4:3 y 1:1 con al menos 50.000 píxeles ([Google, datos estructurados de Article](https://developers.google.com/search/docs/appearance/structured-data/article)). Hoy los 36 artículos y las fichas usan **la misma imagen genérica** (og-condado-digital.jpg). Una imagen propia por artículo (aunque sea una portada tipográfica generada con la misma ilustración `ar-cov`) es lo que permite miniatura en el resultado y tarjeta en Discover.
+
+---
+
+## 6. Del contenido a la landing: el camino al lead
+
+### 6.1 Qué dicen los datos (GA4, 30-10 al 26-11-2026)
+
+- **Volumen total:** 85 usuarios activos, 468 vistas y 5 eventos clave (`generate_lead` es el único evento clave con datos).
+- **Vistas por página:** inicio 225 · /enciclopedia 36 · /glosario 29 · /calculadoras 28 · /contacto 23 · /acerca 8 · /servicios 8 · /paid-media 7.
+- **Eventos clave por página:** inicio 3, /contacto 1, /paid-media 1. Ningún artículo ni ficha registra un evento clave.
+- **Eventos:** `formulario_iniciado` 35 (6 usuarios), `generate_lead` 10 (3 usuarios), `servicio_click` **2** (1 usuario), `conde_abierto` 13, `glosario_quiz` 14, `diagnostico_completado` 12.
+- **Desde la búsqueda orgánica de Google:** 8 usuarios activos y 1 evento clave en 28 días (informe «Tráfico de búsqueda orgánica de Google», vinculado con Search Console). /fechas-comerciales-chile trajo 3 usuarios con 12 s de interacción media: quien llega busca una fecha y se va.
+- **Datos contaminados por pruebas:** `tagassistant.google.com / referral` es la fuente con más sesiones de los últimos 7 días (11 de 27). Son visitas de prueba de Tag Assistant. Hay que excluir el tráfico interno; la configuración del filtro de datos es **por validar**.
+- **No hay dimensiones personalizadas en GA4** (Administrar → Definiciones personalizadas: 0). Por eso `ubicacion` y `servicio` de `servicio_click`, y `servicio` de `generate_lead`, **no se pueden ver en los informes**. Hoy es imposible responder «cuántos clics a servicios vienen de los artículos» o «qué servicio genera más leads». Esto es lo primero que hay que arreglar en medición (sección 8).
+- **Lectura honesta:** con este volumen todavía no hay una página que «convierta» de forma medible. El inicio y /contacto concentran los leads. El contenido atrae visitas, pero no hay evidencia de que lleve a servicios.
+
+### 6.2 ¿Hay un camino visible a la landing que corresponde?
+
+| Tipo de página | Camino a una landing de servicio dentro del contenido | Diagnóstico |
+|---|---|---|
+| 20 artículos nuevos | Bloque «Hablemos» con botón a /paid-media, /mentorias o /social-media, más o menos al 60 % de la página, medido con `servicio_click` | Bien |
+| **16 artículos antiguos** | **15 de 16 no tienen ningún enlace a una landing** en el contenido. Solo /sitio-web enlaza una vez a /diseno-web, en el texto. No tienen bloque «Hablemos». Únicamente existe la franja oscura final del pie («¿Quieres aplicarlo en tu negocio?» → formulario) | **Brecha principal.** Incluye /fechas-comerciales-chile, /meta-ads-vs-google-ads, /analitica-digital y /chatgpt-ads-chile |
+| 16 fichas del glosario | Enlaces a 1 o 2 landings, pero al 78–91 % de la página (casi al final, en «Términos relacionados» o en el cierre) | Existe, pero tarde |
+| /glosario, /enciclopedia, /calculadoras | Ningún enlace a landings en el contenido | Son la 2.ª, 3.ª y 4.ª página más vista. Las 20 calculadoras son el lugar natural para «¿Quieres que lo midamos por ti?» → /paid-media o /mentorias |
+| Inicio | Filas de servicios al 10 % de la página, con `servicio_click` | Bien |
+| 5 landings | Cada una enlaza a las otras 4 al final («Otros servicios») y ahora a sus «Lecturas recomendadas» | Bien |
+
+**En el teléfono:** en los artículos nuevos, el bloque «Hablemos» aparece después de «Cómo aplicarlo en tu pyme», que en 390 px es más o menos el 60 % del recorrido. No hay ningún llamado a la acción antes del primer tercio. En las fichas, el enlace al servicio queda detrás de las FAQ.
+
+### 6.3 Dónde agregar enlaces o llamados a la acción, sin cambiar el diseño
+
+Todos usan componentes que ya existen: `ar-call` («Hablemos»), filas `pg-row` y enlaces en el texto.
+
+1. **Bloque «Hablemos» en los 16 artículos antiguos**, con el servicio que corresponde:
+   - /paid-media: meta-ads-vs-google-ads, publicidad-pagada-vs-organica, biblioteca-de-anuncios, fechas-comerciales-chile, chatgpt-ads-chile y embudo-de-marketing.
+   - /diseno-web: sitio-web, tienda-online y crear-sitio-web-con-ia.
+   - /seo: core-update-google-noviembre-2026 y perfil-de-empresa-google.
+   - /mentorias: analitica-digital, marketing-con-ia y que-es-el-marketing-digital.
+   - /social-media: whatsapp-business.
+   - marketing-tradicional-vs-digital: /servicios.
+2. **/fechas-comerciales-chile**, la página con más impresiones: además del bloque, una línea bajo la tabla de fechas («¿Vas a invertir en anuncios para el próximo evento? Revisamos tu campaña antes de que suban los costos → Paid Media»). Esa línea va donde está el interés.
+3. **/calculadoras**: una fila `pg-row` al final de cada grupo de calculadoras. Por ejemplo, tras las de costo «¿Tu CPA está alto? → Paid Media» y tras las de redes «→ Social Media».
+4. **Fichas del glosario**: subir el enlace al servicio a la sección «Cómo interpretarlo» o «Errores comunes» (mitad de la ficha), con texto en contexto («Si tu CPL sube mes a mes, revisamos tu cuenta → Paid Media»).
+5. **/glosario y /enciclopedia**: una fila «¿Prefieres que lo hagamos por ti? → Servicios» antes del pie. Hoy solo está la franja genérica.
+6. **/seo y /diseno-web** son las landings con menos entradas. /seo solo la enlazan /glosario-aeo y /glosario-geo; /diseno-web, /sitio-web y 4 fichas. Enlazarlas desde los 5 artículos de sitio web, SEO y buscadores con IA (sitio-web, tienda-online, crear-sitio-web-con-ia, core-update-google-noviembre-2026 y trafico-de-ia-en-ga4).
+7. **Medir todo con `servicio_click`** y `data-ubicacion` (`articulo`, `glosario`, `calculadora`), y registrar `ubicacion` y `servicio` como dimensiones personalizadas en GA4. Sin eso, nada de lo anterior se puede evaluar.
